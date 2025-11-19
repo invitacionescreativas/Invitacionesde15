@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // ---------------------- temporizador -------------------------
 function updateTimer() {
-  const targetDate = new Date("november 29, 2025 21:00:00").getTime();
+  const targetDate = new Date("july 19, 2026 21:00:00").getTime();
   const currentDate = new Date().getTime();
   const timeRemaining = targetDate - currentDate;
 
@@ -203,8 +203,8 @@ function copyCbuText() {
 
 document.addEventListener('DOMContentLoaded', function () {
   // Definir los números de teléfono
-  const phoneNumber1 = '543884342502'; // Número para el primer botón
-  const phoneNumber2 = '543816591298'; // Número para el segundo botón
+  const phoneNumber1 = '543413904417'; // Número para el primer botón
+  const phoneNumber2 = '543413904417'; // Número para el segundo botón
 
   // Función para enviar mensaje por WhatsApp
   function sendMessage(phoneNumber) {
@@ -404,8 +404,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 document.addEventListener('DOMContentLoaded', function () {
   // Definir los números de teléfono
-  const recipientNumber1 = '543884342502'; // Número para el primer botón
-  const recipientNumber2 = '543815411429'; // Número para el segundo botón
+  const recipientNumber1 = '543413904417'; // Número para el primer botón
+  const recipientNumber2 = '543413904417'; // Número para el segundo botón
 
   // Función para enviar mensaje por WhatsApp
   function sendMessage(phoneNumber) {
@@ -419,7 +419,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     if (userName === '') {
-      alert('Por favor, completa todos los campos antes de enviar.');
+      alert('Por favor, completa todos los datos');
       return;
     }
 

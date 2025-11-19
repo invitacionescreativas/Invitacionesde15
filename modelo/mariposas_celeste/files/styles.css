@@ -122,16 +122,17 @@
     align-items: center;
     background: var(--color-botones);
     color: var(--color-fuente-botones);
-    font-family: "Montserrat", sans-serif;
+    font-family: var(--font-montserrat);
     margin: 0 auto;
     border-radius: 1em;
-    font-size: 1rem;
+    font-size: 1.5rem;
     width: clamp(50px, 75%, 350px);
-    padding: 0;
+    padding: 1rem 1rem; /* ⬅ MÁS ALTO Y MÁS ANCHO */
     font-weight: 700;
     border: 2px inset #fff;
     cursor: pointer;
 }
+
 
 .title {
     font-family: var(--font-imperial);
@@ -141,8 +142,8 @@
 }
 
 .subtitle {
-    font-family: "Montserrat", sans-serif;
-    font-size: 2rem;
+    font-family: var(--font-montserrat);
+    font-size: 1rem;
     text-align: center;
 }
 
@@ -150,7 +151,7 @@
     color: var(--color-parrafos);
     font-size: 1rem;
     text-align: center;
-    font-family: "Montserrat", sans-serif;
+    font-family: var(--font-montserrat);
     font-weight: 800;
     margin: 0;
 }
@@ -362,7 +363,7 @@ header {
     left: 0;
     width: 100%;
     height: 95px;
-    background-image: url(../assets/vectores/wave.svg);
+    background-image: url(/olas.png);
     background-size: 1010px 100px;
 }
 
@@ -580,7 +581,7 @@ header {
 .parrafo--donde {
     margin: .5em auto;
     padding: 0 1em;
-    font-size: 1.8rem;
+    font-size: 1rem;
 }
 
 
@@ -1713,7 +1714,7 @@ header {
 
 .parrafo--confirmacion {
     padding: 1em 2em;
-    font-size: 2rem;
+    font-size: 1.5rem;
 }
 
 
@@ -1866,7 +1867,7 @@ input[type="radio"] {
     align-items: center;
     position: relative;
     width: 100%;
-    background-color: #FFFFFF;
+    background-color: var(--color-footer);
     margin-top: 10em;
 }
 
@@ -1876,7 +1877,7 @@ input[type="radio"] {
     left: 0;
     width: 100%;
     height: 100px;
-    background-image: url(wavefooter.svg);
+    background-image: url(../assets/vectores/wavefooter.svg);
     background-size: 1000px 100px;
 }
 
@@ -2015,37 +2016,15 @@ input[type="radio"] {
     background-color: #0056b3;
 }
 
-
-.boton__cta {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    background: var(--color-botones);
-    color: var(--color-fuente-botones);
-
-    font-family: "Montserrat", sans-serif;
-    font-weight: 700;
-    font-size: 1.1rem;
-
-    padding: 0.8em 1.5em;         /* Más grosor */
-    border-radius: 0.75em;        /* Más estándar */
-    border: 2px solid #fff;       /* Más limpio y menos "inset" */
-    cursor: pointer;
-
-    width: auto;                  /* No se aplasta */
-    max-width: 350px;
-    margin: 0 auto;
-
-    box-shadow: 0 2px 5px rgba(0,0,0,0.3);  /* Botón más sólido */
-    transition: transform .15s ease, box-shadow .15s ease;
+.contenedor-imagen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
-.boton__cta:hover {
-    transform: scale(1.04);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.4);
-}
-
-.boton__cta:active {
-    transform: scale(.97);
+.imagen-con-margen {
+  display: block;
+  max-width: 100%;
+  margin-bottom: 10%; /* puedes cambiar el valor */
 }
