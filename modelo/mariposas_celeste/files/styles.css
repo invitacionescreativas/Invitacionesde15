@@ -2026,5 +2026,5 @@ input[type="radio"] {
 .imagen-con-margen {
   display: block;
   max-width: 100%;
-  margin-bottom: 10%; /* puedes cambiar el valor */
+  margin-bottom: 20%; /* puedes cambiar el valor */
 }
