@@ -2026,5 +2026,13 @@ input[type="radio"] {
 .imagen-con-margen {
   display: block;
   max-width: 100%;
-  margin-bottom: 20%; /* puedes cambiar el valor */
+  margin-bottom: 20%; /* margen en computadora */
 }
+
+/* Ajuste solo en celulares */
+@media (max-width: 600px) {
+  .imagen-con-margen {
+    margin-bottom: 40%; /* aumenta o modifica el margen */
+  }
+}
+
