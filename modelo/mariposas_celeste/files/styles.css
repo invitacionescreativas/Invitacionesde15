@@ -125,7 +125,7 @@
     font-family: "Montserrat", sans-serif;
     margin: 0 auto;
     border-radius: 1em;
-    font-size: 2rem;
+    font-size: 1rem;
     width: clamp(50px, 75%, 350px);
     padding: 0;
     font-weight: 700;
@@ -148,7 +148,7 @@
 
 .parrafo {
     color: var(--color-parrafos);
-    font-size: 3rem;
+    font-size: 1 rem;
     text-align: center;
     font-family: "Montserrat", sans-serif;
     font-weight: 800;
