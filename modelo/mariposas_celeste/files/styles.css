@@ -122,7 +122,7 @@
     align-items: center;
     background: var(--color-botones);
     color: var(--color-fuente-botones);
-    font-family: var(--font-imperial);
+    font-family: "Montserrat", sans-serif;
     margin: 0 auto;
     border-radius: 1em;
     font-size: 2rem;
@@ -141,7 +141,7 @@
 }
 
 .subtitle {
-    font-family: var(--font-italiano);
+    font-family: "Montserrat", sans-serif;
     font-size: 2rem;
     text-align: center;
 }
@@ -150,7 +150,7 @@
     color: var(--color-parrafos);
     font-size: 3rem;
     text-align: center;
-    font-family: var(--font-italiano);
+    font-family: "Montserrat", sans-serif;
     font-weight: 800;
     margin: 0;
 }
