@@ -142,13 +142,13 @@
 }
 
 .subtitle {
-    font-family: var(--font-montserrat);
+    font-family: #333;
     font-size: 1rem;
     text-align: center;
 }
 
 .parrafo {
-    color: var(--color-parrafos);
+    color:  #333;
     font-size: 1rem;
     text-align: center;
     font-family: var(--font-montserrat);
