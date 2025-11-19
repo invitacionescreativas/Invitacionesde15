@@ -1867,7 +1867,7 @@ input[type="radio"] {
     align-items: center;
     position: relative;
     width: 100%;
-    background-color: #fffff;
+    background-color: #ffffff;
     margin-top: 5em;
 }
 
@@ -2032,7 +2032,7 @@ input[type="radio"] {
 /* Ajuste solo en celulares */
 @media (max-width: 600px) {
   .imagen-con-margen {
-    margin-bottom: 40%; /* aumenta o modifica el margen */
+    margin-bottom: 55%; /* aumenta o modifica el margen */
   }
 }
 
