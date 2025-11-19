@@ -1867,8 +1867,8 @@ input[type="radio"] {
     align-items: center;
     position: relative;
     width: 100%;
-    background-color: var(--color-footer);
-    margin-top: 10em;
+    background-color: #fffff;
+    margin-top: 5em;
 }
 
 .onda {
