@@ -157,7 +157,8 @@
 }
 
 .contenedor {
-    background: var(--color-divs);
+    background: rgba(173, 216, 230, 0.4); /* celeste clarito 40% de opacidad */
+backdrop-filter: blur(4px); /* opcional para efecto vidrio */
     width: clamp(100px, 90%, 700px);
     margin: 0 auto;
     border-radius: 1em;
@@ -340,9 +341,9 @@ header {
 }
 
 .controles__img {
-    display: flex;
     width: 33px;
     cursor: pointer;
+    filter: invert(62%) sepia(97%) saturate(747%) hue-rotate(169deg) brightness(103%) contrast(101%);
 }
 
 #playPauseContainer {
@@ -2025,6 +2026,13 @@ input[type="radio"] {
 
 .imagen-con-margen {
   display: block;
-  max-width: 100%;
-  margin-bottom: 10%; /* puedes cambiar el valor */
+  width: 100%;
+  margin-bottom: 40px; /* Valor fijo que NO se deforma */
 }
+
+@media (max-width: 768px) {
+  .imagen-con-margen {
+    margin-bottom: 25px;  /* Ajustado para celulares */
+  }
+}
+
