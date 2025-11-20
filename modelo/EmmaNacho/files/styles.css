@@ -16,7 +16,7 @@
 
 :root {
     /*--fuentes--*/
-    --font-montserrat: "Montserrat", sans-serif;
+    --font-montserrat: "Montserrat";
     --font-neue: "Comic Neue", cursive;
     --font-rancho: "Rancho", cursive;
     --font-baloo: "Baloo Tamma 2", system-ui;
@@ -135,8 +135,8 @@
 
 
 .title {
-    font-family: var(--font-imperial);
-    font-size: 2rem;
+    font-family: var(--font-montserrat);
+    font-size: 1rem;
     color: var(--color-titles);
     text-align: center;
 }
@@ -289,7 +289,7 @@ header {
 }
 
 .music__title {
-    font-family: var(--font-italiano);
+    font-family: var(--font-montserrat);
     font-size: 2rem;
     color: var(--color-titulo-music);
     text-shadow: 0 0 5px #fff, 0 0 5px #fff, 0 0 5px #fff, 0 0 5px #fff;
@@ -536,7 +536,7 @@ header {
 
 .frase__paragraph {
     text-align: center;
-    font-family: var(--font-imperial);
+    font-family: var(--font-montserrat);
     color: var(--color-parrafos);
     padding: 2em;
     line-height: 1.4;
@@ -567,7 +567,7 @@ header {
 
 .title--active {
     margin: 0;
-    font-size: 3rem;
+    font-size: 2rem;
 }
 
 .donde__img {
@@ -700,7 +700,7 @@ header {
     margin: 1em auto;
     text-align: center;
     color: var(--color-tituloPrincipal);
-    font-family: var(--font-imperial);
+    font-family: var(--font-montserrat);
     background-color: var(--color-fondo-tituloPrincipal);
     font-size: 1.8rem;
 }
@@ -1074,8 +1074,8 @@ header {
 }
 
 .regalos__title {
-    font-family: var(--font-imperial);
-    font-size: 2.5rem;
+    font-family: var(--font-montserrat);
+    font-size: 1.8rem;
     color: var(--color-titles);
     margin: 0;
 }
@@ -1086,11 +1086,11 @@ header {
 }
 
 .parrafo--regalos {
-    font-family: var(--font-italiano);
+    font-family: var(--font-montserrat);
     font-weight: 800;
     padding: 1em 2em;
     line-height: 1;
-    font-size: 2rem;
+    font-size: 1rem;
 }
 
 .regalos__fondo {
@@ -1957,7 +1957,7 @@ input[type="radio"] {
     align-items: center;
     width: 80%;
     margin: 0 auto 3em;
-    font-family: var(--font-imperial);
+    font-family: var(--font-montserrat);
     font-size: 2rem;
     font-weight: 600;
 }
