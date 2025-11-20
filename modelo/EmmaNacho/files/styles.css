@@ -1950,7 +1950,7 @@ input[type="radio"] {
 }
 
 .footer__frase {
-    color: var(--color-frase-final);
+    color: #ffffff;
     display: flex;
     text-align: center;
     justify-content: center;
