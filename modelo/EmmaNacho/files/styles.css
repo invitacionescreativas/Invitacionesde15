@@ -157,11 +157,11 @@
 }
 
 .contenedor {
-    background: var(--color-divs);
-    width: clamp(100px, 90%, 700px);
-    margin: 0 auto;
-    border-radius: 1em;
-    box-shadow: 1px 1px 3px #0000009b;
+  background: linear-gradient(135deg, rgba(0, 18, 43, 0.6), rgba(0, 48, 103, 0.6));
+width: clamp(100px, 90%, 700px);
+margin: 0 auto;
+border-radius: 1em;
+box-shadow: 1px 1px 3px #0000009b;
 }
 
 .img__separador {
