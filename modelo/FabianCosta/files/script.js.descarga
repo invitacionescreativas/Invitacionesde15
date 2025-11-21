@@ -67,7 +67,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 
+// ---------------------- para el video intro -------------------------
+    const video = document.getElementById("introVideo");
+    const contenido = document.getElementById("contenido");
 
+    video.addEventListener("ended", function() {
+        video.style.display = "none";
+        contenido.style.display = "block";
+    });
 
 
 // ---------------------- temporizador -------------------------
