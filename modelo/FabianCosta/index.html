@@ -593,8 +593,15 @@
   
     
  <h4 class="parrafo parrafo--confirmacion aos-init">¡Te espero para disfrutar una noche mágica!</h4>
-    
+    <script>
+    const video = document.getElementById("introVideo");
+    const contenido = document.getElementById("contenido");
 
+    video.addEventListener("ended", function() {
+        video.style.display = "none";
+        contenido.style.display = "block";
+    });
+    </script>
     <script src="./files/jquery-3.6.0.min.js.descarga"></script>
     <script src="./files/swiper-bundle.min.js.descarga"></script>
     <script src="./files/fancybox.umd.js.descarga"></script>
