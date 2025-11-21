@@ -613,5 +613,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
 </div>
 
-
+<script>
+document.getElementById("introVideo").addEventListener("ended", function() {
+    document.getElementById("contenido").style.display = "block";  // muestra el contenido
+    this.style.display = "none"; // oculta el video
+});
+</script>
 </body></html>
