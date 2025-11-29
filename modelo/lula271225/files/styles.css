@@ -189,7 +189,7 @@ header {
     min-height: 600px;
     position: relative;
 
-    background-image: linear-gradient(to top, rgba(255, 225, 0, 0), rgba(255, 187, 0, 0)), url(../files/portada.jpeg);
+    background-image: linear-gradient(to top, rgba(255, 225, 0, 0), rgba(255, 187, 0, 0)), url(../files/portada_.jpeg);
     background-position: top;
     background-size: cover;
     overflow: hidden;
@@ -203,6 +203,30 @@ header {
     margin: 0 auto;
     overflow: hidden;
 }
+.img-text-container {
+    position: relative;
+    display: inline-block; /* O block si querés ancho completo */
+    width: 100%; /* Si querés que ocupe todo el ancho disponible */
+}
+
+.img-text-container img {
+    width: 100%;
+    display: block;
+    border-radius: 1em; /* opcional si quieres bordes redondeados */
+}
+
+.img-text {
+    position: absolute;
+    top: 50%;                /* posición vertical */
+    left: 50%;               /* posición horizontal */
+    transform: translate(-50%, -50%); /* centra el texto */
+    color: #fff;             /* color del texto */
+    font-size: 2.2rem;       /* tamaño del texto */
+    text-align: center;
+    font-weight: bold;
+    text-shadow: 2px 2px 5px #000000b9; /* para que se lea mejor */
+}
+
 
 .nav {
     --state-open: scale(1);
