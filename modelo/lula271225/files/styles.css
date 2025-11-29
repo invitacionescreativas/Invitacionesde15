@@ -189,7 +189,7 @@ header {
     min-height: 600px;
     position: relative;
 
-    background-image: linear-gradient(to top, rgba(255, 225, 0, 0), rgba(255, 187, 0, 0)), url(../files/portada.JPEG);
+    background-image: linear-gradient(to top, rgba(255, 225, 0, 0), rgba(255, 187, 0, 0)), url(../files/portada.jpeg);
     background-position: top;
     background-size: cover;
     overflow: hidden;
