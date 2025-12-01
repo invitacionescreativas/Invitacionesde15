@@ -38,14 +38,9 @@ body {
 /* ------------ header -------------- */
 
 .header {
-    position: relative;
-    height: 100dvh;
-    background-color: #c6e9ff; /* color de respaldo */
-
-    background-image: url("/files/portada.png"); /* cambia la ruta */
-    background-size: cover;     /* que cubra toda la pantalla */
-    background-position: center;/* centrada */
-    background-repeat: no-repeat;/* que no se repita */
+   position: relative; 
+   height: 100dvh; 
+   background-color: #c6e9ff;
 }
 
 
@@ -496,16 +491,15 @@ body {
 }
 .portada {
     width: 100%;
-    height: 100vh; /* Ocupa todo el alto de la pantalla */
-    overflow: hidden; /* Oculta lo que sobresale */
 }
 
 .portada-img {
     width: 100%;
-    height: 100%;
-    object-fit: cover; /* Cubre sin deformar */
-    object-position: center; /* Centra la imagen */
+    height: auto;      /* Mantiene proporción real */
+    display: block;    /* Elimina espacio debajo del img */
 }
+
+
 
 
 .ligtbox {
