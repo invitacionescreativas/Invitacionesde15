@@ -1588,7 +1588,7 @@ header {
     max-width: 350px;
     padding: 1rem 0.7rem;
     background-color: var(--color-boton-interior);
-    color: var(--color-boton-datos);
+    color: #000000;
     border: none;
     border-radius: 12px;
     cursor: pointer;
