@@ -177,11 +177,11 @@ header {
     min-height: 600px;
     position: relative;
 
-    background-image: linear-gradient(to top, rgba(255, 0, 128, 0.129), rgba(255, 255, 255, 0.055)), url(../assets/imagenes/fondo.webp);
+    background-image: linear-gradient(to top, rgba(255, 117, 186, 0.129), rgba(65, 54, 54, 0.055)), url(./fondo.jpg);
     background-position: center;
     background-size: cover;
     overflow: hidden;
-    mask-image: linear-gradient(black 90%, transparent);
+    mask-image: linear-gradient(rgb(0, 0, 0) 90%, transparent);
 }
 
 .container {
@@ -1682,7 +1682,7 @@ header {
     right: 0;
     padding: 0.2em 0.5em;
     border-radius: 0.4em;
-    background: red;
+    background: rgb(255, 159, 159);
     border: none;
     color: white;
     font-size: 24px;
