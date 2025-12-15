@@ -11,7 +11,7 @@
 
 :root {
     /*--fuentes--*/
-    --font-montserrat: "Montserrat", sans-serif;
+    --font-montserrat: "Playfair Display", serif;
     --font-neue: "Playfair Display", serif;
     --font-rancho:  "Dancing Script", cursive;
     --font-baloo: "Playfair Display", serif;
@@ -177,8 +177,7 @@ header {
     min-height: 600px;
     position: relative;
 
-    background-image: linear-gradient(to top, rgba(255, 117, 186, 0.129), rgba(65, 54, 54, 0.055)), url(./fondo.jpg);
-    background-position: center;
+       background-position: center;
     background-size: cover;
     overflow: hidden;
     mask-image: linear-gradient(rgb(0, 0, 0) 90%, transparent);
@@ -1645,6 +1644,11 @@ header {
     width: 100%;
     height: 100%;
     z-index: 1000;
+}
+.contenedor-imagen img {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
 .menuFoto-overlay {
