@@ -11,7 +11,7 @@
 
 :root {
     /*--fuentes--*/
-    --font-montserrat: "Playfair Display", serif;
+    --font-montserrat: "Playfair Display", sansserif;
     --font-neue: "Playfair Display", serif;
     --font-rancho:  "Dancing Script", cursive;
     --font-baloo: "Playfair Display", serif;
@@ -294,9 +294,14 @@ header {
     position: relative;
     width: clamp(100px, 80%, 450px);
     border-radius: 3em;
-    background: url(../assets/imagenes/fondoReproductor.webp);
+    background: linear-gradient(
+  135deg,
+  #ffc4d8 0%,
+  #ffe0ea 50%,
+  #ffc4d8 100%
+);
     height: 60px;
-    box-shadow: 0 0 10px #ffffff;
+    box-shadow: 0 0 10px #7c4646;
     display: flex;
     justify-content: center;
     align-items: center;
