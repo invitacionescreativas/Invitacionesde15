@@ -180,7 +180,7 @@ header {
        background-position: center;
     background-size: cover;
     overflow: hidden;
-    mask-image: linear-gradient(rgb(0, 0, 0) 90%, transparent);
+    
 }
 
 .container {
