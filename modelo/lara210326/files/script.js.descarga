@@ -208,25 +208,23 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Función para enviar mensaje por WhatsApp
   function sendMessage(phoneNumber) {
-    const name = document.getElementById('userName').value;
     const message = document.getElementById('whatsappMessage').value;
 
-    if (name.trim() === '' || message.trim() === '') {
-      alert('Por favor, completa ambos campos antes de enviar.');
+    if (message.trim() === '') {
+      alert('Por favor, escribe una recomendación antes de enviar 😊');
       return;
     }
 
-    const fullMessage = `*Nombre y Apellido:* ${name}\n\n*Tema recomendado:* ${message}`;
+    const fullMessage = `🎵 *Tema recomendado:* ${message}`;
     const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(fullMessage)}`;
 
-    // Abre la URL de WhatsApp en una nueva pestaña
+    // Abrir WhatsApp
     window.open(whatsappURL, '_blank');
 
-    // Mostrar mensaje de confirmación
-    alert('Mensaje enviado');
+    // Confirmación
+    alert('¡Gracias por tu recomendación! 💛');
 
-    // Limpiar los campos de entrada
-    document.getElementById('userName').value = '';
+    // Limpiar el campo
     document.getElementById('whatsappMessage').value = '';
 
     // Volver al bloque de formulario
