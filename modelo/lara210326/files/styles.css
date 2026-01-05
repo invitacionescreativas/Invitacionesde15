@@ -121,7 +121,7 @@
     justify-content: center;
     align-items: center;
     background: var(--color-botones);
-    color: var(--color-fuente-botones);
+    color: #000;
     font-family: var(--font-montserrat);
     margin: 0 auto;
     border-radius: 1em;
@@ -1516,14 +1516,14 @@ header {
     --fondo: #4f4f4f;
     --color-texto: #181818;
     --color-datos: #ffffff;
-    --color-boton: #e2e2e2;
-    --color-boton-datos: #fff;
-    --color-boton-interior: #121212;
+    --color-boton: #000000;
+    --color-boton-datos: #000000;
+    --color-boton-interior: #b4b4b4;
     --color-boton-hover: #212121;
-    --color-boton-hover-texto: #fff;
+    --color-boton-hover-texto: #000000;
     --color-sombra: rgba(255, 255, 255, 0.4);
     background-color: var(--fondo);
-    color: var(--color-texto);
+    color: #000;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1564,7 +1564,7 @@ header {
     flex-direction: column;
     justify-content: center;
     margin-bottom: 0;
-    color: var(--color-parrafo);
+    color: #fff;
     font-size: 1.1rem;
 }
 
