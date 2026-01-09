@@ -421,31 +421,28 @@
         <!-- separador: -->
 
 
-        <section class="playlist contenedor block glow aos-init" id="playlist" data-aos="fade-up">
-            <div class="playlist__container">
-                <h4 class="parrafo parrafo--fotos">No existe fiesta sin buena música</h4>
-                <img class="playlist__img" src="./files/dj.svg" alt="">
-                <h4 class="parrafo parrafo--fotos">¿Qué música crees que no debería faltar? <br> Ayúdame a
-                    elegir...
-                </h4>
-            </div>
+  <section class="playlist contenedor block glow aos-init" id="musica" data-aos="fade-up">
+  <div class="confirmacion__container">
 
-            <div class="playlist__mensaje" id="formContainer">
-                <label class="playlist__label" for="userName">Nombre y Apellido:</label>
-                <input class="playlist__input aos-init" type="text" id="userName" placeholder="Tu nombre y apellido" data-aos="fade-left">
+    <img class="playlist__img" src="./files/dj.svg" alt="">
+  
 
-                <label class="playlist__label playlist__label2" for="whatsappMessage">Recomendación:</label>
-                <input class="playlist__input aos-init" type="text" id="whatsappMessage" placeholder="Escribe tu tema recomendado aquí" data-aos="fade-left">
-<label class="asistencia__label" for="destinoAsistencia">¿A quién lo enviamos?</label>
-<select class="playlist__input aos-init" id="destinoAsistencia">
-  <option value="">Elegí una opción</option>
-  <option value="avril">Avril</option>
-  <option value="yoli">Yoli</option>
-</select>
-                <button class="boton__cta boton__cta2" id="botonplay1">Enviar Recomendación</button>
-                <button class="boton__cta boton__cta5" id="botonplay2">Enviar a 2</button>
-            </div>
-        </section>
+    <input class="playlist__input" type="text" id="userName" placeholder="Tu nombre"><br><br><br>
+
+    <input class="playlist__input" type="text" id="whatsappMessage" placeholder="¿Qué tema recomendás?"><br><br><br>
+
+    <select class="playlist__input" id="destino">
+      <option value="">Elegí destinatario</option>
+           <option value="avril">Avril</option>
+      <option value="yoli">Yoli</option>
+    </select><br><br><br>
+
+    <button class="boton__cta" id="botonplay1">Enviar recomendación</button>
+    <button class="boton__cta" id="botonplay2">Enviar por WhatsApp</button>
+
+  </div>
+</section>
+
 
 
 
@@ -480,46 +477,46 @@
         <img class="img__separador aos-init" src="./files/separador.png" alt="" data-aos="flip-right">
         <!-- separador: -->
 
+<section class="confirmacion contenedor block glow aos-init" id="correo" data-aos="fade-up">
+  <div class="confirmacion__container">
+    <h4 class="parrafo parrafo--fotos aos-init" data-aos="fade-right">
+      Recordá que tenes hasta el día 24 de Enero de 2026 para confirmar tu presencia
+    </h4>
 
-        <section class="confirmacion contenedor block glow aos-init" id="correo" data-aos="fade-up">
-            <div class="confirmacion__container">
-                <h4 class="parrafo parrafo--fotos aos-init" data-aos="fade-right">
-                    Recordá que tenes hasta el día 24 de Enero de 2026 para confirmar tu
-                    presencia <br>
-                </h4>
-                <div id="asistencia">
-                    <div class="asistencia__radios aos-init" data-aos="fade-left">
-                        <label class="asistencia__radio">
-                            <input class="assistencia_" type="radio" name="attendanceOption" value="SI ASISTIRÉ"> SI
-                            ASISTIRÉ
-                        </label>
-                        <label class="asistencia__radio">
-                            <input class="assistencia_" type="radio" name="attendanceOption" value="NO ASISTIRÉ"> NO
-                            ASISTIRÉ
-                        </label>
-                    </div>
-                    <br>
-                    <div class="asistencia__datos">
-                        <label class="asistencia__label" for="userFullName">Nombre y Apellido:</label>
-                        <input class="input__text" type="text" id="userFullName" placeholder="Tu nombre y apellido" required="">
-                        <br>
-                        <label class="asistencia__label asistencia__label2" for="customMessage">Mensaje:</label>
-                        <textarea class="input__text input__text2" id="customMessage" placeholder="Mensaje opcional"></textarea>
-                        <label class="asistencia__label" for="destinoAsistencia">¿A quién lo enviamos?</label>
-<select class="playlist__input aos-init" id="destinoAsistencia">
-  <option value="">Elegí una opción</option>
-  <option value="avril">Avril</option>
-  <option value="yoli">Yoli</option>
-</select>
-                        <br>
-                        <button class="boton__cta boton__cta3" id="botoncito1">
-                            <img class="whatsapp__icon" src="./files/whatsapp_redondo.svg" alt="">Confirmas
-                            asistencia</button>
-                        <button class="boton__cta boton__cta3" id="botoncito2"><img class="whatsapp__icon" src="./files/whatsapp_redondo.svg" alt="">Enviar mensaje</button>
-                    </div>
-                </div>
-            </div>
-        </section>
+    <div id="asistencia">
+      <div class="asistencia__radios aos-init" data-aos="fade-left">
+        <label class="asistencia__radio">
+          <input class="assistencia_" type="radio" name="attendanceOption" value="SI ASISTIRÉ"> SI ASISTIRÉ
+        </label>
+        <label class="asistencia__radio">
+          <input class="assistencia_" type="radio" name="attendanceOption" value="NO ASISTIRÉ"> NO ASISTIRÉ
+        </label>
+      </div>
+
+      <div class="asistencia__datos">
+        <label class="asistencia__label">Nombre y Apellido:</label>
+        <input class="input__text" id="userFullName" type="text" placeholder="Tu nombre y apellido">
+
+        <label class="asistencia__label asistencia__label2">Mensaje:</label>
+        <textarea class="input__text input__text2" id="customMessage" placeholder="Mensaje opcional"></textarea>
+
+        <label class="asistencia__label">¿A quién lo enviamos?</label>
+        <select class="playlist__input aos-init" id="destinoAsistencia">
+          <option value="">Elegí una opción</option>
+          <option value="avril">Avril</option>
+          <option value="yoli">Yoli</option>
+        </select>
+
+        <button class="boton__cta boton__cta3" id="botoncito1">
+          <img class="whatsapp__icon" src="./files/whatsapp_redondo.svg">Confirmar asistencia
+        </button>
+        <button class="boton__cta boton__cta3" id="botoncito2">
+          <img class="whatsapp__icon" src="./files/whatsapp_redondo.svg">Enviar mensaje
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
 
         <!-- <seccion class="savedate">
         <a href="assets/imagenes/album.webp" download="archivo.zip" class="boton-descarga" onclick="descargarArchivo()">Descargar Archivo</a>
