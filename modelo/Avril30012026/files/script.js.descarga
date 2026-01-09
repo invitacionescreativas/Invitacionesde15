@@ -203,31 +203,32 @@ function copyCbuText() {
 
 document.addEventListener('DOMContentLoaded', function () {
 
-  const contactos = {
+  const contactosMusica = {
     avril: '543624117451',
     yoli: '543624654852'
   };
 
-  function enviarWhatsapp() {
-    const nombre = document.getElementById('userName').value.trim();
-    const mensaje = document.getElementById('whatsappMessage').value.trim();
-    const destino = document.getElementById('destino').value;
+  const p1 = document.getElementById('botonplay1');
+  const p2 = document.getElementById('botonplay2');
 
-    if (nombre === '' || mensaje === '' || destino === '') {
-      alert('Completá tu nombre, la recomendación y elegí a quién enviarla 😊');
-      return;
+  if (!p1 || !p2) return;
+
+  function enviarMusica() {
+    const nombre = document.getElementById('userName')?.value.trim();
+    const mensaje = document.getElementById('whatsappMessage')?.value.trim();
+    const destino = document.getElementById('destino')?.value;
+
+    if (!nombre || !mensaje || !destino) {
+      return alert('Completá tu nombre, el tema y el destinatario 😊');
     }
 
     const texto = `Hola! Soy ${nombre}. Te recomiendo este tema: ${mensaje}`;
-    const url = `https://wa.me/${contactos[destino]}?text=${encodeURIComponent(texto)}`;
-    window.open(url, '_blank');
+    window.open(`https://wa.me/${contactosMusica[destino]}?text=${encodeURIComponent(texto)}`, '_blank');
   }
 
-  document.getElementById('botonplay1').addEventListener('click', enviarWhatsapp);
-  document.getElementById('botonplay2').addEventListener('click', enviarWhatsapp);
-
+  p1.addEventListener('click', enviarMusica);
+  p2.addEventListener('click', enviarMusica);
 });
-
 
 // --------------------------------Invitados---------------------------------
 
@@ -388,52 +389,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
 document.addEventListener('DOMContentLoaded', function () {
 
-  const contactos = {
+  const contactosAsistencia = {
     avril: '543624117451',
     yoli: '543624654852'
   };
 
-  function sendMessage() {
-    const userName = document.getElementById('userFullName').value.trim();
-    const userMessage = document.getElementById('customMessage').value.trim();
-    const attendanceStatus = document.querySelector('input[name="attendanceOption"]:checked');
-    const destino = document.getElementById('destinoAsistencia').value;
+  const b1 = document.getElementById('botoncito1');
+  const b2 = document.getElementById('botoncito2');
 
-    if (!attendanceStatus) {
-      alert('Por favor seleccioná si asistirás o no 😊');
-      return;
-    }
+  if (!b1 || !b2) return;
 
-    if (userName === '') {
-      alert('Por favor completá tu nombre 😊');
-      return;
-    }
+  function enviarAsistencia() {
+    const nombre = document.getElementById('userFullName')?.value.trim();
+    const mensaje = document.getElementById('customMessage')?.value.trim();
+    const estado = document.querySelector('input[name="attendanceOption"]:checked');
+    const destino = document.getElementById('destinoAsistencia')?.value;
 
-    if (destino === '') {
-      alert('Por favor elegí a quién enviarlo 😊');
-      return;
-    }
+    if (!estado) return alert('Seleccioná si asistís o no 😊');
+    if (!nombre) return alert('Completá tu nombre 😊');
+    if (!destino) return alert('Elegí a quién enviarlo 😊');
 
-    const finalMessage = `*Presencia:* ${attendanceStatus.value}\n*Nombre y Apellido:* ${userName}\n*Mensaje:* ${userMessage ? userMessage : 'N/A'}`;
-    const whatsappLink = `https://wa.me/${contactos[destino]}?text=${encodeURIComponent(finalMessage)}`;
+    const texto = `*Presencia:* ${estado.value}
+*Nombre:* ${nombre}
+*Mensaje:* ${mensaje || 'N/A'}`;
 
-    window.open(whatsappLink, '_blank');
-
-    alert('Mensaje enviado ✅');
-
-    document.getElementById('userFullName').value = '';
-    document.getElementById('customMessage').value = '';
-    document.querySelectorAll('input[name="attendanceOption"]').forEach(r => r.checked = false);
-    document.getElementById('destinoAsistencia').value = '';
-
-    document.getElementById('correo').scrollIntoView({ behavior: 'smooth' });
+    window.open(`https://wa.me/${contactosAsistencia[destino]}?text=${encodeURIComponent(texto)}`, '_blank');
   }
 
-  document.getElementById('botoncito1').addEventListener('click', sendMessage);
-  document.getElementById('botoncito2').addEventListener('click', sendMessage);
+  b1.addEventListener('click', enviarAsistencia);
+  b2.addEventListener('click', enviarAsistencia);
 
 });
-
 
 
 
