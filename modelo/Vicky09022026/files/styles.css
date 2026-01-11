@@ -426,7 +426,9 @@ header {
         background-position-x: -1000px;
     }
 }
-
+.assistencia {
+    background: #fff;
+}
 /* //////////////////// MAIN ////////////////////////// */
 
 .video {
@@ -1737,7 +1739,7 @@ header {
 }
 
 .asistencia__radio {
-    background-color: var(--color-inputRadio-confirmacion);
+    background-color: #bfa133;
     padding: 1em;
     border-radius: 1em;
     color: #fff;
