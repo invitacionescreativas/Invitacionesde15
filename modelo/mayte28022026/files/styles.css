@@ -691,7 +691,7 @@ header {
 
 .imagen-con-margen {
   display: block;
-  max-width: 100%;
+  max-width: 80%;
   margin-bottom: 20%; /* margen en computadora */
 }
 
