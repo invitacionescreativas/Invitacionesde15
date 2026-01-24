@@ -203,8 +203,8 @@ function copyCbuText() {
 
 document.addEventListener('DOMContentLoaded', function () {
   // Definir los números de teléfono
-  const phoneNumber1 = '543464686230'; // Número para el primer botón
-  const phoneNumber2 = '543464686230'; // Número para el segundo botón
+  const phoneNumber1 = '542284506566'; // Número para el primer botón
+  const phoneNumber2 = '542284506566'; // Número para el segundo botón
 
   // Función para enviar mensaje por WhatsApp
   function sendMessage(phoneNumber) {
@@ -455,8 +455,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
 document.addEventListener('DOMContentLoaded', function () {
   // Definir los números de teléfono
-  const restrictionNumber1 = '543464686230'; 
-  const restrictionNumber2 = '543464686230'; 
+  const restrictionNumber1 = '542284506566'; 
+  const restrictionNumber2 = '542284506566'; 
 
   // Función para enviar mensaje por WhatsApp
   function sendFoodMessage(phoneNumber) {
