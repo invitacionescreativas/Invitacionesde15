@@ -1,0 +1,751 @@
+<!doctype html>
+<html lang="es" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistema de Reservas de Turnos</title>
+  <script src="/_sdk/data_sdk.js"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+        body {
+            box-sizing: border-box;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.3s ease-out;
+        }
+        
+        .toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 16px 24px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 1000;
+            animation: fadeIn 0.3s ease-out;
+        }
+        
+        .toast-success {
+            background-color: #10b981;
+            color: white;
+        }
+        
+        .toast-error {
+            background-color: #ef4444;
+            color: white;
+        }
+        
+        .loading {
+            pointer-events: none;
+            opacity: 0.6;
+        }
+        
+        .spinner {
+            border: 3px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            width: 20px;
+            height: 20px;
+            animation: spin 0.8s linear infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+  <style>@view-transition { navigation: auto; }</style>
+ </head>
+ <body class="h-full">
+  <div id="app" class="h-full w-full overflow-auto"><!-- Header -->
+   <header id="header" class="py-8 px-6">
+    <div class="max-w-6xl mx-auto text-center">
+     <h1 id="titulo-principal" class="text-4xl font-bold mb-2">Sistema de Reservas de Turnos</h1>
+     <p id="subtitulo" class="text-xl opacity-90">Reservá tu turno online en segundos</p>
+    </div>
+   </header><!-- Main Content -->
+   <main class="max-w-6xl mx-auto px-6 pb-20"><!-- Navigation Tabs -->
+    <div class="flex gap-4 mb-6 border-b-2"><button id="tab-reservar" class="px-6 py-3 font-semibold border-b-4 transition-all"> Reservar Turno </button> <button id="tab-admin" class="px-6 py-3 font-semibold border-b-4 border-transparent transition-all"> Administración </button>
+    </div><!-- Reservar Turno Section -->
+    <div id="section-reservar">
+     <div class="rounded-lg shadow-lg p-8 mb-6">
+      <h2 class="text-2xl font-bold mb-6">Nueva Reserva</h2>
+      <form id="form-reserva" class="space-y-6">
+       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div><label for="nombre" class="block text-sm font-semibold mb-2">Nombre del Cliente</label> <input type="text" id="nombre" name="nombre" required class="w-full px-4 py-2 rounded-lg border-2 focus:outline-none focus:border-opacity-80 transition-all">
+        </div>
+        <div><label for="email" class="block text-sm font-semibold mb-2">Email</label> <input type="email" id="email" name="email" required class="w-full px-4 py-2 rounded-lg border-2 focus:outline-none focus:border-opacity-80 transition-all">
+        </div>
+        <div><label for="telefono" class="block text-sm font-semibold mb-2">Teléfono (WhatsApp)</label> <input type="tel" id="telefono" name="telefono" required placeholder="+54 9 11 1234-5678" class="w-full px-4 py-2 rounded-lg border-2 focus:outline-none focus:border-opacity-80 transition-all">
+        </div>
+        <div><label for="servicio" class="block text-sm font-semibold mb-2">Servicio</label> <select id="servicio" name="servicio" required class="w-full px-4 py-2 rounded-lg border-2 focus:outline-none focus:border-opacity-80 transition-all"> <option value="">Seleccionar servicio</option> <option value="Consulta">Consulta</option> <option value="Sesión">Sesión</option> <option value="Turno presencial">Turno presencial</option> <option value="Turno online">Turno online</option> </select>
+        </div>
+        <div><label for="fecha" class="block text-sm font-semibold mb-2">Fecha</label> <input type="date" id="fecha" name="fecha" required class="w-full px-4 py-2 rounded-lg border-2 focus:outline-none focus:border-opacity-80 transition-all">
+        </div>
+        <div><label for="hora" class="block text-sm font-semibold mb-2">Hora</label> <select id="hora" name="hora" required class="w-full px-4 py-2 rounded-lg border-2 focus:outline-none focus:border-opacity-80 transition-all"> <option value="">Seleccionar horario</option> </select>
+        </div>
+       </div>
+       <div><label for="comentarios" class="block text-sm font-semibold mb-2">Comentarios</label> <textarea id="comentarios" name="comentarios" rows="3" class="w-full px-4 py-2 rounded-lg border-2 focus:outline-none focus:border-opacity-80 transition-all" placeholder="Comentarios adicionales (opcional)"></textarea>
+       </div><button type="submit" id="btn-reservar" class="w-full py-3 px-6 rounded-lg font-semibold text-lg transition-all shadow-md hover:shadow-lg"> Reservar Turno </button>
+      </form>
+     </div><!-- Confirmación -->
+     <div id="confirmacion" class="hidden rounded-lg shadow-lg p-8 fade-in">
+      <div class="text-center mb-6">
+       <div class="inline-flex items-center justify-center w-16 h-16 rounded-full mb-4">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+        </svg>
+       </div>
+       <h3 class="text-2xl font-bold mb-2">¡Turno Reservado Correctamente!</h3>
+       <p class="opacity-80">Tu reserva ha sido confirmada exitosamente</p>
+      </div>
+      <div id="resumen-turno" class="space-y-3 mb-6"></div>
+      <div class="rounded-lg p-4 mb-6">
+       <p class="font-semibold mb-2">📧 Confirmación enviada por:</p>
+       <ul class="space-y-1 ml-4">
+        <li>✓ Email</li>
+        <li>✓ WhatsApp</li>
+       </ul>
+      </div><button id="btn-nueva-reserva" class="w-full py-3 px-6 rounded-lg font-semibold transition-all"> Nueva Reserva </button>
+     </div>
+    </div><!-- Admin Section -->
+    <div id="section-admin" class="hidden">
+     <div class="rounded-lg shadow-lg p-8 mb-6">
+      <h2 class="text-2xl font-bold mb-6">Panel de Administración</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+       <div><label for="filtro-fecha" class="block text-sm font-semibold mb-2">Filtrar por Fecha</label> <input type="date" id="filtro-fecha" class="w-full px-4 py-2 rounded-lg border-2 focus:outline-none focus:border-opacity-80">
+       </div>
+       <div><label for="filtro-servicio" class="block text-sm font-semibold mb-2">Filtrar por Servicio</label> <select id="filtro-servicio" class="w-full px-4 py-2 rounded-lg border-2 focus:outline-none focus:border-opacity-80"> <option value="">Todos los servicios</option> <option value="Consulta">Consulta</option> <option value="Sesión">Sesión</option> <option value="Turno presencial">Turno presencial</option> <option value="Turno online">Turno online</option> </select>
+       </div>
+       <div class="flex items-end"><button id="btn-limpiar-filtros" class="w-full py-2 px-4 rounded-lg font-semibold transition-all"> Limpiar Filtros </button>
+       </div>
+      </div>
+      <div id="lista-turnos" class="space-y-4">
+       <p class="text-center py-8 opacity-60">No hay turnos reservados</p>
+      </div>
+     </div>
+    </div>
+   </main><!-- Footer -->
+   <footer id="footer" class="py-6 px-6 text-center border-t-2">
+    <p id="footer-text" class="opacity-80">Sistema de reservas automatizado. Sujeto a disponibilidad.</p>
+   </footer><!-- Modal Editar -->
+   <div id="modal-editar" class="hidden fixed inset-0 flex items-center justify-center z-50" style="background-color: rgba(0,0,0,0.5);">
+    <div class="rounded-lg shadow-2xl p-8 max-w-2xl w-full mx-4 max-h-screen overflow-y-auto">
+     <h3 class="text-2xl font-bold mb-6">Modificar Turno</h3>
+     <form id="form-editar" class="space-y-4"><input type="hidden" id="edit-id">
+      <div><label for="edit-nombre" class="block text-sm font-semibold mb-2">Nombre</label> <input type="text" id="edit-nombre" required class="w-full px-4 py-2 rounded-lg border-2 focus:outline-none focus:border-opacity-80">
+      </div>
+      <div><label for="edit-email" class="block text-sm font-semibold mb-2">Email</label> <input type="email" id="edit-email" required class="w-full px-4 py-2 rounded-lg border-2 focus:outline-none focus:border-opacity-80">
+      </div>
+      <div><label for="edit-telefono" class="block text-sm font-semibold mb-2">Teléfono</label> <input type="tel" id="edit-telefono" required class="w-full px-4 py-2 rounded-lg border-2 focus:outline-none focus:border-opacity-80">
+      </div>
+      <div><label for="edit-servicio" class="block text-sm font-semibold mb-2">Servicio</label> <select id="edit-servicio" required class="w-full px-4 py-2 rounded-lg border-2 focus:outline-none focus:border-opacity-80"> <option value="Consulta">Consulta</option> <option value="Sesión">Sesión</option> <option value="Turno presencial">Turno presencial</option> <option value="Turno online">Turno online</option> </select>
+      </div>
+      <div><label for="edit-fecha" class="block text-sm font-semibold mb-2">Fecha</label> <input type="date" id="edit-fecha" required class="w-full px-4 py-2 rounded-lg border-2 focus:outline-none focus:border-opacity-80">
+      </div>
+      <div><label for="edit-hora" class="block text-sm font-semibold mb-2">Hora</label> <select id="edit-hora" required class="w-full px-4 py-2 rounded-lg border-2 focus:outline-none focus:border-opacity-80"> </select>
+      </div>
+      <div><label for="edit-comentarios" class="block text-sm font-semibold mb-2">Comentarios</label> <textarea id="edit-comentarios" rows="3" class="w-full px-4 py-2 rounded-lg border-2 focus:outline-none focus:border-opacity-80"></textarea>
+      </div>
+      <div class="flex gap-4"><button type="submit" id="btn-guardar-edicion" class="flex-1 py-3 px-6 rounded-lg font-semibold transition-all"> Guardar Cambios </button> <button type="button" id="btn-cancelar-edicion" class="flex-1 py-3 px-6 rounded-lg font-semibold transition-all"> Cancelar </button>
+      </div>
+     </form>
+    </div>
+   </div>
+  </div>
+  <script>
+        // Configuración
+        const defaultConfig = {
+            background_color: "#f0f4f8",
+            surface_color: "#ffffff",
+            text_color: "#1e293b",
+            primary_action_color: "#3b82f6",
+            secondary_action_color: "#64748b",
+            font_family: "system-ui",
+            font_size: 16,
+            titulo_principal: "Sistema de Reservas de Turnos",
+            subtitulo: "Reservá tu turno online en segundos",
+            footer_text: "Sistema de reservas automatizado. Sujeto a disponibilidad."
+        };
+
+        let turnos = [];
+        let turnoEditando = null;
+        
+        const HORARIOS_DISPONIBLES = [
+            "09:00", "09:30", "10:00", "10:30", "11:00", "11:30",
+            "12:00", "12:30", "14:00", "14:30", "15:00", "15:30",
+            "16:00", "16:30", "17:00", "17:30", "18:00", "18:30"
+        ];
+
+        // Inicializar fecha mínima
+        const hoy = new Date().toISOString().split('T')[0];
+        document.getElementById('fecha').setAttribute('min', hoy);
+        document.getElementById('edit-fecha').setAttribute('min', hoy);
+        document.getElementById('filtro-fecha').setAttribute('min', hoy);
+
+        // Funciones de utilidad
+        function showToast(message, type = 'success') {
+            const toast = document.createElement('div');
+            toast.className = `toast toast-${type}`;
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 3000);
+        }
+
+        function setLoading(button, loading) {
+            if (loading) {
+                button.classList.add('loading');
+                button.disabled = true;
+                const spinner = document.createElement('div');
+                spinner.className = 'spinner inline-block';
+                button.appendChild(spinner);
+            } else {
+                button.classList.remove('loading');
+                button.disabled = false;
+                const spinner = button.querySelector('.spinner');
+                if (spinner) spinner.remove();
+            }
+        }
+
+        function generarId() {
+            return Date.now().toString(36) + Math.random().toString(36).substr(2);
+        }
+
+        function actualizarHorariosDisponibles(selectHora, fechaSeleccionada, turnoExcluidoId = null) {
+            selectHora.innerHTML = '<option value="">Seleccionar horario</option>';
+            
+            const horariosOcupados = turnos
+                .filter(t => t.fecha === fechaSeleccionada && t.estado === 'activo' && t.id !== turnoExcluidoId)
+                .map(t => t.hora);
+            
+            HORARIOS_DISPONIBLES.forEach(horario => {
+                const option = document.createElement('option');
+                option.value = horario;
+                
+                if (horariosOcupados.includes(horario)) {
+                    option.textContent = `${horario} - Ocupado`;
+                    option.disabled = true;
+                } else {
+                    option.textContent = horario;
+                }
+                
+                selectHora.appendChild(option);
+            });
+        }
+
+        function renderizarListaTurnos() {
+            const lista = document.getElementById('lista-turnos');
+            const filtroFecha = document.getElementById('filtro-fecha').value;
+            const filtroServicio = document.getElementById('filtro-servicio').value;
+            
+            let turnosFiltrados = turnos.filter(t => t.estado === 'activo');
+            
+            if (filtroFecha) {
+                turnosFiltrados = turnosFiltrados.filter(t => t.fecha === filtroFecha);
+            }
+            
+            if (filtroServicio) {
+                turnosFiltrados = turnosFiltrados.filter(t => t.servicio === filtroServicio);
+            }
+            
+            turnosFiltrados.sort((a, b) => {
+                const fechaA = new Date(a.fecha + ' ' + a.hora);
+                const fechaB = new Date(b.fecha + ' ' + b.hora);
+                return fechaA - fechaB;
+            });
+            
+            if (turnosFiltrados.length === 0) {
+                lista.innerHTML = '<p class="text-center py-8 opacity-60">No hay turnos que coincidan con los filtros</p>';
+                return;
+            }
+            
+            lista.innerHTML = turnosFiltrados.map(turno => {
+                const fecha = new Date(turno.fecha + 'T00:00:00');
+                const fechaFormato = fecha.toLocaleDateString('es-AR', { 
+                    weekday: 'long', 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric' 
+                });
+                
+                return `
+                    <div class="border-2 rounded-lg p-6 hover:shadow-md transition-shadow" style="border-color: ${window.elementSdk.config.primary_action_color || defaultConfig.primary_action_color}30;">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <p class="text-sm font-semibold opacity-70">Cliente</p>
+                                <p class="font-bold text-lg">${turno.nombre}</p>
+                            </div>
+                            <div>
+                                <p class="text-sm font-semibold opacity-70">Servicio</p>
+                                <p class="font-semibold">${turno.servicio}</p>
+                            </div>
+                            <div>
+                                <p class="text-sm font-semibold opacity-70">Fecha y Hora</p>
+                                <p class="font-semibold">${fechaFormato} - ${turno.hora}</p>
+                            </div>
+                            <div>
+                                <p class="text-sm font-semibold opacity-70">Contacto</p>
+                                <p class="text-sm">${turno.email}</p>
+                                <p class="text-sm">${turno.telefono}</p>
+                            </div>
+                        </div>
+                        ${turno.comentarios ? `
+                            <div class="mb-4">
+                                <p class="text-sm font-semibold opacity-70">Comentarios</p>
+                                <p class="text-sm">${turno.comentarios}</p>
+                            </div>
+                        ` : ''}
+                        <div class="flex gap-3">
+                            <button onclick="editarTurno('${turno.id}')" 
+                                class="flex-1 py-2 px-4 rounded-lg font-semibold transition-all hover:opacity-80"
+                                style="background-color: ${window.elementSdk.config.primary_action_color || defaultConfig.primary_action_color}; color: white;">
+                                Modificar Turno
+                            </button>
+                            <button onclick="confirmarCancelar('${turno.id}')" 
+                                class="flex-1 py-2 px-4 rounded-lg font-semibold transition-all hover:opacity-80"
+                                style="background-color: ${window.elementSdk.config.secondary_action_color || defaultConfig.secondary_action_color}; color: white;">
+                                Cancelar Turno
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function confirmarCancelar(id) {
+            const turno = turnos.find(t => t.id === id);
+            if (!turno) return;
+            
+            const btn = event.target;
+            const originalText = btn.textContent;
+            
+            btn.textContent = '¿Confirmar cancelación?';
+            btn.style.backgroundColor = '#ef4444';
+            
+            const confirmarBtn = document.createElement('button');
+            confirmarBtn.textContent = 'Sí, cancelar';
+            confirmarBtn.className = 'py-2 px-4 rounded-lg font-semibold transition-all';
+            confirmarBtn.style.backgroundColor = '#dc2626';
+            confirmarBtn.style.color = 'white';
+            confirmarBtn.onclick = () => cancelarTurno(id);
+            
+            const cancelarBtn = document.createElement('button');
+            cancelarBtn.textContent = 'No';
+            cancelarBtn.className = 'py-2 px-4 rounded-lg font-semibold transition-all';
+            cancelarBtn.style.backgroundColor = window.elementSdk.config.secondary_action_color || defaultConfig.secondary_action_color;
+            cancelarBtn.style.color = 'white';
+            cancelarBtn.onclick = () => {
+                btn.textContent = originalText;
+                btn.style.backgroundColor = window.elementSdk.config.secondary_action_color || defaultConfig.secondary_action_color;
+                confirmarBtn.remove();
+                cancelarBtn.remove();
+            };
+            
+            btn.parentElement.appendChild(confirmarBtn);
+            btn.parentElement.appendChild(cancelarBtn);
+        }
+
+        async function cancelarTurno(id) {
+            const turno = turnos.find(t => t.id === id && t.__backendId);
+            if (!turno) return;
+            
+            const turnoActualizado = { ...turno, estado: 'cancelado' };
+            
+            const result = await window.dataSdk.update(turnoActualizado);
+            
+            if (result.isOk) {
+                showToast('Turno cancelado correctamente', 'success');
+            } else {
+                showToast('Error al cancelar el turno', 'error');
+            }
+        }
+
+        function editarTurno(id) {
+            turnoEditando = turnos.find(t => t.id === id);
+            if (!turnoEditando) return;
+            
+            document.getElementById('edit-id').value = turnoEditando.id;
+            document.getElementById('edit-nombre').value = turnoEditando.nombre;
+            document.getElementById('edit-email').value = turnoEditando.email;
+            document.getElementById('edit-telefono').value = turnoEditando.telefono;
+            document.getElementById('edit-servicio').value = turnoEditando.servicio;
+            document.getElementById('edit-fecha').value = turnoEditando.fecha;
+            document.getElementById('edit-comentarios').value = turnoEditando.comentarios || '';
+            
+            actualizarHorariosDisponibles(
+                document.getElementById('edit-hora'), 
+                turnoEditando.fecha,
+                turnoEditando.id
+            );
+            document.getElementById('edit-hora').value = turnoEditando.hora;
+            
+            document.getElementById('modal-editar').classList.remove('hidden');
+        }
+
+        // Event Listeners
+        document.getElementById('fecha').addEventListener('change', function() {
+            actualizarHorariosDisponibles(document.getElementById('hora'), this.value);
+        });
+
+        document.getElementById('edit-fecha').addEventListener('change', function() {
+            const turnoId = document.getElementById('edit-id').value;
+            actualizarHorariosDisponibles(document.getElementById('edit-hora'), this.value, turnoId);
+        });
+
+        document.getElementById('tab-reservar').addEventListener('click', function() {
+            document.getElementById('section-reservar').classList.remove('hidden');
+            document.getElementById('section-admin').classList.add('hidden');
+            this.style.borderColor = window.elementSdk.config.primary_action_color || defaultConfig.primary_action_color;
+            document.getElementById('tab-admin').style.borderColor = 'transparent';
+        });
+
+        document.getElementById('tab-admin').addEventListener('click', function() {
+            document.getElementById('section-admin').classList.remove('hidden');
+            document.getElementById('section-reservar').classList.add('hidden');
+            this.style.borderColor = window.elementSdk.config.primary_action_color || defaultConfig.primary_action_color;
+            document.getElementById('tab-reservar').style.borderColor = 'transparent';
+        });
+
+        document.getElementById('filtro-fecha').addEventListener('change', renderizarListaTurnos);
+        document.getElementById('filtro-servicio').addEventListener('change', renderizarListaTurnos);
+
+        document.getElementById('btn-limpiar-filtros').addEventListener('click', function() {
+            document.getElementById('filtro-fecha').value = '';
+            document.getElementById('filtro-servicio').value = '';
+            renderizarListaTurnos();
+        });
+
+        document.getElementById('form-reserva').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            if (turnos.length >= 999) {
+                showToast('Se alcanzó el límite máximo de 999 turnos. Por favor elimine algunos turnos primero.', 'error');
+                return;
+            }
+            
+            const btnReservar = document.getElementById('btn-reservar');
+            setLoading(btnReservar, true);
+            
+            const formData = new FormData(this);
+            const fecha = formData.get('fecha');
+            const hora = formData.get('hora');
+            
+            const turnoExistente = turnos.find(
+                t => t.fecha === fecha && t.hora === hora && t.estado === 'activo'
+            );
+            
+            if (turnoExistente) {
+                showToast('Este horario ya está ocupado', 'error');
+                setLoading(btnReservar, false);
+                return;
+            }
+            
+            const nuevoTurno = {
+                id: generarId(),
+                nombre: formData.get('nombre'),
+                email: formData.get('email'),
+                telefono: formData.get('telefono'),
+                servicio: formData.get('servicio'),
+                fecha: fecha,
+                hora: hora,
+                comentarios: formData.get('comentarios'),
+                estado: 'activo',
+                createdAt: new Date().toISOString()
+            };
+            
+            const result = await window.dataSdk.create(nuevoTurno);
+            
+            setLoading(btnReservar, false);
+            
+            if (result.isOk) {
+                const fechaObj = new Date(fecha + 'T00:00:00');
+                const fechaFormato = fechaObj.toLocaleDateString('es-AR', { 
+                    weekday: 'long', 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric' 
+                });
+                
+                document.getElementById('resumen-turno').innerHTML = `
+                    <div class="grid grid-cols-2 gap-3">
+                        <div><strong>Cliente:</strong></div>
+                        <div>${nuevoTurno.nombre}</div>
+                        <div><strong>Servicio:</strong></div>
+                        <div>${nuevoTurno.servicio}</div>
+                        <div><strong>Fecha:</strong></div>
+                        <div>${fechaFormato}</div>
+                        <div><strong>Hora:</strong></div>
+                        <div>${nuevoTurno.hora}</div>
+                        <div><strong>Email:</strong></div>
+                        <div>${nuevoTurno.email}</div>
+                        <div><strong>Teléfono:</strong></div>
+                        <div>${nuevoTurno.telefono}</div>
+                    </div>
+                `;
+                
+                document.getElementById('form-reserva').classList.add('hidden');
+                document.getElementById('confirmacion').classList.remove('hidden');
+                
+                this.reset();
+                document.getElementById('hora').innerHTML = '<option value="">Seleccionar horario</option>';
+            } else {
+                showToast('Error al reservar el turno. Por favor intente nuevamente.', 'error');
+            }
+        });
+
+        document.getElementById('btn-nueva-reserva').addEventListener('click', function() {
+            document.getElementById('confirmacion').classList.add('hidden');
+            document.getElementById('form-reserva').classList.remove('hidden');
+        });
+
+        document.getElementById('form-editar').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const btnGuardar = document.getElementById('btn-guardar-edicion');
+            setLoading(btnGuardar, true);
+            
+            const id = document.getElementById('edit-id').value;
+            const fecha = document.getElementById('edit-fecha').value;
+            const hora = document.getElementById('edit-hora').value;
+            
+            const turnoConflicto = turnos.find(
+                t => t.id !== id && t.fecha === fecha && t.hora === hora && t.estado === 'activo'
+            );
+            
+            if (turnoConflicto) {
+                showToast('Este horario ya está ocupado', 'error');
+                setLoading(btnGuardar, false);
+                return;
+            }
+            
+            const turnoOriginal = turnos.find(t => t.id === id && t.__backendId);
+            if (!turnoOriginal) {
+                showToast('Error: turno no encontrado', 'error');
+                setLoading(btnGuardar, false);
+                return;
+            }
+            
+            const turnoActualizado = {
+                ...turnoOriginal,
+                nombre: document.getElementById('edit-nombre').value,
+                email: document.getElementById('edit-email').value,
+                telefono: document.getElementById('edit-telefono').value,
+                servicio: document.getElementById('edit-servicio').value,
+                fecha: fecha,
+                hora: hora,
+                comentarios: document.getElementById('edit-comentarios').value
+            };
+            
+            const result = await window.dataSdk.update(turnoActualizado);
+            
+            setLoading(btnGuardar, false);
+            
+            if (result.isOk) {
+                showToast('Turno modificado correctamente', 'success');
+                document.getElementById('modal-editar').classList.add('hidden');
+                turnoEditando = null;
+            } else {
+                showToast('Error al modificar el turno', 'error');
+            }
+        });
+
+        document.getElementById('btn-cancelar-edicion').addEventListener('click', function() {
+            document.getElementById('modal-editar').classList.add('hidden');
+            turnoEditando = null;
+        });
+
+        // Data SDK Handler
+        const dataHandler = {
+            onDataChanged(data) {
+                turnos = data;
+                renderizarListaTurnos();
+            }
+        };
+
+        // Element SDK
+        async function onConfigChange(config) {
+            const bgColor = config.background_color || defaultConfig.background_color;
+            const surfaceColor = config.surface_color || defaultConfig.surface_color;
+            const textColor = config.text_color || defaultConfig.text_color;
+            const primaryColor = config.primary_action_color || defaultConfig.primary_action_color;
+            const secondaryColor = config.secondary_action_color || defaultConfig.secondary_action_color;
+            const fontFamily = config.font_family || defaultConfig.font_family;
+            const fontSize = config.font_size || defaultConfig.font_size;
+            
+            document.getElementById('app').style.backgroundColor = bgColor;
+            document.getElementById('app').style.color = textColor;
+            document.getElementById('app').style.fontFamily = `${fontFamily}, system-ui, -apple-system, sans-serif`;
+            document.getElementById('app').style.fontSize = `${fontSize}px`;
+            
+            document.getElementById('header').style.backgroundColor = primaryColor;
+            document.getElementById('header').style.color = 'white';
+            
+            document.getElementById('titulo-principal').textContent = config.titulo_principal || defaultConfig.titulo_principal;
+            document.getElementById('titulo-principal').style.fontSize = `${fontSize * 2}px`;
+            
+            document.getElementById('subtitulo').textContent = config.subtitulo || defaultConfig.subtitulo;
+            document.getElementById('subtitulo').style.fontSize = `${fontSize * 1.25}px`;
+            
+            document.getElementById('footer-text').textContent = config.footer_text || defaultConfig.footer_text;
+            document.getElementById('footer-text').style.fontSize = `${fontSize * 0.875}px`;
+            
+            const surfaces = document.querySelectorAll('.rounded-lg.shadow-lg, .border-2.rounded-lg');
+            surfaces.forEach(el => {
+                el.style.backgroundColor = surfaceColor;
+                el.style.color = textColor;
+            });
+            
+            const inputs = document.querySelectorAll('input, select, textarea');
+            inputs.forEach(el => {
+                el.style.borderColor = `${primaryColor}40`;
+                el.style.color = textColor;
+                el.style.backgroundColor = surfaceColor;
+            });
+            
+            const labels = document.querySelectorAll('label');
+            labels.forEach(el => {
+                el.style.color = textColor;
+                el.style.fontSize = `${fontSize * 0.875}px`;
+            });
+            
+            document.getElementById('btn-reservar').style.backgroundColor = primaryColor;
+            document.getElementById('btn-reservar').style.color = 'white';
+            
+            document.getElementById('btn-nueva-reserva').style.backgroundColor = primaryColor;
+            document.getElementById('btn-nueva-reserva').style.color = 'white';
+            
+            document.getElementById('btn-guardar-edicion').style.backgroundColor = primaryColor;
+            document.getElementById('btn-guardar-edicion').style.color = 'white';
+            
+            document.getElementById('btn-cancelar-edicion').style.backgroundColor = secondaryColor;
+            document.getElementById('btn-cancelar-edicion').style.color = 'white';
+            
+            document.getElementById('btn-limpiar-filtros').style.backgroundColor = secondaryColor;
+            document.getElementById('btn-limpiar-filtros').style.color = 'white';
+            
+            document.getElementById('tab-reservar').style.borderColor = primaryColor;
+            document.getElementById('tab-reservar').style.color = textColor;
+            
+            document.getElementById('tab-admin').style.color = textColor;
+            
+            const confirmacion = document.getElementById('confirmacion');
+            if (confirmacion && !confirmacion.classList.contains('hidden')) {
+                confirmacion.style.backgroundColor = surfaceColor;
+                const iconContainer = confirmacion.querySelector('.inline-flex');
+                if (iconContainer) {
+                    iconContainer.style.backgroundColor = `${primaryColor}20`;
+                    iconContainer.style.color = primaryColor;
+                }
+                const infoBox = confirmacion.querySelector('.rounded-lg.p-4');
+                if (infoBox) {
+                    infoBox.style.backgroundColor = `${primaryColor}10`;
+                }
+            }
+            
+            document.getElementById('footer').style.borderColor = `${textColor}20`;
+            
+            const modal = document.getElementById('modal-editar');
+            const modalContent = modal.querySelector('.rounded-lg.shadow-2xl');
+            if (modalContent) {
+                modalContent.style.backgroundColor = surfaceColor;
+                modalContent.style.color = textColor;
+            }
+            
+            const h2Elements = document.querySelectorAll('h2');
+            h2Elements.forEach(el => {
+                el.style.fontSize = `${fontSize * 1.5}px`;
+            });
+            
+            const h3Elements = document.querySelectorAll('h3');
+            h3Elements.forEach(el => {
+                el.style.fontSize = `${fontSize * 1.25}px`;
+            });
+            
+            renderizarListaTurnos();
+        }
+
+        // Inicialización
+        (async function init() {
+            const initResult = await window.dataSdk.init(dataHandler);
+            
+            if (!initResult.isOk) {
+                showToast('Error al inicializar el sistema', 'error');
+                return;
+            }
+            
+            if (window.elementSdk) {
+                window.elementSdk.init({
+                    defaultConfig,
+                    onConfigChange,
+                    mapToCapabilities: (config) => ({
+                        recolorables: [
+                            {
+                                get: () => config.background_color || defaultConfig.background_color,
+                                set: (value) => {
+                                    config.background_color = value;
+                                    window.elementSdk.setConfig({ background_color: value });
+                                }
+                            },
+                            {
+                                get: () => config.surface_color || defaultConfig.surface_color,
+                                set: (value) => {
+                                    config.surface_color = value;
+                                    window.elementSdk.setConfig({ surface_color: value });
+                                }
+                            },
+                            {
+                                get: () => config.text_color || defaultConfig.text_color,
+                                set: (value) => {
+                                    config.text_color = value;
+                                    window.elementSdk.setConfig({ text_color: value });
+                                }
+                            },
+                            {
+                                get: () => config.primary_action_color || defaultConfig.primary_action_color,
+                                set: (value) => {
+                                    config.primary_action_color = value;
+                                    window.elementSdk.setConfig({ primary_action_color: value });
+                                }
+                            },
+                            {
+                                get: () => config.secondary_action_color || defaultConfig.secondary_action_color,
+                                set: (value) => {
+                                    config.secondary_action_color = value;
+                                    window.elementSdk.setConfig({ secondary_action_color: value });
+                                }
+                            }
+                        ],
+                        borderables: [],
+                        fontEditable: {
+                            get: () => config.font_family || defaultConfig.font_family,
+                            set: (value) => {
+                                config.font_family = value;
+                                window.elementSdk.setConfig({ font_family: value });
+                            }
+                        },
+                        fontSizeable: {
+                            get: () => config.font_size || defaultConfig.font_size,
+                            set: (value) => {
+                                config.font_size = value;
+                                window.elementSdk.setConfig({ font_size: value });
+                            }
+                        }
+                    }),
+                    mapToEditPanelValues: (config) => new Map([
+                        ["titulo_principal", config.titulo_principal || defaultConfig.titulo_principal],
+                        ["subtitulo", config.subtitulo || defaultConfig.subtitulo],
+                        ["footer_text", config.footer_text || defaultConfig.footer_text]
+                    ])
+                });
+            }
+            
+            await onConfigChange(defaultConfig);
+        })();
+    </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c4374fcd761bae7',t:'MTc2OTQ2NjY0OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
