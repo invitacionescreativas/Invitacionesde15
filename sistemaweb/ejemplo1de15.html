@@ -3,199 +3,276 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Invitación 15 Años</title>
+<title>Mis 15 Años</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+<!-- FUENTES ELEGANTES -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
 
 <style>
 :root{
-  --bg: linear-gradient(135deg,#f8cdda,#fbc2eb);
-  --text:#333;
-  --accent:#ffffffcc;
-  --btn-bg:#ffffffaa;
-  --btn-text:#333;
+  --bg1:#f8e1ff;
+  --bg2:#e0c3fc;
+  --text:#4b3b4f;
+  --accent:#b76cff;
+  --btn-text:#ffffff;
 }
 
 body{
   margin:0;
-  font-family:'Montserrat',sans-serif;
-  background:var(--bg);
+  font-family:'Montserrat', sans-serif;
+  background:linear-gradient(135deg,var(--bg1),var(--bg2));
   color:var(--text);
-  transition:0.5s ease;
   text-align:center;
+  overflow-x:hidden;
 }
-
-section{padding:70px 20px;}
 
 h1{
-  font-family:'Playfair Display',serif;
+  font-family:'Playfair Display', serif;
   font-size:3em;
-  margin:0;
+  margin-top:40px;
 }
 
-h2{font-weight:300; letter-spacing:2px;}
+h2{
+  font-weight:300;
+  letter-spacing:3px;
+}
+
+.section{
+  padding:60px 20px;
+}
+
+.card{
+  background:#ffffffcc;
+  backdrop-filter:blur(10px);
+  margin:20px auto;
+  padding:30px;
+  border-radius:20px;
+  max-width:600px;
+  box-shadow:0 10px 30px #00000015;
+}
 
 button{
-  padding:10px 20px;
-  border-radius:30px;
-  border:none;
-  cursor:pointer;
-  background:var(--btn-bg);
+  background:var(--accent);
   color:var(--btn-text);
-  margin-top:15px;
+  border:none;
+  padding:12px 22px;
+  border-radius:30px;
+  font-size:15px;
+  cursor:pointer;
+  margin-top:10px;
 }
 
-/* 🎨 BOTÓN ABRIR PALETA */
-#openPalette{
+input, select, textarea{
+  width:100%;
+  padding:10px;
+  margin:8px 0;
+  border-radius:10px;
+  border:1px solid #ddd;
+  font-family:inherit;
+}
+
+/* GALERÍA */
+.gallery img{
+  width:100%;
+  border-radius:15px;
+  margin-bottom:10px;
+}
+
+/* CONTADOR EN UNA LÍNEA */
+.countdown{
+  font-size:1.5em;
+  letter-spacing:2px;
+}
+
+/* BOTÓN FLOTANTE MÚSICA */
+.music-btn{
   position:fixed;
   top:15px;
   right:15px;
-  z-index:1000;
-}
-
-/* 🎨 MODAL PALETA */
-.palette-modal{
-  display:none;
-  position:fixed;
-  inset:0;
-  background:#00000055;
+  font-size:22px;
+  background:var(--accent);
+  color:white;
+  width:45px;
+  height:45px;
+  border-radius:50%;
+  display:flex;
   justify-content:center;
   align-items:center;
-}
-
-.palette-box{
-  background:white;
-  padding:25px;
-  border-radius:20px;
-  max-width:420px;
-}
-
-.colors{
-  display:grid;
-  grid-template-columns:repeat(6,1fr);
-  gap:10px;
-  margin-bottom:15px;
-}
-
-.color{
-  width:35px;
-  height:35px;
-  border-radius:50%;
   cursor:pointer;
 }
 
-/* 🎞 CARRUSEL */
-.carousel{
-  max-width:500px;
-  margin:auto;
-  position:relative;
-}
-.carousel img{
-  width:100%;
+/* SELECTOR DE COLORES */
+.theme-picker{
+  position:fixed;
+  bottom:15px;
+  right:15px;
+  background:white;
+  padding:10px;
   border-radius:15px;
-  display:none;
+  box-shadow:0 5px 20px #00000020;
 }
-.carousel img.active{display:block}
-
-/* ⏳ CUENTA REGRESIVA UNA LÍNEA */
-.countdown{
-  font-size:1.4em;
-  white-space:nowrap;
-}
-
-/* RESPONSIVE */
-@media(max-width:600px){
-  h1{font-size:2.2em;}
+.color-option{
+  width:22px;
+  height:22px;
+  border-radius:50%;
+  display:inline-block;
+  cursor:pointer;
+  margin:4px;
 }
 </style>
 </head>
+
 <body>
 
-<!-- 🎨 BOTÓN PALETA -->
-<button id="openPalette">🎨 Colores</button>
+<!-- MÚSICA -->
+<audio id="music" src="musica.mp3" loop></audio>
+<div class="music-btn" onclick="toggleMusic()">🎵</div>
 
-<div class="palette-modal" id="palette">
-  <div class="palette-box">
-    <div class="colors">
-      <div class="color" style="background:#f8cdda" onclick="setTheme('#f8cdda','#333')"></div>
-      <div class="color" style="background:#d4fc79" onclick="setTheme('#d4fc79','#333')"></div>
-      <div class="color" style="background:#a1c4fd" onclick="setTheme('#a1c4fd','#333')"></div>
-      <div class="color" style="background:#fbc2eb" onclick="setTheme('#fbc2eb','#333')"></div>
-      <div class="color" style="background:#232526" onclick="setTheme('#232526','#fff')"></div>
-      <div class="color" style="background:#ff9a9e" onclick="setTheme('#ff9a9e','#333')"></div>
-      <div class="color" style="background:#c471f5" onclick="setTheme('#c471f5','#fff')"></div>
-      <div class="color" style="background:#43cea2" onclick="setTheme('#43cea2','#fff')"></div>
-      <div class="color" style="background:#fa709a" onclick="setTheme('#fa709a','#333')"></div>
-      <div class="color" style="background:#30cfd0" onclick="setTheme('#30cfd0','#333')"></div>
-      <div class="color" style="background:#f7971e" onclick="setTheme('#f7971e','#333')"></div>
-      <div class="color" style="background:#654ea3" onclick="setTheme('#654ea3','#fff')"></div>
-    </div>
-    <button onclick="closePalette()">Cerrar</button>
-  </div>
+<!-- SELECTOR DE COLORES -->
+<div class="theme-picker">
+  <div class="color-option" style="background:linear-gradient(45deg,#f8e1ff,#e0c3fc)" onclick="setTheme('#f8e1ff','#e0c3fc','#b76cff')"></div>
+  <div class="color-option" style="background:linear-gradient(45deg,#ffd1dc,#ff9a9e)" onclick="setTheme('#ffd1dc','#ff9a9e','#ff4f81')"></div>
+  <div class="color-option" style="background:linear-gradient(45deg,#c2e9fb,#a1c4fd)" onclick="setTheme('#c2e9fb','#a1c4fd','#4a90e2')"></div>
+  <div class="color-option" style="background:linear-gradient(45deg,#232526,#414345)" onclick="setTheme('#232526','#414345','#ffffff')"></div>
 </div>
 
-<!-- 🎵 MÚSICA DE FONDO -->
-<!-- CAMBIAR AQUÍ LA CANCIÓN -->
-<audio autoplay loop controls>
-  <source src="cancion.mp3" type="audio/mpeg">
-</audio>
-
-<!-- 💖 BIENVENIDA -->
-<section>
-  <h2>Bienvenidos</h2>
-  <div class="carousel">
-    <!-- FOTO 1 -->
-    <img src="foto1.jpg" class="active">
-    <!-- FOTO 2 -->
-    <img src="foto2.jpg">
-    <!-- FOTO 3 -->
-    <img src="foto3.jpg">
-  </div>
+<!-- ENCABEZADO -->
+<section class="section">
+  <h1><!-- NOMBRE QUINCEAÑERA --> Valentina</h1>
+  <h2>Mis 15 Años</h2>
 </section>
 
-<!-- 👑 INICIO -->
-<section>
-  <h1><!-- NOMBRE --> Martina</h1>
-  <h2>✨ Mis 15 Años ✨</h2>
-</section>
-
-<!-- 💌 INVITACIÓN -->
-<section>
-  <h2>Estás invitado</h2>
-  <p>12 Diciembre 2026 — 21:00 hs</p>
+<!-- CONTADOR -->
+<section class="section">
   <div class="countdown" id="countdown"></div>
 </section>
 
+<!-- GALERÍA -->
+<section class="section card gallery">
+  <h2>Galería</h2>
+  <!-- CAMBIAR FOTOS AQUÍ (HASTA 5) -->
+  <img src="foto1.jpg">
+  <img src="foto2.jpg">
+  <img src="foto3.jpg">
+</section>
+
+<!-- EVENTO -->
+<section class="section card">
+  <h2>Detalles del Evento</h2>
+  <p>📅 <!-- FECHA --> 15 Junio 2026</p>
+  <p>⏰ <!-- HORA --> 21:00 hs</p>
+  <p>📍 <!-- LUGAR --> Salón Dorado</p>
+  <button onclick="openMap()">Ver ubicación</button>
+</section>
+
+<!-- REGALO -->
+<section class="section card">
+  <h2>Regalo</h2>
+  <button onclick="toggleGift()">Ver datos para regalo</button>
+  <div id="gift" style="display:none">
+    <p>CBU: 000000000000000000</p>
+    <p>Alias: valen.15</p>
+  </div>
+</section>
+
+<!-- CONFIRMACIÓN -->
+<section class="section card">
+  <h2>Confirmar Asistencia</h2>
+  <form onsubmit="sendWhatsApp(event,'confirm')">
+    <input type="text" id="name" placeholder="Tu nombre" required>
+    <select id="attend">
+      <option>Sí asisto</option>
+      <option>No puedo asistir</option>
+    </select>
+    <button>Enviar</button>
+  </form>
+</section>
+
+<!-- RESTRICCIÓN ALIMENTARIA -->
+<section class="section card">
+  <h2>Restricción Alimentaria</h2>
+  <form onsubmit="sendWhatsApp(event,'diet')">
+    <input type="text" id="dietName" placeholder="Tu nombre">
+    <input type="text" id="dietText" placeholder="Describe tu restricción">
+    <button>Enviar</button>
+  </form>
+</section>
+
+<!-- CANCIÓN -->
+<section class="section card">
+  <h2>Sugerir Canción</h2>
+  <form onsubmit="sendWhatsApp(event,'song')">
+    <input type="text" id="songName" placeholder="Tu nombre">
+    <input type="text" id="songText" placeholder="Nombre de la canción">
+    <button>Enviar</button>
+  </form>
+</section>
+
 <script>
-// 🎨 PALETA
-document.getElementById("openPalette").onclick=()=>palette.style.display="flex";
-function closePalette(){palette.style.display="none";}
-function setTheme(color,text){
-  document.documentElement.style.setProperty('--bg',color);
-  document.documentElement.style.setProperty('--text',text);
-  document.documentElement.style.setProperty('--btn-text',text);
+// 🎵 MÚSICA
+function toggleMusic(){
+  const music=document.getElementById("music");
+  music.paused?music.play():music.pause();
 }
 
-// 🎞 CARRUSEL AUTO
-let slides=document.querySelectorAll(".carousel img");
-let i=0;
-setInterval(()=>{
-  slides[i].classList.remove("active");
-  i=(i+1)%slides.length;
-  slides[i].classList.add("active");
-},3000);
+// 🎨 CAMBIO DE COLORES AUTOMÁTICO
+function setTheme(bg1,bg2,accent){
+  document.documentElement.style.setProperty('--bg1',bg1);
+  document.documentElement.style.setProperty('--bg2',bg2);
+  document.documentElement.style.setProperty('--accent',accent);
 
-// ⏳ CUENTA REGRESIVA
-const eventDate=new Date("Dec 12, 2026 21:00:00").getTime();
+  // Detectar si es oscuro
+  const dark = tinycolor(bg1).isDark();
+  document.documentElement.style.setProperty('--text', dark ? "#ffffff" : "#4b3b4f");
+  document.documentElement.style.setProperty('--btn-text', dark ? "#000000" : "#ffffff");
+}
+
+// ⏳ CUENTA REGRESIVA (EDITAR FECHA)
+const eventDate=new Date("Jun 15, 2026 21:00:00").getTime();
 setInterval(()=>{
-  let now=new Date().getTime();
-  let d=Math.floor((eventDate-now)/(1000*60*60*24));
-  let h=Math.floor((eventDate-now)/(1000*60*60)%24);
-  let m=Math.floor((eventDate-now)/(1000*60)%60);
-  let s=Math.floor((eventDate-now)/1000%60);
-  countdown.innerHTML=`Faltan ${d}d ${h}h ${m}m ${s}s`;
+  const now=new Date().getTime();
+  const d=eventDate-now;
+  if(d<0)return;
+  const days=Math.floor(d/(1000*60*60*24));
+  const hours=Math.floor((d%(1000*60*60*24))/(1000*60*60));
+  const mins=Math.floor((d%(1000*60*60))/(1000*60));
+  const secs=Math.floor((d%(1000*60))/1000);
+  document.getElementById("countdown").innerHTML=`${days}d ${hours}h ${mins}m ${secs}s`;
 },1000);
+
+// 🎁 REGALO
+function toggleGift(){
+  const g=document.getElementById("gift");
+  g.style.display=g.style.display==="none"?"block":"none";
+}
+
+// 📍 MAPA (PEGAR LINK GOOGLE MAPS)
+function openMap(){
+  window.open("https://maps.google.com","_blank");
+}
+
+// 💬 ENVÍO A WHATSAPP
+function sendWhatsApp(e,type){
+  e.preventDefault();
+  const phone="549XXXXXXXXXX"; // TU NÚMERO
+
+  let msg="";
+  if(type==="confirm"){
+    msg=`Confirmación 15 años\nNombre: ${name.value}\nAsistencia: ${attend.value}`;
+  }
+  if(type==="diet"){
+    msg=`Restricción alimentaria\nNombre: ${dietName.value}\nDetalle: ${dietText.value}`;
+  }
+  if(type==="song"){
+    msg=`Sugerencia de canción\nNombre: ${songName.value}\nCanción: ${songText.value}`;
+  }
+
+  window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`,'_blank');
+}
 </script>
+
+<!-- LIBRERÍA PARA DETECTAR COLOR OSCURO -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.4.2/tinycolor.min.js"></script>
 
 </body>
 </html>
