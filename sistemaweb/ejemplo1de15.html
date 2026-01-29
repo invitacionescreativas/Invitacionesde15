@@ -1,278 +1,943 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mis 15 Años</title>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invitación de 15 Años</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&amp;family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&amp;family=Montserrat:wght@300;400;500&amp;display=swap" rel="stylesheet">
+  <style>
+    body {
+      box-sizing: border-box;
+    }
 
-<!-- FUENTES ELEGANTES -->
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-<style>
-:root{
-  --bg1:#f8e1ff;
-  --bg2:#e0c3fc;
-  --text:#4b3b4f;
-  --accent:#b76cff;
-  --btn-text:#ffffff;
-}
+    :root {
+      --primary-color: #d4a5d4;
+      --secondary-color: #f8e8f8;
+      --text-color: #4a3545;
+      --background-light: linear-gradient(135deg, #fdf5fd 0%, #f5e8f5 50%, #ede0ed 100%);
+      --background-dark: linear-gradient(135deg, #2d1f2d 0%, #3d2b3d 50%, #4a3548 100%);
+      --card-light: rgba(255, 255, 255, 0.85);
+      --card-dark: rgba(50, 35, 50, 0.85);
+      --shadow-light: 0 8px 32px rgba(212, 165, 212, 0.15);
+      --shadow-dark: 0 8px 32px rgba(0, 0, 0, 0.4);
+    }
 
-body{
-  margin:0;
-  font-family:'Montserrat', sans-serif;
-  background:linear-gradient(135deg,var(--bg1),var(--bg2));
-  color:var(--text);
-  text-align:center;
-  overflow-x:hidden;
-}
+    html, body {
+      height: 100%;
+      width: 100%;
+    }
 
-h1{
-  font-family:'Playfair Display', serif;
-  font-size:3em;
-  margin-top:40px;
-}
+    body {
+      font-family: 'Montserrat', sans-serif;
+      color: var(--text-color);
+      background: var(--background-light);
+      overflow-x: hidden;
+      transition: background 0.5s ease;
+    }
 
-h2{
-  font-weight:300;
-  letter-spacing:3px;
-}
+    body.dark-mode {
+      background: var(--background-dark);
+      color: #f5e8f5;
+    }
 
-.section{
-  padding:60px 20px;
-}
+    /* Partículas decorativas */
+    .sparkles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+      overflow: hidden;
+    }
 
-.card{
-  background:#ffffffcc;
-  backdrop-filter:blur(10px);
-  margin:20px auto;
-  padding:30px;
-  border-radius:20px;
-  max-width:600px;
-  box-shadow:0 10px 30px #00000015;
-}
+    .sparkle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: radial-gradient(circle, rgba(212, 165, 212, 0.8), transparent);
+      border-radius: 50%;
+      animation: float 8s infinite ease-in-out;
+      opacity: 0.6;
+    }
 
-button{
-  background:var(--accent);
-  color:var(--btn-text);
-  border:none;
-  padding:12px 22px;
-  border-radius:30px;
-  font-size:15px;
-  cursor:pointer;
-  margin-top:10px;
-}
+    @keyframes float {
+      0%, 100% { transform: translateY(0) translateX(0); }
+      25% { transform: translateY(-20px) translateX(10px); }
+      50% { transform: translateY(-40px) translateX(-10px); }
+      75% { transform: translateY(-20px) translateX(5px); }
+    }
 
-input, select, textarea{
-  width:100%;
-  padding:10px;
-  margin:8px 0;
-  border-radius:10px;
-  border:1px solid #ddd;
-  font-family:inherit;
-}
+    /* Hero Section */
+    .hero-section {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
 
-/* GALERÍA */
-.gallery img{
-  width:100%;
-  border-radius:15px;
-  margin-bottom:10px;
-}
+    .hero-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.75);
+    }
 
-/* CONTADOR EN UNA LÍNEA */
-.countdown{
-  font-size:1.5em;
-  letter-spacing:2px;
-}
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(212,165,212,0.4) 100%);
+    }
 
-/* BOTÓN FLOTANTE MÚSICA */
-.music-btn{
-  position:fixed;
-  top:15px;
-  right:15px;
-  font-size:22px;
-  background:var(--accent);
-  color:white;
-  width:45px;
-  height:45px;
-  border-radius:50%;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  cursor:pointer;
-}
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      color: white;
+      padding: 2rem;
+    }
 
-/* SELECTOR DE COLORES */
-.theme-picker{
-  position:fixed;
-  bottom:15px;
-  right:15px;
-  background:white;
-  padding:10px;
-  border-radius:15px;
-  box-shadow:0 5px 20px #00000020;
-}
-.color-option{
-  width:22px;
-  height:22px;
-  border-radius:50%;
-  display:inline-block;
-  cursor:pointer;
-  margin:4px;
-}
-</style>
-</head>
+    .hero-title {
+      font-family: 'Cinzel', serif;
+      font-size: 4rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+      letter-spacing: 2px;
+      animation: fadeInUp 1.5s ease;
+    }
 
-<body>
+    .hero-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-style: italic;
+      font-weight: 300;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+      animation: fadeInUp 1.8s ease;
+    }
 
-<!-- MÚSICA -->
-<audio id="music" src="musica.mp3" loop></audio>
-<div class="music-btn" onclick="toggleMusic()">🎵</div>
+    .music-toggle {
+      position: fixed;
+      top: 2rem;
+      right: 2rem;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      padding: 0.75rem 1rem;
+      border-radius: 50px;
+      cursor: pointer;
+      color: white;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
 
-<!-- SELECTOR DE COLORES -->
-<div class="theme-picker">
-  <div class="color-option" style="background:linear-gradient(45deg,#f8e1ff,#e0c3fc)" onclick="setTheme('#f8e1ff','#e0c3fc','#b76cff')"></div>
-  <div class="color-option" style="background:linear-gradient(45deg,#ffd1dc,#ff9a9e)" onclick="setTheme('#ffd1dc','#ff9a9e','#ff4f81')"></div>
-  <div class="color-option" style="background:linear-gradient(45deg,#c2e9fb,#a1c4fd)" onclick="setTheme('#c2e9fb','#a1c4fd','#4a90e2')"></div>
-  <div class="color-option" style="background:linear-gradient(45deg,#232526,#414345)" onclick="setTheme('#232526','#414345','#ffffff')"></div>
-</div>
+    .music-toggle:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: scale(1.05);
+    }
 
-<!-- ENCABEZADO -->
-<section class="section">
-  <h1><!-- NOMBRE QUINCEAÑERA --> Valentina</h1>
-  <h2>Mis 15 Años</h2>
-</section>
+    .theme-toggle {
+      position: fixed;
+      top: 2rem;
+      left: 2rem;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      padding: 0.75rem 1rem;
+      border-radius: 50px;
+      cursor: pointer;
+      color: white;
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+    }
 
-<!-- CONTADOR -->
-<section class="section">
-  <div class="countdown" id="countdown"></div>
-</section>
+    .theme-toggle:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: scale(1.05);
+    }
 
-<!-- GALERÍA -->
-<section class="section card gallery">
-  <h2>Galería</h2>
-  <!-- CAMBIAR FOTOS AQUÍ (HASTA 5) -->
-  <img src="foto1.jpg">
-  <img src="foto2.jpg">
-  <img src="foto3.jpg">
-</section>
+    /* Contenedor principal de secciones */
+    .main-container {
+      width: 100%;
+      position: relative;
+      z-index: 2;
+    }
 
-<!-- EVENTO -->
-<section class="section card">
-  <h2>Detalles del Evento</h2>
-  <p>📅 <!-- FECHA --> 15 Junio 2026</p>
-  <p>⏰ <!-- HORA --> 21:00 hs</p>
-  <p>📍 <!-- LUGAR --> Salón Dorado</p>
-  <button onclick="openMap()">Ver ubicación</button>
-</section>
+    /* Estilos de sección */
+    .section {
+      padding: 4rem 2rem;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
 
-<!-- REGALO -->
-<section class="section card">
-  <h2>Regalo</h2>
-  <button onclick="toggleGift()">Ver datos para regalo</button>
-  <div id="gift" style="display:none">
-    <p>CBU: 000000000000000000</p>
-    <p>Alias: valen.15</p>
+    .section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .section-title {
+      font-family: 'Cinzel', serif;
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 2rem;
+      color: var(--primary-color);
+      letter-spacing: 1px;
+    }
+
+    body.dark-mode .section-title {
+      color: #f0c0f0;
+    }
+
+    /* Card elegante */
+    .elegant-card {
+      max-width: 600px;
+      margin: 0 auto;
+      background: var(--card-light);
+      backdrop-filter: blur(20px);
+      border-radius: 24px;
+      padding: 2.5rem;
+      box-shadow: var(--shadow-light);
+      border: 1px solid rgba(212, 165, 212, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    body.dark-mode .elegant-card {
+      background: var(--card-dark);
+      border-color: rgba(240, 192, 240, 0.2);
+      box-shadow: var(--shadow-dark);
+    }
+
+    /* Sección de invitación */
+    .invitation-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      line-height: 1.8;
+      text-align: center;
+      margin-bottom: 2rem;
+      color: #5a4555;
+    }
+
+    body.dark-mode .invitation-text {
+      color: #e8d8e8;
+    }
+
+    .event-details {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .detail-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 1.1rem;
+    }
+
+    .detail-icon {
+      font-size: 1.5rem;
+      color: var(--primary-color);
+    }
+
+    body.dark-mode .detail-icon {
+      color: #f0c0f0;
+    }
+
+    /* Cuenta regresiva */
+    .countdown-container {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .countdown-item {
+      text-align: center;
+    }
+
+    .countdown-number {
+      font-family: 'Cinzel', serif;
+      font-size: 2.5rem;
+      font-weight: 600;
+      color: var(--primary-color);
+      display: block;
+    }
+
+    body.dark-mode .countdown-number {
+      color: #f0c0f0;
+    }
+
+    .countdown-label {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 0.25rem;
+      opacity: 0.8;
+    }
+
+    /* Galería */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      aspect-ratio: 1;
+      box-shadow: var(--shadow-light);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    body.dark-mode .gallery-item {
+      box-shadow: var(--shadow-dark);
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 40px rgba(212, 165, 212, 0.3);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Mapa */
+    .map-container {
+      max-width: 800px;
+      margin: 0 auto;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: var(--shadow-light);
+    }
+
+    body.dark-mode .map-container {
+      box-shadow: var(--shadow-dark);
+    }
+
+    .map-container iframe {
+      width: 100%;
+      height: 400px;
+      border: none;
+    }
+
+    /* Botones elegantes */
+    .elegant-button {
+      display: inline-block;
+      padding: 1rem 2.5rem;
+      background: linear-gradient(135deg, var(--primary-color), #c895c8);
+      color: white;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(212, 165, 212, 0.3);
+      text-align: center;
+      margin-top: 1.5rem;
+    }
+
+    .elegant-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(212, 165, 212, 0.4);
+    }
+
+    /* Sección regalo */
+    .gift-section {
+      text-align: center;
+    }
+
+    .gift-details {
+      display: none;
+      margin-top: 2rem;
+      animation: fadeIn 0.5s ease;
+    }
+
+    .gift-details.show {
+      display: block;
+    }
+
+    .gift-item {
+      background: rgba(212, 165, 212, 0.1);
+      padding: 1.5rem;
+      border-radius: 12px;
+      margin-bottom: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    body.dark-mode .gift-item {
+      background: rgba(240, 192, 240, 0.1);
+    }
+
+    .gift-value {
+      font-family: 'Courier New', monospace;
+      font-size: 1.1rem;
+      flex: 1;
+      text-align: left;
+    }
+
+    .copy-button {
+      padding: 0.5rem 1rem;
+      background: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      transition: all 0.3s ease;
+    }
+
+    .copy-button:hover {
+      background: #c895c8;
+      transform: scale(1.05);
+    }
+
+    .copy-button.copied {
+      background: #4caf50;
+    }
+
+    /* Formularios */
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      color: #5a4555;
+    }
+
+    body.dark-mode .form-group label {
+      color: #e8d8e8;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.875rem;
+      border: 2px solid rgba(212, 165, 212, 0.3);
+      border-radius: 12px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1rem;
+      background: rgba(255, 255, 255, 0.5);
+      transition: all 0.3s ease;
+    }
+
+    body.dark-mode .form-group input,
+    body.dark-mode .form-group select,
+    body.dark-mode .form-group textarea {
+      background: rgba(50, 35, 50, 0.5);
+      border-color: rgba(240, 192, 240, 0.3);
+      color: #e8d8e8;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(212, 165, 212, 0.1);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    /* Animaciones */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 2.5rem;
+      }
+
+      .hero-subtitle {
+        font-size: 1.2rem;
+      }
+
+      .section {
+        padding: 3rem 1.5rem;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+
+      .elegant-card {
+        padding: 2rem;
+      }
+
+      .countdown-container {
+        gap: 1rem;
+      }
+
+      .countdown-number {
+        font-size: 2rem;
+      }
+
+      .music-toggle,
+      .theme-toggle {
+        top: 1rem;
+        padding: 0.5rem 0.875rem;
+        font-size: 0.85rem;
+      }
+
+      .music-toggle {
+        right: 1rem;
+      }
+
+      .theme-toggle {
+        left: 1rem;
+      }
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+ </head>
+ <body><!-- Partículas decorativas -->
+  <div class="sparkles" id="sparkles"></div><!-- Controles superiores --> <button class="theme-toggle" id="themeToggle">🌙</button> <button class="music-toggle" id="musicToggle"> <span id="musicIcon">🎵</span> <span id="musicText">Música</span> </button> <!-- Audio (CAMBIAR URL DE MÚSICA AQUÍ) -->
+  <audio id="backgroundMusic" loop><source src="TU_URL_DE_MUSICA_AQUI.mp3" type="audio/mpeg">
+  </audio><!-- Hero Section -->
+  <div class="hero-section"><!-- CAMBIAR URL DE IMAGEN DE PORTADA AQUÍ --> <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&amp;h=1600&amp;fit=crop" alt="Portada" class="hero-image" loading="lazy" onerror="console.error('Image failed to load:', this.src); this.style.background='linear-gradient(135deg, #d4a5d4, #f8e8f8)'; this.alt='Image unavailable';">
+   <div class="hero-overlay"></div>
+   <div class="hero-content">
+    <h1 class="hero-title" id="heroName">Valentina</h1>
+    <p class="hero-subtitle">Mis 15 Años</p>
+   </div>
+  </div><!-- Contenedor de secciones -->
+  <div class="main-container"><!-- Sección Invitación -->
+   <section class="section" id="invitation-section">
+    <h2 class="section-title">Invitación</h2>
+    <div class="elegant-card">
+     <p class="invitation-text" id="invitationText">Con mucha alegría te invito a celebrar conmigo este momento tan especial. Será una noche mágica que quiero compartir con las personas que más quiero.</p>
+     <div class="event-details">
+      <div class="detail-item"><span class="detail-icon">📅</span> <span id="eventDate">19 de Julio de 2026</span>
+      </div>
+      <div class="detail-item"><span class="detail-icon">🕘</span> <span id="eventTime">21:00 hs</span>
+      </div>
+      <div class="detail-item"><span class="detail-icon">📍</span> <span id="eventLocation">Salón de Eventos Rosario</span>
+      </div>
+     </div>
+     <div class="countdown-container" id="countdown">
+      <div class="countdown-item"><span class="countdown-number" id="days">0</span> <span class="countdown-label">Días</span>
+      </div>
+      <div class="countdown-item"><span class="countdown-number" id="hours">0</span> <span class="countdown-label">Horas</span>
+      </div>
+      <div class="countdown-item"><span class="countdown-number" id="minutes">0</span> <span class="countdown-label">Minutos</span>
+      </div>
+      <div class="countdown-item"><span class="countdown-number" id="seconds">0</span> <span class="countdown-label">Segundos</span>
+      </div>
+     </div>
+    </div>
+   </section><!-- Galería de Fotos -->
+   <section class="section" id="gallery-section">
+    <h2 class="section-title">Momentos Especiales</h2>
+    <div class="gallery-grid"><!-- CAMBIAR URLs DE IMÁGENES DE GALERÍA AQUÍ -->
+     <div class="gallery-item"><img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=400&amp;h=400&amp;fit=crop" alt="Foto 1" loading="lazy" onerror="console.error('Image failed to load:', this.src); this.style.background='linear-gradient(135deg, #d4a5d4, #f8e8f8)'; this.alt='Image unavailable';">
+     </div>
+     <div class="gallery-item"><img src="https://images.unsplash.com/photo-1529634597559-0bc456cb9e79?w=400&amp;h=400&amp;fit=crop" alt="Foto 2" loading="lazy" onerror="console.error('Image failed to load:', this.src); this.style.background='linear-gradient(135deg, #d4a5d4, #f8e8f8)'; this.alt='Image unavailable';">
+     </div>
+     <div class="gallery-item"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&amp;h=400&amp;fit=crop" alt="Foto 3" loading="lazy" onerror="console.error('Image failed to load:', this.src); this.style.background='linear-gradient(135deg, #d4a5d4, #f8e8f8)'; this.alt='Image unavailable';">
+     </div>
+     <div class="gallery-item"><img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=400&amp;h=400&amp;fit=crop" alt="Foto 4" loading="lazy" onerror="console.error('Image failed to load:', this.src); this.style.background='linear-gradient(135deg, #d4a5d4, #f8e8f8)'; this.alt='Image unavailable';">
+     </div>
+     <div class="gallery-item"><img src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=400&amp;h=400&amp;fit=crop" alt="Foto 5" loading="lazy" onerror="console.error('Image failed to load:', this.src); this.style.background='linear-gradient(135deg, #d4a5d4, #f8e8f8)'; this.alt='Image unavailable';">
+     </div>
+    </div>
+   </section><!-- Ubicación -->
+   <section class="section" id="location-section">
+    <h2 class="section-title">Ubicación</h2>
+    <div class="map-container"><!-- CAMBIAR URL DEL MAPA AQUÍ --> <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3348.3418645984495!2d-60.63932!3d-32.94682!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzLCsDU2JzQ4LjYiUyA2MMKwMzgnMjEuNiJX!5e0!3m2!1ses!2sar!4v1234567890" allowfullscreen loading="lazy"></iframe>
+    </div>
+    <div style="text-align: center;"><!-- CAMBIAR URL DE GOOGLE MAPS AQUÍ --> <a href="https://maps.app.goo.gl/KCV7cRNmwhmuWRVi6" target="_blank" rel="noopener noreferrer" class="elegant-button"> 📍 Cómo llegar con GPS </a>
+    </div>
+   </section><!-- Código de Vestimenta -->
+   <section class="section" id="dresscode-section">
+    <h2 class="section-title">Código de Vestimenta</h2>
+    <div class="elegant-card" style="text-align: center;">
+     <div style="font-size: 3rem; margin-bottom: 1rem;">
+      👗
+     </div>
+     <p class="invitation-text" id="dressCodeText">Elegante - Evitar color blanco</p>
+    </div>
+   </section><!-- Regalo -->
+   <section class="section" id="gift-section">
+    <h2 class="section-title">Regalo</h2>
+    <div class="elegant-card gift-section">
+     <p class="invitation-text">Tu presencia es el mejor regalo, pero si deseas obsequiarme algo:</p><button class="elegant-button" id="showGiftBtn">🎁 Ver datos para regalo</button>
+     <div class="gift-details" id="giftDetails"><!-- CAMBIAR CBU Y ALIAS AQUÍ -->
+      <div class="gift-item">
+       <div>
+        <div style="font-weight: 500; margin-bottom: 0.25rem;">
+         CBU
+        </div>
+        <div class="gift-value" id="cbuValue">
+         0000003100000000000000
+        </div>
+       </div><button class="copy-button" data-copy="cbu">📋 Copiar</button>
+      </div>
+      <div class="gift-item">
+       <div>
+        <div style="font-weight: 500; margin-bottom: 0.25rem;">
+         Alias
+        </div>
+        <div class="gift-value" id="aliasValue">
+         valentina.fiesta
+        </div>
+       </div><button class="copy-button" data-copy="alias">📋 Copiar</button>
+      </div>
+     </div>
+    </div>
+   </section><!-- Confirmación de Asistencia -->
+   <section class="section" id="rsvp-section">
+    <h2 class="section-title">Confirmación de Asistencia</h2>
+    <div class="elegant-card">
+     <form id="rsvpForm">
+      <div class="form-group"><label for="rsvpName">Tu nombre</label> <input type="text" id="rsvpName" required placeholder="Ingresa tu nombre">
+      </div>
+      <div class="form-group"><label for="rsvpAttending">¿Asistirás?</label> <select id="rsvpAttending" required> <option value="">Selecciona una opción</option> <option value="si">Sí, asistiré</option> <option value="no">No podré asistir</option> </select>
+      </div>
+      <div class="form-group"><label for="rsvpGuests">Cantidad de acompañantes</label> <input type="number" id="rsvpGuests" min="0" max="10" value="0" placeholder="0">
+      </div><button type="submit" class="elegant-button" style="width: 100%;"> 💌 Confirmar por WhatsApp </button>
+     </form>
+    </div>
+   </section><!-- Restricciones Alimentarias -->
+   <section class="section" id="dietary-section">
+    <h2 class="section-title">Restricciones Alimentarias</h2>
+    <div class="elegant-card">
+     <p class="invitation-text" style="font-size: 1rem; margin-bottom: 1.5rem;">Si tienes alguna restricción alimentaria, por favor házmelo saber:</p>
+     <form id="dietaryForm">
+      <div class="form-group"><label for="dietaryName">Tu nombre</label> <input type="text" id="dietaryName" required placeholder="Ingresa tu nombre">
+      </div>
+      <div class="form-group"><label for="dietaryRestriction">Descripción de la restricción</label> <textarea id="dietaryRestriction" required placeholder="Ejemplo: Soy vegetariano, intolerante al gluten, etc."></textarea>
+      </div><button type="submit" class="elegant-button" style="width: 100%;"> 📝 Enviar por WhatsApp </button>
+     </form>
+    </div>
+   </section><!-- Sugerir Canción -->
+   <section class="section" id="song-section">
+    <h2 class="section-title">Sugerir Canción</h2>
+    <div class="elegant-card">
+     <p class="invitation-text" style="font-size: 1rem; margin-bottom: 1.5rem;">¿Qué canción no puede faltar en la fiesta?</p>
+     <form id="songForm">
+      <div class="form-group"><label for="songName">Tu nombre</label> <input type="text" id="songName" required placeholder="Ingresa tu nombre">
+      </div>
+      <div class="form-group"><label for="songSuggestion">Canción sugerida</label> <input type="text" id="songSuggestion" required placeholder="Nombre de la canción y artista">
+      </div><button type="submit" class="elegant-button" style="width: 100%;"> 🎵 Enviar por WhatsApp </button>
+     </form>
+    </div>
+   </section><!-- Footer -->
+   <div style="padding: 3rem 2rem; text-align: center; opacity: 0.7; font-size: 0.9rem;">
+    <p>✨ Te espero para celebrar juntos ✨</p>
+   </div>
   </div>
-</section>
+  <script>
+    // ====================================
+    // CONFIGURACIÓN EDITABLE
+    // ====================================
+    
+    // CAMBIAR ESTOS VALORES:
+    const CONFIG = {
+      quinceanera_name: 'Valentina',
+      invitation_text: 'Con mucha alegría te invito a celebrar conmigo este momento tan especial. Será una noche mágica que quiero compartir con las personas que más quiero.',
+      event_date: '19 de Julio de 2026',
+      event_time: '21:00 hs',
+      event_location: 'Salón de Eventos Rosario',
+      dress_code_text: 'Elegante - Evitar color blanco',
+      // CAMBIAR NÚMERO DE WHATSAPP (sin espacios, sin +, con código de país)
+      whatsapp_number: '5493415297776',
+      // CAMBIAR FECHA DEL EVENTO (formato: YYYY-MM-DD)
+      countdown_date: '2026-07-19T21:00:00'
+    };
 
-<!-- CONFIRMACIÓN -->
-<section class="section card">
-  <h2>Confirmar Asistencia</h2>
-  <form onsubmit="sendWhatsApp(event,'confirm')">
-    <input type="text" id="name" placeholder="Tu nombre" required>
-    <select id="attend">
-      <option>Sí asisto</option>
-      <option>No puedo asistir</option>
-    </select>
-    <button>Enviar</button>
-  </form>
-</section>
+    const defaultConfig = { ...CONFIG };
 
-<!-- RESTRICCIÓN ALIMENTARIA -->
-<section class="section card">
-  <h2>Restricción Alimentaria</h2>
-  <form onsubmit="sendWhatsApp(event,'diet')">
-    <input type="text" id="dietName" placeholder="Tu nombre">
-    <input type="text" id="dietText" placeholder="Describe tu restricción">
-    <button>Enviar</button>
-  </form>
-</section>
+    // ====================================
+    // SISTEMA DE TEMAS (Claro/Oscuro)
+    // ====================================
+    
+    const themeToggle = document.getElementById('themeToggle');
+    const body = document.body;
+    
+    // Detectar preferencia del sistema
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (prefersDark) {
+      body.classList.add('dark-mode');
+      themeToggle.textContent = '🌞';
+    }
+    
+    themeToggle.addEventListener('click', () => {
+      body.classList.toggle('dark-mode');
+      themeToggle.textContent = body.classList.contains('dark-mode') ? '🌞' : '🌙';
+    });
 
-<!-- CANCIÓN -->
-<section class="section card">
-  <h2>Sugerir Canción</h2>
-  <form onsubmit="sendWhatsApp(event,'song')">
-    <input type="text" id="songName" placeholder="Tu nombre">
-    <input type="text" id="songText" placeholder="Nombre de la canción">
-    <button>Enviar</button>
-  </form>
-</section>
+    // ====================================
+    // CONTROL DE MÚSICA
+    // ====================================
+    
+    const musicToggle = document.getElementById('musicToggle');
+    const music = document.getElementById('backgroundMusic');
+    const musicIcon = document.getElementById('musicIcon');
+    let isPlaying = false;
+    
+    musicToggle.addEventListener('click', () => {
+      if (isPlaying) {
+        music.pause();
+        musicIcon.textContent = '🎵';
+        musicToggle.style.opacity = '0.7';
+      } else {
+        music.play().catch(e => console.error('Error playing music:', e));
+        musicIcon.textContent = '⏸️';
+        musicToggle.style.opacity = '1';
+      }
+      isPlaying = !isPlaying;
+    });
 
-<script>
-// 🎵 MÚSICA
-function toggleMusic(){
-  const music=document.getElementById("music");
-  music.paused?music.play():music.pause();
-}
+    // ====================================
+    // PARTÍCULAS DECORATIVAS
+    // ====================================
+    
+    const sparklesContainer = document.getElementById('sparkles');
+    for (let i = 0; i < 30; i++) {
+      const sparkle = document.createElement('div');
+      sparkle.className = 'sparkle';
+      sparkle.style.left = Math.random() * 100 + '%';
+      sparkle.style.top = Math.random() * 100 + '%';
+      sparkle.style.animationDelay = Math.random() * 8 + 's';
+      sparkle.style.animationDuration = (Math.random() * 4 + 6) + 's';
+      sparklesContainer.appendChild(sparkle);
+    }
 
-// 🎨 CAMBIO DE COLORES AUTOMÁTICO
-function setTheme(bg1,bg2,accent){
-  document.documentElement.style.setProperty('--bg1',bg1);
-  document.documentElement.style.setProperty('--bg2',bg2);
-  document.documentElement.style.setProperty('--accent',accent);
+    // ====================================
+    // ANIMACIÓN DE SCROLL
+    // ====================================
+    
+    const observerOptions = {
+      threshold: 0.15,
+      rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        } else {
+          entry.target.classList.remove('visible');
+        }
+      });
+    }, observerOptions);
+    
+    document.querySelectorAll('.section').forEach(section => {
+      observer.observe(section);
+    });
 
-  // Detectar si es oscuro
-  const dark = tinycolor(bg1).isDark();
-  document.documentElement.style.setProperty('--text', dark ? "#ffffff" : "#4b3b4f");
-  document.documentElement.style.setProperty('--btn-text', dark ? "#000000" : "#ffffff");
-}
+    // ====================================
+    // CUENTA REGRESIVA
+    // ====================================
+    
+    function updateCountdown() {
+      const eventDate = new Date(CONFIG.countdown_date).getTime();
+      const now = new Date().getTime();
+      const distance = eventDate - now;
+      
+      if (distance < 0) {
+        document.getElementById('days').textContent = '0';
+        document.getElementById('hours').textContent = '0';
+        document.getElementById('minutes').textContent = '0';
+        document.getElementById('seconds').textContent = '0';
+        return;
+      }
+      
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      
+      document.getElementById('days').textContent = days;
+      document.getElementById('hours').textContent = hours;
+      document.getElementById('minutes').textContent = minutes;
+      document.getElementById('seconds').textContent = seconds;
+    }
+    
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
 
-// ⏳ CUENTA REGRESIVA (EDITAR FECHA)
-const eventDate=new Date("Jun 15, 2026 21:00:00").getTime();
-setInterval(()=>{
-  const now=new Date().getTime();
-  const d=eventDate-now;
-  if(d<0)return;
-  const days=Math.floor(d/(1000*60*60*24));
-  const hours=Math.floor((d%(1000*60*60*24))/(1000*60*60));
-  const mins=Math.floor((d%(1000*60*60))/(1000*60));
-  const secs=Math.floor((d%(1000*60))/1000);
-  document.getElementById("countdown").innerHTML=`${days}d ${hours}h ${mins}m ${secs}s`;
-},1000);
+    // ====================================
+    // SECCIÓN DE REGALO
+    // ====================================
+    
+    const showGiftBtn = document.getElementById('showGiftBtn');
+    const giftDetails = document.getElementById('giftDetails');
+    
+    showGiftBtn.addEventListener('click', () => {
+      if (giftDetails.classList.contains('show')) {
+        giftDetails.classList.remove('show');
+        showGiftBtn.textContent = '🎁 Ver datos para regalo';
+      } else {
+        giftDetails.classList.add('show');
+        showGiftBtn.textContent = '🎁 Ocultar datos';
+      }
+    });
+    
+    // Botones de copiar
+    document.querySelectorAll('.copy-button').forEach(button => {
+      button.addEventListener('click', async () => {
+        const type = button.getAttribute('data-copy');
+        const textToCopy = type === 'cbu' 
+          ? document.getElementById('cbuValue').textContent 
+          : document.getElementById('aliasValue').textContent;
+        
+        try {
+          await navigator.clipboard.writeText(textToCopy);
+          const originalText = button.textContent;
+          button.textContent = '✓ Copiado';
+          button.classList.add('copied');
+          
+          setTimeout(() => {
+            button.textContent = originalText;
+            button.classList.remove('copied');
+          }, 2000);
+        } catch (err) {
+          console.error('Error al copiar:', err);
+        }
+      });
+    });
 
-// 🎁 REGALO
-function toggleGift(){
-  const g=document.getElementById("gift");
-  g.style.display=g.style.display==="none"?"block":"none";
-}
+    // ====================================
+    // FORMULARIO DE CONFIRMACIÓN
+    // ====================================
+    
+    document.getElementById('rsvpForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('rsvpName').value;
+      const attending = document.getElementById('rsvpAttending').value;
+      const guests = document.getElementById('rsvpGuests').value;
+      
+      const attendingText = attending === 'si' ? 'Sí, asistiré' : 'No podré asistir';
+      const message = `Hola! Soy ${name}.\n\n${attendingText}${attending === 'si' && guests > 0 ? `\nAcompañantes: ${guests}` : ''}`;
+      
+      const whatsappUrl = `https://wa.me/${CONFIG.whatsapp_number}?text=${encodeURIComponent(message)}`;
+      window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+    });
 
-// 📍 MAPA (PEGAR LINK GOOGLE MAPS)
-function openMap(){
-  window.open("https://maps.google.com","_blank");
-}
+    // ====================================
+    // FORMULARIO DE RESTRICCIONES
+    // ====================================
+    
+    document.getElementById('dietaryForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('dietaryName').value;
+      const restriction = document.getElementById('dietaryRestriction').value;
+      
+      const message = `Hola! Soy ${name}.\n\nTengo la siguiente restricción alimentaria:\n${restriction}`;
+      
+      const whatsappUrl = `https://wa.me/${CONFIG.whatsapp_number}?text=${encodeURIComponent(message)}`;
+      window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+    });
 
-// 💬 ENVÍO A WHATSAPP
-function sendWhatsApp(e,type){
-  e.preventDefault();
-  const phone="549XXXXXXXXXX"; // TU NÚMERO
+    // ====================================
+    // FORMULARIO DE SUGERENCIA DE CANCIÓN
+    // ====================================
+    
+    document.getElementById('songForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('songName').value;
+      const song = document.getElementById('songSuggestion').value;
+      
+      const message = `Hola! Soy ${name}.\n\nSugerencia de canción para la fiesta:\n🎵 ${song}`;
+      
+      const whatsappUrl = `https://wa.me/${CONFIG.whatsapp_number}?text=${encodeURIComponent(message)}`;
+      window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+    });
 
-  let msg="";
-  if(type==="confirm"){
-    msg=`Confirmación 15 años\nNombre: ${name.value}\nAsistencia: ${attend.value}`;
-  }
-  if(type==="diet"){
-    msg=`Restricción alimentaria\nNombre: ${dietName.value}\nDetalle: ${dietText.value}`;
-  }
-  if(type==="song"){
-    msg=`Sugerencia de canción\nNombre: ${songName.value}\nCanción: ${songText.value}`;
-  }
+    // ====================================
+    // INTEGRACIÓN CON ELEMENT SDK
+    // ====================================
+    
+    async function onConfigChange(config) {
+      document.getElementById('heroName').textContent = config.quinceanera_name || defaultConfig.quinceanera_name;
+      document.getElementById('invitationText').textContent = config.invitation_text || defaultConfig.invitation_text;
+      document.getElementById('eventDate').textContent = config.event_date || defaultConfig.event_date;
+      document.getElementById('eventTime').textContent = config.event_time || defaultConfig.event_time;
+      document.getElementById('eventLocation').textContent = config.event_location || defaultConfig.event_location;
+      document.getElementById('dressCodeText').textContent = config.dress_code_text || defaultConfig.dress_code_text;
+    }
 
-  window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`,'_blank');
-}
-</script>
-
-<!-- LIBRERÍA PARA DETECTAR COLOR OSCURO -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.4.2/tinycolor.min.js"></script>
-
-</body>
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig: defaultConfig,
+        onConfigChange: onConfigChange,
+        mapToCapabilities: (config) => ({
+          recolorables: [],
+          borderables: [],
+          fontEditable: undefined,
+          fontSizeable: undefined
+        }),
+        mapToEditPanelValues: (config) => new Map([
+          ['quinceanera_name', config.quinceanera_name || defaultConfig.quinceanera_name],
+          ['invitation_text', config.invitation_text || defaultConfig.invitation_text],
+          ['event_date', config.event_date || defaultConfig.event_date],
+          ['event_time', config.event_time || defaultConfig.event_time],
+          ['event_location', config.event_location || defaultConfig.event_location],
+          ['dress_code_text', config.dress_code_text || defaultConfig.dress_code_text]
+        ])
+      });
+    }
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c58f74747a85040',t:'MTc2OTY5MjE4Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
