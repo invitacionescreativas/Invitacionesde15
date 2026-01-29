@@ -565,12 +565,14 @@
  </head>
  <body><!-- Partículas decorativas -->
   <div class="sparkles" id="sparkles"></div><!-- Controles superiores --> <button class="theme-toggle" id="themeToggle">🌙</button> <button class="music-toggle" id="musicToggle"> <span id="musicIcon">🎵</span> <span id="musicText">Música</span> </button> <!-- Audio (CAMBIAR URL DE MÚSICA AQUÍ) -->
+  
+  
   <audio id="backgroundMusic" loop><source src="musica.mp3" type="audio/mpeg">
   </audio><!-- Hero Section -->
   <div class="hero-section"><!-- CAMBIAR URL DE IMAGEN DE PORTADA AQUÍ --> <img src="ejemplo2.jpg" alt="Portada" class="hero-image" loading="lazy" onerror="console.error('Image failed to load:', this.src); this.style.background='linear-gradient(135deg, #d4a5d4, #f8e8f8)'; this.alt='Image unavailable';">
    <div class="hero-overlay"></div>
    <div class="hero-content">
-    <h1 class="hero-title" id="heroName"><br><br><br>Valentina</h1>
+    <h1 class="hero-title" id="heroName"><br><br><br></h1>
     <p class="hero-subtitle">Mis 15 Años</p>
    </div>
   </div><!-- Contenedor de secciones -->
@@ -579,16 +581,16 @@
   <h2 class="section-title"></h2>
   <div class="elegant-card">
     <p class="invitation-text" id="invitationText">
-      Con mucha alegría te invito a celebrar conmigo este momento tan especial. Será una noche mágica que quiero compartir con las personas que más quiero.
+     
     </p>
   </div>
 </section>
       <section  id="invitation-section">
     <h2 class="section-title"></h2>
     <div class="elegant-card">
-         <div class="detail-item"><span class="detail-icon">📅</span> <span id="eventDate">19 de Julio de 2026</span>
+         <div class="detail-item"><span class="detail-icon">📅</span> <span id="eventDate"></span>
       </div>
-      <div class="detail-item"><span class="detail-icon">🕘</span> <span id="eventTime">21:00 hs-04:00hs</span>
+      <div class="detail-item"><span class="detail-icon">🕘</span> <span id="eventTime"></span>
       </div>
    
      </div>
@@ -607,24 +609,15 @@
    <!-- Galería de Fotos -->
    <section class="section" id="gallery-section">
     <h2 class="section-title">Momentos Especiales</h2>
-    <div class="gallery-grid"><!-- CAMBIAR URLs DE IMÁGENES DE GALERÍA AQUÍ -->
-     <div class="gallery-item"><img src="ejemplo3.webp" alt="Foto 1" loading="lazy" onerror="console.error('Image failed to load:', this.src); this.style.background='linear-gradient(135deg, #d4a5d4, #f8e8f8)'; this.alt='Image unavailable';">
-     </div>
-     <div class="gallery-item"><img src="ejemplo1.jpg" alt="Foto 2" loading="lazy" onerror="console.error('Image failed to load:', this.src); this.style.background='linear-gradient(135deg, #d4a5d4, #f8e8f8)'; this.alt='Image unavailable';">
-     </div>
-     <div class="gallery-item"><img src="ejemplo4.webp" alt="Foto 3" loading="lazy" onerror="console.error('Image failed to load:', this.src); this.style.background='linear-gradient(135deg, #d4a5d4, #f8e8f8)'; this.alt='Image unavailable';">
-     </div>
-     <div class="gallery-item"><img src="ejemplo5.webp" alt="Foto 4" loading="lazy" onerror="console.error('Image failed to load:', this.src); this.style.background='linear-gradient(135deg, #d4a5d4, #f8e8f8)'; this.alt='Image unavailable';">
-     </div>
-      </div>
+    <div class="gallery-grid" id="galleryGrid"></div>
    </section><!-- Ubicación -->
    <section class="section" id="location-section">
     <h2 class="section-title">Lugar de Celebración</h2>
       <div class="detail-item"><span class="detail-icon">📍</span> <span id="eventLocation">Salón de Eventos Rosario</span>
       </div>
-    <div class="map-container"><!-- CAMBIAR URL DEL MAPA AQUÍ --> <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3283.708754818503!2d-58.373897799999995!3d-34.6115255!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bccbb7f964ce59%3A0x545bfb44bfcd4d80!2sJano&#39;s%20San%20Telmo%202!5e0!3m2!1ses!2sar!4v1769693715315!5m2!1ses!2sar" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <div class="map-container"><!-- CAMBIAR URL DEL MAPA AQUÍ --> <iframe id="mapFrame"></iframe>
     </div>
-    <div style="text-align: center;"><!-- CAMBIAR URL DE GOOGLE MAPS AQUÍ --> <a href="https://maps.app.goo.gl/KCV7cRNmwhmuWRVi6" target="_blank" rel="noopener noreferrer" class="elegant-button"> 📍 Cómo llegar con GPS </a>
+    <div style="text-align: center;"><!-- CAMBIAR URL DE GOOGLE MAPS AQUÍ --> <a id="mapButton" target="_blank" rel="noopener noreferrer" class="elegant-button"> 📍 Cómo llegar con GPS </a>
     </div>
    </section><!-- Código de Vestimenta -->
    <section class="section" id="dresscode-section">
@@ -639,7 +632,7 @@
    <section class="section" id="gift-section">
     <h2 class="section-title">Regalo</h2>
     <div class="elegant-card gift-section">
-     <p class="invitation-text">Tu presencia es el mejor regalo, pero si deseas obsequiarme algo:</p><button class="elegant-button" id="showGiftBtn">🎁 Ver datos para regalo</button>
+     <p class="invitation-text" id="frase-regalo">Tu presencia es el mejor regalo, pero si deseas obsequiarme algo:</p><button class="elegant-button" id="showGiftBtn">🎁 Ver datos para regalo</button>
      <div class="gift-details" id="giftDetails"><!-- CAMBIAR CBU Y ALIAS AQUÍ -->
       <div class="gift-item">
        <div>
@@ -733,18 +726,44 @@
     // ====================================
     
     // CAMBIAR ESTOS VALORES:
-    const CONFIG = {
-      quinceanera_name: 'Luciana',
-      invitation_text: 'Con mucha alegría te invito a celebrar conmigo este momento tan especial. Será una noche mágica que quiero compartir con las personas que más quiero.',
-      event_date: '19 de Julio de 2026',
-      event_time: '21:00 hs',
-      event_location: 'Salón de Eventos Rosario',
-      dress_code_text: 'Elegante - Evitar color blanco',
-      // CAMBIAR NÚMERO DE WHATSAPP (sin espacios, sin +, con código de país)
-      whatsapp_number: '5493413904417',
-      // CAMBIAR FECHA DEL EVENTO (formato: YYYY-MM-DD)
-      countdown_date: '2026-07-19T21:00:00'
-    };
+ const CONFIG = {
+  quinceanera_name: 'Luciana',
+
+  // ✨ FRASE PRINCIPAL
+  invitation_text: 'Con mucha alegría te invito a celebrar conmigo este momento tan especial.',
+
+  event_date: '19 de Julio de 2026',
+  event_time: '21:00hs a 04:00hs',
+  event_location: 'Salón de Eventos Rosario',
+
+  dress_code_text: 'Elegante - Evitar color blanco',
+
+  // 🎁 REGALO
+  cbu: '0000003100000000000000',
+  alias: 'valentina.fiesta.ejemplo',
+
+  // 🖼️ IMÁGENES
+  hero_image: 'ejemplo2.jpg',
+  gallery_images: [
+    'ejemplo3.webp',
+    'ejemplo1.jpg',
+    'ejemplo4.webp',
+    'ejemplo5.webp'
+  ],
+
+  // 🗺️ MAPA
+maps_embed_url: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3283.7089305191503!2d-58.37647272494317!3d-34.61152105790911!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bccbb7f964ce59%3A0x545bfb44bfcd4d80!2sJano\'s%20San%20Telmo%202!5e0!3m2!1ses!2sar!4v1769704942157!5m2!1ses!2sar',
+
+maps_button_url: 'https://maps.app.goo.gl/KCV7cRNmwhmuWRVi6',
+
+  maps_button_url: 'https://maps.app.goo.gl/Cqd4mFHzYyFLaxy47',
+
+  // 🎵 MÚSICA
+  music_url: 'musica.mp3',
+
+  whatsapp_number: '5493413904417',
+  countdown_date: '2026-07-19T21:00:00'
+};
 
     const defaultConfig = { ...CONFIG };
 
@@ -964,14 +983,85 @@
     // INTEGRACIÓN CON ELEMENT SDK
     // ====================================
     
-    async function onConfigChange(config) {
-      document.getElementById('heroName').textContent = config.quinceanera_name || defaultConfig.quinceanera_name;
-      document.getElementById('invitationText').textContent = config.invitation_text || defaultConfig.invitation_text;
-      document.getElementById('eventDate').textContent = config.event_date || defaultConfig.event_date;
-      document.getElementById('eventTime').textContent = config.event_time || defaultConfig.event_time;
-      document.getElementById('eventLocation').textContent = config.event_location || defaultConfig.event_location;
-      document.getElementById('dressCodeText').textContent = config.dress_code_text || defaultConfig.dress_code_text;
-    }
+ async function onConfigChange(config) {
+
+  // 🎉 Nombre de la quinceañera
+  document.getElementById('heroName').textContent =
+    config.quinceanera_name || defaultConfig.quinceanera_name;
+
+  // ✨ Frase principal
+  document.getElementById('invitationText').textContent =
+    config.invitation_text || defaultConfig.invitation_text;
+
+  // 📅 Fecha y hora
+  document.getElementById('eventDate').textContent =
+    config.event_date || defaultConfig.event_date;
+
+  document.getElementById('eventTime').textContent =
+    config.event_time || defaultConfig.event_time;
+
+  // 📍 Lugar
+  document.getElementById('eventLocation').textContent =
+    config.event_location || defaultConfig.event_location;
+
+  // 👗 Dress code
+  document.getElementById('dressCodeText').textContent =
+    config.dress_code_text || defaultConfig.dress_code_text;
+
+  // 🎁 Regalo
+  document.getElementById('cbuValue').textContent =
+    config.cbu || defaultConfig.cbu;
+
+  document.getElementById('aliasValue').textContent =
+    config.alias || defaultConfig.alias;
+
+  // 🖼️ Imagen de portada
+  const heroImg = document.getElementById('heroImage');
+  if (heroImg && config.hero_image) {
+    heroImg.src = config.hero_image;
+  }
+
+  // 🖼️ Galería dinámica
+  const galleryGrid = document.getElementById('galleryGrid');
+  if (galleryGrid && config.gallery_images) {
+    galleryGrid.innerHTML = '';
+
+    config.gallery_images.forEach(src => {
+      const div = document.createElement('div');
+      div.className = 'gallery-item';
+
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = 'Foto galería';
+      img.loading = 'lazy';
+
+      div.appendChild(img);
+      galleryGrid.appendChild(div);
+    });
+  }
+
+  // 🗺️ Mapa
+  const mapFrame = document.getElementById('mapFrame');
+  if (mapFrame && config.maps_embed_url) {
+    mapFrame.src = config.maps_embed_url;
+  }
+
+  const mapButton = document.getElementById('mapButton');
+  if (mapButton && config.maps_button_url) {
+    mapButton.href = config.maps_button_url;
+  }
+
+  // 🎵 Música
+  const musicSource = document.getElementById('musicSource');
+  if (musicSource && config.music_url) {
+    musicSource.src = config.music_url;
+  }
+}
+
+// Cargar los datos apenas abre la invitación
+document.addEventListener("DOMContentLoaded", () => {
+  onConfigChange(CONFIG);
+});
 
     if (window.elementSdk) {
       window.elementSdk.init({
