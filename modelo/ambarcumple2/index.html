@@ -1,1 +1,1138 @@
+<!doctype html>
+<html lang="es" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ámbar cumple 2 años ✨</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Pacifico&amp;family=Poppins:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
+    :root {
+      --bg-primary: #FFE5F0;
+      --bg-secondary: #FFF0F7;
+      --text-primary: #8B4789;
+      --text-secondary: #B565A8;
+      --accent-primary: #FF69B4;
+      --accent-secondary: #FFB6D9;
+    }
+
+    .dark-mode {
+      --bg-primary: #3D1B3D;
+      --bg-secondary: #4D2A4D;
+      --text-primary: #FFB6D9;
+      --text-secondary: #E89FD4;
+      --accent-primary: #FF69B4;
+      --accent-secondary: #FFB6D9;
+    }
+
+    html, body {
+      height: 100%;
+      width: 100%;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      transition: all 0.5s ease;
+      overflow-x: hidden;
+    }
+
+    .font-playfair {
+      font-family: 'Playfair Display', serif;
+    }
+
+    .font-pacifico {
+      font-family: 'Playfair Display', serif;
+    
+    }
+
+    .container-main {
+      width: 100%;
+      height: 100%;
+      overflow-y: auto;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+.gallery-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(500px,1fr)); /* 200px en lugar de 140px */
+  gap:16px; /* un poquito más de separación */
+  margin-top:20px;
+}
+
+.gallery-photo{
+  width:100%;
+  aspect-ratio:1/1;
+  object-fit:cover;
+  border-radius:18px;
+  box-shadow:0 10px 25px rgba(0,0,0,.15);
+  transition:all .4s ease;
+  cursor:pointer;
+}
+
+.gallery-photo:hover{
+  width: 100%;
+  height: 100%; /* altura fija, se puede ajustar */
+  object-fit: cover; /* mantiene proporción y recorta si hace falta */
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+    /* Portada */
+    .portada {
+      width: 100%;
+      min-height: 100%;
+      background: transparent;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      padding: 2rem;
+      overflow: hidden;
+    }
+
+    .forest-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('portada.jpg');
+      background-size: cover;
+      background-position: center;
+      opacity: 1;
+      z-index: 0;
+    }
+
+    .portada::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      
+      animation: sparkle 8s ease-in-out infinite;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .portada::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 60% 40%, rgba(255,255,255,0.15) 0%, transparent 30%),
+        radial-gradient(circle at 90% 20%, rgba(255,105,180,0.2) 0%, transparent 40%);
+      animation: sparkle 6s ease-in-out infinite reverse;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .portada-content {
+      text-align: center;
+      padding: 2rem;
+      position: relative;
+      z-index: 2;
+      animation: fadeInUp 1.5s ease-out;
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .portada.fade-out .portada-content {
+      opacity: 0;
+      transform: translateY(-50px);
+    }
+
+    .portada.fade-out .scroll-indicator {
+      opacity: 0;
+      transform: translateX(-50%) translateY(30px);
+    }
+
+    .portada h1 {
+      font-size: clamp(3.5rem, 10vw, 5rem);
+      color: #3D1B3D;
+    
+      margin-bottom: 1rem;
+      line-height: 1;
+      font-weight: 400;
+    }
+
+    .portada .edad-text {
+      font-size: clamp(1.8rem, 6vw, 3rem);
+      color: #3D1B3D;
+      margin-top: 1rem;
+      font-weight: 600;
+    
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      animation: bounce 2s infinite;
+      z-index: 2;
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .scroll-indicator-text {
+      color: #707070;
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.438);
+    }
+
+    .scroll-arrow {
+      width: 30px;
+      height: 30px;
+      border-left: 3px solid #6b6b6b;
+      border-bottom: 3px solid #FFFFFF;
+      transform: rotate(-45deg);
+      margin: 30% auto;
+    }
+
+    /* Invitación principal */
+    .invitacion-container {
+      max-width: 100%;
+      margin: 0 auto;
+      padding: 1rem;
+      background: var(--bg-primary);
+    }
+
+    /* Header con controles */
+    .header-controls {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      z-index: 100;
+      pointer-events: none;
+    }
+
+    .btn-control {
+      background: transparent;
+      color: white;
+      border: none;
+      padding: 0.5rem;
+      cursor: pointer;
+      font-size: 2rem;
+      transition: all 0.3s ease;
+      pointer-events: all;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+    }
+
+    .btn-control:hover {
+      transform: scale(1.15);
+      filter: brightness(1.2);
+    }
+
+    .btn-control:active {
+      transform: scale(0.95);
+    }
+
+    /* Secciones con animaciones */
+    .section {
+      background: var(--bg-secondary);
+      border-radius: 30px;
+      padding: 2.5rem 1.5rem;
+      margin: 1.5rem 0;
+      box-shadow: 0 10px 30px rgba(255,105,180,0.15);
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s ease;
+    }
+
+    .section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+    }
+
+    .section-title {
+      font-size: clamp(1.5rem, 5vw, 2rem);
+      margin-bottom: 1.5rem;
+      text-align: center;
+      color: var(--text-primary);
+    }
+
+    .nombre-principal {
+      font-size: clamp(4rem, 12vw, 6rem);
+      text-align: center;
+      color: var(--accent-primary);
+      margin: 2rem 0 1rem 0;
+      line-height: 1;
+      font-weight: 400;
+    }
+
+    .edad-info {
+      font-size: clamp(1.5rem, 5vw, 2.5rem);
+      text-align: center;
+      color: var(--text-primary);
+      margin: 1rem 0;
+      font-weight: 300;
+    }
+
+    .frase-principal {
+      text-align: center;
+      font-size: clamp(1.1rem, 3vw, 1.4rem);
+      line-height: 1.8;
+      color: var(--text-secondary);
+      font-weight: 400;
+      margin: 2rem 0;
+      padding: 0 1rem;
+    }
+
+    /* Cuenta regresiva */
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin: 2rem 0;
+    }
+
+    .countdown-item {
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      padding: 0.8rem 1rem;
+      border-radius: 15px;
+      text-align: center;
+      min-width: 65px;
+      box-shadow: 0 6px 20px rgba(255,105,180,0.3);
+    }
+
+    .countdown-number {
+      font-size: clamp(1.5rem, 5vw, 2.5rem);
+      font-weight: 700;
+      color: white;
+    }
+
+    .countdown-label {
+      font-size: 0.75rem;
+      color: white;
+      margin-top: 0.2rem;
+      font-weight: 500;
+    }
+
+    /* Información del evento */
+    .evento-info {
+      display: grid;
+      gap: 1.2rem;
+      margin: 2rem 0;
+    }
+
+    .info-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.2rem;
+      background: var(--bg-primary);
+      border-radius: 15px;
+      transition: transform 0.3s ease;
+      border: 2px solid var(--accent-secondary);
+    }
+
+    .info-item:hover {
+      transform: translateX(5px);
+    }
+
+    .info-icon {
+      font-size: 1.8rem;
+      min-width: 40px;
+      text-align: center;
+    }
+
+    .info-content {
+      flex: 1;
+    }
+
+    .info-label {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+
+    .info-value {
+      font-size: 1.15rem;
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    /* Mapa */
+    .map-container {
+      width: 100%;
+      height: 300px;
+      border-radius: 20px;
+      overflow: hidden;
+      margin: 1.5rem 0;
+      border: 3px solid var(--accent-secondary);
+    }
+
+    .map-container iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    /* Botones de acción */
+    .btn-action {
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 25px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      width: 100%;
+      margin: 0.5rem 0;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .btn-action:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(255,105,180,0.5);
+    }
+
+    /* Galería */
+    .gallery-grid {
+    .gallery-grid {
+  display: flex;
+  flex-direction: column; /* fotos una debajo de otra */
+  gap: 16px; /* espacio entre fotos */
+  margin-top: 20px;
+}
+
+.gallery-photo {
+  width: 100%;       /* ocupa todo el ancho del contenedor */
+  max-width: 280px;  /* opcional: tamaño máximo para no estirarse demasiado */
+  height: auto;      /* mantiene proporción */
+  border-radius: 12px;
+  cursor: pointer;
+  align-self: center; /* centra las fotos si no ocupan todo el ancho */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-photo:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+
+    /* Lista de elementos */
+    .list-items {
+      display: grid;
+      gap: 0.8rem;
+      margin: 1.5rem 0;
+    }
+
+    .list-item {
+      padding: 1.2rem;
+      background: var(--bg-primary);
+      border-radius: 12px;
+      border-left: 4px solid var(--accent-primary);
+      font-size: 1rem;
+      color: var(--text-primary);
+    }
+
+    /* Input de formulario */
+    .form-group {
+      margin: 1rem 0;
+    }
+
+    .form-label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: var(--text-primary);
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .form-input, .form-select {
+      width: 100%;
+      padding: 1rem;
+      border: 2px solid var(--accent-secondary);
+      border-radius: 12px;
+      background: white;
+      color: var(--text-primary);
+      font-size: 1rem;
+      font-family: 'Poppins', sans-serif;
+      transition: all 0.3s ease;
+    }
+
+    .form-input:focus, .form-select:focus {
+      outline: none;
+      border-color: var(--accent-primary);
+      box-shadow: 0 0 0 3px rgba(255,105,180,0.2);
+    }
+
+    /* Imagen decorativa */
+    .decorative-image {
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+      margin: 2rem auto;
+      display: block;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(255,105,180,0.3);
+    }
+
+    /* Texto centrado */
+    .centered-text {
+      text-align: center;
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      margin: 1.5rem 0;
+      font-weight: 500;
+    }
+
+    /* Animaciones */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateX(-50%) translateY(0);
+      }
+      40% {
+        transform: translateX(-50%) translateY(-10px);
+      }
+      60% {
+        transform: translateX(-50%) translateY(-5px);
+      }
+    }
+
+    @keyframes sparkle {
+      0%, 100% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.3;
+      }
+      25% {
+        transform: translate(-10%, 10%) scale(1.1);
+        opacity: 0.5;
+      }
+      50% {
+        transform: translate(5%, -5%) scale(0.9);
+        opacity: 0.4;
+      }
+      75% {
+        transform: translate(-5%, 5%) scale(1.05);
+        opacity: 0.6;
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+      .section {
+        padding: 2rem 1rem;
+        margin: 1rem 0;
+      }
+
+      .header-controls {
+        padding: 0.5rem;
+      }
+
+      .btn-control {
+        font-size: 1.5rem;
+      }
+
+      .countdown-item {
+        min-width: 55px;
+        padding: 0.6rem 0.8rem;
+      }
+
+      .countdown-number {
+        font-size: 1.3rem;
+      }
+
+      .countdown-label {
+        font-size: 0.65rem;
+      }
+
+      .map-container {
+        height: 250px;
+      }
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full">
+  <div class="container-main w-full h-full"><!-- Header con controles -->
+   <div class="header-controls"><button class="btn-control" onclick="toggleDarkMode()" id="btnDarkMode" aria-label="Cambiar modo oscuro"> 🌙 </button> <button class="btn-control" onclick="toggleMusica()" id="btnMusica" aria-label="Reproducir música"> ▶️ </button>
+   </div><!-- Audio -->
+   <audio id="audioPlayer" loop><source src="musica.mp3" type="audio/mpeg">
+   </audio><!-- Portada -->
+   <div class="portada" id="portada">
+    <div class="forest-bg"></div>
+    <div class="portada-content">
+     <h1 class="font-pacifico"><span id="portada-nombre">Ámbar</span></h1>
+     <div class="edad-text font-playfair">
+      Cumple <span id="portada-edad">2</span> años
+     </div>
+    </div>
+    <div class="scroll-indicator">
+     <div class="scroll-indicator-text">
+      Deslizá para ver la invitación
+     </div>
+     <div class="scroll-arrow"></div>
+    </div>
+   </div><!-- Invitación Principal -->
+   <div class="invitacion-container" id="invitacion"><!-- Sección Principal -->
+    <div class="section">
+     <div style="text-align: center;">
+  
+  <div class=""><img src="nombre.png" alt="Masha y el Oso" class="decorative-image" loading="lazy" onerror="console.error('Image failed to load:', this.src); this.style.background='linear-gradient(135deg, #FFB6D9, #FF69B4)'; this.alt='Imagen no disponible';">
+    </div>
+
+      <p class="frase-principal" id="frase-principal">Un año más de sonrisas, abrazos y magia ✨<br>
+        Vení a festejar mi cumpleaños conmigo 🎀</p>
+     </div>
+    </div><!-- Cuenta Regresiva -->
+    <div class="section">
+     <h2 class="section-title font-playfair">⏳ Faltan...</h2>
+     <div class="countdown" id="countdown">
+      <div class="countdown-item">
+       <div class="countdown-number" id="dias">
+        00
+       </div>
+       <div class="countdown-label">
+        Días
+       </div>
+      </div>
+      <div class="countdown-item">
+       <div class="countdown-number" id="horas">
+        00
+       </div>
+       <div class="countdown-label">
+        Horas
+       </div>
+      </div>
+      <div class="countdown-item">
+       <div class="countdown-number" id="minutos">
+        00
+       </div>
+       <div class="countdown-label">
+        Minutos
+       </div>
+      </div>
+      <div class="countdown-item">
+       <div class="countdown-number" id="segundos">
+        00
+       </div>
+       <div class="countdown-label">
+        Segundos
+       </div>
+      </div>
+     </div>
+    </div><!-- Fecha y Horario -->
+    <div class="section">
+     <h2 class="section-title font-playfair">📅 Fecha y Horario</h2>
+     <div class="evento-info">
+      <div class="info-item">
+       <div class="info-icon">
+        🗓
+       </div>
+       <div class="info-content">
+        <div class="info-label">
+         Fecha
+        </div>
+        <div class="info-value" id="fecha-evento">
+         Sábado 28 de febrero de 2026
+        </div>
+       </div>
+      </div>
+      <div class="info-item">
+       <div class="info-icon">
+        ⏰
+       </div>
+       <div class="info-content">
+        <div class="info-label">
+         Horario
+        </div>
+        <div class="info-value" id="hora-evento">
+         15:30 a 19:30 hs
+        </div>
+       </div>
+      </div>
+     </div>
+
+          <!-- Imagen Decorativa Masha y el Oso -->
+    <div class=""><img src="decoracion1.png" alt="Masha y el Oso" class="decorative-image" loading="lazy" onerror="console.error('Image failed to load:', this.src); this.style.background='linear-gradient(135deg, #FFB6D9, #FF69B4)'; this.alt='Imagen no disponible';">
+    </div>
+    </div>
+    <!-- Lugar y Mapa -->
+    <div class="section">
+     <h2 class="section-title font-playfair">📍 Lugar</h2>
+     <div class="info-item">
+      <div class="info-icon">
+       🏛
+      </div>
+      <div class="info-content">
+       <div class="info-value" id="lugar-evento">
+        Salón La Serena de Arredondo
+       </div>
+      </div>
+     </div>
+     <div class="map-container"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26807.084473453756!2d-64.26166236744386!3d-31.398326468826846!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzHCsDIzJzU0LjAiUyA2NMKwMTUnMzUuMCJX!5e0!3m2!1ses!2sar!4v1234567890123!5m2!1ses!2sar" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+     </div>
+    </div>
+    
+    <!-- Confirmar Asistencia -->
+    <div class="section">
+     <h2 class="section-title font-playfair">📲 Confirmar Asistencia</h2>
+     <p class="centered-text">Confirmá hasta el <strong id="fecha-limite">21 de febrero de 2026</strong></p>
+     <form onsubmit="confirmarAsistencia(event)">
+      <div class="form-group"><label class="form-label" for="confirm-nombre">Nombre</label> <input type="text" id="confirm-nombre" class="form-input" placeholder="Tu nombre" required>
+      </div>
+      <div class="form-group"><label class="form-label" for="confirm-apellido">Apellido</label> <input type="text" id="confirm-apellido" class="form-input" placeholder="Tu apellido" required>
+      </div>
+      <div class="form-group"><label class="form-label" for="confirm-asistencia">¿Asistís a la fiesta?</label> <select id="confirm-asistencia" class="form-select" required> <option value="">Seleccioná una opción</option> <option value="si">Sí, asistiré 🎉</option> <option value="no">No podré asistir 😔</option> </select>
+      </div><button type="submit" class="btn-action"> 💬 Enviar confirmación por WhatsApp </button>
+     </form>
+    </div>
+   
+    <!-- Galería de Fotos -->
+
+    <div class="section">
+     <h2 class="section-title font-playfair">📸 Galería de Fotos</h2>
+     <p style="text-align: center; color: var(--text-secondary);">Espacios para tus mejores momentos de la fiesta</p>
+     <div class="gallery-grid">
+    <img class="gallery-photo" src="1.jpeg" alt="Foto 1">
+    <img class="gallery-photo" src="2.jpeg" alt="Foto 2">
+    <img class="gallery-photo" src="3.jpeg" alt="Foto 3">
+    <img class="gallery-photo" src="4.jpeg" alt="Foto 4">
+    <img class="gallery-photo" src="5.jpeg" alt="Foto 5">
+    <img class="gallery-photo" src="6.jpeg" alt="Foto 6">
+  </div>
+     <p style="text-align: center; margin: 1.5rem 0; color: var(--text-secondary);">📩 Enviá las fotos tomadas durante la fiesta</p><button class="btn-action" onclick="enviarFotos()"> 📤 Enviar fotos por WhatsApp </button>
+    </div>
+    
+    
+    <!-- Regalos -->
+    <div class="section">
+     <h2 class="section-title font-playfair">🎁 Regalos</h2>
+     <p class="frase-principal">Tu presencia es mi mejor regalo, pero si deseas tener un detalle, aquí tienes ideas:</p>
+     <div class="list-items">
+      <div class="list-item">
+       👗 Ropa de abrigo talle 4/5
+      </div>
+      <div class="list-item">
+       👟 Zapatillas talle 20/21
+      </div>
+     </div>
+         </div>
+         
+         <!-- Vestimenta -->
+
+     <!-- Imagen Decorativa Masha y el Oso -->
+    <div class="section"><img src="masha.gif" alt="Masha y el Oso" class="decorative-image" loading="lazy" onerror="console.error('Image failed to load:', this.src); this.style.background='linear-gradient(135deg, #FFB6D9, #FF69B4)'; this.alt='Imagen no disponible';">
+    </div>
+    <div class="section">
+     <h2 class="section-title font-playfair">👗 Vestimenta</h2>
+     <div class="list-items">
+      <div class="list-item">
+       ✨ Dress code: Semi formal
+      </div>
+      <div class="list-item">
+       🚫 Por favor no vestir color rosa
+      </div>
+     </div>
+    </div><!-- Restricciones Alimentarias -->
+    <div class="section">
+     <h2 class="section-title font-playfair">🍰 Alimentación</h2>
+     <p style="text-align: center; margin-bottom: 1.5rem; color: var(--text-secondary);">¿Tenés alguna restricción alimentaria?</p>
+     <form onsubmit="enviarRestriccion(event)">
+      <div class="form-group"><label class="form-label" for="restriccion-nombre">Tu nombre:</label> <input type="text" id="restriccion-nombre" class="form-input" placeholder="Ingresá tu nombre" required>
+      </div>
+      <div class="form-group"><label class="form-label" for="restriccion-detalle">Restricción alimentaria:</label> <input type="text" id="restriccion-detalle" class="form-input" placeholder="Ej: celíaco, vegetariano, alérgico a..." required>
+      </div><button type="submit" class="btn-action"> 📨 Enviar restricción por WhatsApp </button>
+     </form>
+    </div>
+     <!-- Imagen Decorativa Masha y el Oso -->
+    <div class="section"><img src="fondo2.jpg" alt="Masha y el Oso" class="decorative-image" loading="lazy" onerror="console.error('Image failed to load:', this.src); this.style.background='linear-gradient(135deg, #FFB6D9, #FF69B4)'; this.alt='Imagen no disponible';">
+    </div>
+    
+    <!-- Sugerencia de Canciones -->
+    <div class="section">
+     <h2 class="section-title font-playfair">🎶 Sugerí una Canción</h2>
+     <p style="text-align: center; margin-bottom: 1.5rem; color: var(--text-secondary);">¿Qué canción no puede faltar en la fiesta?</p>
+     <form onsubmit="enviarCancion(event)">
+      <div class="form-group"><label class="form-label" for="cancion-nombre">Tu nombre:</label> <input type="text" id="cancion-nombre" class="form-input" placeholder="Ingresá tu nombre" required>
+      </div>
+      <div class="form-group"><label class="form-label" for="cancion-sugerencia">Canción sugerida:</label> <input type="text" id="cancion-sugerencia" class="form-input" placeholder="Nombre de la canción y artista" required>
+      </div><button type="submit" class="btn-action"> 🎵 Enviar sugerencia por WhatsApp </button>
+     </form>
+    </div>
+     <!-- Imagen Decorativa Masha y el Oso -->
+    <div class="section"><img src="fondo1.jpg" alt="Masha y el Oso" class="decorative-image" loading="lazy" onerror="console.error('Image failed to load:', this.src); this.style.background='linear-gradient(135deg, #FFB6D9, #FF69B4)'; this.alt='Imagen no disponible';">
+    </div>
+    <!-- Footer -->
+
+    <div class="section" style="text-align: center;">
+     <p class="font-pacifico" style="font-size: 2rem; color: var(--accent-primary);">¡Te esperamos! 💕</p>
+     <p style="margin-top: 1rem; color: var(--text-secondary); font-size: 0.9rem;">Con amor, la familia de Ámbar 🌸</p>
+    </div>
+   </div>
+  </div>
+  <script>
+    const defaultConfig = {
+      nombre_nina: "Ámbar",
+      edad: "2",
+      frase_principal: "Un año más de sonrisas, abrazos y magia ✨\nVení a festejar mi cumpleaños conmigo 🎀",
+      lugar: "Salón La Serena de Arredondo",
+      fecha: "Sábado 28 de febrero de 2026",
+      hora: "15:30 a 19:30 hs",
+      telefono: "3541640212",
+      fecha_confirmacion: "21 de febrero de 2026",
+      primary_color: "#E8B4C8",
+      secondary_color: "#A8D5BA",
+      background_color: "#FFF5F7",
+      text_color: "#5D4E6D",
+      accent_color: "#C9B8E8"
+    };
+
+    let musicaActiva = false;
+    let modoOscuro = false;
+
+    function abrirInvitacion() {
+      const portada = document.getElementById('portada');
+      const invitacion = document.getElementById('invitacion');
+      
+      portada.classList.add('hidden');
+      setTimeout(() => {
+        invitacion.classList.add('visible');
+        iniciarCuentaRegresiva();
+      }, 300);
+    }
+
+    function volverPortada() {
+      const portada = document.getElementById('portada');
+      const invitacion = document.getElementById('invitacion');
+      
+      invitacion.classList.remove('visible');
+      setTimeout(() => {
+        portada.classList.remove('hidden');
+      }, 300);
+    }
+
+    function toggleMusica() {
+      const audio = document.getElementById('audioPlayer');
+      const btn = document.getElementById('btnMusica');
+      
+      if (musicaActiva) {
+        audio.pause();
+        btn.innerHTML = '▶️';
+        btn.setAttribute('aria-label', 'Reproducir música');
+        musicaActiva = false;
+      } else {
+        audio.play();
+        btn.innerHTML = '⏸️';
+        btn.setAttribute('aria-label', 'Pausar música');
+        musicaActiva = true;
+      }
+    }
+
+    function toggleDarkMode() {
+      const body = document.body;
+      const btn = document.getElementById('btnDarkMode');
+      
+      if (modoOscuro) {
+        body.classList.remove('dark-mode');
+        btn.innerHTML = '🌙';
+        btn.setAttribute('aria-label', 'Cambiar a modo oscuro');
+        modoOscuro = false;
+      } else {
+        body.classList.add('dark-mode');
+        btn.innerHTML = '☀️';
+        btn.setAttribute('aria-label', 'Cambiar a modo claro');
+        modoOscuro = true;
+      }
+    }
+
+    function iniciarCuentaRegresiva() {
+      const fechaEvento = new Date('2026-02-28T15:30:00').getTime();
+      
+      const actualizar = () => {
+        const ahora = new Date().getTime();
+        const distancia = fechaEvento - ahora;
+        
+        if (distancia < 0) {
+          document.getElementById('dias').textContent = '00';
+          document.getElementById('horas').textContent = '00';
+          document.getElementById('minutos').textContent = '00';
+          document.getElementById('segundos').textContent = '00';
+          return;
+        }
+        
+        const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
+        const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
+        const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
+        
+        document.getElementById('dias').textContent = String(dias).padStart(2, '0');
+        document.getElementById('horas').textContent = String(horas).padStart(2, '0');
+        document.getElementById('minutos').textContent = String(minutos).padStart(2, '0');
+        document.getElementById('segundos').textContent = String(segundos).padStart(2, '0');
+      };
+      
+      actualizar();
+      setInterval(actualizar, 1000);
+    }
+
+    function abrirMapa() {
+      window.open('https://maps.app.goo.gl/st6vMAAvksYaNbAV6', '_blank', 'noopener,noreferrer');
+    }
+
+    function confirmarAsistencia(event) {
+      event.preventDefault();
+      const config = window.elementSdk ? window.elementSdk.config : defaultConfig;
+      const nombre = document.getElementById('confirm-nombre').value;
+      const apellido = document.getElementById('confirm-apellido').value;
+      const asistencia = document.getElementById('confirm-asistencia').value;
+      
+      if (!nombre || !apellido || !asistencia) {
+        const toast = document.createElement('div');
+        toast.textContent = 'Por favor completá todos los campos';
+        toast.style.cssText = 'position: fixed; top: 80px; left: 50%; transform: translateX(-50%); background: #FF69B4; color: white; padding: 1rem 2rem; border-radius: 25px; z-index: 10000; box-shadow: 0 4px 12px rgba(0,0,0,0.2);';
+        document.body.appendChild(toast);
+        setTimeout(() => toast.remove(), 3000);
+        return;
+      }
+
+      const telefono = config.telefono || defaultConfig.telefono;
+      const nombreNina = config.nombre_nina || defaultConfig.nombre_nina;
+      const respuesta = asistencia === 'si' ? 'SÍ asistiré' : 'NO podré asistir';
+      const mensaje = `Hola! Soy ${nombre} ${apellido} y confirmo que ${respuesta} al cumpleaños de ${nombreNina} 🎉`;
+      window.open(`https://wa.me/549${telefono}?text=${encodeURIComponent(mensaje)}`, '_blank', 'noopener,noreferrer');
+      
+      document.getElementById('confirm-nombre').value = '';
+      document.getElementById('confirm-apellido').value = '';
+      document.getElementById('confirm-asistencia').value = '';
+    }
+
+    function enviarRestriccion(event) {
+      event.preventDefault();
+      const config = window.elementSdk ? window.elementSdk.config : defaultConfig;
+      const nombre = document.getElementById('restriccion-nombre').value;
+      const restriccion = document.getElementById('restriccion-detalle').value;
+      
+      if (!nombre || !restriccion) {
+        const toast = document.createElement('div');
+        toast.textContent = 'Por favor completá ambos campos';
+        toast.style.cssText = 'position: fixed; top: 20px; left: 50%; transform: translateX(-50%); background: #E8B4C8; color: white; padding: 1rem 2rem; border-radius: 25px; z-index: 10000; box-shadow: 0 4px 12px rgba(0,0,0,0.2);';
+        document.body.appendChild(toast);
+        setTimeout(() => toast.remove(), 3000);
+        return;
+      }
+      
+      const telefono = config.telefono || defaultConfig.telefono;
+      const mensaje = `Hola! Soy ${nombre} y tengo la siguiente restricción alimentaria: ${restriccion}`;
+      window.open(`https://wa.me/549${telefono}?text=${encodeURIComponent(mensaje)}`, '_blank', 'noopener,noreferrer');
+      
+      document.getElementById('restriccion-nombre').value = '';
+      document.getElementById('restriccion-detalle').value = '';
+    }
+
+    function enviarCancion() {
+      const config = window.elementSdk ? window.elementSdk.config : defaultConfig;
+      const nombre = document.getElementById('cancion-nombre').value;
+      const cancion = document.getElementById('cancion-sugerencia').value;
+      
+      if (!nombre || !cancion) {
+        const toast = document.createElement('div');
+        toast.textContent = 'Por favor completá ambos campos';
+        toast.style.cssText = 'position: fixed; top: 20px; left: 50%; transform: translateX(-50%); background: #E8B4C8; color: white; padding: 1rem 2rem; border-radius: 25px; z-index: 10000; box-shadow: 0 4px 12px rgba(0,0,0,0.2);';
+        document.body.appendChild(toast);
+        setTimeout(() => toast.remove(), 3000);
+        return;
+      }
+      
+      const telefono = config.telefono || defaultConfig.telefono;
+      const mensaje = `Hola! Soy ${nombre} y sugiero esta canción para la fiesta: ${cancion} 🎵`;
+      window.open(`https://wa.me/549${telefono}?text=${encodeURIComponent(mensaje)}`, '_blank', 'noopener,noreferrer');
+      
+      document.getElementById('cancion-nombre').value = '';
+      document.getElementById('cancion-sugerencia').value = '';
+    }
+
+    function enviarFotos() {
+      const config = window.elementSdk ? window.elementSdk.config : defaultConfig;
+      const telefono = config.telefono || defaultConfig.telefono;
+      const mensaje = 'Hola! Quiero compartir fotos de la fiesta 📸';
+      window.open(`https://wa.me/549${telefono}?text=${encodeURIComponent(mensaje)}`, '_blank', 'noopener,noreferrer');
+    }
+
+    async function onConfigChange(config) {
+      document.getElementById('portada-nombre').textContent = config.nombre_nina || defaultConfig.nombre_nina;
+      document.getElementById('portada-edad').textContent = config.edad || defaultConfig.edad;
+      document.getElementById('nombre-principal').textContent = config.nombre_nina || defaultConfig.nombre_nina;
+      document.getElementById('edad-numero').textContent = config.edad || defaultConfig.edad;
+      document.getElementById('frase-principal').innerHTML = (config.frase_principal || defaultConfig.frase_principal).replace(/\n/g, '<br>');
+      document.getElementById('lugar-evento').textContent = config.lugar || defaultConfig.lugar;
+      document.getElementById('fecha-evento').textContent = config.fecha || defaultConfig.fecha;
+      document.getElementById('hora-evento').textContent = config.hora || defaultConfig.hora;
+      document.getElementById('telefono-contacto').textContent = config.telefono || defaultConfig.telefono;
+      document.getElementById('fecha-limite').textContent = config.fecha_confirmacion || defaultConfig.fecha_confirmacion;
+
+      const primaryColor = config.primary_color || defaultConfig.primary_color;
+      const secondaryColor = config.secondary_color || defaultConfig.secondary_color;
+      const backgroundColor = config.background_color || defaultConfig.background_color;
+      const textColor = config.text_color || defaultConfig.text_color;
+      const accentColor = config.accent_color || defaultConfig.accent_color;
+
+      document.documentElement.style.setProperty('--bg-primary', backgroundColor);
+      document.documentElement.style.setProperty('--text-primary', textColor);
+      document.documentElement.style.setProperty('--accent-primary', primaryColor);
+      document.documentElement.style.setProperty('--accent-secondary', secondaryColor);
+
+      const portada = document.querySelector('.portada');
+      portada.style.background = `linear-gradient(135deg, ${backgroundColor} 0%, ${primaryColor} 50%, ${accentColor} 100%)`;
+
+      const nombrePrincipal = document.getElementById('nombre-principal');
+      nombrePrincipal.style.color = primaryColor;
+    }
+
+    // Observador para animaciones de entrada
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+
+    // Detectar scroll para aplicar fade-out a la portada
+    let lastScrollTop = 0;
+    const containerMain = document.querySelector('.container-main');
+    
+    containerMain.addEventListener('scroll', () => {
+      const portada = document.getElementById('portada');
+      const scrollTop = containerMain.scrollTop;
+      
+      if (scrollTop > 100 && !portada.classList.contains('fade-out')) {
+        portada.classList.add('fade-out');
+      } else if (scrollTop <= 100 && portada.classList.contains('fade-out')) {
+        portada.classList.remove('fade-out');
+      }
+      
+      lastScrollTop = scrollTop;
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const sections = document.querySelectorAll('.section');
+      sections.forEach(section => observer.observe(section));
+      iniciarCuentaRegresiva();
+    });
+
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities: (config) => ({
+          recolorables: [
+            {
+              get: () => config.primary_color || defaultConfig.primary_color,
+              set: (value) => {
+                config.primary_color = value;
+                window.elementSdk.setConfig({ primary_color: value });
+              }
+            },
+            {
+              get: () => config.secondary_color || defaultConfig.secondary_color,
+              set: (value) => {
+                config.secondary_color = value;
+                window.elementSdk.setConfig({ secondary_color: value });
+              }
+            },
+            {
+              get: () => config.background_color || defaultConfig.background_color,
+              set: (value) => {
+                config.background_color = value;
+                window.elementSdk.setConfig({ background_color: value });
+              }
+            },
+            {
+              get: () => config.text_color || defaultConfig.text_color,
+              set: (value) => {
+                config.text_color = value;
+                window.elementSdk.setConfig({ text_color: value });
+              }
+            },
+            {
+              get: () => config.accent_color || defaultConfig.accent_color,
+              set: (value) => {
+                config.accent_color = value;
+                window.elementSdk.setConfig({ accent_color: value });
+              }
+            }
+          ],
+          borderables: [],
+          fontEditable: undefined,
+          fontSizeable: undefined
+        }),
+        mapToEditPanelValues: (config) => new Map([
+          ["nombre_nina", config.nombre_nina || defaultConfig.nombre_nina],
+          ["edad", config.edad || defaultConfig.edad],
+          ["frase_principal", config.frase_principal || defaultConfig.frase_principal],
+          ["lugar", config.lugar || defaultConfig.lugar],
+          ["fecha", config.fecha || defaultConfig.fecha],
+          ["hora", config.hora || defaultConfig.hora],
+          ["telefono", config.telefono || defaultConfig.telefono],
+          ["fecha_confirmacion", config.fecha_confirmacion || defaultConfig.fecha_confirmacion]
+        ])
+      });
+    }
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c7a44c994e5a0fa',t:'MTc3MDA0MTM5MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
