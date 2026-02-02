@@ -322,13 +322,26 @@
     }
 
     /* Cuenta regresiva */
-    .countdown {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-      margin: 2rem 0;
-    }
+  .countdown {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8rem;
+  flex-wrap: nowrap;     /* 👈 evita que bajen */
+  margin: 2rem 0;
+}
+   .countdown {
+  gap: 0.4rem;
+}
+
+.countdown-item {
+  min-width: 55px;
+  padding: 0.5rem 0.4rem;
+}
+
+.countdown-number {
+  font-size: 1.2rem;
+}
 
     .countdown-item {
       background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
@@ -491,17 +504,21 @@
       font-size: 0.95rem;
     }
 
-    .form-input, .form-select {
-      width: 100%;
-      padding: 1rem;
-      border: 2px solid var(--accent-secondary);
-      border-radius: 12px;
-      background: white;
-      color: var(--text-primary);
-      font-size: 1rem;
-      font-family: 'Poppins', sans-serif;
-      transition: all 0.3s ease;
-    }
+.form-input, .form-select {
+  width: 100%;
+  padding: 1.2rem 1rem;   /* más espacio interno */
+  border: 2px solid var(--accent-secondary);
+  border-radius: 14px;
+  background: white;
+  color: var(--text-primary);
+  font-size: 1.1rem;      /* texto más grande */
+  font-family: 'Poppins', sans-serif;
+  transition: all 0.3s ease;
+  min-height: 55px;       /* 👈 altura más cómoda */
+}
+.form-group {
+  margin: 1.3rem 0;
+}
 
     .form-input:focus, .form-select:focus {
       outline: none;
@@ -727,6 +744,9 @@
      </div>
      <div class="map-container"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26807.084473453756!2d-64.26166236744386!3d-31.398326468826846!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzHCsDIzJzU0LjAiUyA2NMKwMTUnMzUuMCJX!5e0!3m2!1ses!2sar!4v1234567890123!5m2!1ses!2sar" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
      </div>
+     <button class="btn-action" onclick="abrirMapa()">
+  📍 Cómo llegar con Google Maps
+</button>
     </div>
     
     <!-- Confirmar Asistencia -->
@@ -1013,6 +1033,9 @@
       const mensaje = 'Hola! Quiero compartir fotos de la fiesta 📸';
       window.open(`https://wa.me/549${telefono}?text=${encodeURIComponent(mensaje)}`, '_blank', 'noopener,noreferrer');
     }
+   function abrirMapa() {
+  window.open("https://www.google.com/maps/dir/?api=1&destination=Salón+La+Serena+de+Arredondo", "_blank");
+}
 
     async function onConfigChange(config) {
       document.getElementById('portada-nombre').textContent = config.nombre_nina || defaultConfig.nombre_nina;
@@ -1140,3 +1163,4 @@
  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c7a44c994e5a0fa',t:'MTc3MDA0MTM5MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 
 </html>
+
