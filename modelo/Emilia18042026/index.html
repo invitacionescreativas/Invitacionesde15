@@ -678,9 +678,9 @@ body.dark-mode .form-group textarea {
       <section  id="invitation-section">
     <h2 class="section-title"></h2>
     <div class="elegant-card">
-         <div class="detail-item"><span class="detail-icon">📅</span> <span id="eventDate"></span>
+         <div class="detail-item"><span class="detail-icon"></span> <span id="eventDate"></span>
       </div>
-      <div class="detail-item"><span class="detail-icon">🕘</span> <span id="eventTime"></span>
+      <div class="detail-item"><span class="detail-icon"></span> <span id="eventTime"></span>
       </div>
    
      </div>
@@ -703,19 +703,20 @@ body.dark-mode .form-group textarea {
    </section><!-- Ubicación -->
    <section class="section" id="location-section">
     <h2 class="section-title">Lugar de Celebración</h2>
-      <div class="detail-item"><span class="detail-icon">📍</span> <span id="eventLocation"></span>
+      <div class="detail-item"><span class="detail-icon"></span> <span id="eventLocation"></span>
       </div>
     <div class="map-container"><!-- CAMBIAR URL DEL MAPA AQUÍ --> <iframe id="mapFrame"></iframe>
     </div>
-    <div style="text-align: center;"><!-- CAMBIAR URL DE GOOGLE MAPS AQUÍ --> <a id="mapButton" target="_blank" rel="noopener noreferrer" class="elegant-button"> 📍 Cómo llegar con GPS </a>
+    <div style="text-align: center;"><!-- CAMBIAR URL DE GOOGLE MAPS AQUÍ --> <a id="mapButton" target="_blank" rel="noopener noreferrer" class="elegant-button">  Cómo llegar con GPS </a>
     </div>
    </section><!-- Código de Vestimenta -->
    <section class="section" id="dresscode-section">
-    <h2 class="section-title">Código de Vestimenta</h2>
+       
+    <h2 class="section-title">Dress Code</h2>
     <div class="elegant-card" style="text-align: center;">
-     <div style="font-size: 3rem; margin-bottom: 1rem;">
-      👗
-     </div>
+     <div style="text-align: center; margin-top: 0px;">
+  <img src="vestimenta.png" alt="Miniatura" style="max-width: 100%; height: auto; display: inline-block;">
+</div>
      <p class="invitation-text" id="dressCodeText"></p>Restricción de tonalidades
     
         <div style="text-align: center; margin-top: 0px;">
@@ -729,10 +730,13 @@ body.dark-mode .form-group textarea {
    <section class="section" id="gift-section">
     <h2 class="section-title">Regalo</h2>
     <div class="elegant-card gift-section">
+          <div style="text-align: center; margin-top: 0px;">
+  <img src="regalo.png" alt="Miniatura" style="max-width: 60%; height: auto; display: inline-block;">
+</div>
      <p class="invitation-text" id="frase-regalo">
       Si deseas obsequiarme algo, puedes hacerlo al siguiente alias.<br>Si prefieres dejarlo en un sobre, el día del evento habrá un cofre. </p>
       
-      <button class="elegant-button" id="showGiftBtn">🎁 Ver alias</button>
+      <button class="elegant-button" id="showGiftBtn">Ver alias</button>
      <div class="gift-details" id="giftDetails">
       <div class="gift-item" style="display: none;">
        <div>
@@ -766,7 +770,7 @@ body.dark-mode .form-group textarea {
       <div class="form-group"><label for="rsvpAttending">¿Asistirás?</label> <select id="rsvpAttending" required> <option value="">Selecciona una opción</option> <option value="si">Sí, asistiré</option> <option value="no">No podré asistir</option> </select>
       </div>
       <div class="form-group"><label for="rsvpGuests">Cantidad de acompañantes</label> <input type="number" id="rsvpGuests" min="0" max="10" value="0" placeholder="0">
-      </div><button type="submit" class="elegant-button" style="width: 100%;"> 💌 Confirmar</button>
+      </div><button type="submit" class="elegant-button" style="width: 100%;">  Confirmar</button>
      </form>
     </div>
    </section>
@@ -779,7 +783,7 @@ body.dark-mode .form-group textarea {
       <div class="form-group"><label for="dietaryName">Tu nombre</label> <input type="text" id="dietaryName" required placeholder="Ingresa tu nombre">
       </div>
       <div class="form-group"><label for="dietaryRestriction">Descripción de la restricción</label> <textarea id="dietaryRestriction" required placeholder="Ejemplo: Soy vegetariano, intolerante al gluten, etc."></textarea>
-      </div><button type="submit" class="elegant-button" style="width: 100%;"> 📝 Sí, tengo </button>
+      </div><button type="submit" class="elegant-button" style="width: 100%;">  Sí, tengo </button>
      </form>
     </div>
    </section>
@@ -792,7 +796,7 @@ body.dark-mode .form-group textarea {
       <div class="form-group"><label for="songName">Tu nombre</label> <input type="text" id="songName" required placeholder="Ingresa tu nombre">
       </div>
       <div class="form-group"><label for="songSuggestion">Canción sugerida</label> <input type="text" id="songSuggestion" required placeholder="Nombre de la canción y artista">
-      </div><button type="submit" class="elegant-button" style="width: 100%;"> 🎵 Enviar</button>
+      </div><button type="submit" class="elegant-button" style="width: 100%;">  Enviar</button>
      </form>
     </div>
    </section>
@@ -819,7 +823,7 @@ body.dark-mode .form-group textarea {
    rel="noopener noreferrer" 
    class="elegant-button" 
    style="width: 100%; display: inline-block; text-align: center;">
-   📸 Enviar</a>
+    Enviar</a>
   </div>
 </section>
 
@@ -838,7 +842,7 @@ body.dark-mode .form-group textarea {
   quinceanera_name: 'Emilia',
 
   // ✨ FRASE PRINCIPAL
-  invitation_text: 'Cada sonrisa, cada abrazo y cada momento de mi noche me quedará grabado en el corazón.Tener a mis seres queridos y amigos lo hacen aún más maravilloso, es por eso que me gustaría que seas parte de mi festejo!',
+  invitation_text: 'Cada sonrisa, cada abrazo y cada momento de mi noche me quedará grabado en el corazón. Tener a mis seres queridos y amigos lo hacen aún más maravilloso, es por eso que me gustaría que seas parte de mi festejo!',
 
   event_date: '18 de Abril de 2026',
   event_time: '22:00hs',
@@ -1190,4 +1194,3 @@ document.addEventListener("DOMContentLoaded", () => {
   </script>
  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c58f74747a85040',t:'MTc2OTY5MjE4Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
-
