@@ -677,13 +677,17 @@ body.dark-mode .form-group textarea {
 </section>
       <section  id="invitation-section">
     <h2 class="section-title"></h2>
-    <div class="elegant-card">
-         <div class="detail-item"><span class="detail-icon"></span> <span id="eventDate"></span>
-      </div>
-      <div class="detail-item"><span class="detail-icon"></span> <span id="eventTime"></span>
-      </div>
-   
-     </div>
+ <div class="elegant-card">
+  <div class="detail-item">
+    <span class="detail-icon">📅</span>
+    <span id="eventDate"></span>
+  </div>
+
+  <div class="detail-item">
+    <span class="detail-icon">⏰</span>
+    <span id="eventTime"></span>
+  </div>
+</div>
      <div class="countdown-container" id="countdown">
       <div class="countdown-item"><span class="countdown-number" id="days">0</span> <span class="countdown-label">Días</span>
       </div>
@@ -770,7 +774,9 @@ body.dark-mode .form-group textarea {
       <div class="form-group"><label for="rsvpAttending">¿Asistirás?</label> <select id="rsvpAttending" required> <option value="">Selecciona una opción</option> <option value="si">Sí, asistiré</option> <option value="no">No podré asistir</option> </select>
       </div>
       <div class="form-group"><label for="rsvpGuests">Cantidad de acompañantes</label> <input type="number" id="rsvpGuests" min="0" max="10" value="0" placeholder="0">
-      </div><button type="submit" class="elegant-button" style="width: 100%;">  Confirmar</button>
+      </div><button type="submit" class="elegant-button" style="width: 100%;">
+  💌 Confirmar
+</button>
      </form>
     </div>
    </section>
@@ -796,7 +802,7 @@ body.dark-mode .form-group textarea {
       <div class="form-group"><label for="songName">Tu nombre</label> <input type="text" id="songName" required placeholder="Ingresa tu nombre">
       </div>
       <div class="form-group"><label for="songSuggestion">Canción sugerida</label> <input type="text" id="songSuggestion" required placeholder="Nombre de la canción y artista">
-      </div><button type="submit" class="elegant-button" style="width: 100%;">  Enviar</button>
+      </div><button type="submit" class="elegant-button" style="width: 100%;"> 🎶Enviar</button>
      </form>
     </div>
    </section>
@@ -1193,4 +1199,5 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   </script>
  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c58f74747a85040',t:'MTc2OTY5MjE4Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+
 </html>
