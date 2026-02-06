@@ -1,1 +1,708 @@
+<!doctype html>
+<html lang="es" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invitación 50 Años - PATO</title>
+  <meta property="og:title" content="Pato · 50 Años 🎉">
+<meta property="og:description" content="Te espero para celebrar mis 50 años. Confirmá tu asistencia ✨">
+<meta property="og:image" content="https://invitacionescreativas.github.io/Invitacionesde15/modelo/Pato50/miniatura.png">
+<meta property="og:url" content="https://invitacionescreativas.github.io/Invitacionesde15/modelo/Pato50">
+<meta property="og:type" content="website">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <script src="/_sdk/data_sdk.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&amp;family=Montserrat:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+    
+    :root {
+      --rosa-suave: #E8D4D4;
+      --rosa-empolvado: #C9A5A5;
+      --dorado: #C9A227;
+      --texto-oscuro: #4A3F3F;
+      --blanco-crema: #FDF9F7;
+    }
+    
+    .font-serif-elegant {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+    }
+    
+    .font-sans-clean {
+      font-family: 'Montserrat', Arial, sans-serif;
+    }
+    
+    .section-animate {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .section-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .golden-divider {
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--dorado), transparent);
+    }
+    
+    .golden-border {
+      border: 1px solid var(--dorado);
+    }
+    
+    .btn-elegant {
+      background: linear-gradient(135deg, var(--dorado) 0%, #E6B84F 50%, #D4AF37 100%);
+      color: white;
+      padding: 14px 32px;
+      border-radius: 30px;
+      font-weight: 500;
+      letter-spacing: 1px;
+      box-shadow: 0 4px 15px rgba(201, 162, 39, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3), inset 0 -2px 5px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .btn-elegant::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: left 0.5s;
+    }
+    
+    .btn-elegant:hover::before {
+      left: 100%;
+    }
+    
+    .btn-elegant:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(201, 162, 39, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.4), inset 0 -2px 5px rgba(0, 0, 0, 0.2);
+    }
+    
+    .music-btn {
+      background: linear-gradient(135deg, var(--dorado) 0%, #E6B84F 100%);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 15px rgba(201, 162, 39, 0.4);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    
+    .music-btn:hover {
+      transform: scale(1.1);
+    }
+    
+    .music-btn.playing {
+      animation: pulse-gold 1.5s infinite;
+    }
+    
+    @keyframes pulse-gold {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(201, 162, 39, 0.5); }
+      50% { box-shadow: 0 0 0 15px rgba(201, 162, 39, 0); }
+    }
+    
+    .sparkle {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      background: var(--dorado);
+      border-radius: 50%;
+      opacity: 0.6;
+      animation: sparkle-float 4s infinite ease-in-out;
+    }
+    
+    @keyframes sparkle-float {
+      0%, 100% { transform: translateY(0) scale(1); opacity: 0.6; }
+      50% { transform: translateY(-20px) scale(1.2); opacity: 1; }
+    }
+    
+    .form-input {
+      background: var(--blanco-crema);
+      border: 1px solid var(--rosa-empolvado);
+      border-radius: 8px;
+      padding: 12px 16px;
+      width: 100%;
+      transition: all 0.3s ease;
+    }
+    
+    .form-input:focus {
+      outline: none;
+      border-color: var(--dorado);
+      box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.1);
+    }
+    
+    .card-elegant {
+      background: linear-gradient(135deg, rgba(212, 165, 165, 0.4) 0%, rgba(253, 249, 247, 0.6) 100%);
+      border-radius: 16px;
+      box-shadow: 0 10px 40px rgba(74, 63, 63, 0.08), inset 0 1px 0 rgba(201, 162, 39, 0.3);
+      border: 2px solid rgba(201, 162, 39, 0.4);
+      backdrop-filter: blur(10px);
+    }
+    
+    .whatsapp-btn {
+      background: #25D366;
+      color: white;
+      padding: 14px 28px;
+      border-radius: 30px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 500;
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+      transition: all 0.3s ease;
+    }
+    
+    .whatsapp-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+    }
+    
+    .expired-message {
+      background: linear-gradient(135deg, var(--rosa-suave) 0%, var(--blanco-crema) 100%);
+      min-height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+ </head>
+ <body class="h-full font-sans-clean" style="background: var(--rosa-suave); color: var(--texto-oscuro);">
+  
+   <audio id="bgMusic" src="musica.mp3" preload="auto" loop></audio>
 
+<div id="app" class="h-full w-full overflow-auto">
+
+<!-- BOTÓN MÚSICA -->
+<div class="fixed top-4 right-4 z-50">
+<button id="musicBtn" class="music-btn" title="Música">
+<svg id="playIcon" width="20" height="20" fill="white" viewBox="0 0 24 24">
+<path d="M8 5v14l11-7z"/>
+</svg>
+<svg id="pauseIcon" width="20" height="20" fill="white" viewBox="0 0 24 24" style="display:none">
+<path d="M6 19h4V5H6zm8-14v14h4V5z"/>
+</svg>
+</button>
+</div><!-- Main Content Container -->
+   <div id="mainContent"><!-- Hero Section -->
+    <section class="relative min-h-screen flex flex-col items-center justify-center px-6 py-16 overflow-hidden" style="background: url('portada.png') center/cover no-repeat;"><!-- Sparkles -->
+     <div class="sparkle" style="top: 15%; left: 10%;"></div>
+     <div class="sparkle" style="top: 25%; right: 15%; animation-delay: 0.5s;"></div>
+     <div class="sparkle" style="top: 60%; left: 20%; animation-delay: 1s;"></div>
+     <div class="sparkle" style="top: 70%; right: 25%; animation-delay: 1.5s;"></div>
+     <div class="sparkle" style="top: 40%; left: 5%; animation-delay: 2s;"></div>
+     <div class="sparkle" style="top: 80%; right: 10%; animation-delay: 2.5s;"></div><!-- Golden Frame Decoration -->
+     <div class="absolute top-8 left-8 w-24 h-24 border-t-2 border-l-2" style="border-color: var(--dorado); opacity: 0.5;"></div>
+     <div class="absolute top-8 right-8 w-24 h-24 border-t-2 border-r-2" style="border-color: var(--dorado); opacity: 0.5;"></div>
+     <div class="absolute bottom-8 left-8 w-24 h-24 border-b-2 border-l-2" style="border-color: var(--dorado); opacity: 0.5;"></div>
+     <div class="absolute bottom-8 right-8 w-24 h-24 border-b-2 border-r-2" style="border-color: var(--dorado); opacity: 0.5;"></div>
+     <div class="text-center z-10 max-w-2xl">
+      <p class="font-sans-clean text-sm uppercase tracking-widest mb-4" style="color: var(--dorado);"></p>
+      <h1 id="heroName" class="font-serif-elegant text-7xl md:text-8xl font-bold mb-4" style="color: var(--texto-oscuro);"></h1>
+      <div class="flex items-center justify-center gap-4 mb-8" style="display: none;">
+       <div class="golden-divider w-16"></div><span class="font-serif-elegant text-4xl md:text-5xl font-semibold" style="color: var(--dorado);">50 años</span>
+       <div class="golden-divider w-16"></div>
+      </div>
+     
+      <div class="mt-12 animate-bounce">
+       <svg width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="var(--dorado)" stroke-width="2" class="mx-auto"><path d="M12 5v14M5 12l7 7 7-7" />
+       </svg>
+      </div>
+     </div>
+    </section>
+    <!-- Date & Time Section -->
+    
+    <section class="section-animate py-20 px-6" style="background: var(--blanco-crema);">
+       <p id="heroQuote" class="font-sans-clean text-base md:text-lg leading-relaxed px-4" style="color: var(--texto-oscuro); opacity: 0.85; text-align: center;">La vida es un regalo, disfruta cada momento, recuerda que cada día es una oportunidad. Vive, ríe, ama... Y no te olvides de disfrutar el camino. La felicidad es una elección, elige ser feliz hoy y siempre. Aprovecha cada día, la vida es breve pero hermosa.</p><!-- Scroll Indicator -->
+     <br>
+       <div class="max-w-xl mx-auto text-center">
+      <div class="card-elegant p-10">
+       <svg class="mx-auto mb-6" width="50" height="50" viewbox="0 0 24 24" fill="none" stroke="var(--dorado)" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2" ry="2" /> <line x1="16" y1="2" x2="16" y2="6" /> <line x1="8" y1="2" x2="8" y2="6" /> <line x1="3" y1="10" x2="21" y2="10" />
+       </svg>
+       <h2 class="font-serif-elegant text-3xl md:text-4xl font-semibold mb-6" style="color: var(--texto-oscuro);">Fecha y Horario</h2>
+       <div class="space-y-4">
+        <div class="flex items-center justify-center gap-3">
+         <svg width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="var(--rosa-empolvado)" stroke-width="2"><circle cx="12" cy="12" r="10" /> <path d="M12 6v6l4 2" />
+         </svg>
+         <p class="font-sans-clean text-xl" style="color: var(--dorado);">27 de Febrero de 2026</p>
+        </div>
+        <div class="golden-divider w-32 mx-auto my-4"></div>
+        <div class="flex items-center justify-center gap-3">
+         <svg width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="var(--rosa-empolvado)" stroke-width="2"><path d="M12 2a10 10 0 100 20 10 10 0 000-20z" /> <path d="M12 6v6l4 2" />
+         </svg>
+         <p class="font-sans-clean text-lg">De <span class="font-semibold" style="color: var(--dorado);">21:00 hs</span> a <span class="font-semibold" style="color: var(--dorado);">04:30 hs</span></p>
+        </div>
+       </div>
+      </div>
+     </div>
+    </section><!-- Location Section -->
+    <section class="section-animate py-20 px-6" style="background: var(--rosa-suave);">
+     <div class="max-w-xl mx-auto text-center">
+      <div class="card-elegant p-10">
+       <svg class="mx-auto mb-6" width="50" height="50" viewbox="0 0 24 24" fill="none" stroke="var(--dorado)" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" /> <circle cx="12" cy="10" r="3" />
+       </svg>
+       <h2 class="font-serif-elegant text-3xl md:text-4xl font-semibold mb-6" style="color: var(--texto-oscuro);">Lugar</h2>
+       <p id="locationAddress" class="font-sans-clean text-lg mb-2" style="color: var(--texto-oscuro);">San Francisco del Monte 5581</p>
+       <p class="font-sans-clean text-base mb-8" style="color: var(--rosa-empolvado);">Maipú – Coquimbito – Argentina</p><!-- Map Embed -->
+       <div class="rounded-xl overflow-hidden mb-8 shadow-lg"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3350.5!2d-68.743248!3d-32.94186!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzLCsDU2JzMwLjciUyA2OMKwNDQnMzUuNyJX!5e0!3m2!1ses!2sar!4v1234567890" width="100%" height="250" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"> </iframe>
+       </div><a href="https://maps.google.com/?q=-32.941860,-68.743248" target="_blank" rel="noopener noreferrer" class="btn-elegant inline-block font-sans-clean"> Cómo llegar </a>
+      </div>
+     </div>
+    </section><!-- Dress Code Section -->
+    <section class="section-animate py-20 px-6" style="background: var(--blanco-crema);">
+     <div class="max-w-xl mx-auto text-center">
+      <div class="card-elegant p-10">
+       <svg class="mx-auto mb-6" width="50" height="50" viewbox="0 0 24 24" fill="none" stroke="var(--dorado)" stroke-width="1.5"><path d="M12 2L8 6H4v4l-2 2 2 2v4h4l4 4 4-4h4v-4l2-2-2-2V6h-4L12 2z" /> <circle cx="12" cy="12" r="3" />
+       </svg>
+       <h2 class="font-serif-elegant text-3xl md:text-4xl font-semibold mb-6" style="color: var(--texto-oscuro);">Vestimenta</h2>
+       <div class="flex justify-center gap-8 mb-6"><!-- Dress Icon -->
+        <svg width="40" height="40" viewbox="0 0 24 24" fill="none" stroke="var(--rosa-empolvado)" stroke-width="1.5"><path d="M12 2l-3 7h6l-3-7z" /> <path d="M9 9l-4 13h14L15 9" /> <path d="M12 2v7" />
+        </svg><!-- Suit Icon -->
+        <svg width="40" height="40" viewbox="0 0 24 24" fill="none" stroke="var(--rosa-empolvado)" stroke-width="1.5"><path d="M12 2L8 6v2l4 2 4-2V6l-4-4z" /> <path d="M8 8l-4 14h16L16 8" /> <path d="M12 10v12" />
+        </svg>
+       </div>
+       <p class="font-sans-clean text-lg" style="color: var(--texto-oscuro);">Vestimenta sugerida: <span class="font-semibold" style="color: var(--dorado);">como te sientas cómodo</span></p>
+      </div>
+     </div>
+    </section><!-- Adults Only Section -->
+    <section class="section-animate py-20 px-6" style="background: var(--rosa-suave);">
+     <div class="max-w-xl mx-auto text-center">
+      <div class="card-elegant p-10">
+       <svg class="mx-auto mb-6" width="50" height="50" viewbox="0 0 24 24" fill="none" stroke="var(--dorado)" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" /> <circle cx="9" cy="7" r="4" /> <path d="M23 21v-2a4 4 0 00-3-3.87" /> <path d="M16 3.13a4 4 0 010 7.75" />
+       </svg>
+       <h2 class="font-serif-elegant text-3xl md:text-4xl font-semibold mb-6" style="color: var(--texto-oscuro);">Evento Solo Adultos</h2>
+       <div class="flex items-center justify-center gap-3 mb-4">
+        <svg width="28" height="28" viewbox="0 0 24 24" fill="none" stroke="var(--rosa-empolvado)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /> <path d="M12 8v4M12 16h.01" />
+        </svg>
+        <p class="font-sans-clean text-lg font-medium" style="color: var(--texto-oscuro);">Celebración solo para adultos</p>
+       </div>
+       <p class="font-sans-clean text-sm" style="color: var(--rosa-empolvado);">Agradecemos tu comprensión</p>
+      </div>
+     </div>
+    </section><!-- RSVP Section -->
+    <section id="rsvpSection" class="section-animate py-20 px-6" style="background: var(--blanco-crema);">
+     <div class="max-w-xl mx-auto text-center">
+      <div class="card-elegant p-10">
+       <svg class="mx-auto mb-6" width="50" height="50" viewbox="0 0 24 24" fill="none" stroke="var(--dorado)" stroke-width="1.5"><path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6z" /> <path d="M22 6l-10 7L2 6" />
+       </svg>
+       <h2 class="font-serif-elegant text-3xl md:text-4xl font-semibold mb-4" style="color: var(--texto-oscuro);">Confirmación de Asistencia</h2>
+       <div class="flex items-center justify-center gap-2 mb-8 px-4 py-3 rounded-full" style="background: linear-gradient(135deg, rgba(201, 162, 39, 0.1), rgba(212, 165, 165, 0.1));">
+        <svg width="20" height="20" viewbox="0 0 24 24" fill="none" stroke="var(--dorado)" stroke-width="2"><circle cx="12" cy="12" r="10" /> <path d="M12 6v6l4 2" />
+        </svg>
+        <p class="font-sans-clean text-sm font-medium" style="color: var(--dorado);">Confirmar asistencia hasta el 16/02/2026</p>
+       </div><!-- Combined Form (RSVP and Song Suggestions) -->
+       <form id="rsvpForm" class="space-y-6 text-left">
+        <div><label for="nombre" class="block font-sans-clean text-sm font-medium mb-2" style="color: var(--texto-oscuro);"> Nombre y Apellido * </label> <input type="text" id="nombre" name="nombre" required class="form-input font-sans-clean" placeholder="Tu nombre completo">
+        </div>
+        <div><label class="block font-sans-clean text-sm font-medium mb-3" style="color: var(--texto-oscuro);"> ¿Asistirás? * </label>
+         <div class="flex gap-4"><label class="flex items-center gap-2 cursor-pointer"> <input type="radio" name="asistira" value="Sí" required class="w-5 h-5 accent-current" style="accent-color: var(--dorado);"> <span class="font-sans-clean">Sí, asistiré</span> </label> <label class="flex items-center gap-2 cursor-pointer"> <input type="radio" name="asistira" value="No" required class="w-5 h-5" style="accent-color: var(--dorado);"> <span class="font-sans-clean">No podré asistir</span> </label>
+         </div>
+        </div>
+       <button type="submit" id="submitBtn" class="btn-elegant w-full font-sans-clean text-center"> <span id="submitText">Confirmar y Enviar</span> <span id="loadingText" style="display: none;">Enviando...</span> </button>
+       </form><!-- Success Message -->
+       <div id="successMessage" class="hidden text-center py-8">
+        <svg class="mx-auto mb-4" width="60" height="60" viewbox="0 0 24 24" fill="none" stroke="var(--dorado)" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14" /> <path d="M22 4L12 14.01l-3-3" />
+        </svg>
+        <h3 class="font-serif-elegant text-2xl font-semibold mb-2" style="color: var(--texto-oscuro);">¡Gracias por confirmar!</h3>
+        <p class="font-sans-clean" style="color: var(--rosa-empolvado);">Tu respuesta ha sido registrada exitosamente.</p>
+       </div>
+      </div>
+     </div>
+    </section><!-- Song Suggestion Section -->
+    <section class="section-animate py-20 px-6" style="background: var(--rosa-suave);">
+     <div class="max-w-xl mx-auto text-center">
+      <div class="card-elegant p-10">
+       <svg class="mx-auto mb-6" width="50" height="50" viewbox="0 0 24 24" fill="none" stroke="var(--dorado)" stroke-width="1.5"><path d="M9 18V5l12-2v13" /> <circle cx="6" cy="18" r="3" /> <circle cx="18" cy="16" r="3" />
+       </svg>
+       <h2 class="font-serif-elegant text-3xl md:text-4xl font-semibold mb-6" style="color: var(--texto-oscuro);">Sugerir una Canción</h2>
+       <p class="font-sans-clean text-base mb-8" style="color: var(--rosa-empolvado);">¿Hay una canción que quieres escuchar en la celebración? ¡Envíanos tu sugerencia!</p><!-- Song Suggestion Form -->
+       <form id="songForm" class="space-y-6 text-left">
+        <div><label for="nombre_cancion" class="block font-sans-clean text-sm font-medium mb-2" style="color: var(--texto-oscuro);"> Tu Nombre * </label> <input type="text" id="nombre_cancion" name="nombre_cancion" required class="form-input font-sans-clean" placeholder="Tu nombre completo">
+        </div>
+        <div><label for="titulo_cancion" class="block font-sans-clean text-sm font-medium mb-2" style="color: var(--texto-oscuro);"> Título de la Canción * </label> <input type="text" id="titulo_cancion" name="titulo_cancion" required class="form-input font-sans-clean" placeholder="Ej: Bohemian Rhapsody">
+        </div><button type="submit" id="songSubmitBtn" class="btn-elegant w-full font-sans-clean text-center"> <span id="songSubmitText">Enviar Sugerencia</span> <span id="songLoadingText" style="display: none;">Enviando...</span> </button>
+       </form><!-- Song Success Message -->
+       <div id="songSuccessMessage" class="hidden text-center py-8">
+        <svg class="mx-auto mb-4" width="60" height="60" viewbox="0 0 24 24" fill="none" stroke="var(--dorado)" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14" /> <path d="M22 4L12 14.01l-3-3" />
+        </svg>
+        <h3 class="font-serif-elegant text-2xl font-semibold mb-2" style="color: var(--texto-oscuro);">¡Gracias por tu sugerencia!</h3>
+        <p class="font-sans-clean" style="color: var(--rosa-empolvado);">Tu canción ha sido registrada exitosamente.</p>
+       </div>
+      </div>
+     </div>
+    </section><!-- Footer -->
+    <footer class="py-12 px-6 text-center" style="background: linear-gradient(180deg, var(--rosa-suave) 0%, var(--blanco-crema) 100%);">
+     <div class="golden-divider w-32 mx-auto mb-8"></div>
+     <p class="font-serif-elegant text-2xl mb-2" style="color: var(--dorado);">Te espero</p>
+     <p class="font-sans-clean text-sm" style="color: var(--rosa-empolvado);">Con mucho cariño</p>
+    </footer>
+   </div><!-- Expired Message (Hidden by default) -->
+   <div id="expiredContent" class="hidden expired-message h-full w-full">
+    <div class="card-elegant p-12 mx-6 text-center max-w-lg">
+     <svg class="mx-auto mb-6" width="60" height="60" viewbox="0 0 24 24" fill="none" stroke="var(--dorado)" stroke-width="1.5"><circle cx="12" cy="12" r="10" /> <path d="M12 6v6l4 2" />
+     </svg>
+     <h2 class="font-serif-elegant text-3xl font-semibold mb-4" style="color: var(--texto-oscuro);">Tiempo Finalizado</h2>
+     <p class="font-sans-clean text-lg leading-relaxed" style="color: var(--rosa-empolvado);">El tiempo para confirmar asistencia ha finalizado. Gracias por acompañar este momento especial.</p>
+     <div class="golden-divider w-24 mx-auto mt-8"></div>
+    </div>
+   </div>
+  </div>
+  <script>
+    function initMusic(){
+const musicBtn=document.getElementById('musicBtn');
+const playIcon=document.getElementById('playIcon');
+const pauseIcon=document.getElementById('pauseIcon');
+const audio=document.getElementById('bgMusic');
+let isPlaying=false;
+
+musicBtn.addEventListener('click',()=>{
+if(!isPlaying){
+audio.play();
+playIcon.style.display='none';
+pauseIcon.style.display='block';
+musicBtn.classList.add('playing');
+isPlaying=true;
+}else{
+audio.pause();
+playIcon.style.display='block';
+pauseIcon.style.display='none';
+musicBtn.classList.remove('playing');
+isPlaying=false;
+}
+});
+}
+    // Default configuration
+    const defaultConfig = {
+      nombre_protagonista: '',
+      frase_principal: 'La vida es un regalo, disfruta cada momento, recuerda que cada día es una oportunidad. Vive, ríe, ama... Y no te olvides de disfrutar el camino. La felicidad es una elección, elige ser feliz hoy y siempre. Aprovecha cada día, la vida es breve pero hermosa.',
+      direccion: 'San Francisco del Monte 5581',
+      background_color: 'url("https://img.freepik.com/vector-gratis/elegante-diseno-tinta-alcohol-pintada-mano-rosa-pastel-elementos-dorados_1048-18533.jpg?semt=ais_hybrid&w=740&q=80")',
+      surface_color: '#FDF9F7',
+      text_color: '#4A3F3F',
+      accent_color: '#C9A227',
+      secondary_color: '#C9A5A5',
+      font_family: 'Cormorant Garamond',
+      font_size: 16
+    };
+    
+    let config = { ...defaultConfig };
+    let rsvpData = [];
+    let recordCount = 0;
+    
+    // Check if deadline has passed
+    function isDeadlinePassed() {
+      const deadline = new Date('2026-02-16T23:59:59-03:00');
+      const now = new Date();
+      return now > deadline;
+    }
+    
+    // Show/hide content based on deadline
+    function updateContentVisibility() {
+      const mainContent = document.getElementById('mainContent');
+      const expiredContent = document.getElementById('expiredContent');
+      
+      if (isDeadlinePassed()) {
+        mainContent.classList.add('hidden');
+        expiredContent.classList.remove('hidden');
+      } else {
+        mainContent.classList.remove('hidden');
+        expiredContent.classList.add('hidden');
+      }
+    }
+    
+    // Intersection Observer for scroll animations
+    function initScrollAnimations() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('section-visible');
+          } else {
+            entry.target.classList.remove('section-visible');
+          }
+        });
+      }, {
+        threshold: 0.15,
+        rootMargin: '0px 0px -50px 0px'
+      });
+      
+      document.querySelectorAll('.section-animate').forEach(section => {
+        observer.observe(section);
+      });
+    }
+    
+   
+    
+    // Data SDK handler
+    const dataHandler = {
+      onDataChanged(data) {
+        rsvpData = data;
+        recordCount = data.length;
+      }
+    };
+    
+    // Form submission
+ async function initForm() {
+  const form = document.getElementById('rsvpForm');
+  const submitBtn = document.getElementById('submitBtn');
+  const submitText = document.getElementById('submitText');
+  const loadingText = document.getElementById('loadingText');
+  const successMessage = document.getElementById('successMessage');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    const nombre = formData.get('nombre');
+    const asistira = formData.get('asistira');
+
+    submitBtn.disabled = true;
+    submitText.style.display = 'none';
+    loadingText.style.display = 'inline';
+
+    // 🔹 MENSAJE WHATSAPP
+    const mensaje = `Hola! Soy ${nombre}
+    
+${asistira === 'Sí'
+      ? '✅ Confirmo mi asistencia al cumpleaños de PATO'
+      : '❌ Lamentablemente no podré asistir al cumpleaños de PATO'}`;
+
+    // 🔹 ABRE WHATSAPP SIEMPRE
+    const whatsappUrl = `https://wa.me/542612072151?text=${encodeURIComponent(mensaje)}`;
+    window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+
+    // 🔹 INTENTA GUARDAR (SI FALLA, NO ROMPE NADA)
+    try {
+      if (window.dataSdk) {
+        await window.dataSdk.create({
+          nombre,
+          asistira,
+          fecha_registro: new Date().toISOString()
+        });
+      }
+    } catch (err) {
+      console.warn('No se pudo guardar en Data SDK, pero WhatsApp sí se envió');
+    }
+
+    form.classList.add('hidden');
+    successMessage.classList.remove('hidden');
+
+    submitBtn.disabled = false;
+    submitText.style.display = 'inline';
+    loadingText.style.display = 'none';
+  });
+}
+
+    
+    // Song Form submission
+    async function initSongForm() {
+      const songForm = document.getElementById('songForm');
+      const songSubmitBtn = document.getElementById('songSubmitBtn');
+      const songSubmitText = document.getElementById('songSubmitText');
+      const songLoadingText = document.getElementById('songLoadingText');
+      const songSuccessMessage = document.getElementById('songSuccessMessage');
+      
+      songForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const formData = new FormData(songForm);
+        const nombreCancion = formData.get('nombre_cancion');
+        const tituloCancion = formData.get('titulo_cancion');
+        const artistaCancion = formData.get('artista_cancion');
+        
+        songSubmitBtn.disabled = true;
+        songSubmitText.style.display = 'none';
+        songLoadingText.style.display = 'inline';
+        
+        try {
+          // Create WhatsApp message
+          const mensaje = `🎵 Sugerencia de canción\n\nDe: ${nombreCancion}\nCanción: ${tituloCancion}`;
+          
+          // Send to WhatsApp
+          const whatsappUrl = `https://wa.me/542612072151?text=${encodeURIComponent(mensaje)}`;
+          window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+          
+          songForm.classList.add('hidden');
+          songSuccessMessage.classList.remove('hidden');
+        } catch (error) {
+          const errorDiv = document.createElement('div');
+          errorDiv.className = 'text-center py-4 px-6 rounded-lg mb-4';
+          errorDiv.style.background = 'rgba(220, 38, 38, 0.1)';
+          errorDiv.style.color = '#DC2626';
+          errorDiv.textContent = 'Hubo un error. Por favor, intenta de nuevo.';
+          songForm.insertBefore(errorDiv, songForm.firstChild);
+          setTimeout(() => errorDiv.remove(), 5000);
+        } finally {
+          songSubmitBtn.disabled = false;
+          songSubmitText.style.display = 'inline';
+          songLoadingText.style.display = 'none';
+        }
+      });
+    }
+    
+    // Update UI based on config
+    async function onConfigChange(cfg) {
+      config = { ...defaultConfig, ...cfg };
+      
+      const heroName = document.getElementById('heroName');
+      const heroQuote = document.getElementById('heroQuote');
+      const locationAddress = document.getElementById('locationAddress');
+      
+      if (heroName) {
+        heroName.textContent = config.nombre_protagonista || defaultConfig.nombre_protagonista;
+      }
+      
+      if (heroQuote) {
+        heroQuote.textContent = config.frase_principal || defaultConfig.frase_principal;
+      }
+      
+      if (locationAddress) {
+        locationAddress.textContent = config.direccion || defaultConfig.direccion;
+      }
+      
+      // Apply colors
+      document.documentElement.style.setProperty('--dorado', config.accent_color || defaultConfig.accent_color);
+      document.documentElement.style.setProperty('--rosa-empolvado', config.secondary_color || defaultConfig.secondary_color);
+      document.documentElement.style.setProperty('--texto-oscuro', config.text_color || defaultConfig.text_color);
+      document.documentElement.style.setProperty('--rosa-suave', config.background_color || defaultConfig.background_color);
+      document.documentElement.style.setProperty('--blanco-crema', config.surface_color || defaultConfig.surface_color);
+      
+      // Apply font
+      const customFont = config.font_family || defaultConfig.font_family;
+      document.querySelectorAll('.font-serif-elegant').forEach(el => {
+        el.style.fontFamily = `${customFont}, Georgia, serif`;
+      });
+      
+      // Apply font size scaling
+      const baseSize = config.font_size || defaultConfig.font_size;
+      document.querySelectorAll('h1').forEach(el => {
+        el.style.fontSize = `${baseSize * 4.5}px`;
+      });
+      document.querySelectorAll('h2').forEach(el => {
+        el.style.fontSize = `${baseSize * 2}px`;
+      });
+      document.querySelectorAll('p').forEach(el => {
+        if (!el.classList.contains('text-sm') && !el.classList.contains('text-xs')) {
+          el.style.fontSize = `${baseSize}px`;
+        }
+      });
+    }
+    
+    // Map to capabilities
+    function mapToCapabilities(cfg) {
+      return {
+        recolorables: [
+          {
+            get: () => cfg.background_color || defaultConfig.background_color,
+            set: (value) => {
+              config.background_color = value;
+              window.elementSdk.setConfig({ background_color: value });
+            }
+          },
+          {
+            get: () => cfg.surface_color || defaultConfig.surface_color,
+            set: (value) => {
+              config.surface_color = value;
+              window.elementSdk.setConfig({ surface_color: value });
+            }
+          },
+          {
+            get: () => cfg.text_color || defaultConfig.text_color,
+            set: (value) => {
+              config.text_color = value;
+              window.elementSdk.setConfig({ text_color: value });
+            }
+          },
+          {
+            get: () => cfg.accent_color || defaultConfig.accent_color,
+            set: (value) => {
+              config.accent_color = value;
+              window.elementSdk.setConfig({ accent_color: value });
+            }
+          },
+          {
+            get: () => cfg.secondary_color || defaultConfig.secondary_color,
+            set: (value) => {
+              config.secondary_color = value;
+              window.elementSdk.setConfig({ secondary_color: value });
+            }
+          }
+        ],
+        borderables: [],
+        fontEditable: {
+          get: () => cfg.font_family || defaultConfig.font_family,
+          set: (value) => {
+            config.font_family = value;
+            window.elementSdk.setConfig({ font_family: value });
+          }
+        },
+        fontSizeable: {
+          get: () => cfg.font_size || defaultConfig.font_size,
+          set: (value) => {
+            config.font_size = value;
+            window.elementSdk.setConfig({ font_size: value });
+          }
+        }
+      };
+    }
+    
+    // Map to edit panel values
+    function mapToEditPanelValues(cfg) {
+      return new Map([
+        ['nombre_protagonista', cfg.nombre_protagonista || defaultConfig.nombre_protagonista],
+        ['frase_principal', cfg.frase_principal || defaultConfig.frase_principal],
+        ['direccion', cfg.direccion || defaultConfig.direccion]
+      ]);
+    }
+    
+    // Initialize everything
+    async function init() {
+      // Initialize Element SDK
+      if (window.elementSdk) {
+        window.elementSdk.init({
+          defaultConfig,
+          onConfigChange,
+          mapToCapabilities,
+          mapToEditPanelValues
+        });
+      }
+      
+      // Initialize Data SDK
+      if (window.dataSdk) {
+        const result = await window.dataSdk.init(dataHandler);
+        if (!result.isOk) {
+          console.error('Failed to initialize data SDK');
+        }
+      }
+      
+      // Check deadline and show appropriate content
+      updateContentVisibility();
+      
+      // Initialize components
+      initScrollAnimations();
+      initMusic();
+      initForm();
+      initSongForm();
+      
+      // Apply initial config
+      await onConfigChange(config);
+    }
+    
+    init();
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c9ae07576ccd597',t:'MTc3MDM4MzMxMi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
