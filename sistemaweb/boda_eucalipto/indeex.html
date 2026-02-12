@@ -4,21 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nuestra Boda</title>
-  <!-- Miniatura para compartir en redes -->
-<meta property="og:title" content="Nos Casamos – María & Carlos">
-<meta property="og:description" content="¡Acompañanos en nuestro gran día! Descubrí todos los detalles de nuestra boda.">
-<meta property="og:image" content="https://invitacionescreativas.github.io/Invitacionesde15/sistemaweb/boda_eucalipto/miniatura.png">
-<meta property="og:image:alt" content="Invitación de boda de María & Carlos">
-<meta property="og:url" content="https://invitacionescreativas.github.io/Invitacionesde15/sistemaweb/boda_eucalipto/miniatura.html">
-<meta property="og:type" content="website">
-
-<!-- Twitter -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Nos Casamos – María & Carlos">
-<meta name="twitter:description" content="¡Acompañanos en nuestro gran día!">
-<meta name="twitter:image" content="https://invitacionescreativas.github.io/Invitacionesde15/sistemaweb/boda_eucalipto/miniatura.png">
-<meta name="twitter:image:alt" content="Invitación de boda de María & Carlos">
-
   <script src="https://cdn.tailwindcss.com/3.4.17"></script>
   <script src="/_sdk/element_sdk.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -185,6 +170,26 @@
   color: #3d4a3e;
   text-shadow: 0 2px 6px rgba(0,0,0,0.4);
 }
+/* Hero text colors según tema */
+#hero h1,
+#hero p,
+#hero .eucalyptus-divider,
+#countdown span,
+#countdown .text-xs {
+  color: var(--text-primary);
+  text-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+/* Ajuste específico para modo oscuro */
+.dark #hero h1,
+.dark #hero p,
+.dark #hero .eucalyptus-divider,
+.dark #countdown span,
+.dark #countdown .text-xs {
+  color: #e8ebe5; /* o cualquier blanco claro que combine */
+  text-shadow: 0 2px 6px rgba(0,0,0,0.5);
+}
+
     .dark .overlay-hero {
       background: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.7));
     }
@@ -753,5 +758,4 @@
 </script>
 
 </body>
-
 </html>
