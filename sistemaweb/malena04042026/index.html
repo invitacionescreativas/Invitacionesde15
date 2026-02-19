@@ -1,1 +1,1181 @@
+<!doctype html>
+<html lang="es" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XV Años - Malena</title>
+  <!-- Open Graph / WhatsApp -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Mis XV – Malena">
+<meta property="og:description" content="Una noche mágica comienza. Acompañame a celebrar mis quince años.">
+<meta property="og:image" content="https://invitacionescreativas.github.io/Invitacionesde15/sistemaweb/malena04042026/miniatura_.png">
+<meta property="og:url" content="https://invitacionescreativas.github.io/Invitacionesde15/sistemaweb/malena04042026/">
 
+<!-- Para mejor compatibilidad -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Mis XV – Malena">
+<meta name="twitter:description" content="Una noche mágica comienza. Acompañame a celebrar mis quince años.">
+<meta name="twitter:image" content="https://invitacionescreativas.github.io/Invitacionesde15/sistemaweb/malena04042026/miniatura_.png">
+
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&amp;family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&amp;display=swap" rel="stylesheet">
+  <script src="/_sdk/element_sdk.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            forest: {
+              50: '#f0f5f1',
+              100: '#dce8de',
+              200: '#b8d1bc',
+              300: '#8fb596',
+              400: '#6a9a73',
+              500: '#4a7d54',
+              600: '#3a6343',
+              700: '#2f4f36',
+              800: '#1e3323',
+              900: '#0f1a12',
+              950: '#080d09'
+            },
+            petrol: {
+              50: '#e8f4f6',
+              100: '#d1e9ed',
+              200: '#a3d3db',
+              300: '#75bdc9',
+              400: '#47a7b7',
+              500: '#2a7d8a',
+              600: '#22646e',
+              700: '#1a4b53',
+              800: '#123237',
+              900: '#0a191c',
+              950: '#050c0e'
+            },
+            mystic: {
+              gold: '#c4a574',
+              silver: '#a8b5b8',
+              mist: 'rgba(200, 220, 215, 0.3)'
+            }
+          },
+          fontFamily: {
+            cinzel: ['Cinzel', 'serif'],
+            cormorant: ['Cormorant Garamond', 'serif']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html, body { height: 100%; }
+    
+    * {
+      scrollbar-width: thin;
+      scrollbar-color: rgba(74, 125, 84, 0.5) transparent;
+    }
+    
+    *::-webkit-scrollbar {
+      width: 6px;
+    }
+    
+    *::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    
+    *::-webkit-scrollbar-thumb {
+      background: rgba(74, 125, 84, 0.5);
+      border-radius: 3px;
+    }
+    
+    .bg-cover-image {
+      background-image: url('https://invitacionescreativas.github.io/Invitacionesde15/sistemaweb/malena04042026/fondo.jpeg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+    
+    .dark-mode .bg-cover-image {
+      filter: brightness(0.4) saturate(1.2);
+    }
+    
+    .hero-bg {
+      background-image: url('https://invitacionescreativas.github.io/Invitacionesde15/sistemaweb/malena04042026/portada.jpeg');
+      background-size: cover;
+      background-position: center;
+    }
+    
+    .mist-overlay {
+      background: linear-gradient(
+        180deg,
+        rgba(15, 26, 18, 0.3) 0%,
+        rgba(15, 26, 18, 0.1) 30%,
+        rgba(15, 26, 18, 0.4) 70%,
+        rgba(15, 26, 18, 0.8) 100%
+      );
+    }
+    
+    .dark-mode .mist-overlay {
+      background: linear-gradient(
+        180deg,
+        rgba(8, 13, 9, 0.6) 0%,
+        rgba(8, 13, 9, 0.3) 30%,
+        rgba(8, 13, 9, 0.6) 70%,
+        rgba(8, 13, 9, 0.9) 100%
+      );
+    }
+    
+    .light-rays {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(ellipse at 30% 20%, rgba(200, 220, 200, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 30%, rgba(180, 200, 190, 0.1) 0%, transparent 40%);
+      pointer-events: none;
+      animation: raysPulse 8s ease-in-out infinite;
+    }
+    
+    @keyframes raysPulse {
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 1; }
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    @keyframes gentleFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    @keyframes shimmer {
+      0% { background-position: -200% center; }
+      100% { background-position: 200% center; }
+    }
+    
+    .animate-fade-in-up {
+      animation: fadeInUp 1.2s ease-out forwards;
+    }
+    
+    .animate-fade-in {
+      animation: fadeIn 1.5s ease-out forwards;
+    }
+    
+    .animate-float {
+      animation: gentleFloat 6s ease-in-out infinite;
+    }
+    
+    .delay-200 { animation-delay: 0.2s; }
+    .delay-400 { animation-delay: 0.4s; }
+    .delay-600 { animation-delay: 0.6s; }
+    .delay-800 { animation-delay: 0.8s; }
+    .delay-1000 { animation-delay: 1s; }
+    
+    .celtic-border {
+      border: 1px solid rgba(168, 181, 184, 0.3);
+      position: relative;
+    }
+    
+    .celtic-border::before {
+      content: '';
+      position: absolute;
+      top: 4px;
+      left: 4px;
+      right: 4px;
+      bottom: 4px;
+      border: 1px solid rgba(168, 181, 184, 0.15);
+      pointer-events: none;
+    }
+    
+    .glass-card {
+      background: rgba(15, 26, 18, 0.7);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(168, 181, 184, 0.2);
+    }
+    
+    .dark-mode .glass-card {
+      background: rgba(8, 13, 9, 0.85);
+    }
+    
+    .text-shimmer {
+      background: linear-gradient(
+        90deg,
+        rgb(220, 240, 235) 0%,
+        rgba(255, 255, 255, 1) 50%,
+        rgba(220, 240, 235, 0.9) 100%
+      );
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shimmer 4s linear infinite;
+    }
+    
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(168, 181, 184, 0.4) 20%,
+        rgba(168, 181, 184, 0.6) 50%,
+        rgba(168, 181, 184, 0.4) 80%,
+        transparent 100%
+      );
+    }
+    
+    .photo-frame {
+      position: relative;
+      overflow: hidden;
+      border-radius: 4px;
+    }
+    
+    .photo-frame::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border: 1px solid rgba(168, 181, 184, 0.3);
+      border-radius: 4px;
+      pointer-events: none;
+      z-index: 10;
+    }
+    
+    .photo-frame img {
+      transition: transform 0.8s ease, filter 0.8s ease;
+    }
+    
+    .photo-frame:hover img {
+      transform: scale(1.05);
+      filter: brightness(1.1);
+    }
+    
+ .btn-mystic {
+  background: linear-gradient(
+    135deg,
+    #e8c766 0%,
+    #f5e6a8 50%,
+    #d4af37 100%
+  );
+  border: 1px solid rgba(212, 175, 55, 0.9);
+  color: #1a1a1a; /* 🔑 texto oscuro real */
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  transition: all 0.4s ease;
+}
+    
+   .btn-mystic::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent 30%,
+    rgba(255,255,255,0.6) 50%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.btn-mystic:hover::before {
+  opacity: 1;
+}
+
+.btn-mystic:hover {
+  box-shadow: 0 6px 25px rgba(212, 175, 55, 0.45);
+  transform: translateY(-2px);
+}
+    
+    .input-mystic {
+      background: rgba(15, 26, 18, 0.6);
+      border: 1px solid rgba(168, 181, 184, 0.3);
+      transition: all 0.3s ease;
+      color: white;
+    }
+    
+    .input-mystic:focus {
+      background: rgba(15, 26, 18, 0.8);
+      border-color: rgba(42, 125, 138, 0.6);
+      box-shadow: 0 0 0 3px rgba(42, 125, 138, 0.15);
+      outline: none;
+      color: white;
+    }
+    
+    .input-mystic::placeholder {
+      color: rgba(255, 255, 255, 0.5);
+    }
+    
+    .nav-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(168, 181, 184, 0.3);
+      border: 1px solid rgba(168, 181, 184, 0.5);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    
+    .nav-dot.active {
+      background: rgba(42, 125, 138, 0.8);
+      border-color: rgba(42, 125, 138, 1);
+      box-shadow: 0 0 10px rgba(42, 125, 138, 0.5);
+    }
+    
+    .music-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background:  #f5e6a8; /* dorado suave */
+      border: 1px solid rgba(168, 181, 184, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      z-index: 100;
+      backdrop-filter: blur(8px);
+      color: #0c0c0c; /* dorado suave */
+    }
+    .music-icon {
+  filter: drop-shadow(0 0 6px rgba(212, 175, 55, 0.6));
+}
+    .music-btn:hover {
+      background: rgba(42, 125, 138, 0.6);
+      transform: scale(1.1);
+    }
+    
+    .music-btn.playing .music-icon {
+  animation: pulse 1s ease-in-out infinite;
+  filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.9));
+}
+    
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+    
+    .theme-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(15, 26, 18, 0.8);
+      border: 1px solid rgba(168, 181, 184, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      z-index: 100;
+      backdrop-filter: blur(8px);
+      color: white;
+    }
+    
+    .theme-toggle:hover {
+      background: rgba(42, 125, 138, 0.6);
+    }
+    
+    .countdown-item {
+      background: rgba(15, 26, 18, 0.5);
+      border: 1px solid rgba(168, 181, 184, 0.2);
+      backdrop-filter: blur(8px);
+    }
+    
+    .firefly {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: rgba(200, 220, 200, 0.8);
+      border-radius: 50%;
+      box-shadow: 0 0 6px rgba(200, 220, 200, 0.6);
+      animation: fireflyFloat 10s ease-in-out infinite;
+      pointer-events: none;
+    }
+    
+    @keyframes fireflyFloat {
+      0%, 100% {
+        opacity: 0;
+        transform: translate(0, 0);
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      50% {
+        transform: translate(30px, -50px);
+      }
+    }
+    
+    .section-visible {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+    }
+    
+    .section-hidden {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease-out;
+    }
+    
+    /* Lightbox styles */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(8, 13, 9, 0.95);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(10px);
+    }
+    
+    .lightbox.active {
+      display: flex;
+    }
+    
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      object-fit: contain;
+      border-radius: 4px;
+      box-shadow: 0 0 40px rgba(0,0,0,0.5);
+    }
+    
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 44px;
+      height: 44px;
+      background: rgba(168, 181, 184, 0.2);
+      border: 1px solid rgba(168, 181, 184, 0.4);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .lightbox-close:hover {
+      background: rgba(42, 125, 138, 0.6);
+    }
+    
+    /* Form success message */
+    .success-message {
+      background: rgba(42, 125, 138, 0.2);
+      border: 1px solid rgba(42, 125, 138, 0.5);
+      color: #a8d3db;
+      padding: 12px 20px;
+      border-radius: 8px;
+      text-align: center;
+      animation: fadeIn 0.5s ease-out;
+    }
+  .countdown-item {
+  background: rgba(15, 26, 18, 0.35);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  min-width: 88px; /* 👈 más chico en móvil */
+}
+
+@media (min-width: 768px) {
+  .countdown-item {
+    min-width: 110px; /* desktop normal */
+  }
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.countdown-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  max-width: 100%;
+}
+
+.countdown-item {
+  flex: 0 0 auto;
+  width: 78px;          /* 👈 ancho fijo = nunca se rompe */
+  padding: 14px 8px;    /* 👈 menos padding lateral */
+  text-align: center;
+}
+
+.countdown-item span:first-child {
+  line-height: 1;       /* 👈 evita que el número “salte” */
+}
+
+@media (min-width: 768px) {
+  .countdown-item {
+    width: 110px;
+    padding: 20px 12px;
+  }
+}
+
+.countdown-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 12px;
+  max-width: 100%;
+}
+
+.countdown-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  /* 🔑 esto es lo importante */
+  min-width: 80px;
+  box-sizing: border-box;
+}
+
+/* evita que los números se salgan o “salten” */
+.countdown-item span:first-child {
+  line-height: 1;
+  white-space: nowrap;
+}
+
+/* ajuste fino en móvil */
+@media (max-width: 480px) {
+  .countdown-item {
+    padding: 12px 8px;   /* pisa el p-6 en móvil */
+    min-width: 68px;
+  }
+
+  .countdown-item span:first-child {
+    font-size: 2.2rem;  /* equivalente a text-4xl aprox */
+  }
+}
+
+/* Mejora general de legibilidad */
+body {
+  font-size: 18px; /* antes ~16 */
+}
+
+/* Párrafos */
+p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* Textos secundarios */
+.text-white\/60,
+.text-white\/70,
+.\/60 {
+  color: rgba(255,255,255,0.85) !important;
+}
+
+  </style>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full bg-forest-950 text-white font-cormorant">
+  <div id="app-wrapper" class="h-full w-full overflow-auto bg-cover-image relative"><!-- Background overlay -->
+   <div class="fixed inset-0 bg-gradient-to-b from-forest-950/60 via-forest-900/40 to-forest-950/80 pointer-events-none"></div><!-- Fireflies -->
+   <div id="fireflies" class="fixed inset-0 pointer-events-none overflow-hidden"></div><!-- Theme Toggle --> <button id="themeToggle" class="theme-toggle" aria-label="Cambiar tema" style="display: none;">
+    <svg id="sunIcon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+    </svg>
+    <svg id="moonIcon" class="w-5 h-5 " fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+    </svg></button> <!-- Music Button --> <button id="musicBtn" class="music-btn" aria-label="Reproducir música">
+    <svg class="music-icon w-6 h-6 " fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
+    </svg></button> <!-- Navigation dots -->
+   <nav class="fixed left-4 top-1/2 -translate-y-1/2 z-50 hidden md:flex flex-col gap-3"><button class="nav-dot active" data-section="hero" aria-label="Inicio"></button> <button class="nav-dot" data-section="countdown" aria-label="Cuenta regresiva"></button> <button class="nav-dot" data-section="gallery" aria-label="Galería"></button> <button class="nav-dot" data-section="location" aria-label="Ubicación"></button> <button class="nav-dot" data-section="rsvp" aria-label="Confirmación"></button> <button class="nav-dot" data-section="details" aria-label="Detalles"></button>
+   </nav><!-- Main Content -->
+   <main class="relative z-10"><!-- Hero Section -->
+    <section id="hero" class="min-h-screen relative flex items-center justify-center">
+     <div class="hero-bg absolute inset-0"></div>
+     <div class="mist-overlay absolute inset-0"></div>
+     <div class="light-rays"></div>
+     <div class="relative z-10 text-center px-4 py-20">
+      <p class="text-sm tracking-[0.4em] text-white/90 uppercase mb-4 animate-fade-in font-cinzel"></p>
+      <h1 class="font-cinzel text-6xl md:text-8xl lg:text-9xl font-semibold mb-4 animate-fade-in-up"><span class="text-shimmer">XV</span></h1>
+      <p class="text-lg tracking-[0.3em] text-white/80 uppercase mb-8 animate-fade-in delay-200 font-cinzel">Años</p>
+      <div class="animate-fade-in-up delay-400">
+       <p class="text-2xl md:text-3xl text-white/90 mb-2 italic">de</p>
+<h2 id="heroName"
+  class="font-cinzel
+         text-[3.5rem] sm:text-[4.5rem] md:text-[6rem] lg:text-[7.5rem] xl:text-[9rem]
+         font-semibold tracking-widest
+         text-mystic-gold
+         drop-shadow-[0_6px_16px_rgba(212,175,55,0.45)]
+         leading-none">
+  MALENA
+</h2>
+      </div>
+      <div class="mt-12 animate-fade-in-up delay-600">
+       <p class="font-cinzel text-xl md:text-2xl text-white/80 tracking-wide"><span id="heroDate">04 de abril de 2026</span></p>
+      </div>
+      <div class="mt-16 animate-fade-in delay-800"><a href="#countdown" class="inline-flex flex-col items-center text-white/70 hover:text-white transition-colors"> <span class="text-xs tracking-widest uppercase mb-2">Descubre más</span>
+        <svg class="w-6 h-6 animate-float" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+        </svg></a>
+      </div>
+     </div>
+    </section><!-- Countdown Section -->
+    <section id="countdown" class="py-24 px-4 section-hidden">
+     <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-12">
+       <h3 class="font-cinzel text-xl md:text-2xl text-white/80 tracking-wide">Hay historias y personas que no voy a olvidar y recuerdos como este que siempre voy a guardar.
+Porque son parte de mi vida es mi deseo que compartan conmigo en este día tan especial. </h3><br><br>
+       <h3 class="font-cinzel text-3xl md:text-4xl text-white tracking-wide">El momento se acerca</h3>
+       <div class="section-divider w-32 mx-auto"></div>
+      </div>
+  <div class="countdown-wrap">
+       <div class="countdown-item rounded-lg p-6 text-center"><span id="days" class="font-cinzel text-5xl md:text-6xl text-[#f5e6a8] block drop-shadow-lg">00</span> <span class="text-xs tracking-[0.2em] uppercase text-white/90">Días</span>
+       </div>
+       <div class="countdown-item rounded-lg p-6 text-center"><span id="hours" class="font-cinzel text-5xl md:text-6xl text-[#f5e6a8] block drop-shadow-lg">00</span> <span class="text-xs tracking-[0.2em] uppercase text-white/90">Horas</span>
+       </div>
+       <div class="countdown-item rounded-lg p-6 text-center"><span id="minutes" class="font-cinzel text-5xl md:text-6xl text-[#f5e6a8] block drop-shadow-lg">00</span> <span class="text-xs tracking-[0.2em] uppercase text-white/90">Minutos</span>
+       </div>
+       <div class="countdown-item rounded-lg p-6 text-center"><span id="seconds" class="font-cinzel text-5xl md:text-6xl text-[#f5e6a8] block drop-shadow-lg">00</span> <span class="text-xs tracking-[0.2em] uppercase text-white/90">Segundos</span>
+       </div>
+      </div>
+     </div>
+    </section><!-- Gallery Section -->
+    <section id="gallery" class="py-24 px-4 section-hidden">
+     <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-12">
+       <h3 class="font-cinzel text-3xl md:text-4xl text-white tracking-wide text-mystic-gold">Momentos</h3>
+       <div class="section-divider w-32 mx-auto"></div>
+      </div>
+      <div class="grid grid-cols-1 gap-4">
+       <div class="photo-frame aspect-[3/4] cursor-pointer" onclick="openLightbox(0)"><img src="https://invitacionescreativas.github.io/Invitacionesde15/sistemaweb/malena04042026/1.jpeg" alt="Foto de Malena 1" class="w-full h-full object-cover" loading="lazy" onerror="this.style.background='linear-gradient(135deg, #1e3323, #123237)'; this.alt='Imagen no disponible';">
+       </div>
+       
+       <div class="photo-frame aspect-[3/4] cursor-pointer" onclick="openLightbox(2)"><img src="https://invitacionescreativas.github.io/Invitacionesde15/sistemaweb/malena04042026/3.jpeg" alt="Foto de Malena 3" class="w-full h-full object-cover" loading="lazy" onerror="this.style.background='linear-gradient(135deg, #1e3323, #123237)'; this.alt='Imagen no disponible';">
+       </div>
+       <div class="photo-frame aspect-[3/4] cursor-pointer" onclick="openLightbox(3)"><img src="https://invitacionescreativas.github.io/Invitacionesde15/sistemaweb/malena04042026/4.jpeg" alt="Foto de Malena 4" class="w-full h-full object-cover" loading="lazy" onerror="this.style.background='linear-gradient(135deg, #1e3323, #123237)'; this.alt='Imagen no disponible';">
+       </div>
+      </div>
+     </div>
+    </section><!-- Location Section -->
+    <section id="location" class="py-24 px-4 section-hidden">
+     <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-12">
+       <h3 class="font-cinzel text-3xl md:text-4xl text-white tracking-wide text-mystic-gold">El encuentro será en</h3>
+       <div class="section-divider w-32 mx-auto"></div>
+      </div>
+      <div class="glass-card rounded-xl p-6 md:p-8 celtic-border">
+       <div class="text-center mb-6">
+        <p class="text-xl md:text-2xl text-white mb-2 font-cinzel"><span id="locationDate">04 de abril de 2026</span></p>
+        <p class="text-3xl md:text-4xl text-petrol-300 font-cinzel mb-4"><span id="locationTime">21:00 hs</span></p>
+        <p id="locationAddress" class="text-lg text-white/90">Bernardo Irigoyen 1096, Zárate</p>
+       </div>
+       <div class="rounded-lg overflow-hidden border border-mystic-silver/20 mb-6"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3313.8!2d-59.0289!3d-34.0978!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bb0b0a0a0a0a0a%3A0x0!2sBernardo%20Irigoyen%201096%2C%20Z%C3%A1rate!5e0!3m2!1ses!2sar!4v1234567890" width="100%" height="300" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-500"> </iframe>
+       </div>
+       <div class="text-center"><a href="https://maps.google.com/?q=Bernardo+Irigoyen+1096,+Zárate,+Argentina" target="_blank" rel="noopener noreferrer" class="btn-mystic inline-flex items-center gap-2 px-6 py-3 rounded-lg font-cinzel text-sm tracking-wider text-white">
+         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+         </svg> Cómo llegar </a>
+       </div>
+      </div>
+     </div>
+    </section><!-- RSVP Section -->
+    <section id="rsvp" class="py-24 px-4 section-hidden">
+     <div class="max-w-2xl mx-auto">
+      <div class="text-center mb-12">
+       <h3 class="font-cinzel text-3xl md:text-4xl  mb-4 tracking-wide text-mystic-gold">Confirmar Asistencia</h3>
+       <p class="/60 text-sm">Fecha límite: 16 de marzo de 2026</p>
+       <div class="section-divider w-32 mx-auto mt-4"></div>
+      </div>
+      <div class="glass-card rounded-xl p-6 md:p-8 celtic-border">
+       <form id="rsvpForm" class="space-y-6">
+        <div><label for="guestName" class="block text-sm /80 mb-2 font-cinzel tracking-wide"> Nombre y Apellido </label> <input type="text" id="guestName" name="guestName" required class="input-mystic w-full px-4 py-3 rounded-lg " placeholder="Tu nombre completo">
+        </div>
+        <div><label class="block text-sm /80 mb-3 font-cinzel tracking-wide"> ¿Asistirás? </label>
+         <div class="flex gap-4"><label class="flex items-center gap-2 cursor-pointer"> <input type="radio" name="attendance" value="si" required class="w-4 h-4 text-petrol-500 bg-forest-800 border-mystic-silver/30 focus:ring-petrol-500"> <span class="">Sí, asistiré</span> </label> <label class="flex items-center gap-2 cursor-pointer"> <input type="radio" name="attendance" value="no" class="w-4 h-4 text-petrol-500 bg-forest-800 border-mystic-silver/30 focus:ring-petrol-500"> <span class="">No podré asistir</span> </label>
+         </div>
+        </div>
+        <div><label for="guestCount" class="block text-sm /80 mb-2 font-cinzel tracking-wide"> Cantidad de invitados </label> <select id="guestCount" name="guestCount" class="input-mystic w-full px-4 py-3 rounded-lg "> <option value="1">1 persona</option> <option value="2">2 personas</option> <option value="3">3 personas</option> <option value="4">4 personas</option> <option value="5">5 personas</option> </select>
+        </div><button type="submit" class="btn-mystic w-full py-4 rounded-lg font-cinzel text-sm tracking-widest  uppercase"> Confirmar Asistencia </button>
+       </form>
+       <div id="rsvpSuccess" class="hidden mt-4 success-message">
+        ¡Gracias por confirmar! Te esperamos.
+       </div>
+      </div>
+     </div>
+    </section><!-- Song Request Section -->
+    <section id="songs" class="py-24 px-4 section-hidden">
+     <div class="max-w-2xl mx-auto">
+      <div class="text-center mb-12">
+       <h3 class="font-cinzel text-3xl md:text-4xl  mb-4 tracking-wide text-mystic-gold">Sugiere una Canción</h3>
+       <p class="/60">¿Qué canción no puede faltar en la fiesta?</p>
+       <div class="section-divider w-32 mx-auto mt-4"></div>
+      </div>
+      <div class="glass-card rounded-xl p-6 md:p-8 celtic-border">
+       <form id="songForm" class="space-y-6">
+        <div><label for="songName" class="block text-sm /80 mb-2 font-cinzel tracking-wide"> Canción </label> <input type="text" id="songName" name="songName" required class="input-mystic w-full px-4 py-3 rounded-lg " placeholder="Nombre de la canción">
+        </div>
+        <div><label for="artistName" class="block text-sm /80 mb-2 font-cinzel tracking-wide"> Artista </label> <input type="text" id="artistName" name="artistName" class="input-mystic w-full px-4 py-3 rounded-lg " placeholder="Nombre del artista">
+        </div><button type="submit" class="btn-mystic w-full py-4 rounded-lg font-cinzel text-sm tracking-widest  uppercase"> Enviar Sugerencia </button>
+       </form>
+       <div id="songSuccess" class="hidden mt-4 success-message">
+        ¡Gracias por tu sugerencia musical!
+       </div>
+      </div>
+     </div>
+    </section><!-- Dietary Restrictions Section -->
+    <section id="dietary" class="py-24 px-4 section-hidden">
+     <div class="max-w-2xl mx-auto">
+      <div class="text-center mb-12">
+       <h3 class="font-cinzel text-3xl md:text-4xl  mb-4 tracking-wide text-mystic-gold">Restricciones Alimentarias</h3>
+       <p class="/60">Cuéntanos si tenés alguna restricción</p>
+       <div class="section-divider w-32 mx-auto mt-4"></div>
+      </div>
+      <div class="glass-card rounded-xl p-6 md:p-8 celtic-border">
+       <form id="dietaryForm" class="space-y-6">
+        <div><label for="dietaryName" class="block text-sm /80 mb-2 font-cinzel tracking-wide"> Nombre </label> <input type="text" id="dietaryName" name="dietaryName" required class="input-mystic w-full px-4 py-3 rounded-lg " placeholder="Tu nombre">
+        </div>
+        <div><label for="restriction" class="block text-sm /80 mb-2 font-cinzel tracking-wide"> Restricción Alimentaria </label> <textarea id="restriction" name="restriction" rows="3" required class="input-mystic w-full px-4 py-3 rounded-lg  resize-none" placeholder="Ej: Vegetariano, celíaco, alérgico a..."></textarea>
+        </div><button type="submit" class="btn-mystic w-full py-4 rounded-lg font-cinzel text-sm tracking-widest  uppercase"> Enviar Información </button>
+       </form>
+       <div id="dietarySuccess" class="hidden mt-4 success-message">
+        ¡Gracias por informarnos!
+       </div>
+      </div>
+     </div>
+    </section><!-- Details Section -->
+    <section id="details" class="py-24 px-4 section-hidden">
+     <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-12">
+       <h3 class="font-cinzel text-3xl md:text-4xl  mb-4 tracking-wide text-mystic-gold">Información Importante</h3>
+       <div class="section-divider w-32 mx-auto"></div>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6"><!-- Dress Code -->
+       <div class="glass-card rounded-xl p-6 celtic-border">
+        <div class="flex items-center gap-4 mb-4">
+         <div class="w-12 h-12 rounded-full bg-petrol-800/50 flex items-center justify-center">
+          <svg class="w-6 h-6 text-petrol-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+          </svg>
+         </div>
+         <h4 class="font-cinzel text-xl text-mystic-gold">Vestimenta</h4>
+        </div>
+        <p class="/80 mb-3">Código de vestimenta: <span class="text-petrol-400 font-medium">Elegante</span></p>
+        <p class="/60 text-sm italic">Por favor, evitar colores verde y dorado</p>
+       </div><!-- Gifts -->
+       <div class="glass-card rounded-xl p-6 celtic-border">
+        <div class="flex items-center gap-4 mb-4">
+         <div class="w-12 h-12 rounded-full bg-petrol-800/50 flex items-center justify-center">
+          <svg class="w-6 h-6 text-petrol-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" />
+          </svg>
+         </div>
+         <h4 class="font-cinzel text-xl text-mystic-gold" >Regalos</h4>
+        </div>
+        <p class="/80 mb-3">Regalo con cofre disponible en el salón</p>
+        <p class="/60 text-sm">O si preferís, podés hacerlo por CBU</p><button onclick="copyCBU()" class="mt-3 text-petrol-400 text-sm hover:text-petrol-300 transition-colors flex items-center gap-2">
+         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+         </svg> Copiar CBU </button>
+        <div id="cbuCopied" class="hidden mt-2 text-xs text-petrol-400">
+         ¡CBU copiado!
+        </div>
+       </div><!-- Instagram -->
+       <div class="glass-card rounded-xl p-6 celtic-border md:col-span-2">
+        <div class="flex items-center gap-4 mb-4">
+         <div class="w-12 h-12 rounded-full bg-petrol-800/50 flex items-center justify-center">
+          <svg class="w-6 h-6 text-petrol-400" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+          </svg>
+         </div>
+         <div>
+          <h4 class="font-cinzel text-xl text-mystic-gold">Compartí tus fotos</h4>
+          <p class="/60 text-sm">de la fiesta en Instagram</p>
+         </div>
+        </div><a href="https://instagram.com/MALECASTILLOO_" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-petrol-400 hover:text-petrol-300 transition-colors font-cinzel"> <span id="instagramUser">@MALECASTILLOO_</span>
+         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+         </svg></a>
+       </div>
+      </div>
+     </div>
+     <div class="photo-frame aspect-[3/4] cursor-pointer" onclick="openLightbox(1)"><img src="https://invitacionescreativas.github.io/Invitacionesde15/sistemaweb/malena04042026/2.jpeg" alt="Foto de Malena 2" class="w-full h-full object-cover" loading="lazy" onerror="this.style.background='linear-gradient(135deg, #1e3323, #123237)'; this.alt='Imagen no disponible';">
+       </div>
+    </section><!-- Footer -->
+    <footer class="py-12 px-4 text-center">
+     <div class="section-divider w-48 mx-auto mb-8"></div>
+     <p class="font-cinzel text-2xl  mb-2 text-mystic-gold"><span id="footerName">MALENA</span></p>
+     <p class="/60 text-sm tracking-widest">XV AÑOS • <span id="footerDate">04.04.2026</span></p>
+     <p class="/40 text-xs mt-8">Te esperamos ✨</p>
+    </footer>
+   </main><!-- Lightbox -->
+   <div id="lightbox" class="lightbox"><button class="lightbox-close" onclick="closeLightbox()">
+     <svg class="w-6 h-6 " fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" />
+     </svg></button> <img id="lightboxImg" src="" alt="Foto ampliada">
+   </div>
+  </div>
+  <audio id="bgMusic" loop preload="auto"><source src="musica.mp3" type="audio/mpeg">
+  </audio>
+  <script>
+
+    // Default configuration
+    const defaultConfig = {
+      protagonist_name: 'MALENA',
+      event_date: '04 de abril de 2026',
+      event_time: '21:00 hs',
+      event_address: 'Bernardo Irigoyen 1096, Zárate',
+      whatsapp_number: '3489697774',
+      instagram_user: '@MALECASTILLOO_',
+      background_color: '#0f1a12',
+      surface_color: '#1e3323',
+      text_color: '#a8b5b8',
+      primary_action_color: '#2a7d8a',
+      secondary_action_color: '#3a6343'
+    };
+    
+    let config = { ...defaultConfig };
+    
+    // Gallery images
+    const galleryImages = [
+      'https://invitacionescreativas.github.io/Invitacionesde15/sistemaweb/malena04042026/1.jpeg',
+      'https://invitacionescreativas.github.io/Invitacionesde15/sistemaweb/malena04042026/2.jpeg',
+      'https://invitacionescreativas.github.io/Invitacionesde15/sistemaweb/malena04042026/3.jpeg',
+      'https://invitacionescreativas.github.io/Invitacionesde15/sistemaweb/malena04042026/4.jpeg'
+    ];
+    
+    // Initialize Element SDK
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange: async (newConfig) => {
+          config = { ...config, ...newConfig };
+          updateUI();
+        },
+        mapToCapabilities: (cfg) => ({
+          recolorables: [
+            {
+              get: () => cfg.background_color || defaultConfig.background_color,
+              set: (value) => {
+                cfg.background_color = value;
+                window.elementSdk.setConfig({ background_color: value });
+              }
+            },
+            {
+              get: () => cfg.surface_color || defaultConfig.surface_color,
+              set: (value) => {
+                cfg.surface_color = value;
+                window.elementSdk.setConfig({ surface_color: value });
+              }
+            },
+            {
+              get: () => cfg.text_color || defaultConfig.text_color,
+              set: (value) => {
+                cfg.text_color = value;
+                window.elementSdk.setConfig({ text_color: value });
+              }
+            },
+            {
+              get: () => cfg.primary_action_color || defaultConfig.primary_action_color,
+              set: (value) => {
+                cfg.primary_action_color = value;
+                window.elementSdk.setConfig({ primary_action_color: value });
+              }
+            },
+            {
+              get: () => cfg.secondary_action_color || defaultConfig.secondary_action_color,
+              set: (value) => {
+                cfg.secondary_action_color = value;
+                window.elementSdk.setConfig({ secondary_action_color: value });
+              }
+            }
+          ],
+          borderables: [],
+          fontEditable: undefined,
+          fontSizeable: undefined
+        }),
+        mapToEditPanelValues: (cfg) => new Map([
+          ['protagonist_name', cfg.protagonist_name || defaultConfig.protagonist_name],
+          ['event_date', cfg.event_date || defaultConfig.event_date],
+          ['event_time', cfg.event_time || defaultConfig.event_time],
+          ['event_address', cfg.event_address || defaultConfig.event_address],
+          ['whatsapp_number', cfg.whatsapp_number || defaultConfig.whatsapp_number],
+          ['instagram_user', cfg.instagram_user || defaultConfig.instagram_user]
+        ])
+      });
+    }
+   
+    
+    function updateUI() {
+      // Update text content
+      const heroName = document.getElementById('heroName');
+      if (heroName) heroName.textContent = config.protagonist_name || defaultConfig.protagonist_name;
+      
+      const heroDate = document.getElementById('heroDate');
+      if (heroDate) heroDate.textContent = config.event_date || defaultConfig.event_date;
+      
+      const locationDate = document.getElementById('locationDate');
+      if (locationDate) locationDate.textContent = config.event_date || defaultConfig.event_date;
+      
+      const locationTime = document.getElementById('locationTime');
+      if (locationTime) locationTime.textContent = config.event_time || defaultConfig.event_time;
+      
+      const locationAddress = document.getElementById('locationAddress');
+      if (locationAddress) locationAddress.textContent = config.event_address || defaultConfig.event_address;
+      
+      const instagramUser = document.getElementById('instagramUser');
+      if (instagramUser) instagramUser.textContent = config.instagram_user || defaultConfig.instagram_user;
+      
+      const footerName = document.getElementById('footerName');
+      if (footerName) footerName.textContent = config.protagonist_name || defaultConfig.protagonist_name;
+      
+      const footerDate = document.getElementById('footerDate');
+      if (footerDate) {
+        const date = config.event_date || defaultConfig.event_date;
+        footerDate.textContent = date.replace(/ de /g, '.').replace(/ /g, '.');
+      }
+      
+      // Update colors
+      document.documentElement.style.setProperty('--bg-color', config.background_color || defaultConfig.background_color);
+      document.documentElement.style.setProperty('--surface-color', config.surface_color || defaultConfig.surface_color);
+      document.documentElement.style.setProperty('--text-color', config.text_color || defaultConfig.text_color);
+      document.documentElement.style.setProperty('--primary-action', config.primary_action_color || defaultConfig.primary_action_color);
+      document.documentElement.style.setProperty('--secondary-action', config.secondary_action_color || defaultConfig.secondary_action_color);
+    }
+    
+    // Countdown Timer
+    function updateCountdown() {
+      const eventDate = new Date('2026-04-04T21:00:00-03:00');
+      const now = new Date();
+      const diff = eventDate - now;
+      
+      if (diff > 0) {
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+        
+        document.getElementById('days').textContent = String(days).padStart(2, '0');
+        document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+        document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+        document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+      }
+    }
+    
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+    
+    // Theme Toggle
+    let isDarkMode = false;
+    const themeToggle = document.getElementById('themeToggle');
+    const sunIcon = document.getElementById('sunIcon');
+    const moonIcon = document.getElementById('moonIcon');
+    
+    themeToggle.addEventListener('click', () => {
+      isDarkMode = !isDarkMode;
+      document.body.classList.toggle('dark-mode', isDarkMode);
+      sunIcon.classList.toggle('hidden', !isDarkMode);
+      moonIcon.classList.toggle('hidden', isDarkMode);
+    });
+    
+    // Music Control
+    const musicBtn = document.getElementById('musicBtn');
+    const bgMusic = document.getElementById('bgMusic');
+    let isPlaying = false;
+    
+    musicBtn.addEventListener('click', () => {
+      if (isPlaying) {
+        bgMusic.pause();
+        musicBtn.classList.remove('playing');
+      } else {
+        bgMusic.play().catch(() => {
+          // Audio autoplay blocked, user needs to interact first
+        });
+        musicBtn.classList.add('playing');
+      }
+      isPlaying = !isPlaying;
+    });
+    
+    // Lightbox
+    function openLightbox(index) {
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightboxImg');
+      lightboxImg.src = galleryImages[index];
+      lightbox.classList.add('active');
+    }
+    
+    function closeLightbox() {
+      const lightbox = document.getElementById('lightbox');
+      lightbox.classList.remove('active');
+    }
+    
+    document.getElementById('lightbox').addEventListener('click', (e) => {
+      if (e.target === e.currentTarget) {
+        closeLightbox();
+      }
+    });
+    
+    // Form submissions via WhatsApp
+    const whatsappNumber = config.whatsapp_number || defaultConfig.whatsapp_number;
+    
+    document.getElementById('rsvpForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('guestName').value;
+      const attendance = document.querySelector('input[name="attendance"]:checked').value;
+      const count = document.getElementById('guestCount').value;
+      
+      const message = `*Confirmación XV Años Malena*%0A%0ANombre: ${name}%0AAsistencia: ${attendance === 'si' ? 'Sí, asistiré' : 'No podré asistir'}%0ACantidad: ${count} persona(s)`;
+      
+      window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
+      
+      document.getElementById('rsvpSuccess').classList.remove('hidden');
+      e.target.reset();
+      
+      setTimeout(() => {
+        document.getElementById('rsvpSuccess').classList.add('hidden');
+      }, 5000);
+    });
+    
+    document.getElementById('songForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const song = document.getElementById('songName').value;
+      const artist = document.getElementById('artistName').value;
+      
+      const message = `*Sugerencia Musical XV Años Malena*%0A%0ACanción: ${song}%0AArtista: ${artist || 'No especificado'}`;
+      
+      window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
+      
+      document.getElementById('songSuccess').classList.remove('hidden');
+      e.target.reset();
+      
+      setTimeout(() => {
+        document.getElementById('songSuccess').classList.add('hidden');
+      }, 5000);
+    });
+    
+    document.getElementById('dietaryForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('dietaryName').value;
+      const restriction = document.getElementById('restriction').value;
+      
+      const message = `*Restricción Alimentaria XV Años Malena*%0A%0ANombre: ${name}%0ARestricción: ${restriction}`;
+      
+      window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
+      
+      document.getElementById('dietarySuccess').classList.remove('hidden');
+      e.target.reset();
+      
+      setTimeout(() => {
+        document.getElementById('dietarySuccess').classList.add('hidden');
+      }, 5000);
+    });
+    
+    // Copy CBU
+    function copyCBU() {
+      const cbu = '0000003100079366402296'; // Replace with actual CBU
+      navigator.clipboard.writeText(cbu).then(() => {
+        const copied = document.getElementById('cbuCopied');
+        copied.classList.remove('hidden');
+        setTimeout(() => copied.classList.add('hidden'), 3000);
+      });
+    }
+    
+    // Navigation dots
+    const navDots = document.querySelectorAll('.nav-dot');
+    navDots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        const section = document.getElementById(dot.dataset.section);
+        if (section) {
+          section.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+    
+    // Intersection Observer for scroll animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('section-visible');
+          
+          // Update nav dots
+          const sectionId = entry.target.id;
+          navDots.forEach(dot => {
+            dot.classList.toggle('active', dot.dataset.section === sectionId);
+          });
+        }
+      });
+    }, observerOptions);
+    
+    document.querySelectorAll('section').forEach(section => {
+      observer.observe(section);
+    });
+    
+    // Create fireflies
+    function createFireflies() {
+      const container = document.getElementById('fireflies');
+      const count = 15;
+      
+      for (let i = 0; i < count; i++) {
+        const firefly = document.createElement('div');
+        firefly.className = 'firefly';
+        firefly.style.left = Math.random() * 100 + '%';
+        firefly.style.top = Math.random() * 100 + '%';
+        firefly.style.animationDelay = Math.random() * 10 + 's';
+        firefly.style.animationDuration = (8 + Math.random() * 6) + 's';
+        container.appendChild(firefly);
+      }
+    }
+    
+    createFireflies();
+    
+    // Initial UI update
+    updateUI();
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9d07c58024a4b181',t:'MTc3MTUyNTE1Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+<script>
+  const sections = document.querySelectorAll('section');
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('section-visible');
+          entry.target.classList.remove('section-hidden');
+        } else {
+          // 👇 si querés animación de salida, dejalo
+          entry.target.classList.remove('section-visible');
+          entry.target.classList.add('section-hidden');
+        }
+      });
+    },
+    {
+      threshold: 0.18, // cuándo se activa (18% visible)
+      rootMargin: '0px 0px -10% 0px'
+    }
+  );
+
+  sections.forEach(section => {
+    if (!section.classList.contains('section-hidden')) {
+      section.classList.add('section-hidden');
+    }
+    observer.observe(section);
+  });
+</script>
+
+
+</body>
+</html>
