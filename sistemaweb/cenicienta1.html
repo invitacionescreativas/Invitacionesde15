@@ -1,0 +1,1079 @@
+<!doctype html>
+<html lang="es" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mis XV Años - Valentina</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Parisienne&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --primary-blue: #4169E1;
+      --sky-blue: #87CEEB;
+      --pearl-white: #F8F6F0;
+      --silver: #C0C0C0;
+      --gold-accent: #7e7e7e;
+      --dark-blue: #1a1a3e;
+      --night-blue: #0d0d2b;
+      
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      transition: background-color 0.8s ease, color 0.8s ease;
+      background: linear-gradient(180deg, #e8f4fc 0%, #f8f6f0 50%, #e8e8e8 100%);
+      color: #2c3e50;
+    }
+
+    body.dark-mode {
+      background: linear-gradient(180deg, #0d0d2b 0%, #1a1a3e 50%, #0d0d2b 100%);
+      color: #f0f0f0;
+    }
+
+    .app-wrapper {
+      width: 100%;
+      height: 100%;
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+
+    .font-elegant {
+  font-family: "Cinzel", serif;
+      font-weight: 400;
+    }
+
+    .font-serif {
+       font-family: "Libre Baskerville", serif;
+  font-weight: 400;
+    }
+
+    /* PORTADA SECTION */
+    .portada-section {
+      background-image: url('https://invitacionescreativas.github.io/Invitacionesde15/sistemaweb/portadacenicienta.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      position: relative;
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    body.light-mode .portada-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, 
+        rgba(135, 206, 235, 0.25) 0%, 
+        rgba(248, 246, 240, 0.35) 50%, 
+        rgba(135, 206, 235, 0.4) 100%);
+    }
+
+   body.dark-mode .portada-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, 
+    rgba(26, 26, 62, 0.55) 0%, 
+    rgba(13, 13, 43, 0.65) 50%, 
+    rgba(26, 26, 62, 0.6) 100%);
+}
+
+    .portada-content {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    /* GLOW EFFECTS */
+    .glow-text {
+      text-shadow: 0 0 25px rgba(65, 105, 225, 0.7),
+                   0 0 50px rgba(65, 105, 225, 0.5),
+                   0 0 75px rgba(65, 105, 225, 0.3);
+      animation: glowPulse 3.5s ease-in-out infinite;
+    }
+
+    body.dark-mode .glow-text {
+      text-shadow: 0 0 30px rgba(100, 149, 237, 1),
+                   0 0 60px rgba(100, 149, 237, 0.8),
+                   0 0 90px rgba(65, 105, 225, 0.6),
+                   0 0 120px rgba(255, 215, 0, 0.3);
+    }
+
+    @keyframes glowPulse {
+      0%, 100% { filter: brightness(1) drop-shadow(0 0 15px rgba(65, 105, 225, 0.6)); }
+      50% { filter: brightness(1.15) drop-shadow(0 0 30px rgba(65, 105, 225, 0.9)); }
+    }
+
+    /* SPARKLE ANIMATION */
+    .sparkle-container {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .sparkle {
+      position: absolute;
+      background: radial-gradient(circle, rgba(255,255,255,0.9) 0%, transparent 70%);
+      border-radius: 50%;
+      box-shadow: 0 0 8px rgba(85, 85, 84, 0.6);
+      animation: sparkleFloat 4s ease-in-out infinite;
+    }
+
+    @keyframes sparkleFloat {
+      0% { 
+        opacity: 0;
+        transform: translateY(40px) translateX(0) scale(0);
+      }
+      50% { 
+        opacity: 1;
+        transform: translateY(-40px) translateX(20px) scale(1);
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(-80px) translateX(-10px) scale(0);
+      }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+    }
+
+    .float-animation {
+      animation: float 4s ease-in-out infinite;
+    }
+
+    /* SECTIONS STYLING */
+    .section-padding {
+      width: 100%;
+      padding: 60px 20px;
+    }
+
+    @media (min-width: 768px) {
+      .section-padding {
+        padding: 80px 40px;
+      }
+    }
+
+    .section-content {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .gradient-section-1 {
+       position: relative;
+  background-image:
+    linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.384),
+      rgba(220, 235, 255, 0.445),
+      rgba(200, 220, 255, 0.37)
+    ),
+    url("https://invitacionescreativas.github.io/Invitacionesde15/sistemaweb/fondo_celeste_cenicienta.jpg");
+    
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+    }
+
+    .gradient-section-2 {
+      background: linear-gradient(180deg, #e8f4fc 0%, #f0f4f8 50%, #f8f6f0 100%);
+    }
+
+    body.dark-mode .gradient-section-1 {
+      background: linear-gradient(180deg, #1a1a3e 0%, #0d0d2b 100%);
+    }
+
+    body.dark-mode .gradient-section-2 {
+      background: linear-gradient(180deg, #0d0d2b 0%, #1a1a3e 50%, #0d0d2b 100%);
+    }
+
+    /* SCROLL REVEAL */
+  .reveal-item {
+  opacity: 0;
+  transform: translateY(60px) scale(0.97);
+  transition:
+    opacity 0.9s ease,
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-item.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+    /* TITLE STYLING */
+    .section-title {
+      font-family: "Libre Baskerville", serif;
+      font-size: 2.5rem;
+      color: var(--primary-blue);
+      margin-bottom: 20px;
+      transition-delay: 0.15s;
+    }
+
+    @media (min-width: 768px) {
+      .section-title {
+        font-size: 3.5rem;
+      }
+    }
+
+    /* DECORATIVE LINE */
+    .divider-line {
+      width: 100px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold-accent), transparent);
+      margin: 0 auto 30px;
+    }
+
+    /* GALLERY */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .photo-frame {
+      position: relative;
+      aspect-ratio: 1;
+      border-radius: 12px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.7);
+      border: 2px solid rgba(65, 105, 225, 0.2);
+      transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+      box-shadow: 0 8px 25px rgba(65, 105, 225, 0.15);
+      cursor: pointer;
+    }
+
+    .photo-frame:hover {
+      transform: translateY(-8px) scale(1.03);
+      box-shadow: 0 15px 40px rgba(65, 105, 225, 0.3);
+      border-color: rgba(65, 105, 225, 0.5);
+    }
+
+    body.dark-mode .photo-frame {
+      background: rgba(26, 26, 62, 0.8);
+      border-color: rgba(100, 149, 237, 0.3);
+      box-shadow: 0 8px 25px rgba(100, 149, 237, 0.2);
+    }
+
+    body.dark-mode .photo-frame:hover {
+      box-shadow: 0 15px 40px rgba(100, 149, 237, 0.4);
+      border-color: rgba(100, 149, 237, 0.6);
+    }
+
+    .photo-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, rgba(135, 206, 235, 0.25) 0%, rgba(212, 175, 55, 0.15) 100%);
+      color: rgba(65, 105, 225, 0.4);
+    }
+
+    body.dark-mode .photo-placeholder {
+      background: linear-gradient(135deg, rgba(65, 105, 225, 0.25) 0%, rgba(100, 149, 237, 0.15) 100%);
+      color: rgba(100, 149, 237, 0.3);
+    }
+
+    /* EVENT DETAILS */
+    .event-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 40px;
+      margin: 40px 0;
+    }
+
+    .event-item {
+      text-align: center;
+      padding: 30px 20px;
+    }
+
+    .event-icon {
+      width: 70px;
+      height: 70px;
+      margin: 0 auto 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .event-icon svg {
+      stroke: var(--primary-blue);
+      filter: drop-shadow(0 2px 4px rgba(65, 105, 225, 0.2));
+    }
+
+    body.dark-mode .event-icon svg {
+      stroke: rgba(100, 149, 237, 0.8);
+      filter: drop-shadow(0 2px 6px rgba(100, 149, 237, 0.3));
+    }
+
+    /* FORM STYLING */
+    .form-group {
+      margin-bottom: 25px;
+    }
+
+    .form-label {
+      display: block;
+    font-family: "Libre Baskerville", serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: var(--primary-blue);
+    }
+
+    body.dark-mode .form-label {
+      color: rgba(100, 149, 237, 0.9);
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 16px 18px;
+      border: 2px solid rgba(65, 105, 225, 0.3);
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.95);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 16px;
+      color: #2c3e50;
+      transition: all 0.3s ease;
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: var(--primary-blue);
+      box-shadow: 0 0 20px rgba(65, 105, 225, 0.3);
+      background: rgba(255, 255, 255, 1);
+    }
+
+    body.dark-mode .form-input {
+      background: rgba(26, 26, 62, 0.9);
+      border-color: rgba(100, 149, 237, 0.4);
+      color: #f0f0f0;
+    }
+
+    body.dark-mode .form-input:focus {
+      border-color: rgba(100, 149, 237, 0.8);
+      box-shadow: 0 0 20px rgba(100, 149, 237, 0.4);
+      background: rgba(26, 26, 62, 1);
+    }
+
+    /* BUTTONS */
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary-blue) 0%, var(--sky-blue) 100%);
+      color: white;
+      padding: 16px 40px;
+      border-radius: 50px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      box-shadow: 0 6px 20px rgba(65, 105, 225, 0.3);
+      width: 100%;
+      margin-top: 10px;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 35px rgba(65, 105, 225, 0.5);
+    }
+
+    .btn-primary:active {
+      transform: translateY(-1px);
+    }
+
+    body.dark-mode .btn-primary {
+      box-shadow: 0 6px 20px rgba(100, 149, 237, 0.4);
+    }
+
+    body.dark-mode .btn-primary:hover {
+      box-shadow: 0 10px 35px rgba(100, 149, 237, 0.6);
+    }
+
+    .btn-whatsapp {
+      background: linear-gradient(135deg, #040c88 0%, #121e8c 100%);
+      color: white;
+      padding: 18px 50px;
+      border-radius: 50px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      font-size: 18px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .btn-whatsapp:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(37, 211, 102, 0.6);
+    }
+
+    /* STICKY CONTROLS */
+    .sticky-controls {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .control-btn {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+      background: linear-gradient(135deg, var(--primary-blue), var(--sky-blue));
+    }
+
+    .theme-btn {
+      background: linear-gradient(135deg, #616161, #3f3f3f) !important;
+    }
+
+    body.dark-mode .theme-btn {
+      background: linear-gradient(135deg, var(--primary-blue), var(--sky-blue)) !important;
+    }
+
+    .control-btn:hover {
+      transform: scale(1.12);
+      box-shadow: 0 6px 22px rgba(65, 105, 225, 0.5);
+    }
+
+    .control-btn svg {
+      filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.2));
+    }
+
+    /* LOCATION FRAME */
+    .location-frame {
+      border: 3px solid rgba(212, 175, 55, 0.4);
+      border-radius: 20px;
+      padding: 40px;
+      background: rgba(255, 255, 255, 0.6);
+      position: relative;
+    }
+
+    body.dark-mode .location-frame {
+      border-color: rgba(100, 149, 237, 0.4);
+      background: rgba(26, 26, 62, 0.6);
+    }
+
+    .location-corners {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+    }
+
+    .corner-image {
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      opacity: 0.5;
+      transition: opacity 0.3s ease;
+    }
+
+    .corner-tl { top: -15px; left: -15px; }
+    .corner-tr { top: -15px; right: -15px; transform: scaleX(-1); }
+    .corner-bl { bottom: -15px; left: -15px; transform: scaleY(-1); }
+    .corner-br { bottom: -15px; right: -15px; transform: scale(-1); }
+
+    /* FOOTER */
+    .footer-section {
+      background: linear-gradient(180deg, #f8f6f0 0%, #e8f4fc 100%);
+      text-align: center;
+      padding: 60px 20px;
+      border-top: 2px solid rgba(212, 175, 55, 0.2);
+    }
+
+    body.dark-mode .footer-section {
+      background: linear-gradient(180deg, #1a1a3e 0%, #0d0d2b 100%);
+      border-top-color: rgba(100, 149, 237, 0.2);
+    }
+
+    /* SUCCESS MESSAGE */
+    .success-message {
+      display: none;
+      text-align: center;
+      padding: 30px;
+      animation: slideIn 0.6s ease;
+    }
+
+    .success-message.show {
+      display: block;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .sticky-controls {
+        top: 12px;
+        right: 12px;
+      }
+
+      .control-btn {
+        width: 44px;
+        height: 44px;
+        font-size: 20px;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+
+      .section-padding {
+        padding: 40px 16px;
+      }
+
+      .location-frame {
+        padding: 25px 20px;
+      }
+
+      .corner-image {
+        width: 45px;
+        height: 45px;
+      }
+    }
+    .decorative-separator {
+  display: flex;
+  justify-content: center;
+  margin: 60px 0;
+}
+
+.decorative-separator img {
+  max-width: 220px;
+  width: 100%;
+  opacity: 0.6;
+  filter: drop-shadow(0 0 20px rgba(41, 41, 41, 0.35));
+  animation: float 6s ease-in-out infinite;
+}
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 22px;
+}
+
+.photo-frame {
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+  aspect-ratio: 3 / 4;
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,0.08),
+    rgba(255,255,255,0.02)
+  );
+  box-shadow:
+    0 0 25px rgba(210,215,220,0.35),
+    inset 0 0 15px rgba(255,255,255,0.15);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: brightness(1.02) contrast(1.05);
+}
+
+.photo-frame:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow:
+    0 0 40px rgba(210,215,220,0.6),
+    inset 0 0 18px rgba(255,255,255,0.25);
+}
+  </style>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="light-mode">
+  <div class="app-wrapper" id="app-wrapper">
+   <!-- STICKY CONTROLS -->
+   <div class="sticky-controls">
+    <button class="control-btn music-btn" id="musicBtn" aria-label="Toggle Music" title="Música">
+     <svg width="24" height="24" viewbox="0 0 24 24" fill="white"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z" />
+     </svg></button> <button class="control-btn theme-btn" id="themeBtn" aria-label="Toggle Theme" title="Tema">
+     <svg width="24" height="24" viewbox="0 0 24 24" fill="white" id="themeIcon"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z" />
+     </svg></button>
+   </div><!-- 1. PORTADA -->
+   <section class="portada-section" id="portada">
+    <div class="sparkle-container" id="sparkles-portada"></div>
+    <div class="portada-content">
+  
+     <p class="font-serif text-sm md:text-lg tracking-widest mb-4" style="color: #505050; letter-spacing: 3px;">MIS XV AÑOS</p>
+     <h1 class="font-elegant text-6xl md:text-8xl glow-text mb-6" id="quinceaneraName">Valentina</h1>
+     <div class="divider-line"></div>
+     <p class="font-serif text-lg md:text-2xl italic opacity-85 max-w-2xl mx-auto leading-relaxed">"Un sueño es un deseo que tu corazón hace..."</p><!-- Scroll indicator -->
+     <div class="mt-16 animate-bounce">
+      <svg width="30" height="30" viewbox="0 0 24 24" fill="currentColor" class="mx-auto opacity-60"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
+      </svg>
+     </div>
+    </div>
+   </section><!-- 3. FRASE ESPECIAL -->
+   <section class="section-padding gradient-section-2">
+    <div class="section-content">
+     <div class="reveal-item">
+      <div class="text-center mb-10">
+       <svg class="mx-auto mb-6" width="60" height="60" viewbox="0 0 60 60" fill="none">
+        <path d="M30 8L37 25H55L40 36L47 53L30 42L13 53L20 36L5 25H23L30 8Z" fill="rgba(212, 175, 55, 0.25)" stroke="var(--primary-blue)" stroke-width="1.5" />
+       </svg>
+      </div>
+      <h2 class="section-title text-center">Una Invitación Especial</h2>
+      <div class="divider-line"></div>
+     
+      <p class="font-serif text-lg md:text-xl leading-relaxed opacity-90 text-center max-w-3xl mx-auto" id="specialPhrase">"Cada sueño que guardas en tu corazón, cada deseo que pides a una estrella, puede hacerse realidad si crees con todo tu ser. Hoy comienza mi cuento de hadas, y quiero que seas parte de esta historia mágica."</p>
+     </div>
+    </div>
+   </section><!-- 5. DETALLES DEL EVENTO -->
+   <section class="section-padding gradient-section-1" >
+    <div class="section-content">
+     <div class="reveal-item">
+      <h2 class="section-title text-center">Detalles del Evento</h2>
+      <div class="divider-line"></div>
+      <div class="event-grid">
+       <!-- Fecha -->
+       <div class="event-item reveal-item">
+        <div class="event-icon">
+         <svg width="70" height="70" viewbox="0 0 70 70" fill="none">
+          <rect x="10" y="18" width="50" height="38" rx="4" stroke-width="2" fill="none" /> <path d="M10 30H60" stroke-width="2" /> <path d="M20 10V20" stroke-width="2" stroke-linecap="round" /> <path d="M50 10V20" stroke-width="2" stroke-linecap="round" /> <circle cx="25" cy="40" r="3" fill="currentColor" /> <circle cx="35" cy="40" r="3" fill="currentColor" /> <circle cx="45" cy="40" r="3" fill="currentColor" /> <circle cx="25" cy="50" r="3" fill="currentColor" /> <circle cx="35" cy="50" r="3" fill="currentColor" />
+         </svg>
+        </div>
+        <h3 class="font-serif text-xl font-semibold mb-2">Fecha</h3>
+        <p class="font-serif text-lg opacity-80" id="eventDate">Sábado 15 de Marzo, 2025</p>
+       </div><!-- Hora -->
+       <div class="event-item reveal-item" style="transition-delay: 0.1s;">
+        <div class="event-icon">
+         <svg width="70" height="70" viewbox="0 0 70 70" fill="none">
+          <circle cx="35" cy="35" r="28" stroke-width="2" fill="none" /> <path d="M35 15V35L50 50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> <circle cx="35" cy="35" r="4" fill="currentColor" />
+         </svg>
+        </div>
+        <h3 class="font-serif text-xl font-semibold mb-2">Hora</h3>
+        <p class="font-serif text-lg opacity-80" id="eventTime">7:00 PM</p>
+       </div><!-- Lugar -->
+       <div class="event-item reveal-item" style="transition-delay: 0.2s;">
+        <div class="event-icon">
+         <svg width="70" height="70" viewbox="0 0 70 70" fill="none">
+          <path d="M35 10C22 10 12 20 12 32C12 50 35 62 35 62C35 62 58 50 58 32C58 20 48 10 35 10Z" stroke-width="2" fill="none" /> <circle cx="35" cy="32" r="8" stroke-width="2" fill="none" />
+         </svg>
+        </div>
+        <h3 class="font-serif text-xl font-semibold mb-2">Lugar</h3>
+        <p class="font-serif text-lg opacity-80" id="eventVenue">Salón Real de Cristal</p>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- 6. UBICACIÓN -->
+   <section class="section-padding gradient-section-2">
+      <div class="decorative-separator">
+  <img src="https://pngimg.com/uploads/cinderella/cinderella_PNG15.png" alt="Decoración Cenicienta">
+</div>
+    <div class="section-content">
+     <div class="reveal-item mb-12">
+      <h2 class="section-title text-center">Ubicación</h2>
+      <div class="divider-line"></div>
+     </div>
+     <div class="location-frame reveal-item relative">
+    
+      <div class="text-center py-12 px-4 relative z-10">
+       <div class="mb-8 float-animation">
+        <svg width="80" height="80" viewbox="0 0 80 80" fill="none">
+         <path d="M40 8C25 8 13 20 13 35C13 55 40 72 40 72C40 72 67 55 67 35C67 20 55 8 40 8Z" stroke="var(--primary-blue)" stroke-width="2.5" fill="rgba(65, 105, 225, 0.1)" /> <circle cx="40" cy="35" r="12" stroke="var(--primary-blue)" stroke-width="2.5" fill="rgba(65, 105, 225, 0.15)" /> <circle cx="40" cy="35" r="5" fill="var(--primary-blue)" />
+        </svg>
+       </div>
+       <p class="font-serif text-2xl md:text-3xl font-semibold mb-6" id="venueAddress">Av. de los Sueños #15, Ciudad Encantada</p><a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" class="btn-primary inline-flex justify-center items-center gap-3 max-w-xs">
+        <svg width="22" height="22" viewbox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+        </svg> Ver en Google Maps </a>
+      </div>
+     </div>
+    </div>
+   </section><!-- 7. CONFIRMACIÓN DE ASISTENCIA -->
+   
+   <section class="section-padding gradient-section-2">
+       <div class="decorative-separator">
+  <img src="https://invitacionescreativas.github.io/Invitacionesde15/sistemaweb/carruaje.png" alt="Decoración Cenicienta">
+</div>
+    <div class="section-content max-w-2xl">
+     <div class="reveal-item">
+      <h2 class="section-title text-center">Confirma tu Asistencia</h2>
+      <div class="divider-line"></div>
+      <p class="font-serif text-lg text-center opacity-80 mb-10">Tu presencia hará este día aún más especial</p>
+      <form id="rsvpForm" onsubmit="handleRSVP(event)" class="space-y-6">
+       <div class="form-group">
+        <label class="form-label" for="guestName">Nombre Completo</label> <input type="text" id="guestName" name="guestName" class="form-input" placeholder="Tu nombre" required>
+       </div>
+       <div class="form-group">
+        <label class="form-label" for="guestCount">Número de Personas</label> <select id="guestCount" name="guestCount" class="form-input" required> <option value="">Selecciona</option> <option value="1">1 persona</option> <option value="2">2 personas</option> <option value="3">3 personas</option> <option value="4">4 personas</option> <option value="5">5 personas</option> </select>
+       </div><button type="submit" class="btn-primary">Confirmar Asistencia</button>
+      </form>
+      <div id="rsvpSuccess" class="success-message text-center py-10">
+       <svg class="mx-auto mb-6" width="70" height="70" viewbox="0 0 70 70" fill="none">
+        <circle cx="35" cy="35" r="30" stroke="var(--primary-blue)" stroke-width="2.5" fill="rgba(65, 105, 225, 0.1)" /> <path d="M25 35L32 42L50 24" stroke="var(--primary-blue)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+       </svg>
+       <p class="font-serif text-2xl font-semibold mb-2">¡Gracias por confirmar!</p>
+       <p class="font-serif text-lg opacity-80">Te esperamos con mucha ilusión</p>
+      </div>
+     </div>
+    </div>
+   </section><!-- 8. RESTRICCIÓN ALIMENTARIA -->
+   <section class="section-padding gradient-section-2">
+    <div class="section-content max-w-2xl">
+     <div class="reveal-item">
+      <div class="text-center mb-10">
+       <svg class="mx-auto mb-6" width="60" height="60" viewbox="0 0 60 60" fill="none">
+        <circle cx="30" cy="15" r="8" stroke="var(--gold-accent)" stroke-width="2" fill="rgba(212, 175, 55, 0.15)" /> <path d="M15 30L30 25L45 30L40 45H20L15 30Z" stroke="var(--gold-accent)" stroke-width="2" fill="rgba(212, 175, 55, 0.1)" /> <path d="M20 35V48C20 50 22 52 25 52H35C38 52 40 50 40 48V35" stroke="var(--gold-accent)" stroke-width="2" fill="none" />
+       </svg>
+      </div>
+      <h2 class="section-title text-center">Restricciones Alimentarias</h2>
+      <div class="divider-line"></div>
+      <p class="font-serif text-lg text-center opacity-80 mb-10">¿Tienes alguna alergia o restricción alimentaria?</p>
+      <form onsubmit="handleDietary(event)" class="space-y-6">
+       <div class="form-group">
+        <label class="form-label" for="dietaryRestrictions">Cuéntanos</label> <textarea id="dietaryRestrictions" name="dietaryRestrictions" rows="4" class="form-input" placeholder="Ejemplo: Soy vegetariana, alergia a mariscos, intolerancia al gluten..."></textarea>
+       </div><button type="submit" class="btn-primary">Enviar Información</button>
+      </form>
+     </div>
+    </div>
+   </section><!-- 9. SUGERENCIA DE CANCIONES -->
+   <section class="section-padding gradient-section-1">
+    <div class="section-content max-w-2xl">
+     <div class="reveal-item">
+      <div class="text-center mb-10">
+       <svg class="mx-auto mb-6 float-animation" width="65" height="65" viewbox="0 0 65 65" fill="none">
+        <circle cx="20" cy="50" r="10" stroke="var(--primary-blue)" stroke-width="2.5" fill="rgba(65, 105, 225, 0.1)" /> <circle cx="50" cy="40" r="10" stroke="var(--primary-blue)" stroke-width="2.5" fill="rgba(65, 105, 225, 0.1)" /> <path d="M30 50V18L58 10V40" stroke="var(--primary-blue)" stroke-width="2.5" fill="none" stroke-linecap="round" /> <path d="M30 20L58 15" stroke="var(--primary-blue)" stroke-width="2.5" stroke-linecap="round" />
+       </svg>
+      </div>
+      <h2 class="section-title text-center">Sugiere una Canción</h2>
+      <div class="divider-line"></div>
+      <p class="font-serif text-lg text-center opacity-80 mb-10">¿Qué canción te gustaría escuchar en la fiesta?</p>
+      <form onsubmit="handleSong(event)" class="space-y-6">
+       <div class="form-group">
+        <label class="form-label" for="songName">Nombre de la Canción</label> <input type="text" id="songName" name="songName" class="form-input" placeholder="Nombre de la canción">
+       </div>
+       <div class="form-group">
+        <label class="form-label" for="artistName">Artista</label> <input type="text" id="artistName" name="artistName" class="form-input" placeholder="Nombre del artista">
+       </div><button type="submit" class="btn-primary">Sugerir Canción</button>
+      </form>
+     </div>
+    </div>
+   </section>
+   <!-- 4. GALERÍA DE FOTOS -->
+   <section class="section-padding gradient-section-2"> 
+  <div class="section-content">
+
+    <div class="reveal-item mb-12">
+      <h2 class="section-title text-center">Momentos Mágicos</h2>
+      <div class="divider-line"></div>
+    </div>
+
+    <div class="gallery-grid">
+
+      <div class="photo-frame reveal-item">
+        <img src="https://invitacionescreativas.github.io/Invitacionesde15/sistemaweb/ejemplo1.jpg" alt="Momento mágico 1">
+      </div>
+
+      <div class="photo-frame reveal-item" style="transition-delay: 0.1s;">
+        <img src="https://invitacionescreativas.github.io/Invitacionesde15/sistemaweb/ejemplo2.jpg" alt="Momento mágico 2">
+      </div>
+
+      <div class="photo-frame reveal-item" style="transition-delay: 0.2s;">
+        <img src="https://invitacionescreativas.github.io/Invitacionesde15/sistemaweb/ejemplo3.webp" alt="Momento mágico 3">
+      </div>
+
+      <div class="photo-frame reveal-item" style="transition-delay: 0.3s;">
+        <img src="https://invitacionescreativas.github.io/Invitacionesde15/sistemaweb/ejemplo4.webp" alt="Momento mágico 4">
+      </div>
+
+      <div class="photo-frame reveal-item" style="transition-delay: 0.4s;">
+        <img src="https://invitacionescreativas.github.io/Invitacionesde15/sistemaweb/ejemplo5.webp" alt="Momento mágico 5">
+      </div>
+
+      <div class="photo-frame reveal-item" style="transition-delay: 0.5s;">
+        <img src="https://invitacionescreativas.github.io/Invitacionesde15/sistemaweb/ejemplo6.jpg" alt="Momento mágico 6">
+      </div>
+
+    </div>
+  </div>
+</section>
+   
+   <!-- 10. ENVÍO DE FOTOS -->
+   <section class="section-padding gradient-section-2">
+    <div class="section-content max-w-2xl text-center">
+     <div class="reveal-item">
+      <div class="mb-10">
+       <svg class="mx-auto" width="90" height="90" viewbox="0 0 90 90" fill="none">
+        <rect x="12" y="18" width="66" height="52" rx="8" stroke="var(--primary-blue)" stroke-width="2.5" fill="rgba(65, 105, 225, 0.08)" /> <circle cx="32" cy="45" r="12" stroke="var(--primary-blue)" stroke-width="2.5" fill="rgba(65, 105, 225, 0.1)" /> <path d="M12 60L32 42L52 58L78 38V66C78 70.4 74.4 74 70 74H20C15.6 74 12 70.4 12 66V60Z" fill="rgba(65, 105, 225, 0.12)" /> <circle cx="65" cy="32" r="6" fill="var(--gold-accent)" opacity="0.8" />
+       </svg>
+      </div>
+      <h2 class="section-title text-center">Comparte tus Fotos</h2>
+      <div class="divider-line"></div>
+      <p class="font-serif text-lg opacity-80 mb-12 max-w-xl mx-auto">¿Tienes fotos especiales de nosotras? Envíalas por WhatsApp para incluirlas en la celebración</p><a href="https://wa.me/521234567890?text=Hola!%20Quiero%20enviar%20fotos%20para%20los%20XV%20de%20Valentina" target="_blank" rel="noopener noreferrer" class="btn-whatsapp">
+       <svg width="26" height="26" viewbox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+       </svg> Enviar Fotos por WhatsApp </a>
+     </div>
+    </div>
+   </section><!-- FOOTER -->
+   <footer class="footer-section">
+    <div class="section-content reveal-item">
+     <svg class="mx-auto mb-8" width="70" height="55" viewbox="0 0 120 85" fill="none" style="filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.6));">
+      <defs>
+       <lineargradient id="footerCrownGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+        <stop offset="100%" style="stop-color:#DAA520;stop-opacity:1" />
+       </lineargradient>
+      </defs> <path d="M60 12L54 55H66L60 12Z" stroke="url(#footerCrownGrad)" stroke-width="2" fill="rgba(218, 165, 32, 0.15)" /> <path d="M35 28L31 52H39L35 28Z" stroke="url(#footerCrownGrad)" stroke-width="1.5" fill="rgba(218, 165, 32, 0.12)" /> <path d="M85 28L89 52H81L85 28Z" stroke="url(#footerCrownGrad)" stroke-width="1.5" fill="rgba(218, 165, 32, 0.12)" /> <circle cx="60" cy="16" r="3.5" fill="#FFD700" />
+     </svg>
+     <p class="font-elegant text-4xl md:text-5xl mb-4" style="color: var(--primary-blue);" id="footerName">Valentina</p>
+     <p class="font-serif text-lg opacity-70">Mis XV Años • 2025</p>
+    </div>
+   </footer>
+  </div>
+  <script>
+    // Default Configuration
+    const defaultConfig = {
+      quinceañera_name: 'Valentina',
+      event_date: 'Sábado 15 de Marzo, 2025',
+      event_time: '7:00 PM',
+      event_venue: 'Salón Real de Cristal',
+      venue_address: 'Av. de los Sueños #15, Ciudad Encantada',
+      special_phrase: '"Cada sueño que guardas en tu corazón, cada deseo que pides a una estrella, puede hacerse realidad si crees con todo tu ser. Hoy comienza mi cuento de hadas, y quiero que seas parte de esta historia mágica."',
+      whatsapp_number: '+52 123 456 7890',
+      primary_color: '#4169E1',
+      font_family: 'Great Vibes',
+      font_size: 16
+    };
+
+    let isDarkMode = false;
+    let isMusicPlaying = false;
+
+    // Create Sparkles
+    function createSparkles(containerId, count = 25) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+      
+      container.innerHTML = '';
+      
+      for (let i = 0; i < count; i++) {
+        const sparkle = document.createElement('div');
+        sparkle.className = 'sparkle';
+        sparkle.style.left = Math.random() * 100 + '%';
+        sparkle.style.top = Math.random() * 100 + '%';
+        sparkle.style.animationDelay = Math.random() * 4 + 's';
+        sparkle.style.width = (Math.random() * 5 + 2) + 'px';
+        sparkle.style.height = sparkle.style.width;
+        container.appendChild(sparkle);
+      }
+    }
+
+    // Initialize Sparkles
+    createSparkles('sparkles-portada', 35);
+
+    // Scroll Reveal Handler
+    function handleScrollAnimations() {
+      const elements = document.querySelectorAll('.reveal-item');
+      
+      elements.forEach(element => {
+        const rect = element.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+        
+        if (rect.top < windowHeight * 0.85) {
+          element.classList.add('visible');
+        }
+      });
+    }
+
+    // Scroll Listeners
+    document.getElementById('app-wrapper').addEventListener('scroll', handleScrollAnimations);
+    window.addEventListener('scroll', handleScrollAnimations);
+    setTimeout(handleScrollAnimations, 200);
+
+    // Theme Toggle
+    document.getElementById('themeBtn').addEventListener('click', function() {
+      isDarkMode = !isDarkMode;
+      document.body.classList.toggle('dark-mode', isDarkMode);
+      document.body.classList.toggle('light-mode', !isDarkMode);
+      
+      const themeIcon = document.getElementById('themeIcon');
+      if (isDarkMode) {
+        themeIcon.innerHTML = '<circle cx="12" cy="12" r="5" fill="white"/><g stroke="white" stroke-width="2" stroke-linecap="round"><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></g>';
+      } else {
+        themeIcon.innerHTML = '<path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z" fill="white"/>';
+      }
+    });
+
+    // Music Toggle
+    document.getElementById('musicBtn').addEventListener('click', function() {
+      isMusicPlaying = !isMusicPlaying;
+      this.style.opacity = isMusicPlaying ? '1' : '0.7';
+    });
+
+    // Form Handlers
+    function handleRSVP(e) {
+      e.preventDefault();
+      const form = document.getElementById('rsvpForm');
+      const success = document.getElementById('rsvpSuccess');
+      
+      form.style.display = 'none';
+      success.classList.add('show');
+    }
+
+    function handleDietary(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('button');
+      const originalText = btn.textContent;
+      btn.textContent = '¡Información enviada!';
+      btn.disabled = true;
+      setTimeout(() => {
+        btn.textContent = originalText;
+        btn.disabled = false;
+        e.target.reset();
+      }, 2500);
+    }
+
+    function handleSong(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('button');
+      const originalText = btn.textContent;
+      btn.textContent = '¡Canción sugerida!';
+      btn.disabled = true;
+      setTimeout(() => {
+        btn.textContent = originalText;
+        btn.disabled = false;
+        e.target.reset();
+      }, 2500);
+    }
+
+    // Element SDK Initialization
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig: defaultConfig,
+        onConfigChange: async (config) => {
+          // Update quinceañera name
+          const nameEl = document.getElementById('quinceaneraName');
+          if (nameEl) nameEl.textContent = config.quinceañera_name || defaultConfig.quinceañera_name;
+          
+          const footerNameEl = document.getElementById('footerName');
+          if (footerNameEl) footerNameEl.textContent = config.quinceañera_name || defaultConfig.quinceañera_name;
+          
+          // Update event details
+          const dateEl = document.getElementById('eventDate');
+          if (dateEl) dateEl.textContent = config.event_date || defaultConfig.event_date;
+          
+          const timeEl = document.getElementById('eventTime');
+          if (timeEl) timeEl.textContent = config.event_time || defaultConfig.event_time;
+          
+          const venueEl = document.getElementById('eventVenue');
+          if (venueEl) venueEl.textContent = config.event_venue || defaultConfig.event_venue;
+          
+          const addressEl = document.getElementById('venueAddress');
+          if (addressEl) addressEl.textContent = config.venue_address || defaultConfig.venue_address;
+          
+          const phraseEl = document.getElementById('specialPhrase');
+          if (phraseEl) phraseEl.textContent = config.special_phrase || defaultConfig.special_phrase;
+        },
+        mapToCapabilities: (config) => ({
+          recolorables: [
+            {
+              get: () => config.primary_color || defaultConfig.primary_color,
+              set: (value) => {
+                config.primary_color = value;
+                window.elementSdk.setConfig({ primary_color: value });
+              }
+            }
+          ],
+          borderables: [],
+          fontEditable: {
+            get: () => config.font_family || defaultConfig.font_family,
+            set: (value) => {
+              config.font_family = value;
+              window.elementSdk.setConfig({ font_family: value });
+            }
+          },
+          fontSizeable: {
+            get: () => config.font_size || defaultConfig.font_size,
+            set: (value) => {
+              config.font_size = value;
+              window.elementSdk.setConfig({ font_size: value });
+            }
+          }
+        }),
+        mapToEditPanelValues: (config) => new Map([
+          ['quinceañera_name', config.quinceañera_name || defaultConfig.quinceañera_name],
+          ['event_date', config.event_date || defaultConfig.event_date],
+          ['event_time', config.event_time || defaultConfig.event_time],
+          ['event_venue', config.event_venue || defaultConfig.event_venue],
+          ['venue_address', config.venue_address || defaultConfig.venue_address],
+          ['special_phrase', config.special_phrase || defaultConfig.special_phrase],
+          ['whatsapp_number', config.whatsapp_number || defaultConfig.whatsapp_number]
+        ])
+      });
+    }
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9d0e57bb3005b5f0',t:'MTc3MTU5NDA2MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();
+
+    document.addEventListener("DOMContentLoaded", () => {
+    const revealItems = document.querySelectorAll(".reveal-item");
+
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          } else {
+            entry.target.classList.remove("visible"); 
+          }
+        });
+      },
+      {
+        threshold: 0.15
+      }
+    );
+
+    revealItems.forEach(item => observer.observe(item));
+  });
+ </script></body>
+</html>
