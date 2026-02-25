@@ -714,7 +714,8 @@ function copyUsdCbu() {
 
 
 
-function enviarPlaylist() {
+function enviarPlaylist(event) {
+  event.preventDefault(); // ✅ evita envío doble del formulario
 
   const nombre = document.getElementById("userName").value.trim();
   const recomendacion = document.getElementById("whatsappMessage").value.trim();
@@ -724,10 +725,13 @@ function enviarPlaylist() {
     return;
   }
 
-const formData = new FormData();
-formData.append("tipo", "playlist");
-formData.append("nombre", nombre);
-formData.append("recomendacion", recomendacion);
+  const boton = document.getElementById("botonplay1");
+  boton.disabled = true; // ✅ evita doble clic
+
+  const formData = new FormData();
+  formData.append("tipo", "playlist");
+  formData.append("nombre", nombre);
+  formData.append("recomendacion", recomendacion);
 
   fetch("https://script.google.com/macros/s/AKfycbx0TNqT43Tg5iB7p2RFf1usFha_3R3zwuUebEk7rBh7xJ8gt7Ps2EvwekneLGu3T0Rong/exec", {
     method: "POST",
@@ -738,19 +742,22 @@ formData.append("recomendacion", recomendacion);
     alert("🎧 ¡Recomendación enviada!");
     document.getElementById("userName").value = "";
     document.getElementById("whatsappMessage").value = "";
+    boton.disabled = false; // ✅ vuelve a habilitar el botón
   })
   .catch(() => {
     alert("❌ Error al enviar");
+    boton.disabled = false;
   });
 }
 
-// Ambos botones hacen lo mismo
 document.getElementById("botonplay1").addEventListener("click", enviarPlaylist);
-
-
 </script>
 <script>
-    document.getElementById("botoncito1").addEventListener("click", function () {
+  document.getElementById("botoncito1").addEventListener("click", function(event) {
+  event.preventDefault(); // ✅ evita doble envío
+
+  const boton = document.getElementById("botoncito1");
+  boton.disabled = true; // ✅ evita doble clic
 
   const asistencia = document.querySelector('input[name="attendanceOption"]:checked');
   const nombre = document.getElementById("userFullName").value.trim();
@@ -758,19 +765,21 @@ document.getElementById("botonplay1").addEventListener("click", enviarPlaylist);
 
   if (!asistencia) {
     alert("Por favor confirmá si asistís o no");
+    boton.disabled = false;
     return;
   }
 
   if (nombre === "") {
     alert("Por favor ingresá tu nombre y apellido");
+    boton.disabled = false;
     return;
   }
 
   const formData = new FormData();
-formData.append("tipo", "confirmacion");
-formData.append("asistencia", asistencia.value);
-formData.append("nombre", nombre);
-formData.append("mensaje", mensaje);
+  formData.append("tipo", "confirmacion");
+  formData.append("asistencia", asistencia.value);
+  formData.append("nombre", nombre);
+  formData.append("mensaje", mensaje);
 
   fetch("https://script.google.com/macros/s/AKfycbx0TNqT43Tg5iB7p2RFf1usFha_3R3zwuUebEk7rBh7xJ8gt7Ps2EvwekneLGu3T0Rong/exec", {
     method: "POST",
@@ -782,21 +791,27 @@ formData.append("mensaje", mensaje);
     document.getElementById("userFullName").value = "";
     document.getElementById("customMessage").value = "";
     asistencia.checked = false;
+    boton.disabled = false;
   })
   .catch(() => {
     alert("❌ Error al enviar la confirmación");
+    boton.disabled = false;
   });
-
 });
 </script>
 <script>
-document.getElementById("botonRestriccion").addEventListener("click", function () {
+document.getElementById("botonRestriccion").addEventListener("click", function(event) {
+  event.preventDefault(); // ✅ evita doble envío
+
+  const boton = document.getElementById("botonRestriccion");
+  boton.disabled = true;
 
   const nombre = document.getElementById("foodName").value.trim();
   const restriccion = document.getElementById("foodRestriction").value.trim();
 
   if (nombre === "" || restriccion === "") {
     alert("Por favor completá tu nombre y la restricción alimentaria 🍽️");
+    boton.disabled = false;
     return;
   }
 
@@ -814,11 +829,12 @@ document.getElementById("botonRestriccion").addEventListener("click", function (
     alert("💛 ¡Gracias por avisarnos!");
     document.getElementById("foodName").value = "";
     document.getElementById("foodRestriction").value = "";
+    boton.disabled = false;
   })
   .catch(() => {
     alert("❌ Error al enviar la información");
+    boton.disabled = false;
   });
-
 });
 </script>
 </body></html>
