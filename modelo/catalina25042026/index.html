@@ -679,7 +679,7 @@ document.getElementById("botoncito1").addEventListener("click", function() {
   const boton = document.getElementById("botoncito1");
   const asistencia = document.querySelector('input[name="attendanceOption"]:checked');
   const nombre = document.getElementById("userFullName");
-  const mensaje = document.getElementById("customMessage");
+
 
   if (!asistencia) {
     alert("Seleccioná si asistís 💌");
@@ -695,13 +695,13 @@ document.getElementById("botoncito1").addEventListener("click", function() {
   boton.disabled = true;
   boton.innerText = "Enviando...";
 
-  fetch("https://script.google.com/macros/s/AKfycbwVECUWTIyYTNrK1G6BF2EqMYYx5aLbliotD3a23xLJed2n6ZYDYC2wjTpMSn5TDPgEig/exec", {
+  fetch("https://script.google.com/macros/s/AKfycbzAjog4n-LW7AwDdBo2lmCvZX4yvrph6nGBxPe3kGQsBwb6qGeR-rEP4AIjLFYEznlpNw/exec", {
     method: "POST",
     body: JSON.stringify({
       tipo: "confirmacion",
       asistencia: asistencia.value,
-      nombre: nombre.value.trim(),
-      mensaje: mensaje.value.trim()
+      nombre: nombre.value.trim()
+  
     })
   })
   .then(res => res.json())
@@ -709,7 +709,7 @@ document.getElementById("botoncito1").addEventListener("click", function() {
 
     // 🧹 Limpia TODO
     nombre.value = "";
-    mensaje.value = "";
+ 
     document.querySelectorAll('input[name="attendanceOption"]').forEach(r => r.checked = false);
 
     alert("✨ Confirmación enviada con éxito");
