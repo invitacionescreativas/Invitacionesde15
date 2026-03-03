@@ -198,6 +198,13 @@ header {
     overflow: hidden;
 }
 
+.img__separador {
+  display: block;
+  width: 80%;
+  max-width: 450px; /* controla que no sea gigante */
+  height: auto;
+  margin: 3em auto;
+}
 .nav {
     --state-open: scale(1);
     --state-close: scale(0);
