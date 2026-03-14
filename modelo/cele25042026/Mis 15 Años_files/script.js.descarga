@@ -203,7 +203,7 @@ function copyCbuText() {
 
 document.addEventListener('DOMContentLoaded', function () {
 
-  const phoneNumber = '54576446531';
+  const phoneNumber = '543576446531';
 
   function sendMessage() {
     const message = document.getElementById('whatsappMessage').value.trim();
@@ -391,7 +391,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 document.addEventListener('DOMContentLoaded', function () {
 
-  const phoneNumber = '54576446531';
+  const phoneNumber = '543576446531';
 
   function sendMessage() {
     const userName = document.getElementById('userFullName').value.trim();
@@ -434,7 +434,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 document.addEventListener('DOMContentLoaded', function () {
 
-  const phoneNumber = '54576446531';
+  const phoneNumber = '543576446531';
 
   function sendFoodRestriction() {
     const fullName = document.getElementById('foodFullName').value.trim();
