@@ -383,7 +383,7 @@ function enviarConfirmacion() {
     let mensajeExtra = document.getElementById("customMessage").value;
 
     // Número fijo al que siempre se enviará
-    let telefono = "3426600840";
+    let telefono = "543426600840";
 
     // Validar si se seleccionó asistencia
     let radios = document.querySelector('input[name="attendanceOption"]:checked');
