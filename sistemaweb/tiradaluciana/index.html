@@ -1,1 +1,513 @@
+<!doctype html>
+<html lang="es" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mis XV - Tirada</title>
+  <meta property="og:title" content="Tirada - Luciana">
+<meta property="og:description" content="Estás invitado a una noche inolvidable ✨">
+<meta property="og:image" content="https://invitacionescreativas.github.io/Invitacionesde15/sistemaweb/tiradaluciana/miniatura.png">
+<meta property="og:url" content="https://invitacionescreativas.github.io/Invitacionesde15/sistemaweb/tiradaluciana">
+<meta property="og:type" content="website">
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&amp;family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&amp;family=Playfair+Display:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet">
+  <script>
+tailwind.config={theme:{extend:{colors:{bordo:'#80211d',bordoLight:'#8B1A3A',bordoDark:'#4A0A1E',gold:'#ffffff',goldLight:'#E8C97A'},fontFamily:{dancing:['"Dancing Script"','cursive'],cormorant:['"Cormorant Garamond"','serif'],playfair:['"Playfair Display"','serif']}}}}
+</script>
+  <style>
+@keyframes sparkle{0%,100%{opacity:0;transform:scale(0)}50%{opacity:1;transform:scale(1)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+@keyframes slideReveal{from{clip-path:inset(0 0 100% 0)}to{clip-path:inset(0 0 0 0)}}
+@keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
+@keyframes pulse-glow{0%,100%{box-shadow:0 0 20px rgba(212,168,83,0.3)}50%{box-shadow:0 0 40px rgba(212,168,83,0.6)}}
+.sparkle-container{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.sparkle{position:absolute;width:4px;height:4px;background:radial-gradient(circle,#ffffff,transparent);border-radius:50%;animation:sparkle var(--dur) var(--delay) infinite}
+.fade-up{opacity:0;transform:translateY(40px);transition:all 0.8s cubic-bezier(0.22,1,0.36,1)}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+.ornament-border{position:relative;border:2px solid rgba(212,168,83,0.3);border-radius:12px}
+.ornament-border::before,.ornament-border::after{content:'❦';position:absolute;color:rgba(212,168,83,0.4);font-size:24px}
+.ornament-border::before{top:-14px;left:50%;transform:translateX(-50%)}
+.ornament-border::after{bottom:-14px;left:50%;transform:translateX(-50%) rotate(180deg)}
+.watermark-text{position:absolute;font-family:'Dancing Script',cursive;font-size:120px;color:rgba(255,255,255,0.04);pointer-events:none;white-space:nowrap;transform:rotate(-15deg);z-index:0}
+.gallery-track{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:20px 0}
+.gallery-track::-webkit-scrollbar{display:none}
+.gallery-item{flex:0 0 280px;scroll-snap-align:center;border-radius:12px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,0.2);transition:transform 0.3s}
+.gallery-item:hover{transform:scale(1.03)}
+.shimmer-btn{background:linear-gradient(90deg,transparent,rgba(255,255,255,0.2),transparent);background-size:200% 100%;animation:shimmer 3s infinite}
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:100;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.3s}
+.modal-overlay.active{opacity:1;pointer-events:all}
+.section-ornament{background-image:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 5 Q35 15 45 15 Q35 15 35 25 Q35 15 30 5' fill='none' stroke='rgba(212,168,83,0.1)' stroke-width='1'/%3E%3C/svg%3E");background-repeat:repeat}
+html,body{margin:0;padding:0;overflow-x:hidden}
+</style>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full bg-bordoDark" style="font-family:'Cormorant Garamond',serif"><!-- WELCOME SCREEN -->
+  <div id="welcomeScreen" class="fixed inset-0 z-50 flex flex-col items-center justify-center" style="background:linear-gradient(135deg,#4A0A1E 0%,#80211d 40%,#8B1A3A 70%,#80211d 100%)">
+   <div class="sparkle-container" id="welcomeSparkles"></div>
+   <div style="animation:float 3s ease-in-out infinite">
+    <p id="welMainTitle" class="text-white text-2xl tracking-widest mb-2 text-center" style="font-family:'Cormorant Garamond',serif;letter-spacing:0.3em;font-weight:300">MIS XV</p>
+    <h1 id="welName" class="text-white text-center" style="font-family:'Dancing Script',cursive;font-size:clamp(3rem,10vw,6rem);line-height:1.1;text-shadow:0 0 40px rgba(212,168,83,0.4)">Tirada</h1>
+    <div class="flex items-center justify-center gap-4 mt-4">
+     <div class="h-px w-16 bg-gradient-to-r from-transparent to-gold"></div><span class="text-gold text-2xl">✦</span>
+     <div class="h-px w-16 bg-gradient-to-l from-transparent to-gold"></div>
+    </div>
+   </div><button id="openBtn" onclick="openInvitation()" class="mt-12 px-10 py-3 border-2 border-gold text-white rounded-full tracking-widest text-sm relative overflow-hidden transition-all duration-300 hover:bg-gold hover:bg-opacity-20" style="font-family:'Cormorant Garamond',serif;letter-spacing:0.2em;animation:pulse-glow 2s infinite"> <span class="relative z-10">ABRIR LA INVITACIÓN</span>
+    <div class="shimmer-btn absolute inset-0"></div></button>
+  </div><!-- MUSIC CONTROL --> <button id="musicBtn" onclick="toggleMusic()" class="fixed top-4 right-4 z-40 w-12 h-12 rounded-full bg-bordo bg-opacity-80 backdrop-blur-sm border border-gold border-opacity-30 text-white flex items-center justify-center shadow-lg transition-all hover:bg-opacity-100" style="display:none"> <i data-lucide="volume-2" id="musicIcon" style="width:20px;height:20px"></i> </button> <!-- MAIN CONTENT -->
+  <div id="mainContent" style="display:none" class="w-full"><!-- PORTADA -->
+   <section class="relative w-full flex items-center justify-center overflow-hidden" style="min-height:500px;background:linear-gradient(135deg,#4A0A1E,#80211d)"><img src="portada.png" alt="Portada XV Tirada" loading="lazy" class="w-full h-full object-cover absolute inset-0" onerror="this.style.display='none'">
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-bordoDark"></div>
+   </section><!-- FRASE SECTION -->
+   <section class="relative overflow-hidden py-20 px-6 text-center section-ornament" style="background:linear-gradient(180deg,#80211d,#8B1A3A,#80211d)">
+    <div class="sparkle-container" id="sparkles1"></div>
+    <div class="watermark-text" style="top:20%;left:-10%">
+     XV Años
+    </div>
+    <div class="watermark-text" style="top:50%;right:-10%">
+     Tirada
+    </div>
+    <div class="relative z-10 max-w-lg mx-auto fade-up">
+     <div class="ornament-border p-8">
+      <p id="eventPhrase" class="text-white text-xl leading-relaxed italic" style="font-family:'Cormorant Garamond',serif;font-weight:300">"Llevamos mucho tiempo preparando con carino este evento tan especial. 
+        Queremos que sea una ocasión  para disfrutar y celebrar. Esperamos contar con todos ustedes en este gran día."</p>
+     </div>
+     <div class="flex items-center justify-center gap-3 mt-8">
+      <div class="h-px w-20 bg-gold opacity-40"></div><span class="text-gold">❦</span>
+      <div class="h-px w-20 bg-gold opacity-40"></div>
+     </div>
+    </div>
+   </section><!-- CELEBRACIÓN -->
+   
+   
+   <section class="relative py-16 px-6" style="background:linear-gradient(180deg,#ffffff,#ffffff)">
+    <div class="sparkle-container" id="sparkles2"></div>
+    <div class="max-w-lg mx-auto text-center">
+     <h2 class="fade-up text-gold text-lg tracking-widest mb-2" style="font-family:'Cormorant Garamond',serif;letter-spacing:0.3em;font-weight:300">— LA —</h2>
+     <h2 class="fade-up text-bordo mb-8" style="font-family:'Dancing Script',cursive;font-size:clamp(2.2rem,7vw,3.5rem)">Celebración</h2>
+     <div class="fade-up ornament-border p-6 mb-6" style="background:rgba(255,255,255,0.03)"><i data-lucide="map-pin" class="mx-auto mb-3 text-gold" style="width:28px;height:28px"></i>
+       <p id="salonAddress" class="text-bordo text-lg" style="font-family:'Cormorant Garamond',serif">14 de Abril de 2026<br>21:00HS</p>
+        <p id="salonAddress" class="text-bordo text-lg" style="font-family:'Cormorant Garamond',serif">Salón de Eventos<br>
+       
+       La  Tranquera I - Mathus Hoyos 1126, Bermejo Guaymallén</p>
+     </div>
+     <div class="fade-up rounded-xl overflow-hidden mb-6 shadow-2xl" style="max-height:220px">
+        <img src="salon.jpeg" alt="Salón de eventos" loading="lazy" class="w-full h-full object-cover" style="min-height:200px;background:linear-gradient(135deg,#8B1A3A,#ffffff)" onerror="this.style.background='linear-gradient(135deg,#8B1A3A 0%,#4A0A1E 100%)';this.alt='Salón de eventos'">
+     </div><a href="https://maps.app.goo.gl/4GHj42x1FJYcB7FUA" target="_blank" rel="noopener noreferrer" class="fade-up inline-flex items-center gap-2 px-8 py-3 bg-bordo text-white rounded-full border border-gold border-opacity-30 tracking-wider text-sm transition-all hover:bg-bordoLight" style="font-family:'Cormorant Garamond',serif;letter-spacing:0.15em"> <i data-lucide="navigation" style="width:16px;height:16px"></i> VER UBICACIÓN </a>
+    </div>
+   </section>
+   
+   <!-- CONFIRMAR ASISTENCIA -->
+   <section class="relative py-16 px-6" style="background:linear-gradient(180deg,#4A0A1E,#80211d)">
+    <div class="sparkle-container" id="sparkles3"></div>
+    <div class="max-w-lg mx-auto text-center">
+     <h2 class="fade-up text-white mb-2" style="font-family:'Dancing Script',cursive;font-size:clamp(2rem,6vw,3rem)">Confirmar Asistencia</h2>
+     <div class="fade-up flex items-center justify-center gap-3 mb-6">
+      <div class="h-px w-16 bg-gold opacity-40"></div><span class="text-gold text-sm">✦</span>
+      <div class="h-px w-16 bg-gold opacity-40"></div>
+     </div>
+     <p id="confirmText" class="fade-up text-white text-lg mb-8 opacity-80" style="font-family:'Cormorant Garamond',serif;font-weight:300">Por favor, confirmá tu asistencia para que podamos organizar todo de la mejor manera.</p>
+     <button onclick="document.getElementById('confirmModal').classList.add('active')" 
+class="fade-up inline-flex items-center gap-2 px-10 py-3 bg-white text-bordo rounded-full tracking-wider text-sm font-semibold transition-all hover:shadow-lg hover:shadow-gold/20">
+<i data-lucide="check-circle" style="width:18px;height:18px"></i> 
+CONFIRMAR ASISTENCIA
+</button>
+    </div>
+   </section><!-- GALERÍA -->
+   <section class="py-16 px-6 bg-white">
+    <div class="max-w-3xl mx-auto">
+     <h2 class="fade-up text-bordo text-center mb-2" style="font-family:'Dancing Script',cursive;font-size:clamp(2rem,6vw,3rem)">Algunas Fotos</h2>
+     <div class="fade-up flex items-center justify-center gap-3 mb-8">
+      <div class="h-px w-16 bg-bordo opacity-30"></div><span class="text-gold text-sm">✦</span>
+      <div class="h-px w-16 bg-bordo opacity-30"></div>
+     </div>
+     <div class="fade-up gallery-track px-4">
+      <div class="gallery-item">
+       <img src="foto1.jpeg" alt="Foto 1" loading="lazy" class="w-full" style="height:350px;object-fit:cover;background:linear-gradient(135deg,#f3e8ee,#e8c97a)" onerror="this.style.background='linear-gradient(135deg,#f3e8ee,#e8c97a)';this.alt='Foto'">
+      </div>
+      <div class="gallery-item">
+       <img src="foto2.jpeg" alt="Foto 2" loading="lazy" class="w-full" style="height:350px;object-fit:cover;background:linear-gradient(135deg,#f3e8ee,#e8c97a)" onerror="this.style.background='linear-gradient(135deg,#f3e8ee,#e8c97a)';this.alt='Foto'">
+      </div>
+      <div class="gallery-item">
+       <img src="foto3.jpeg" alt="Foto 3" loading="lazy" class="w-full" style="height:350px;object-fit:cover;background:linear-gradient(135deg,#f3e8ee,#e8c97a)" onerror="this.style.background='linear-gradient(135deg,#f3e8ee,#e8c97a)';this.alt='Foto'">
+      </div>
+      <div class="gallery-item">
+       <img src="foto4.jpeg" alt="Foto 4" loading="lazy" class="w-full" style="height:350px;object-fit:cover;background:linear-gradient(135deg,#f3e8ee,#e8c97a)" onerror="this.style.background='linear-gradient(135deg,#f3e8ee,#e8c97a)';this.alt='Foto'">
+      </div>
+       </div>
+    </div>
+   </section><!-- SOBRE EL EVENTO -->
+   <section class="relative py-16 px-6" style="background:linear-gradient(180deg,#80211d,#8B1A3A)">
+    <div class="sparkle-container" id="sparkles4"></div>
+    <div class="max-w-lg mx-auto text-center">
+     <h2 class="fade-up text-white mb-2" style="font-family:'Dancing Script',cursive;font-size:clamp(2rem,6vw,3rem)">Sobre el Evento</h2>
+     <div class="fade-up flex items-center justify-center gap-3 mb-6">
+      <div class="h-px w-16 bg-gold opacity-40"></div><span class="text-gold text-sm">✦</span>
+      <div class="h-px w-16 bg-gold opacity-40"></div>
+     </div>
+     <p class="fade-up text- text-white mb-10 opacity-80 italic" style="font-family:'Cormorant Garamond',serif;font-weight:300">"Queremos que esta noche sea inolvidable para todos. Aquí te dejamos algunos detalles importantes."</p><!-- Restricción Alimentaria -->
+     <div class="fade-up bg-white rounded-xl p-6 mb-6 text-left shadow-lg">
+      <div class="flex items-center gap-3 mb-3"><i data-lucide="utensils" class="text-bordo" style="width:22px;height:22px"></i>
+       <h3 class="text-bordo text-xl font-semibold" style="font-family:'Dancing Script',cursive">Restricción Alimentaria</h3>
+      </div>
+      <p class="text-gray-600 text-sm mb-4" style="font-family:'Cormorant Garamond',serif">¿Tenés alguna restricción alimentaria? Contanos para que podamos preparar algo especial para vos.</p><button onclick="document.getElementById('foodModal').classList.add('active')" class="w-full py-2.5 bg-bordo text-white rounded-lg text-sm tracking-wider transition-all hover:bg-bordoLight" style="font-family:'Cormorant Garamond',serif;letter-spacing:0.1em"> INFORMAR RESTRICCIÓN </button>
+     </div><!-- Vestimenta -->
+     <div class="fade-up bg-white rounded-xl p-6 shadow-lg text-left">
+      <div class="flex items-center gap-3 mb-3"><i data-lucide="shirt" class="text-bordo" style="width:22px;height:22px"></i>
+       <h3 class="text-bordo text-xl font-semibold" style="font-family:'Dancing Script',cursive">Vestimenta</h3>
+      </div>
+      <p id="dressCode" class="text-gray-600" style="font-family:'Cormorant Garamond',serif">Semi Formal<br><span class="text-sm opacity-70">Te pedimos que vengas con tu mejor look para esta noche tan especial ✨</span></p>
+     </div>
+    </div>
+   </section><!-- FOOTER -->
+   <section class="relative py-20 px-6 text-center overflow-hidden" style="background:linear-gradient(180deg,#4A0A1E,#2A0612)">
+    <div class="sparkle-container" id="sparkles5"></div>
+    <div class="relative z-10">
+     <p class="text-gold text-sm tracking-widest mb-2" style="letter-spacing:0.3em">XV AÑOS</p>
+     <h2 class="text-white" style="font-family:'Dancing Script',cursive;font-size:clamp(2.5rem,8vw,4.5rem);text-shadow:0 0 40px rgba(212,168,83,0.3)">Tirada Luciana</h2>
+     <div class="flex items-center justify-center gap-3 mt-4 mb-6">
+      <div class="h-px w-24 bg-gold opacity-40"></div><span class="text-gold">❦</span>
+      <div class="h-px w-24 bg-gold opacity-40"></div>
+     </div>
+     <p class="text-white opacity-50 text-sm" style="font-family:'Cormorant Garamond',serif">¡Te esperamos!</p>
+    </div>
+   </section>
+  </div><!-- FOOD RESTRICTION MODAL -->
+  <div id="foodModal" class="modal-overlay">
+   <div class="bg-white rounded-2xl p-8 mx-4 max-w-md w-full shadow-2xl relative" style="animation:fadeInUp 0.3s"><button onclick="document.getElementById('foodModal').classList.remove('active')" class="absolute top-4 right-4 text-gray-400 hover:text-bordo transition-colors"> <button onclick="closeModal('foodModal')" 
+class="absolute top-4 right-4 w-8 h-8 rounded-full bg-gray-100 hover:bg-bordo hover:text-white flex items-center justify-center text-gray-600 transition">
+✕
+</button></button>
+    <h3 class="text-bordo text-2xl mb-1" style="font-family:'Dancing Script',cursive">Restricción Alimentaria</h3>
+    <p class="text-gray-500 text-sm mb-6" style="font-family:'Cormorant Garamond',serif">Completá el formulario y te lo enviamos por WhatsApp</p>
+    <form id="foodForm" onsubmit="sendRestriction(event)">
+     <div class="mb-4"><label for="hasRestriction" class="block text-sm text-gray-600 mb-1" style="font-family:'Cormorant Garamond',serif">¿Tenés alguna restricción?</label> <select id="hasRestriction" class="w-full border border-gray-200 rounded-lg px-4 py-2.5 text-sm focus:border-bordo focus:outline-none" style="font-family:'Cormorant Garamond',serif" onchange="document.getElementById('restrictionDetail').style.display=this.value==='si'?'block':'none'"> <option value="">Seleccionar...</option> <option value="no">No, ninguna</option> <option value="si">Sí, tengo restricción</option> </select>
+     </div>
+     <div id="restrictionDetail" class="mb-4" style="display:none"><label for="restrictionType" class="block text-sm text-gray-600 mb-1" style="font-family:'Cormorant Garamond',serif">¿Cuál es tu restricción?</label> <textarea id="restrictionType" rows="3" class="w-full border border-gray-200 rounded-lg px-4 py-2.5 text-sm focus:border-bordo focus:outline-none resize-none" placeholder="Ej: Celiaco, vegetariano, alérgico a..." style="font-family:'Cormorant Garamond',serif"></textarea>
+     </div>
+     <div class="mb-6"><label for="sendTo" class="block text-sm text-gray-600 mb-1" style="font-family:'Cormorant Garamond',serif">Enviar a:</label> <select id="sendTo" class="w-full border border-gray-200 rounded-lg px-4 py-2.5 text-sm focus:border-bordo focus:outline-none" style="font-family:'Cormorant Garamond',serif"> <option value="542615081573">Luciana - 2615081573</option> <option value="542616509344">Miguel - 2616509344</option> </select>
+     </div><button type="submit" class="w-full py-3 bg-bordo text-white rounded-lg tracking-wider text-sm transition-all hover:bg-bordoLight" style="font-family:'Cormorant Garamond',serif;letter-spacing:0.1em"> ENVIAR POR WHATSAPP </button>
+    </form>
+    <div id="formSuccess" class="hidden text-center py-4"><i data-lucide="check-circle" class="mx-auto text-green-500 mb-2" style="width:40px;height:40px"></i>
+     <p class="text-gray-700" style="font-family:'Cormorant Garamond',serif">¡Redirigiendo a WhatsApp!</p>
+    </div>
+   </div>
+  </div>
+  <!-- CONFIRM MODAL -->
+<div id="confirmModal" class="modal-overlay">
+  <div class="bg-white rounded-2xl p-8 mx-4 max-w-md w-full shadow-2xl relative" style="animation:fadeInUp 0.3s">
 
+    <button onclick="document.getElementById('confirmModal').classList.remove('active')" 
+    class="absolute top-4 right-4 text-gray-400 hover:text-bordo">
+      <button onclick="closeModal('confirmModal')" 
+class="absolute top-4 right-4 w-8 h-8 rounded-full bg-gray-100 hover:bg-bordo hover:text-white flex items-center justify-center text-gray-600 transition">
+✕
+</button>
+    </button>
+
+    <h3 class="text-bordo text-2xl mb-1" style="font-family:'Dancing Script',cursive">
+      Confirmar Asistencia
+    </h3>
+
+    <p class="text-gray-500 text-sm mb-6">
+      Completá el formulario y enviá tu respuesta por WhatsApp
+    </p>
+
+    <form id="confirmForm" onsubmit="sendConfirmation(event)">
+
+      <!-- NOMBRE -->
+      <div class="mb-4">
+        <label class="block text-sm text-gray-600 mb-1">Nombre y Apellido</label>
+        <input id="fullName" type="text" required
+        class="w-full border border-gray-200 rounded-lg px-4 py-2.5 text-sm focus:border-bordo focus:outline-none"
+        placeholder="Ej: Juan Pérez">
+      </div>
+
+      <!-- ASISTENCIA -->
+      <div class="mb-4">
+        <label class="block text-sm text-gray-600 mb-1">¿Vas a asistir?</label>
+        <select id="attendance"
+        class="w-full border border-gray-200 rounded-lg px-4 py-2.5 text-sm focus:border-bordo focus:outline-none">
+          <option value="">Seleccionar...</option>
+          <option value="si">Sí, asistiré</option>
+          <option value="no">No podré asistir</option>
+        </select>
+      </div>
+
+      <!-- CANTIDAD -->
+      <div class="mb-4">
+        <label class="block text-sm text-gray-600 mb-1">Cantidad de asistentes</label>
+        <input id="guests" type="number" min="1"
+        class="w-full border border-gray-200 rounded-lg px-4 py-2.5 text-sm focus:border-bordo focus:outline-none"
+        placeholder="Ej: 2">
+      </div>
+
+      <!-- ENVIAR A -->
+      <div class="mb-6">
+        <label class="block text-sm text-gray-600 mb-1">Enviar a:</label>
+        <select id="sendToConfirm"
+        class="w-full border border-gray-200 rounded-lg px-4 py-2.5 text-sm focus:border-bordo focus:outline-none">
+          <option value="542615081573">Luciana - 2615081573</option>
+          <option value="542616509344">Miguel - 2616509344</option>
+        </select>
+      </div>
+
+      <button type="submit"
+      class="w-full py-3 bg-bordo text-white rounded-lg tracking-wider text-sm hover:bg-bordoLight">
+        ENVIAR CONFIRMACIÓN
+      </button>
+
+    </form>
+
+    <div id="confirmSuccess" class="hidden text-center py-4">
+      <i data-lucide="check-circle" class="mx-auto text-green-500 mb-2" style="width:40px;height:40px"></i>
+      <p class="text-gray-700">¡Enviando a WhatsApp!</p>
+    </div>
+
+  </div>
+</div>
+  <script>
+// Config
+const defaultConfig = {
+  main_title: 'MIS XV',
+  celebrant_name: 'Tirada',
+  salon_address: 'Salón de Eventos\nDirección del Salón, Mendoza',
+  confirm_text: 'Por favor, confirmá tu asistencia para que podamos organizar todo de la mejor manera. ¡Te esperamos!',
+  event_phrase: '"Llevamos mucho tiempo preparando con carino este evento tan especial. Queremos que sea una ocasión  para disfrutar y celebrar. Esperamos contar con todos ustedes en este gran día."',
+  dress_code: 'Elegante / Formal',
+  background_color: '#80211d',
+  surface_color: '#FFFFFF',
+  text_color: '#FFFFFF',
+  primary_action_color: '#80211d',
+  secondary_action_color: '#ffffff',
+  font_family: 'Dancing Script',
+  font_size: 16
+};
+
+let audioCtx, audioBuffer, sourceNode, gainNode;
+let isPlaying = false, musicStarted = false;
+
+function createSparkles(containerId, count = 20) {
+  const c = document.getElementById(containerId);
+  if (!c) return;
+  for (let i = 0; i < count; i++) {
+    const s = document.createElement('div');
+    s.className = 'sparkle';
+    s.style.cssText = `left:${Math.random()*100}%;top:${Math.random()*100}%;--dur:${1.5+Math.random()*2}s;--delay:${Math.random()*3}s;width:${2+Math.random()*4}px;height:${2+Math.random()*4}px`;
+    c.appendChild(s);
+  }
+}
+
+async function initAudio() {
+  try {
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+    // 🔥 ESTO ES LO IMPORTANTE
+    if (audioCtx.state === 'suspended') {
+      await audioCtx.resume();
+    }
+
+    gainNode = audioCtx.createGain();
+    gainNode.connect(audioCtx.destination);
+
+    const resp = await fetch('musica.mp3');
+    const buf = await resp.arrayBuffer();
+    audioBuffer = await audioCtx.decodeAudioData(buf);
+
+    playAudio();
+
+  } catch(e) {
+    console.error('Audio error:', e);
+  }
+}
+
+function playAudio() {
+  if (!audioBuffer || !audioCtx) return;
+  sourceNode = audioCtx.createBufferSource();
+  sourceNode.buffer = audioBuffer;
+  sourceNode.loop = true;
+  sourceNode.connect(gainNode);
+  sourceNode.start(0);
+  isPlaying = true;
+  updateMusicIcon();
+}
+
+function toggleMusic() {
+  if (!audioCtx) return;
+  if (isPlaying) {
+    audioCtx.suspend();
+    isPlaying = false;
+  } else {
+    audioCtx.resume();
+    isPlaying = true;
+  }
+  updateMusicIcon();
+}
+
+function updateMusicIcon() {
+  const el = document.getElementById('musicIcon');
+  if (el) el.setAttribute('data-lucide', isPlaying ? 'volume-2' : 'volume-x');
+  lucide.createIcons();
+}
+
+function openInvitation() {
+
+  // 🔥 HACER SONAR LA MÚSICA
+  let music = document.getElementById("bgMusic");
+  music.play();
+
+  const ws = document.getElementById('welcomeScreen');
+  ws.style.transition = 'opacity 0.8s, transform 0.8s';
+  ws.style.opacity = '0';
+  ws.style.transform = 'scale(1.1)';
+
+  setTimeout(() => {
+    ws.style.display = 'none';
+    document.getElementById('mainContent').style.display = 'block';
+    document.getElementById('musicBtn').style.display = 'flex';
+
+    lucide.createIcons();
+    observeSections();
+  }, 800);
+}
+function observeSections() {
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+}
+function closeModal(id) {
+  document.getElementById(id).classList.remove('active');
+}
+function sendRestriction(e) {
+  e.preventDefault();
+  const has = document.getElementById('hasRestriction').value;
+  const detail = document.getElementById('restrictionType').value;
+  const phone = document.getElementById('sendTo').value;
+  if (!has) return;
+  let msg = 'Hola! Sobre los XV de Tirada. ';
+  if (has === 'no') msg += 'No tengo restricción alimentaria.';
+  else msg += 'Tengo restricción alimentaria: ' + (detail || 'No especificada');
+  document.getElementById('foodForm').classList.add('hidden');
+  document.getElementById('formSuccess').classList.remove('hidden');
+  setTimeout(() => {
+    window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank');
+    document.getElementById('foodForm').classList.remove('hidden');
+    document.getElementById('formSuccess').classList.add('hidden');
+    document.getElementById('foodModal').classList.remove('active');
+  }, 1000);
+}
+
+function sendConfirmation(e) {
+  e.preventDefault();
+
+  const name = document.getElementById('fullName').value;
+  const attendance = document.getElementById('attendance').value;
+  const guests = document.getElementById('guests').value;
+  const phone = document.getElementById('sendToConfirm').value;
+
+  if (!name || !attendance) return;
+
+  let msg = `Hola! Confirmación para los XV de Tirada.\n\n`;
+  msg += `Nombre: ${name}\n`;
+  msg += `Asistencia: ${attendance === 'si' ? 'Sí asistirá' : 'No asistirá'}\n`;
+
+  if (attendance === 'si' && guests) {
+    msg += `Cantidad de personas: ${guests}\n`;
+  }
+
+  document.getElementById('confirmForm').classList.add('hidden');
+  document.getElementById('confirmSuccess').classList.remove('hidden');
+
+  setTimeout(() => {
+    window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank');
+
+    document.getElementById('confirmForm').classList.remove('hidden');
+    document.getElementById('confirmSuccess').classList.add('hidden');
+    document.getElementById('confirmModal').classList.remove('active');
+  }, 1000);
+}
+// Element SDK
+function applyConfig(config) {
+  const c = { ...defaultConfig, ...config };
+  const font = c.font_family || defaultConfig.font_family;
+  const base = c.font_size || defaultConfig.font_size;
+
+  // Titles
+  const welTitle = document.getElementById('welMainTitle');
+  if (welTitle) welTitle.textContent = c.main_title;
+  const welName = document.getElementById('welName');
+  if (welName) { welName.textContent = c.celebrant_name; welName.style.fontFamily = `${font}, cursive`; }
+
+  const ep = document.getElementById('eventPhrase');
+  if (ep) { ep.innerHTML = c.event_phrase.replace(/\n/g,'<br>'); ep.style.fontSize = `${base * 1.25}px`; }
+
+  const sa = document.getElementById('salonAddress');
+  if (sa) sa.innerHTML = c.salon_address.replace(/\n/g,'<br>');
+
+  const ct = document.getElementById('confirmText');
+  if (ct) ct.textContent = c.confirm_text;
+
+  const dc = document.getElementById('dressCode');
+  if (dc) dc.innerHTML = `${c.dress_code}<br><span class="text-sm opacity-70">Te pedimos que vengas con tu mejor look para esta noche tan especial ✨</span>`;
+
+  // Font on dancing elements
+  document.querySelectorAll('[style*="Dancing Script"]').forEach(el => {
+    el.style.fontFamily = `${font}, cursive`;
+  });
+
+  // Font size scaling
+  document.querySelectorAll('h2').forEach(el => {
+    if (el.style.fontFamily && el.style.fontFamily.includes('Script')) {
+      // keep clamp
+    }
+  });
+
+  // Colors
+  document.documentElement.style.setProperty('--bordo', c.background_color);
+}
+
+window.elementSdk.init({
+  defaultConfig,
+  onConfigChange: async (config) => applyConfig(config),
+  mapToCapabilities: (config) => ({
+    recolorables: [
+      { get: () => config.background_color || defaultConfig.background_color, set: v => { config.background_color = v; window.elementSdk.setConfig({ background_color: v }); }},
+      { get: () => config.surface_color || defaultConfig.surface_color, set: v => { config.surface_color = v; window.elementSdk.setConfig({ surface_color: v }); }},
+      { get: () => config.text_color || defaultConfig.text_color, set: v => { config.text_color = v; window.elementSdk.setConfig({ text_color: v }); }},
+      { get: () => config.primary_action_color || defaultConfig.primary_action_color, set: v => { config.primary_action_color = v; window.elementSdk.setConfig({ primary_action_color: v }); }},
+      { get: () => config.secondary_action_color || defaultConfig.secondary_action_color, set: v => { config.secondary_action_color = v; window.elementSdk.setConfig({ secondary_action_color: v }); }}
+    ],
+    borderables: [],
+    fontEditable: {
+      get: () => config.font_family || defaultConfig.font_family,
+      set: v => { config.font_family = v; window.elementSdk.setConfig({ font_family: v }); }
+    },
+    fontSizeable: {
+      get: () => config.font_size || defaultConfig.font_size,
+      set: v => { config.font_size = v; window.elementSdk.setConfig({ font_size: v }); }
+    }
+  }),
+  mapToEditPanelValues: (config) => new Map([
+    ['main_title', config.main_title || defaultConfig.main_title],
+    ['celebrant_name', config.celebrant_name || defaultConfig.celebrant_name],
+    ['salon_address', config.salon_address || defaultConfig.salon_address],
+    ['confirm_text', config.confirm_text || defaultConfig.confirm_text],
+    ['event_phrase', config.event_phrase || defaultConfig.event_phrase],
+    ['dress_code', config.dress_code || defaultConfig.dress_code]
+  ])
+});
+
+// Init sparkles
+['welcomeSparkles','sparkles1','sparkles2','sparkles3','sparkles4','sparkles5'].forEach(id => createSparkles(id, 15));
+lucide.createIcons();
+</script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9e4f1f716064ba77',t:'MTc3NDk1NzY4My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+<audio id="bgMusic" loop>
+  <source src="musica.mp3" type="audio/mpeg">
+</audio>
+</body>
+</html>
