@@ -204,8 +204,8 @@ function copyCbuText() {
 document.addEventListener('DOMContentLoaded', function () {
 
   const contactosMusica = {
-    avril: '543624117451',
-    yoli: '543624654852'
+    avril: '543725597053',
+    yoli: '543725492047'
   };
 
   const p1 = document.getElementById('botonplay1');
