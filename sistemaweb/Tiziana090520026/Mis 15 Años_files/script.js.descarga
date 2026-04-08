@@ -220,7 +220,7 @@ if (botonCancion) {
         botonCancion.innerText = "Enviando...";
 
         try {
-            await fetch("https://script.google.com/macros/s/AKfycbwy77POdlLlWuYMz9HTclSjKpltoSA8_orH1pykqCjxjjCNYEx5qaEH39pFqNMuY7KU/exec", {
+            await fetch("https://script.google.com/macros/s/AKfycbx8Ud_lFAu4chlxSgh6ZMYOxJtinI23ouqFPDrKhe_HeKfzmUnrSLui25EpstkBFHP1/exec", {
                 method: "POST",
                 body: JSON.stringify({
                     tipo: "cancion",
@@ -433,7 +433,7 @@ if (botonAsistencia) {
         botonAsistencia.innerText = "Enviando...";
 
         try {
-            await fetch("https://script.google.com/macros/s/AKfycbwy77POdlLlWuYMz9HTclSjKpltoSA8_orH1pykqCjxjjCNYEx5qaEH39pFqNMuY7KU/exec", {
+            await fetch("https://script.google.com/macros/s/AKfycbx8Ud_lFAu4chlxSgh6ZMYOxJtinI23ouqFPDrKhe_HeKfzmUnrSLui25EpstkBFHP1/exec", {
                 method: "POST",
                 body: JSON.stringify({
                     tipo: "asistencia",
@@ -487,7 +487,7 @@ if (botonRestriccion) {
         botonRestriccion.innerText = "Enviando...";
 
         try {
-          await fetch("https://script.google.com/macros/s/AKfycbyUbHCCQRr_hrnoY97RJQdMAIaUpCHYqT6O6WG_AhKIzebRXEdpWWRHekLmIaZECVk/exec", {
+          await fetch("https://script.google.com/macros/s/AKfycbx8Ud_lFAu4chlxSgh6ZMYOxJtinI23ouqFPDrKhe_HeKfzmUnrSLui25EpstkBFHP1/exec", {
     method: "POST",
     mode: "no-cors", // 🔥 CLAVE
     headers: {
