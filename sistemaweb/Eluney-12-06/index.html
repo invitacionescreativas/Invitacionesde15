@@ -1403,7 +1403,8 @@ ustedes</p>
 
 <section class="section fade-in">
   <h2 class="section-title">Mis Fotos</h2>
-
+  <p class="gift-intro">   Desliza
+  </p>
   <div class="carousel">
     <div class="carousel-track" id="carouselTrack">
 
@@ -1446,15 +1447,7 @@ ustedes</p>
   <img src="regalo.png" alt="Regalos" class="gift-icon-img">
 
   <p class="gift-intro">
-  Con la bendición de dios y el amor de toda mi familia, me siento muy feliz de llegar a este momento de mi vida,
-ahora empieza un camino que
-conduce a un mundo de
-sueños e ilusiones, que con fe y
-esperanza deseo cumplirlos.
-quisiera con mucha alegría
-compartir este comienzo de
-esta hermosa etapa con todos
-ustedes
+Tu presencia en este día especial es mi regalo, pero si queres tener otro detalle conmigo, lo podés hacer a mi alias.
 
   </p>
 
@@ -1602,7 +1595,7 @@ ustedes
   </div>
 
 </section>
- <div class="carousel-slide">
+ <div>
         <img src="5.jpeg" alt="Foto 5">
       </div>
     <!-- Fotos -->
@@ -2017,7 +2010,35 @@ setInterval(() => {
   index = (index + 1) % slides.length;
   updateCarousel();
 }, 4000);
+let startX = 0;
+let endX = 0;
 
+track.addEventListener("touchstart", (e) => {
+  startX = e.touches[0].clientX;
+});
+
+track.addEventListener("touchmove", (e) => {
+  endX = e.touches[0].clientX;
+});
+
+track.addEventListener("touchend", () => {
+  handleSwipe();
+});
+
+function handleSwipe() {
+  const diff = startX - endX;
+
+  // sensibilidad (podés ajustar)
+  if (diff > 50) {
+    // swipe izquierda
+    index = (index + 1) % slides.length;
+  } else if (diff < -50) {
+    // swipe derecha
+    index = (index - 1 + slides.length) % slides.length;
+  }
+
+  updateCarousel();
+}
   </script>
  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9d370c691204ba71',t:'MTc3MjAyMDg5MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
