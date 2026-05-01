@@ -1452,7 +1452,7 @@ ustedes</p>
   <img src="regalo.png" alt="Regalos" class="gift-icon-img">
 
   <p class="gift-intro">
-Tu presencia en este día especial es mi regalo, pero si queres tener otro detalle conmigo.<br>Te dejo dos opciones:<br>- El salón cuenta con un sector para regalos.<br>- o te dejo este alias.
+Te dejo dos opciones:<br>- El salón cuenta con un sector para regalos.<br>- o te dejo este alias.
 
   </p>
 
@@ -1548,7 +1548,7 @@ Tu presencia en este día especial es mi regalo, pero si queres tener otro detal
 
       <input type="text" id="cancion" placeholder="Nombre de la canción o artista" required>
 
-   <select id="destino" required>
+   <select id="destinoMusica" required>
   <option value="">¿A quién enviar?</option>
   <option value="eluney">Eluney</option>
   <option value="elizabeth">Elizabeth</option>
@@ -1584,7 +1584,7 @@ Tu presencia en este día especial es mi regalo, pero si queres tener otro detal
       <input type="text" id="foodNombre" placeholder="Nombre y Apellido" required>
 
       <input type="text" id="restriccion" placeholder="Tipo de restricción (celíaco, vegetariano, alergia, etc.)" required>
-<select id="destino" required>
+<select id="destinoFood" required>
   <option value="">¿A quién enviar?</option>
   <option value="eluney">Eluney</option>
   <option value="elizabeth">Elizabeth</option>
@@ -1896,17 +1896,9 @@ function copyText(id) {
   navigator.clipboard.writeText(text);
   alert("Copiado ✨");
 }
-function getWhatsappNumber() {
-  const destino = document.getElementById("destino").value;
-
-  if (destino === "eluney") {
-    return "5491126320436";
-  }
-
-  if (destino === "elizabeth") {
-    return "5491131389771";
-  }
-
+function getWhatsappNumber(destino) {
+  if (destino === "eluney") return "5491126320436";
+  if (destino === "elizabeth") return "5491131389771";
   return "";
 }
 
@@ -1916,43 +1908,44 @@ function sendWhatsApp(event) {
 
   const nombre = document.getElementById("nombre").value;
   const respuesta = document.getElementById("respuesta").value;
+  const destino = document.getElementById("destino").value;
 
   const mensaje =
 `Confirmación de asistencia
 Nombre: ${nombre}
 Respuesta: ${respuesta}`;
 
-  const phone = getWhatsappNumber();
+  const phone = getWhatsappNumber(destino);
 
-if (!phone) {
-  alert("Elegí a quién enviar ✨");
-  return;
-}
+  if (!phone) {
+    alert("Elegí a quién enviar ✨");
+    return;
+  }
 
-const url = `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(mensaje)}`;
+  const url = `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(mensaje)}`;
 
   window.open(url, "_blank");
 }
-
 
 /* SUGERENCIA DE MUSICA */
 function sendMusicWhatsApp(event) {
   event.preventDefault();
 
   const cancion = document.getElementById("cancion").value;
+  const destino = document.getElementById("destinoMusica").value;
 
   const mensaje =
-`Sugerencia de música para los 15 de Malena
+`Sugerencia de música
 Canción: ${cancion}`;
 
-  const phone = getWhatsappNumber();
+  const phone = getWhatsappNumber(destino);
 
-if (!phone) {
-  alert("Elegí a quién enviar ✨");
-  return;
-}
+  if (!phone) {
+    alert("Elegí a quién enviar ✨");
+    return;
+  }
 
-const url = `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(mensaje)}`;
+  const url = `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(mensaje)}`;
 
   window.open(url, "_blank");
 }
@@ -1964,24 +1957,25 @@ function sendFoodWhatsApp(event) {
 
   const nombre = document.getElementById("foodNombre").value;
   const restriccion = document.getElementById("restriccion").value;
+  const destino = document.getElementById("destinoFood").value;
 
   const mensaje =
 `Restricción alimentaria
 Nombre: ${nombre}
 Restricción: ${restriccion}`;
 
-const phone = getWhatsappNumber();
+  const phone = getWhatsappNumber(destino);
 
-if (!phone) {
-  alert("Elegí a quién enviar ✨");
-  return;
-}
+  if (!phone) {
+    alert("Elegí a quién enviar ✨");
+    return;
+  }
 
-const url = `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(mensaje)}`;
+  const url = `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(mensaje)}`;
 
   window.open(url, "_blank");
 }
-
+   
 const track = document.getElementById("carouselTrack");
 const slides = document.querySelectorAll(".carousel-slide");
 const dotsContainer = document.getElementById("carouselDots");
