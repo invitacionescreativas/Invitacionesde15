@@ -207,7 +207,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const nombre = document.getElementById("userName").value.trim();
     const cancion = document.getElementById("whatsappMessage").value.trim();
-    const numero = "5493415429776";
+    const numero = "5492804370147";
 
     if (nombre === "" || cancion === "") {
       alert("Por favor completá tu nombre y la canción 🎵");
@@ -409,7 +409,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const attendanceStatus = document.querySelector('input[name="attendanceOption"]:checked');
 
     // BOTÓN / SELECT
-    const selectedContact = "5493415429776";
+    const selectedContact = "5492804370147";
 
     // Validaciones
     if (!attendanceStatus) {
@@ -468,7 +468,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const restrictionInfo =
       document.getElementById('foodRestriction').value.trim();
 
-const selectedContact = "5493415429776";
+const selectedContact = "5492804370147";
 
     if (userName === '') {
       alert('Por favor, escribí tu nombre y apellido.');
