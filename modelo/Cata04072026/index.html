@@ -1,1 +1,1334 @@
+<!DOCTYPE html>
+<!-- saved from url=(0078)https://invitacionescreativas.github.io/Invitacionesde15/modelo/Emiliaejemplo/ -->
+<html lang="es"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invitación de 15 Años</title>
 
+  <meta property="og:title" content="Invitación de 15 Años - Cata">
+<meta property="og:description" content="Estás invitado a celebrar mis 15 años. ¡Te espero para una noche inolvidable! ✨">
+<meta property="og:image" content="https://invitacionescreativas.github.io/Invitacionesde15/modelo/Cata04072026/miniatura.png">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://invitacionescreativas.github.io/Invitacionesde15/modelo/Cata04072026">
+  <script src="./cata_files/element_sdk.js.descarga"></script>
+  <link href="./cata_files/css2" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com/">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+<link href="./cata_files/css2(1)" rel="stylesheet">
+  <style>
+/* ==========================
+   VARIABLES DE COLORES
+   Cambia aquí para actualizar estilos automáticamente
+========================== */
+:root {
+
+  /* Colores principales */
+  --primary-color: #161616;          /* Color principal/acento elegante */
+  --secondary-color: #e6d8ec;        /* Color secundario/acento suave */
+  --text-color: #242424;             /* Color de texto principal */
+  --text-light: #ffffff;             /* Color de texto claro (ej: hero) */
+  --text-dark-mode: #f5e8f5;         /* Texto general en modo oscuro */
+  --text-invitation-light: #000000;  /* Color de texto invitación modo claro */
+  --text-invitation-dark: linear-gradient(135deg, #7a5a23, #d4af37, #f5e6a6);   /* Color de texto invitación modo oscuro */
+  --countdown-dark: #ffffff;         /* Color countdown modo oscuro */
+
+  /* Fondos generales */
+
+--background-light: url("fondooscuro.png");
+--background-dark: url("fondooscuro.png");
+
+  /* Tarjetas */
+/* Tarjeta modo claro — borgoña cristal */
+--card-light: rgba(52, 7, 10, 0.55);
+
+/* 🌙 Tarjeta modo oscuro — borgoña más profundo */
+--card-dark: rgba(52, 7, 10, 0.75);
+  /* Sombras */
+  --shadow-light: 0 8px 32px rgba(255, 255, 255, 0.08); /* Sombra tarjeta clara */
+  --shadow-dark: 0 8px 32px rgba(0, 0, 0, 0.6);        /* Sombra tarjeta oscura */
+
+  /* Hero overlay */
+  --hero-overlay-gradient: linear-gradient(180deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.65) 100%);
+/* ✨ Botones estilo dorado elegante */
+--button-gradient: linear-gradient(135deg, #6e4b1f, #c9a24d, #f1d27a);
+--button-hover-shadow: 0 6px 20px rgba(201, 162, 77, 0.45);
+--button-text: #2b1a05;
+
+
+  /* ✨ Sombra al pasar el mouse (rosa profundo suave) */
+  --button-hover-shadow: 0 8px 22px rgba(231, 84, 128, 0.45);
+
+  /* 🤍 Color del texto */
+  --button-text: #ffffff;
+
+  /* Iconos y detalles */
+  --icon-color: var(--primary-color);
+  --icon-dark-color: #ffffff;
+  --gift-background: rgba(180, 180, 200, 0.08);
+
+  /* Formulario */
+  --input-background-light: rgba(255, 255, 255, 0.5);
+  --input-background-dark: rgba(50, 35, 50, 0.5);
+  --input-border-light: rgba(212, 165, 212, 0.3);
+  --input-border-dark: rgba(240, 192, 240, 0.3);
+
+}
+
+/* ==========================
+   RESET Y ESTILOS BASE
+========================== */
+body {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  font-family: 'Montserrat', sans-serif;
+  color: var(--text-color);
+  background: var(--background-light);
+  overflow-x: hidden;
+  transition: background 0.5s ease;
+  background-size: cover;        /* 👈 Ajusta sin deformar */
+  background-position: center;   /* 👈 Centrada */
+  background-repeat: no-repeat;  /* 👈 No se repite */
+}
+
+body.dark-mode {
+  background: var(--background-dark);
+  color: var(--text-dark-mode);
+  background-size: cover;        /* 👈 Ajusta sin deformar */
+  background-position: center;   /* 👈 Centrada */
+  background-repeat: no-repeat;  /* 👈 No se repite */
+}
+
+/* ==========================
+   PARTÍCULAS DECORATIVAS
+========================== */
+.sparkles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.sparkle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: radial-gradient(circle, rgba(200, 200, 220, 0.7), transparent);
+  border-radius: 50%;
+  animation: float 8s infinite ease-in-out;
+  opacity: 0.6;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  25% { transform: translateY(-20px) translateX(10px); }
+  50% { transform: translateY(-40px) translateX(-10px); }
+  75% { transform: translateY(-20px) translateX(5px); }
+}
+
+/* ==========================
+   HERO SECTION
+========================== */
+.hero-section {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.75);
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--hero-overlay-gradient);
+}
+
+.hero-content {
+  position: relative;
+   
+  z-index: 10;
+  text-align: center;
+  color: var(--text-light);
+  padding: 2rem;
+  margin-top: 50vh;
+}
+
+.hero-title {
+  font-family: "Allura", cursive;
+  font-size: 4rem;
+  font-weight: 300;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  letter-spacing: 2px;
+  animation: fadeInUp 1.5s ease;
+}
+
+.hero-subtitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  font-style: italic;
+  font-weight: 300;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+  animation: fadeInUp 1.8s ease;
+}
+
+/* ==========================
+   TOGGLES
+========================== */
+.music-toggle {
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 0.75rem 1rem;
+  border-radius: 50px;
+  cursor: pointer;
+  color: var(--text-light);
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.music-toggle:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.05);
+}
+
+.theme-toggle {
+  position: fixed;
+  top: 2rem;
+  left: 2rem;
+  z-index: 1000;
+  background: rgb(255, 255, 255);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.486);
+  padding: 0.75rem 1rem;
+  border-radius: 50px;
+  cursor: pointer;
+  color: var(--text-light);
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.616);
+  transform: scale(1.05);
+}
+
+/* ==========================
+   MAIN CONTAINER
+========================== */
+.main-container {
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+.section {
+  padding: 4rem 2rem;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section-title {
+  font-family: 'Cinzel', serif;
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--primary-color);
+  letter-spacing: 1px;
+}
+
+body.dark-mode .section-title {
+  color: #bdbdbd;
+}
+
+/* ==========================
+   TARJETAS ELEGANTES
+========================== */
+.elegant-card {
+  max-width: 600px;
+  margin: 0 auto;
+  background: var(--card-light);
+  backdrop-filter: blur(20px);
+  border-radius: 24px;
+  padding: 2.5rem;
+  box-shadow: var(--shadow-light);
+  border: 1px solid rgba(121, 120, 121, 0.2);
+  transition: all 0.3s ease;
+}
+
+body.dark-mode .elegant-card {
+  background: var(--card-dark);
+  border-color: rgba(200, 200, 220, 0.15);
+  box-shadow: var(--shadow-dark);
+}
+
+/* ==========================
+   INVITACIÓN
+========================== */
+.invitation-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  line-height: 1.8;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--text-invitation-light);
+}
+
+body.dark-mode .invitation-text {
+  color: var(--text-invitation-dark);
+}
+
+.event-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.detail-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.1rem;
+}
+
+.detail-icon {
+  font-size: 1.5rem;
+  color: var(--icon-color);
+}
+
+body.dark-mode .detail-icon {
+  color: var(--icon-dark-color);
+}
+
+/* ==========================
+   COUNTDOWN
+========================== */
+.countdown-container {
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.countdown-item {
+  text-align: center;
+}
+
+.countdown-number {
+  font-family: 'Cinzel', serif;
+  font-size: 2.2rem;
+  font-weight: 550;
+  color: var(--primary-color);
+  display: block;
+}
+
+body.dark-mode .countdown-number {
+  color: var(--countdown-dark);
+}
+
+.countdown-label {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 0.25rem;
+  opacity: 0.8;
+}
+
+/* ==========================
+   GALERÍA
+========================== */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.gallery-item {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  aspect-ratio: 1;
+  box-shadow: var(--shadow-light);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+body.dark-mode .gallery-item {
+  box-shadow: var(--shadow-dark);
+}
+
+.gallery-item:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(212, 165, 212, 0.3);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ==========================
+   MAPA
+========================== */
+.map-container {
+  max-width: 800px;
+  margin: 0 auto;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--shadow-light);
+}
+
+body.dark-mode .map-container {
+  box-shadow: var(--shadow-dark);
+}
+
+.map-container iframe {
+  width: 100%;
+  height: 400px;
+  border: none;
+}
+
+/* ==========================
+   BOTONES
+========================== */
+.elegant-button {
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  background: var(--button-gradient);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  color: var(--button-text);
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+.elegant-button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--button-hover-shadow);
+}
+
+/* ==========================
+   SECCIÓN REGALO
+========================== */
+.gift-section {
+  text-align: center;
+}
+
+.gift-details {
+  display: none;
+  margin-top: 2rem;
+  animation: fadeIn 0.5s ease;
+}
+
+.gift-details.show {
+  display: block;
+}
+
+.gift-item {
+  background: var(--gift-background);
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+body.dark-mode .gift-item {
+  background: var(--gift-background);
+}
+
+.gift-value {
+  font-family: 'Courier New', monospace;
+  font-size: 1.1rem;
+  flex: 1;
+  text-align: left;
+}
+
+.copy-button {
+  padding: 0.5rem 1rem;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+}
+
+.copy-button:hover {
+  background: #05093d;
+  transform: scale(1.05);
+}
+
+.copy-button.copied {
+  background: #4caf50;
+}
+
+/* ==========================
+   FORMULARIOS
+========================== */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #5a4555;
+}
+
+body.dark-mode .form-group label {
+  color: #e8d8e8;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 0.875rem;
+  border: 2px solid var(--input-border-light);
+  border-radius: 12px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  background: var(--input-background-light);
+  transition: all 0.3s ease;
+}
+
+body.dark-mode .form-group input,
+body.dark-mode .form-group select,
+body.dark-mode .form-group textarea {
+  background: var(--input-background-dark);
+  border-color: var(--input-border-dark);
+  color: #e8d8e8;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(212, 165, 212, 0.1);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* ==========================
+   ANIMACIONES
+========================== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ==========================
+   RESPONSIVE
+========================== */
+@media (max-width: 768px) {
+
+  .hero-title {
+       font-size: 2.5rem;
+  }
+
+  .hero-subtitle {
+    font-size:1.5rem;
+  }
+
+  .section {
+    padding: 3rem 1.5rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .elegant-card {
+    padding: 2rem;
+  }
+
+  .countdown-container {
+    gap: 1rem;
+  }
+
+  .countdown-number {
+    font-size: 2rem;
+  }
+
+  .music-toggle,
+  .theme-toggle {
+    top: 1rem;
+    padding: 0.5rem 0.875rem;
+    font-size: 0.85rem;
+  }
+
+  .music-toggle {
+    right: 1rem;
+  }
+
+  .theme-toggle {
+    left: 1rem;
+  }
+
+ 
+}
+
+    
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="./cata_files/data_sdk.js.descarga" type="text/javascript"></script>
+  <script src="./cata_files/saved_resource" type="text/javascript"></script>
+ <style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}</style></head>
+ <body class="dark-mode"><!-- Partículas decorativas -->
+  <div class="sparkles" id="sparkles"><div class="sparkle" style="left: 60.6751%; top: 93.2897%; animation-delay: 0.318873s; animation-duration: 8.79996s;"></div><div class="sparkle" style="left: 57.6662%; top: 60.0845%; animation-delay: 4.68619s; animation-duration: 9.05193s;"></div><div class="sparkle" style="left: 69.9697%; top: 49.1768%; animation-delay: 5.01168s; animation-duration: 8.6647s;"></div><div class="sparkle" style="left: 59.6639%; top: 62.7089%; animation-delay: 4.48296s; animation-duration: 7.67592s;"></div><div class="sparkle" style="left: 79.1534%; top: 58.0847%; animation-delay: 5.05143s; animation-duration: 8.84041s;"></div><div class="sparkle" style="left: 24.6095%; top: 23.8534%; animation-delay: 6.91375s; animation-duration: 7.16515s;"></div><div class="sparkle" style="left: 13.6985%; top: 83.4759%; animation-delay: 7.76619s; animation-duration: 8.64959s;"></div><div class="sparkle" style="left: 35.0864%; top: 99.9441%; animation-delay: 7.08862s; animation-duration: 6.80643s;"></div><div class="sparkle" style="left: 55.0209%; top: 46.0307%; animation-delay: 7.37073s; animation-duration: 6.44067s;"></div><div class="sparkle" style="left: 80.0087%; top: 35.959%; animation-delay: 3.59698s; animation-duration: 7.81841s;"></div><div class="sparkle" style="left: 37.2905%; top: 14.1707%; animation-delay: 1.49186s; animation-duration: 9.33113s;"></div><div class="sparkle" style="left: 8.78645%; top: 95.9553%; animation-delay: 1.68889s; animation-duration: 9.59211s;"></div><div class="sparkle" style="left: 80.5787%; top: 23.4451%; animation-delay: 2.18508s; animation-duration: 8.90866s;"></div><div class="sparkle" style="left: 31.588%; top: 1.99212%; animation-delay: 0.713026s; animation-duration: 6.42645s;"></div><div class="sparkle" style="left: 25.9605%; top: 76.2189%; animation-delay: 2.99695s; animation-duration: 7.63957s;"></div><div class="sparkle" style="left: 71.6822%; top: 4.38039%; animation-delay: 6.38169s; animation-duration: 9.68592s;"></div><div class="sparkle" style="left: 64.3621%; top: 72.3074%; animation-delay: 7.67377s; animation-duration: 7.18019s;"></div><div class="sparkle" style="left: 52.0941%; top: 27.442%; animation-delay: 4.05668s; animation-duration: 6.84671s;"></div><div class="sparkle" style="left: 70.082%; top: 88.3693%; animation-delay: 0.236922s; animation-duration: 8.77437s;"></div><div class="sparkle" style="left: 19.9786%; top: 66.2616%; animation-delay: 6.7527s; animation-duration: 6.62735s;"></div><div class="sparkle" style="left: 54.3627%; top: 15.644%; animation-delay: 5.75708s; animation-duration: 8.36118s;"></div><div class="sparkle" style="left: 11.1909%; top: 97.6817%; animation-delay: 2.44323s; animation-duration: 7.64643s;"></div><div class="sparkle" style="left: 84.207%; top: 40.9541%; animation-delay: 0.0529506s; animation-duration: 8.27237s;"></div><div class="sparkle" style="left: 32.4707%; top: 47.644%; animation-delay: 7.31131s; animation-duration: 9.16821s;"></div><div class="sparkle" style="left: 7.11684%; top: 1.40955%; animation-delay: 7.65393s; animation-duration: 8.16778s;"></div><div class="sparkle" style="left: 17.5895%; top: 86.3902%; animation-delay: 5.87597s; animation-duration: 8.23394s;"></div><div class="sparkle" style="left: 44.0043%; top: 46.3727%; animation-delay: 3.88953s; animation-duration: 7.23705s;"></div><div class="sparkle" style="left: 16.4514%; top: 97.68%; animation-delay: 3.90363s; animation-duration: 8.86782s;"></div><div class="sparkle" style="left: 7.54525%; top: 79.9407%; animation-delay: 2.66006s; animation-duration: 8.35244s;"></div><div class="sparkle" style="left: 66.5371%; top: 32.8787%; animation-delay: 1.40519s; animation-duration: 6.47577s;"></div></div><!-- Controles superiores --> <button class="theme-toggle" id="themeToggle" style="display: none;">🌞</button> <button class="music-toggle" id="musicToggle"> <span id="musicIcon">🎵</span> <span id="musicText">Música</span> </button> <!-- Audio (CAMBIAR URL DE MÚSICA AQUÍ) -->
+  
+  
+  <audio id="backgroundMusic" loop=""><source src="musica.mp3" type="audio/mpeg">
+  </audio>
+  <!-- Hero Section -->
+  <div class="hero-section" style="display: none;"><!-- CAMBIAR URL DE IMAGEN DE PORTADA AQUÍ --> <img src="./cata_files/portada.webp" alt="Portada" class="hero-image" loading="lazy" onerror="console.error(&#39;Image failed to load:&#39;, this.src); this.style.background=&#39;linear-gradient(135deg, #d4a5d4, #f8e8f8)&#39;; this.alt=&#39;Image unavailable&#39;;">
+   <div class="hero-overlay"></div>
+   <div class="hero-content">
+    <h1 class="hero-title" id="heroName">Emilia</h1>
+    <p class="hero-subtitle">Mis 15 Años</p>
+   </div>
+  </div>
+
+  <div style="text-align: center; margin: 150px 0 150px 0;">
+  <img src="./cata_files/miniatura.png" alt="Miniatura" style="max-width: 80%; height: auto; display: inline-block;">
+</div>
+  
+  <!-- Contenedor de secciones -->
+  <div class="main-container"><!-- Sección Invitación -->
+<section class="section section-frase" id="invitation-section-frase">
+
+  <h2 class="section-title"></h2>
+  <div class="elegant-card">
+    <p class="invitation-text" id="invitationText">Cada sonrisa, cada abrazo y cada momento de mi noche me quedará grabado en el corazón. Tener a mis seres queridos y amigos lo hacen aún más maravilloso, es por eso que me gustaría que seas parte de mi festejo!</p>
+  </div>
+</section>
+      <section id="invitation-section">
+    <h2 class="section-title"></h2>
+ <div class="elegant-card">
+  <div class="detail-item">
+    <span class="detail-icon">📅</span>
+    <span id="eventDate">04 de Julio 2026</span>
+  </div>
+
+  <div class="detail-item">
+    <span class="detail-icon">⏰</span>
+    <span id="eventTime">21:00hs</span>
+  </div>
+</div>
+     <div class="countdown-container" id="countdown">
+      <div class="countdown-item"><span class="countdown-number" id="days">0</span> <span class="countdown-label">Días</span>
+      </div>
+      <div class="countdown-item"><span class="countdown-number" id="hours">0</span> <span class="countdown-label">Horas</span>
+      </div>
+      <div class="countdown-item"><span class="countdown-number" id="minutes">0</span> <span class="countdown-label">Minutos</span>
+      </div>
+      <div class="countdown-item"><span class="countdown-number" id="seconds">0</span> <span class="countdown-label">Segundos</span>
+      </div>
+     </div>
+    </section></div>
+   
+   <!-- Galería de Fotos -->
+   <section class="section" id="gallery-section" style="display: none;">
+    <h2 class="section-title">MIS FOTOS</h2>
+    <div class="gallery-grid" id="galleryGrid"><div class="gallery-item"><img src="./cata_files/ejemplo1.jpg" alt="Foto galería" loading="lazy"></div><div class="gallery-item"><img src="./cata_files/ejemplo4.webp" alt="Foto galería" loading="lazy"></div><div class="gallery-item"><img src="./cata_files/ejemplo5.webp" alt="Foto galería" loading="lazy"></div><div class="gallery-item"><img src="./cata_files/ejemplo7.jpg" alt="Foto galería" loading="lazy"></div></div>
+   </section><!-- Ubicación -->
+   <section class="section" id="location-section">
+    <h2 class="section-title">Lugar de Celebración</h2>
+      <div class="detail-item"><span class="detail-icon"></span> <span id="eventLocation"></span>
+     
+      </div>
+         <p>Av. Francisco Beiró 5226, C1419IAO Cdad. Autónoma de Buenos Aires</p>
+    <div class="map-container"><!-- CAMBIAR URL DEL MAPA AQUÍ --> <iframe id="mapFrame" src="./cata_files/embed.html"></iframe>
+    </div>
+    <div style="text-align: center;"><!-- CAMBIAR URL DE GOOGLE MAPS AQUÍ --> <a id="mapButton" target="_blank" rel="noopener noreferrer" class="elegant-button" href="https://maps.app.goo.gl/wtKtR7fgH3Qz7SU67?g_st=aw">  Cómo llegar con GPS </a>
+    </div>
+   </section><!-- Código de Vestimenta -->
+   <section class="section" id="dresscode-section">
+       
+    <h2 class="section-title">Dress Code</h2>
+    <div class="elegant-card" style="text-align: center;">
+     <div style="text-align: center; margin-top: 0px;">
+  <img src="./cata_files/vestimenta.png" alt="Miniatura" style="max-width: 100%; height: auto; display: inline-block;">
+</div>
+     <p class="invitation-text" id="dressCodeText">Elegante</p>Evitar rojo y bordó
+    
+        <div style="text-align: center; margin-top: 0px;">
+  
+</div>
+    </div>
+   
+   </section>
+   
+   <!-- Regalo -->
+   <section class="section" id="gift-section">
+    <h2 class="section-title">Regalo</h2>
+    <div class="elegant-card gift-section">
+          <div style="text-align: center; margin-top: 0px;">
+  <img src="./cata_files/regalo.png" alt="Miniatura" style="max-width: 60%; height: auto; display: inline-block;">
+</div>
+     <p class="invitation-text" id="frase-regalo">
+      Si deseas obsequiarme algo, puedes hacerlo al siguiente alias.<br>Si prefieres dejarlo en un sobre, el día del evento habrá un cofre. </p>
+      
+      <button class="elegant-button" id="showGiftBtn">Ver alias</button>
+     <div class="gift-details" id="giftDetails">
+      <div class="gift-item">
+       <div>
+        <div style="font-weight: 500; margin-bottom: 0.25rem;">
+         CBU
+        </div>
+        <div class="gift-value" id="cbuValue">00000000000000000000006</div>
+       </div><button class="copy-button" data-copy="cbu">📋 Copiar</button>
+      </div>
+      <p>Catalina Cubelos<br>Mercado Pago</p>
+      <div class="gift-item">
+       <div>
+        <div style="font-weight: 500; margin-bottom: 0.25rem;">
+         Alias
+        </div>
+        <div class="gift-value" id="aliasValue">alias.aqui.</div>
+       </div><button class="copy-button" data-copy="alias">📋 Copiar</button>
+      </div>
+     </div>
+    </div>
+   </section><!-- Confirmación de Asistencia -->
+  
+   
+   <!-- Confirmación de Asistencia -->
+<section class="section" id="rsvp-section">
+
+  <h2 class="section-title">Confirmación de Asistencia</h2>
+
+  <div class="elegant-card">
+
+    <h3 style="text-align:center; margin-bottom:25px;">
+      Podés confirmar hasta el 26 de Junio
+    </h3>
+
+    <form id="rsvpForm">
+
+      <div class="form-group">
+        <label for="rsvpName">Tu nombre</label>
+
+        <input
+          type="text"
+          id="rsvpName"
+          required
+          placeholder="Ingresa tu nombre"
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="rsvpAttending">¿Asistirás?</label>
+
+        <select id="rsvpAttending" required>
+          <option value="">Selecciona una opción</option>
+          <option value="si">Sí, asistiré</option>
+          <option value="no">No podré asistir</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="rsvpGuests">
+          Cantidad de acompañantes
+        </label>
+
+        <input
+          type="number"
+          id="rsvpGuests"
+          min="0"
+          max="10"
+          value="0"
+          placeholder="0"
+        >
+      </div>
+
+      <button
+        type="submit"
+        class="elegant-button"
+        style="width:100%;"
+      >
+        💌 Confirmar
+      </button>
+
+    </form>
+
+  </div>
+
+</section>
+   <!-- Restricciones Alimentarias -->
+   <section class="section" id="dietary-section" style="display: none;">
+    <h2 class="section-title">Restricciones Alimentarias</h2>
+    <div class="elegant-card">
+     <p class="invitation-text" style="font-size: 1rem; margin-bottom: 1.5rem;">Si tienes alguna restricción alimentaria, por favor házmelo saber:</p>
+     <form id="dietaryForm">
+      <div class="form-group"><label for="dietaryName">Tu nombre</label> <input type="text" id="dietaryName" required="" placeholder="Ingresa tu nombre">
+      </div>
+      <div class="form-group"><label for="dietaryRestriction">Descripción de la restricción</label> <textarea id="dietaryRestriction" required="" placeholder="Ejemplo: Soy vegetariano, intolerante al gluten, etc."></textarea>
+      </div><button type="submit" class="elegant-button" style="width: 100%;">  Sí, tengo </button>
+     </form>
+    </div>
+   </section>
+   <!-- Sugerir Canción -->
+   <section class="section" id="song-section">
+    <h2 class="section-title">Sugerir Canción</h2>
+    <div class="elegant-card">
+     <p class="invitation-text" style="font-size: 1rem; margin-bottom: 1.5rem;">Estamos armando la playlist de la fiesta<br>¿Qué canción no puede faltar en la fiesta?</p>
+     <form id="songForm">
+      <div class="form-group"><label for="songName">Tu nombre</label> <input type="text" id="songName" required="" placeholder="Ingresa tu nombre">
+      </div>
+      <div class="form-group"><label for="songSuggestion">Canción sugerida</label> <input type="text" id="songSuggestion" required="" placeholder="Nombre de la canción y artista">
+      </div><button type="submit" class="elegant-button" style="width: 100%;"> 🎶Enviar</button>
+     </form>
+    </div>
+   </section>
+
+<section class="section" id="photos-section">
+  <h2 class="section-title">Comparte tus fotos del evento</h2>
+
+  <div class="elegant-card">
+    <p class="invitation-text" style="font-size: 1rem; margin-bottom: 1.5rem;">
+      ¿Tomaste fotos o videos durante la fiesta? Envíalos para guardarlos como recuerdo de esta noche tan especial.</p>
+
+    <form id="photoForm" style="display: none;">
+      <div class="form-group">
+        <label for="guestName">Tu nombre</label>
+        <input type="text" id="guestName" required="" placeholder="Ingresa tu nombre">
+      </div>
+
+      <button type="submit" class="elegant-button" style="width: 100%;">
+        Enviar fotos
+      </button>
+    </form>
+   <a href="https://drive.google.com/drive/u/5/folders/1ljJnG91eBVAi8OQNYjw7rrax-tc_6WZk" target="_blank" rel="noopener noreferrer" class="elegant-button" style="width: 100%; display: inline-block; text-align: center;">
+    Enviar</a>
+  </div>
+</section>
+
+   <!-- Footer -->
+   <div style="padding: 3rem 2rem; text-align: center; opacity: 0.7; font-size: 0.9rem;">
+    <p>✨ ✨</p>
+   </div>
+  
+  <script>
+    // ====================================
+    // CONFIGURACIÓN EDITABLE
+    // ====================================
+    
+    // CAMBIAR ESTOS VALORES:
+ const CONFIG = {
+  quinceanera_name: 'Emilia',
+
+  // ✨ FRASE PRINCIPAL
+  invitation_text: 'Cada sonrisa, cada abrazo y cada momento de mi noche me quedará grabado en el corazón. Tener a mis seres queridos y amigos lo hacen aún más maravilloso, es por eso que me gustaría que seas parte de mi festejo!',
+
+  event_date: '04 de Julio de 2026',
+  event_time: '21:00hs',
+  event_location: 'GULA EVENTOS',
+  dress_code_text: 'Elegante',
+
+
+  // 🎁 REGALO
+  cbu: '0000003100042898882564',
+  alias: 'catalina.cubelos',
+
+ 
+  // 🖼️ IMÁGENES
+  hero_image: 'ejemplo2.jpg',
+  gallery_images: [
+ 
+    'ejemplo1.jpg',
+    'ejemplo4.webp',
+    'ejemplo5.webp',
+    'ejemplo7.jpg'
+  ],
+
+  // 🗺️ MAPA
+maps_embed_url: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3283.635773850594!2d-58.52637702505772!3d-34.613370572950764!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb7c81d9641e9%3A0x8aa2f513068dd176!2sGULA%20EVENTOS!5e0!3m2!1ses!2sar!4v1779208599868!5m2!1ses!2sar",
+maps_button_url: 'https://maps.app.goo.gl/op1fqRnsFfVuaREPA',
+
+  
+  // 🎵 MÚSICA
+  music_url: 'musica.mp3',
+
+  whatsapp_number: '5493413904417',
+  countdown_date: '2026-07-04T21:00:00'
+};
+
+    const defaultConfig = { ...CONFIG };
+
+    // ====================================
+    // SISTEMA DE TEMAS (Claro/Oscuro)
+    // ====================================
+    
+    const themeToggle = document.getElementById('themeToggle');
+    const body = document.body;
+    
+    // Detectar preferencia del sistema
+   body.classList.add('dark-mode');
+themeToggle.textContent = '🌞';
+    themeToggle.addEventListener('click', () => {
+      body.classList.toggle('dark-mode');
+      themeToggle.textContent = body.classList.contains('dark-mode') ? '🌞' : '🌙';
+    });
+
+    // ====================================
+    // CONTROL DE MÚSICA
+    // ====================================
+    
+    const musicToggle = document.getElementById('musicToggle');
+    const music = document.getElementById('backgroundMusic');
+    const musicIcon = document.getElementById('musicIcon');
+    let isPlaying = false;
+    
+    musicToggle.addEventListener('click', () => {
+      if (isPlaying) {
+        music.pause();
+        musicIcon.textContent = '🎵';
+        musicToggle.style.opacity = '0.7';
+      } else {
+        music.play().catch(e => console.error('Error playing music:', e));
+        musicIcon.textContent = '⏸️';
+        musicToggle.style.opacity = '1';
+      }
+      isPlaying = !isPlaying;
+    });
+
+    // ====================================
+    // PARTÍCULAS DECORATIVAS
+    // ====================================
+    
+    const sparklesContainer = document.getElementById('sparkles');
+    for (let i = 0; i < 30; i++) {
+      const sparkle = document.createElement('div');
+      sparkle.className = 'sparkle';
+      sparkle.style.left = Math.random() * 100 + '%';
+      sparkle.style.top = Math.random() * 100 + '%';
+      sparkle.style.animationDelay = Math.random() * 8 + 's';
+      sparkle.style.animationDuration = (Math.random() * 4 + 6) + 's';
+      sparklesContainer.appendChild(sparkle);
+    }
+
+    // ====================================
+    // ANIMACIÓN DE SCROLL
+    // ====================================
+    
+    const observerOptions = {
+      threshold: 0.15,
+      rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        } else {
+          entry.target.classList.remove('visible');
+        }
+      });
+    }, observerOptions);
+    
+    document.querySelectorAll('.section').forEach(section => {
+      observer.observe(section);
+    });
+
+    // ====================================
+    // CUENTA REGRESIVA
+    // ====================================
+    
+    function updateCountdown() {
+      const eventDate = new Date(CONFIG.countdown_date).getTime();
+      const now = new Date().getTime();
+      const distance = eventDate - now;
+      
+      if (distance < 0) {
+        document.getElementById('days').textContent = '0';
+        document.getElementById('hours').textContent = '0';
+        document.getElementById('minutes').textContent = '0';
+        document.getElementById('seconds').textContent = '0';
+        return;
+      }
+      
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      
+      document.getElementById('days').textContent = days;
+      document.getElementById('hours').textContent = hours;
+      document.getElementById('minutes').textContent = minutes;
+      document.getElementById('seconds').textContent = seconds;
+    }
+    
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // ====================================
+    // SECCIÓN DE REGALO
+    // ====================================
+    
+    const showGiftBtn = document.getElementById('showGiftBtn');
+    const giftDetails = document.getElementById('giftDetails');
+    
+    showGiftBtn.addEventListener('click', () => {
+      if (giftDetails.classList.contains('show')) {
+        giftDetails.classList.remove('show');
+        showGiftBtn.textContent = '🎁 Ver datos para regalo';
+      } else {
+        giftDetails.classList.add('show');
+        showGiftBtn.textContent = '🎁 Ocultar datos';
+      }
+    });
+    
+    // Botones de copiar
+    document.querySelectorAll('.copy-button').forEach(button => {
+      button.addEventListener('click', async () => {
+        const type = button.getAttribute('data-copy');
+        const textToCopy = type === 'cbu' 
+          ? document.getElementById('cbuValue').textContent 
+          : document.getElementById('aliasValue').textContent;
+        
+        try {
+          await navigator.clipboard.writeText(textToCopy);
+          const originalText = button.textContent;
+          button.textContent = '✓ Copiado';
+          button.classList.add('copied');
+          
+          setTimeout(() => {
+            button.textContent = originalText;
+            button.classList.remove('copied');
+          }, 2000);
+        } catch (err) {
+          console.error('Error al copiar:', err);
+        }
+      });
+    });
+
+    // ====================================
+    // FORMULARIO DE CONFIRMACIÓN
+    // ====================================
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzU_3TtK794Y6tIVYufwmC8YO9d8za8XwrCencdyC-66ge5RxyR100mO23aZeNoG_tOdg/exec";
+
+document.getElementById('rsvpForm').addEventListener('submit', async (e) => {
+
+  e.preventDefault();
+
+  const button = e.target.querySelector("button");
+
+  button.disabled = true;
+  button.innerHTML = "Enviando...";
+
+  const nombre = document.getElementById('rsvpName').value.trim();
+  const asistencia = document.getElementById('rsvpAttending').value;
+  const acompanantes = document.getElementById('rsvpGuests').value;
+
+  try {
+
+    const response = await fetch(SCRIPT_URL, {
+      method: "POST",
+      body: JSON.stringify({
+        tipo: "Asistencia",
+        nombre,
+        asistencia,
+        acompanantes
+      })
+    });
+
+    const result = await response.json();
+
+    if (result.status === "duplicado") {
+
+      alert("⚠️ Ya habías enviado tu confirmación");
+
+    } else {
+
+      alert("✅ Confirmación enviada correctamente");
+
+      document.getElementById('rsvpForm').reset();
+
+      // BLOQUEAR FORMULARIO
+   
+
+
+    }
+
+  } catch (error) {
+
+    alert("❌ Error al enviar");
+
+    console.error(error);
+
+  }
+
+  button.disabled = false;
+  button.innerHTML = "💌 Confirmar";
+});
+
+
+
+    
+
+document.getElementById('songForm').addEventListener('submit', async (e) => {
+
+  e.preventDefault();
+
+  const nombre = document.getElementById('songName').value.trim();
+  const cancion = document.getElementById('songSuggestion').value.trim();
+
+  try {
+
+    const response = await fetch(SCRIPT_URL, {
+      method: "POST",
+      body: JSON.stringify({
+        tipo: "Cancion",
+        nombre,
+        cancion
+      })
+    });
+
+    const result = await response.json();
+
+    if (result.status === "duplicado") {
+
+      alert("⚠️ Esa canción ya fue enviada");
+
+    } else {
+
+      alert("🎵 Canción enviada");
+
+      document.getElementById('songForm').reset();
+    }
+
+  } catch (error) {
+
+    alert("❌ Error al enviar");
+    console.error(error);
+  }
+});
+
+document.getElementById('dietaryForm').addEventListener('submit', async (e) => {
+
+  e.preventDefault();
+
+  const nombre = document.getElementById('dietaryName').value.trim();
+
+  const restriccion =
+    document.getElementById('dietaryRestriction').value.trim();
+
+  try {
+
+    await fetch(SCRIPT_URL, {
+      method: "POST",
+      body: JSON.stringify({
+        tipo: "Restriccion",
+        nombre,
+        restriccion
+      })
+    });
+
+    alert("✅ Restricción enviada");
+
+    document.getElementById('dietaryForm').reset();
+
+  } catch (error) {
+
+    alert("❌ Error al enviar");
+    console.error(error);
+  }
+});
+
+     // ====================================
+    // FORMULARIO DE FOTOS
+    // ====================================
+    document.getElementById('photoForm').addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  const name = document.getElementById('guestName').value.trim();
+
+  const message = `Hola! Soy ${name}.\n\nTe envío las fotos y videos que tomé durante el evento 📸🎉`;
+
+  const whatsappUrl = `https://wa.me/${CONFIG.whatsapp_number}?text=${encodeURIComponent(message)}`;
+  window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+});
+
+    
+    // ====================================
+    // INTEGRACIÓN CON ELEMENT SDK
+    // ====================================
+    
+ async function onConfigChange(config) {
+
+  // 🎉 Nombre de la quinceañera
+  document.getElementById('heroName').textContent =
+    config.quinceanera_name || defaultConfig.quinceanera_name;
+
+  // ✨ Frase principal
+  document.getElementById('invitationText').textContent =
+    config.invitation_text || defaultConfig.invitation_text;
+
+  // 📅 Fecha y hora
+  document.getElementById('eventDate').textContent =
+    config.event_date || defaultConfig.event_date;
+
+  document.getElementById('eventTime').textContent =
+    config.event_time || defaultConfig.event_time;
+
+  // 📍 Lugar
+  document.getElementById('eventLocation').textContent =
+    config.event_location || defaultConfig.event_location;
+
+  // 👗 Dress code
+  document.getElementById('dressCodeText').textContent =
+    config.dress_code_text || defaultConfig.dress_code_text;
+
+  // 🎁 Regalo
+  document.getElementById('cbuValue').textContent =
+    config.cbu || defaultConfig.cbu;
+
+  document.getElementById('aliasValue').textContent =
+    config.alias || defaultConfig.alias;
+
+  // 🖼️ Imagen de portada
+  const heroImg = document.getElementById('heroImage');
+  if (heroImg && config.hero_image) {
+    heroImg.src = config.hero_image;
+  }
+
+  // 🖼️ Galería dinámica
+  const galleryGrid = document.getElementById('galleryGrid');
+  if (galleryGrid && config.gallery_images) {
+    galleryGrid.innerHTML = '';
+
+    config.gallery_images.forEach(src => {
+      const div = document.createElement('div');
+      div.className = 'gallery-item';
+
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = 'Foto galería';
+      img.loading = 'lazy';
+
+      div.appendChild(img);
+      galleryGrid.appendChild(div);
+    });
+  }
+
+  // 🗺️ Mapa
+  const mapFrame = document.getElementById('mapFrame');
+  if (mapFrame && config.maps_embed_url) {
+    mapFrame.src = config.maps_embed_url;
+  }
+
+  const mapButton = document.getElementById('mapButton');
+  if (mapButton && config.maps_button_url) {
+    mapButton.href = config.maps_button_url;
+  }
+
+  // 🎵 Música
+  const musicSource = document.getElementById('musicSource');
+  if (musicSource && config.music_url) {
+    musicSource.src = config.music_url;
+  }
+}
+
+// Cargar los datos apenas abre la invitación
+document.addEventListener("DOMContentLoaded", () => {
+  onConfigChange(CONFIG);
+});
+
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig: defaultConfig,
+        onConfigChange: onConfigChange,
+        mapToCapabilities: (config) => ({
+          recolorables: [],
+          borderables: [],
+          fontEditable: undefined,
+          fontSizeable: undefined
+        }),
+        mapToEditPanelValues: (config) => new Map([
+          ['quinceanera_name', config.quinceanera_name || defaultConfig.quinceanera_name],
+          ['invitation_text', config.invitation_text || defaultConfig.invitation_text],
+          ['event_date', config.event_date || defaultConfig.event_date],
+          ['event_time', config.event_time || defaultConfig.event_time],
+          ['event_location', config.event_location || defaultConfig.event_location],
+          ['dress_code_text', config.dress_code_text || defaultConfig.dress_code_text]
+        ])
+      });
+    }
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c58f74747a85040',t:'MTc2OTY5MjE4Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><iframe height="1" width="1" style="position: absolute; top: 0px; left: 0px; border-width: medium; border-style: none; border-color: currentcolor; border-image: initial; visibility: hidden;" src="./cata_files/saved_resource.html"></iframe>
+
+
+<div id="thunderbit-crx-side-bar" style="display:block;opacity:1;pointer-events:all;top:0;right:0;z-index:9007199254740991;position:fixed;pointer-events:none;user-select:none;"><template shadowrootmode="open"><div id="#react-app-root"><div id="#react-app-slot" style="display:flex;direction:ltr;text-align:left;unicode-bidi:isolate;font-family:Helvetica,&#39;Helvetica Neue&#39;,Arial,sans-serif,&#39;PingFang SC&#39;,&#39;Microsoft Yahei&#39;,&#39;Hiragino Sans GB&#39;,&#39;-apple-system&#39;,&#39;Inter&#39;;font-size:14px;line-height:normal;"></div></div></template></div><button id="open-side-panel" style="width:0;height:0;opacity:0;user-select:none;pointer-events:all;position:absolute;bottom:0;right:0;padding:0;border:0;outline:none;"></button></body></html>
