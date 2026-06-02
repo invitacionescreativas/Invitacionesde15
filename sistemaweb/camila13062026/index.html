@@ -1911,8 +1911,7 @@ function sendMusicWhatsApp(event) {
   const cancion = document.getElementById("cancion").value;
 
   const mensaje =
-`Sugerencia de música para los 15 de Malena
-Canción: ${cancion}`;
+`Sugerencia de música para la fiesta: ${cancion}`;
 
   const url = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodeURIComponent(mensaje)}`;
 
