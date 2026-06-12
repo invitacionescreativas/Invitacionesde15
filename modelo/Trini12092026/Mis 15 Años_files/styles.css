@@ -536,12 +536,13 @@ header {
 
 .frase__paragraph {
     text-align: center;
-    font-family: var(--font-imperial);
+    font-family: var(--font-montserrat);
     color: var(--color-parrafos);
-    padding: 2em;
-    line-height: 1.4;
-    font-size: 1.8rem;
-    font-weight: 800;
+    padding: 1em;
+    line-height: 1.6;
+    font-size: 1.2rem;
+    font-weight: 400;
+    letter-spacing: 0.5px;
     margin: 0 auto;
 }
 

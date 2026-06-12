@@ -206,7 +206,7 @@ document.getElementById("botonplay1").addEventListener("click", function () {
     let nombre = document.getElementById("userName").value.trim();
     let recomendacion = document.getElementById("whatsappMessage").value.trim();
 
-    let telefono = "542657687472";
+    let telefono = "542657506888";
 
     if (nombre === "" || recomendacion === "") {
         alert("Por favor completa tu nombre y la recomendación");
