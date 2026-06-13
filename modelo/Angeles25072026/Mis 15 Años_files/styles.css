@@ -135,8 +135,8 @@
 
 
 .title {
-    font-family: var(--font-imperial);
-    font-size: 2rem;
+    font-family: var(--font-montserrat);
+    font-size: 1.5rem;
     color: var(--color-titles);
     text-align: center;
 }
@@ -152,7 +152,7 @@
     font-size: 1rem;
     text-align: center;
     font-family: var(--font-montserrat);
-    font-weight: 800;
+    font-weight: 500;
     margin: 0;
 }
 
@@ -289,8 +289,8 @@ header {
 }
 
 .music__title {
-    font-family: var(--font-italiano);
-    font-size: 2rem;
+    font-family: var(--font-montserrat);
+    font-size: 1.5rem;
     color: var(--color-titulo-music);
     text-shadow: 0 0 5px #fff, 0 0 5px #fff, 0 0 5px #fff, 0 0 5px #fff;
     padding: 0 1.5em;
@@ -457,8 +457,8 @@ header {
 
 .title--tempo {
     margin-bottom: 0;
-    font-size: 2rem;
-    font-family: var(--font-italiano);
+    font-size: 1.5rem;
+    font-family: var(--font-montserrat);
 }
 
 .timer {
@@ -536,12 +536,12 @@ header {
 
 .frase__paragraph {
     text-align: center;
-    font-family: var(--font-imperial);
+    font-family: var(--font-montserrat);
     color: var(--color-parrafos);
     padding: 2em;
     line-height: 1.4;
-    font-size: 1.8rem;
-    font-weight: 800;
+    font-size: 1.2rem;
+    font-weight: 500;
     margin: 0 auto;
 }
 
@@ -567,7 +567,7 @@ header {
 
 .title--active {
     margin: 0;
-    font-size: 3rem;
+    font-size: 1.8rem;
 }
 
 .donde__img {
@@ -1014,7 +1014,7 @@ header {
 }
 
 .dresscode__note {
-    font-family: var(--font-mali);
+    font-family: var(--font-montserrat);
     font-size: 1rem;
     text-align: center;
     padding: 0 2em;
@@ -1074,8 +1074,8 @@ header {
 }
 
 .regalos__title {
-    font-family: var(--font-imperial);
-    font-size: 2.5rem;
+    font-family: var(--font-montserrat);
+    font-size: 1.8rem;
     color: var(--color-titles);
     margin: 0;
 }
@@ -1086,11 +1086,11 @@ header {
 }
 
 .parrafo--regalos {
-    font-family: var(--font-italiano);
-    font-weight: 800;
-    padding: 1em 2em;
+    font-family: var(--font-montserrat);
+    font-weight: 500;
+    padding: 1em;
     line-height: 1;
-    font-size: 2rem;
+    font-size: 1.5rem;
 }
 
 .regalos__fondo {
@@ -1278,9 +1278,9 @@ header {
 }
 
 .subtitle--playlist {
-    font-size: 2rem;
+    font-size: 1.5rem;
     color: var(--color-parrafos);
-    font-family: var(--font-italiano);
+    font-family: var(--font-montserrat);
     padding: 0 1em;
     line-height: 1.4;
 }
@@ -1380,7 +1380,7 @@ header {
     width: clamp(100px, 90%, 350px);
     margin: 0 auto;
     font-size: 1rem;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .album__icon {
@@ -1957,9 +1957,9 @@ input[type="radio"] {
     align-items: center;
     width: 80%;
     margin: 0 auto 3em;
-    font-family: var(--font-imperial);
-    font-size: 2rem;
-    font-weight: 600;
+    font-family: var(--font-montserrat);
+    font-size: 1.5rem;
+    font-weight: 500;
 }
 
 /* ///////////////// INFO ///////////////////////// */
