@@ -1559,6 +1559,11 @@ header {
     line-height: 1.4;
 }
 
+.camara_icon {
+     width: 50px; /* ajusta el tamaño que quieras */
+    display: block;
+    margin: 0 auto;
+}
 .precio__monto {
     display: flex;
     flex-direction: column;
