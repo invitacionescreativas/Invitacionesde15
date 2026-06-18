@@ -284,9 +284,11 @@ header {
     align-items: center;
     right: 0;
     left: 0;
-    bottom: 8em;
+    bottom: 5em;
     margin: auto;
 }
+
+
 
 .music__title {
     font-family: var(--font-montserrat);
@@ -295,6 +297,8 @@ header {
     text-shadow: 0 0 5px #fff, 0 0 5px #fff, 0 0 5px #fff, 0 0 5px #fff;
     padding: 0 1.5em;
     margin: 0em;
+     margin-bottom: 0.5em; /* separa el texto del reproductor */
+    transform: translateY(-6px); /* sube el texto 10px */
 }
 
 
