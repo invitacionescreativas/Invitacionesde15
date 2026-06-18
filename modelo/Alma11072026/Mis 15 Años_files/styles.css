@@ -2026,12 +2026,14 @@ input[type="radio"] {
   justify-content: center;
   align-items: center;
   width: 100%;
+    margin-top: 90px; /* Baja toda la imagen */
 }
 
 .imagen-con-margen {
   display: block;
   max-width: 100%;
   margin-bottom: 20%; /* margen en computadora */
+ 
 }
 
 /* Ajuste solo en celulares */
