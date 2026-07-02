@@ -70,7 +70,7 @@ body{
   content:"";
   position:absolute;
   inset:0;
-  background:url("foto1.jpeg") center/cover no-repeat;
+  background:url("foto1.JPEG") center/cover no-repeat;
   filter:brightness(0.55);
 }
 
@@ -393,7 +393,9 @@ input,select{
         <option value="no">No asistiré</option>
       </select>
 
-      <button class="btn" onclick="sendForm()">Confirmar</button>
+      <button type="button" class="btn" onclick="sendForm()">
+    Confirmar
+</button>
     </div>
   </div>
 
@@ -465,10 +467,50 @@ document.querySelectorAll(".section").forEach(el => {
 
 
 /* FORM */
-function sendForm(){
-  alert("Confirmado 💖");
-}
+async function sendForm(){
 
+    const nombre=document.getElementById("name").value.trim();
+    const apellido=document.getElementById("lastname").value.trim();
+    const asistencia=document.getElementById("attendance").value;
+
+    if(nombre==="" || apellido===""){
+        alert("Completa todos los datos.");
+        return;
+    }
+
+    try{
+
+        await fetch("https://script.google.com/macros/s/AKfycbx9azZqIKGJ0WyG5xEAsFCmjVtTHIOHJbN3drdEbziIq68354SXcpYbvXWZ2WRl1ZvEUA/exec",{
+
+            method:"POST",
+
+            mode:"no-cors",
+
+            headers:{
+                "Content-Type":"text/plain;charset=utf-8"
+            },
+
+            body:JSON.stringify({
+                nombre:nombre,
+                apellido:apellido,
+                asistencia:asistencia
+            })
+
+        });
+
+        alert("¡Gracias por confirmar tu asistencia! ❤️");
+
+        document.getElementById("name").value="";
+        document.getElementById("lastname").value="";
+        document.getElementById("attendance").selectedIndex=0;
+
+    }catch(error){
+
+        alert("No fue posible enviar la confirmación.");
+
+    }
+
+}
 
 </script>
 
