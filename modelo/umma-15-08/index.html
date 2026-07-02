@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Umma - Mis XV</title>
+<meta property="og:type" content="website">
+<meta property="og:title" content="Mis XV - Umma">
+<meta property="og:description" content="Te invito a celebrar conmigo una noche inolvidable. ¡Espero contar con tu presencia!">
+<meta property="og:image" content="https://invitacionescreativas.github.io/Invitacionesde15/modelo/umma-15-08miniatura.png">
+<meta property="og:url" content="https://invitacionescreativas.github.io/Invitacionesde15/modelo/umma-15-08">
+<meta property="og:site_name" content="Invitación XV Umma">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Mis XV - Umma">
+<meta name="twitter:description" content="Te invito a celebrar conmigo una noche inolvidable.">
+<meta name="twitter:image" content="https://invitacionescreativas.github.io/Invitacionesde15/modelo/umma-15-08miniatura.png">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+body{
+  margin:0;
+  font-family:Poppins,sans-serif;
+  background:#faf7f4;
+  color:#333;
+}
+
+/* ================= MODAL PASTEL ================= */
+.modal{
+  position:fixed;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(135deg,#fbeff2,#f5f3ff,#f7fbf7);
+  z-index:999;
+}
+
+.modal-box{
+  text-align:center;
+  padding:40px 30px;
+  border-radius:25px;
+  animation:fadeUp 1s ease;
+}
+
+.modal h2{
+  font-family:"Cormorant Garamond",serif;
+  margin:10px 0;
+}
+
+.modal button{
+  margin-top:20px;
+  padding:12px 25px;
+  border:none;
+  border-radius:30px;
+  background:#c9a96e;
+  color:white;
+  cursor:pointer;
+}
+
+/* ================= FOTO SOLO BACKGROUND ================= */
+.hero{
+  height:100vh;
+  position:relative;
+}
+
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:url("foto1.jpeg") center/cover no-repeat;
+  filter:brightness(0.55);
+}
+
+/* ================= CONTENIDO ABAJO ================= */
+.content{
+  padding:40px 20px;
+  text-align:center;
+}
+
+/* COUNTDOWN */
+#countdownBar{
+  text-align:center;
+  padding:25px;
+  background:#fff;
+  font-weight:500;
+}
+
+/* ================= SECCIONES LIMPIAS ================= */
+.section{
+  padding:55px 20px;
+  text-align:center;
+  opacity:0;
+  transform:translateY(25px);
+  transition:0.8s ease;
+}
+
+.section.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.alt1{background:#fffaf5;}
+.alt2{background:#f3f0ff;}
+.alt3{background:#f5fbf7;}
+.alt4{background:#fff3f6;}
+.alt5{background:#ffffff;}
+
+.icon{
+  font-size:20px;
+  margin-bottom:10px;
+  color:#c9a96e;
+}
+
+.title{
+  font-family:"Cormorant Garamond",serif;
+  font-size:26px;
+  margin-bottom:8px;
+}
+
+.text{
+  font-size:16px;
+  line-height:1.6;
+  color:#444;
+}
+
+/* FORM */
+.form-box{
+  max-width:420px;
+  margin:auto;
+}
+
+input,select{
+  width:100%;
+  padding:12px;
+  margin:8px 0;
+  border-radius:12px;
+  border:1px solid #e6e6e6;
+}
+
+.btn{
+  margin-top:15px;
+  padding:12px 25px;
+  border:none;
+  border-radius:30px;
+  background:#c9a96e;
+  color:white;
+  cursor:pointer;
+}
+
+/* ANIM */
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(20px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+.countdown-numbers{
+  font-size:32px;
+  font-weight:400;
+  letter-spacing:10px;
+  display:flex;
+  justify-content:center;
+  gap:18px;
+}
+
+.countdown-numbers span{
+  display:inline-block;
+  min-width:50px;
+  animation:pop 0.5s ease;
+}
+
+@keyframes pop{
+  0%{
+    opacity:0;
+    transform:translateY(10px) scale(0.9);
+  }
+  100%{
+    opacity:1;
+    transform:translateY(0) scale(1);
+  }
+}
+
+.countdown-labels{
+  display:flex;
+  justify-content:center;
+  gap:32px;
+  margin-top:6px;
+  font-size:11px;
+  color:#777;
+  letter-spacing:0.5px;
+}
+
+/* leve “respiración” del bloque */
+#countdownBar{
+  text-align:center;
+  padding:25px;
+  background:#fff;
+  font-weight:500;
+  animation:softPulse 4s ease-in-out infinite;
+}
+
+@keyframes softPulse{
+  0%,100%{background:#ffffff;}
+  50%{background:#fbfaf8;}
+}
+
+.section{
+  padding:55px 20px;
+  text-align:center;
+  opacity:0;
+  transform:translateY(40px) scale(0.98);
+  transition:all 0.8s ease;
+  will-change: transform, opacity;
+}
+
+.section.show{
+  opacity:1;
+  transform:translateY(0) scale(1);
+}
+
+/* salida suave cuando sale del viewport */
+.section.hide{
+  opacity:0;
+  transform:translateY(40px) scale(0.98);
+}
+
+/* botón mapa */
+.map-btn{
+  display:inline-block;
+  margin-top:12px;
+  padding:10px 18px;
+  border-radius:25px;
+  background:#c9a96e;
+  color:white;
+  text-decoration:none;
+  font-size:14px;
+  transition:0.3s;
+}
+
+.map-btn:hover{
+  transform:scale(1.05);
+}
+
+.music-btn{
+  position:fixed;
+  top:15px;
+  right:15px;
+  width:45px;
+  height:45px;
+  border-radius:50%;
+  background:white;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 5px 15px rgba(0,0,0,0.1);
+  cursor:pointer;
+  z-index:1000;
+  transition:0.3s;
+}
+
+.music-btn:hover{
+  transform:scale(1.1);
+}
+
+.heart{
+    font-size:38px;
+    color:#e8c9d2; /* rosa pastel */
+    margin-bottom:15px;
+    animation:heartbeat 2.5s ease-in-out infinite;
+    display:inline-block;
+    filter:drop-shadow(0 3px 8px rgba(232,201,210,.35));
+}
+
+@keyframes heartbeat{
+    0%,100%{
+        transform:scale(1);
+    }
+    15%{
+        transform:scale(1.12);
+    }
+    30%{
+        transform:scale(1);
+    }
+    45%{
+        transform:scale(1.08);
+    }
+}
+</style>
+</head>
+
+<body>
+<div class="music-btn" id="musicBtn">
+  <i class="fa fa-music"></i>
+</div>
+
+<audio id="music" src="musica.mp3" loop></audio>
+<!-- ================= MODAL PASTEL ================= -->
+<div class="modal" id="modal">
+  <div class="modal-box">
+    <div class="heart">
+    <i class="fa-solid fa-heart"></i>
+</div>
+    <h2>Estás invitado/a</h2>
+    <p>Mis XV - Umma</p>
+    <button onclick="openInvitation()">Abrir invitación</button>
+  </div>
+</div>
+
+<!-- ================= FOTO (SOLO FONDO) ================= -->
+<div class="hero"></div>
+
+<!-- ================= CONTENIDO REAL DEBAJO ================= -->
+<div class="content">
+   <div class="heart">
+    <i class="fa-solid fa-heart"></i>
+</div>
+    <h2 class="title">MIS XV</h2>
+    <h1 class="title">UMMA</h1>
+    <p>08 de agosto · 21:00 hs</p>
+    <p>Salón Círculo Policial. Ruta 51</p>
+ 
+</div>
+
+<!-- COUNTDOWN -->
+<div id="countdownBar">
+
+  <div id="countdown" class="countdown-numbers"></div>
+
+  <div class="countdown-labels">
+    <div>Días</div>
+    <div>Horas</div>
+    <div>Minutos</div>
+    <div>Segundos</div>
+  </div>
+
+</div>
+
+  <!-- FECHA -->
+  <div class="section alt1">
+    <div class="icon"><i class="fa fa-calendar"></i></div>
+    <div class="title">FECHA</div>
+    <div class="text">08 DE AGOSTO<br>21:00 HS</div>
+  <a class="map-btn" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Umma%20Cumple%2015&dates=20260808T210000/20260809T020000&details=Mis%20XV%20de%20Umma&location=Sal%C3%B3n%20C%C3%ADrculo%20Policial%20-%20Ruta%2051" target="_blank">
+  Agendar
+</a>
+  </div>
+
+  <!-- UBICACIÓN -->
+<div class="section alt2">
+  <div class="icon"><i class="fa fa-location-dot"></i></div>
+  <div class="title">UBICACIÓN</div>
+  <div class="text">Salón Círculo Policial<br>Ruta 51</div>
+
+  <a class="map-btn" href="https://maps.app.goo.gl/a8T55a2JY1EDWwn77" target="_blank">
+    Cómo llegar
+  </a>
+  <iframe
+  src="https://www.google.com/maps?q=Salón%20Círculo%20Policial%20Ruta%2051&output=embed"
+  width="100%"
+  height="180"
+  style="border:0;border-radius:12px;margin-top:10px;"
+  loading="lazy">
+</iframe>
+</div>
+
+  <!-- VESTIMENTA -->
+  <div class="section alt3">
+    <div class="icon"><i class="fa fa-shirt"></i></div>
+    <div class="title">VESTIMENTA</div>
+    <div class="text">Elegante Sport<br>Les solicitamos que cordialmente, las invitadas eviten vestir prenda de color blanco.<br>Y como detalle especial, quienes quieren y deseen y puedan hacerlo, les pedimos una rosa por familia, color blanca.</div>
+  </div>
+
+  <!-- REGALO -->
+  <div class="section alt4">
+    <div class="icon"><i class="fa fa-gift"></i></div>
+    <div class="title">REGALO</div>
+    <div class="text">Alias: Umma.quirogaa</div>
+  </div>
+
+  <!-- RSVP -->
+  <div class="section alt5">
+    <div class="icon"><i class="fa fa-users"></i></div>
+    <div class="title">CONFIRMAR ASISTENCIA</div>
+  <div class="text">Confirmar presencia hasta el 20 de Julio.</div>
+    <div class="form-box">
+      <input id="name" placeholder="Nombre">
+      <input id="lastname" placeholder="Apellido">
+
+      <select id="attendance">
+        <option value="si">Sí asistiré</option>
+        <option value="no">No asistiré</option>
+      </select>
+
+      <button class="btn" onclick="sendForm()">Confirmar</button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+
+/* MODAL */
+function openInvitation(){
+
+  document.getElementById("modal").style.display="none";
+
+  // mostrar botón música
+  document.getElementById("musicBtn").style.display="flex";
+
+  // reproducir música
+  const music = document.getElementById("music");
+  music.play().catch(()=>{});
+
+}
+function openInvitation(){
+
+  document.getElementById("modal").style.display="none";
+
+  // mostrar botón música
+  document.getElementById("musicBtn").style.display="flex";
+
+  // reproducir música
+  const music = document.getElementById("music");
+  music.play().catch(()=>{});
+
+}
+
+/* COUNTDOWN */
+const eventDate = new Date("2026-08-08T21:00:00").getTime();
+
+setInterval(() => {
+  const now = new Date().getTime();
+  const diff = eventDate - now;
+
+  const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const h = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+  const m = Math.floor((diff % (1000*60*60)) / (1000*60));
+  const s = Math.floor((diff % (1000*60)) / 1000);
+
+  document.getElementById("countdown").innerHTML =
+    `${d}   ${h}   ${m}   ${s}`;
+}, 1000);
+
+/* ANIM */
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add("show");
+      e.target.classList.remove("hide");
+    } else {
+      e.target.classList.remove("show");
+      e.target.classList.add("hide");
+    }
+  });
+}, {
+  threshold: 0.2
+});
+
+document.querySelectorAll(".section").forEach(el => {
+  observer.observe(el);
+});
+
+
+/* FORM */
+function sendForm(){
+  alert("Confirmado 💖");
+}
+
+
+</script>
+
+</body>
+</html>
