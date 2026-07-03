@@ -416,18 +416,6 @@ function openInvitation(){
   music.play().catch(()=>{});
 
 }
-function openInvitation(){
-
-  document.getElementById("modal").style.display="none";
-
-  // mostrar botón música
-  document.getElementById("musicBtn").style.display="flex";
-
-  // reproducir música
-  const music = document.getElementById("music");
-  music.play().catch(()=>{});
-
-}
 
 /* COUNTDOWN */
 const eventDate = new Date("2026-08-08T21:00:00").getTime();
@@ -467,51 +455,65 @@ document.querySelectorAll(".section").forEach(el => {
 
 
 /* FORM */
+  
+ let enviando = false;
+
 async function sendForm(){
 
-    const nombre=document.getElementById("name").value.trim();
-    const apellido=document.getElementById("lastname").value.trim();
-    const asistencia=document.getElementById("attendance").value;
+    if(enviando) return;
 
-    if(nombre==="" || apellido===""){
+    const boton = document.querySelector(".btn");
+
+    const nombre = document.getElementById("name").value.trim();
+    const apellido = document.getElementById("lastname").value.trim();
+    const asistencia = document.getElementById("attendance").value;
+
+    if(nombre === "" || apellido === ""){
         alert("Completa todos los datos.");
         return;
     }
 
+    enviando = true;
+
+    boton.disabled = true;
+    boton.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Enviando...';
+
     try{
 
-        await fetch("https://script.google.com/macros/s/AKfycbx9azZqIKGJ0WyG5xEAsFCmjVtTHIOHJbN3drdEbziIq68354SXcpYbvXWZ2WRl1ZvEUA/exec",{
-
+        await fetch("https://script.google.com/macros/s/AKfycbyGlaOe0UNtmQsctOiXaMRPg6jyBeh1ce31Xrccz4rLicPx0RMkfSexPypxY26uUbCpuA/exec",{
             method:"POST",
-
             mode:"no-cors",
-
             headers:{
-                "Content-Type":"text/plain;charset=utf-8"
+                "Content-Type":"application/json"
             },
-
             body:JSON.stringify({
-                nombre:nombre,
-                apellido:apellido,
-                asistencia:asistencia
+                nombre,
+                apellido,
+                asistencia
             })
-
         });
 
-        alert("¡Gracias por confirmar tu asistencia! ❤️");
+        // Limpiar formulario
+        document.getElementById("name").value = "";
+        document.getElementById("lastname").value = "";
+        document.getElementById("attendance").selectedIndex = 0;
 
-        document.getElementById("name").value="";
-        document.getElementById("lastname").value="";
-        document.getElementById("attendance").selectedIndex=0;
+        // Mensaje
+        alert("💖 ¡Gracias por confirmar tu asistencia!");
 
     }catch(error){
 
-        alert("No fue posible enviar la confirmación.");
+        alert("Ocurrió un error al enviar la confirmación.");
+
+    }finally{
+
+        // Siempre volver al estado inicial
+        enviando = false;
+        boton.disabled = false;
+        boton.innerHTML = "Confirmar";
 
     }
-
 }
-
 </script>
 
 </body>
