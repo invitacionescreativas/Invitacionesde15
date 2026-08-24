@@ -103,7 +103,7 @@
   z-index: 10;
   text-align: center;
   padding: 2rem;
-  margin-top: 20vh; /* mueve todo hacia abajo */
+  margin-top: 40vh; /* mueve todo hacia abajo */
     }
     
     .intro-title {
@@ -283,12 +283,18 @@
   z-index: 5; /* encima del video pero debajo del texto */
 }
     
-    .cover-text {
-      position: relative;
-      z-index: 10;
-      text-align: center;
-      padding: 3rem 2rem 4rem;
-    }
+   .cover-text {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+}
     
     .cover-title {
       font-family: var(--font-script);
@@ -1281,14 +1287,8 @@
   transform: translateY(60px);
 }
 /* Botón abajo en la portada */
-.intro-screen {
-  justify-content: flex-end; /* lleva el contenido al fondo */
-}
 
-.intro-content {
-  margin-top: 0;
-  margin-bottom: 90px;
-}
+
 
 #openInvitation {
   margin-top: 0;
@@ -1577,12 +1577,12 @@
     <div class="cover-gradient"></div>
     <div class="cover-text">
     
-       <div class="photos-section">
+      
   <!-- Foto de la niña con animación -->
   <img src="nombre.png" alt="Foto de la niña" class="photo-animada scroll-anim">
 
  
-</div>
+
      <div class="scroll-indicator"><span>Desliza</span>
       <div class="scroll-arrow"></div>
      </div>
