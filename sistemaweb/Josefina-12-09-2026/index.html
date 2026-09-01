@@ -371,14 +371,7 @@
       text-align: center;
     }
     
-    .intro-quote p {
-      font-family: var(--font-elegant);
-      font-size: clamp(1.2rem, 4vw, 1.6rem);
-      font-style: italic;
-      font-weight: 300;
-      line-height: 1.8;
-      color: var(--text-dark);
-    }
+
     
     .decorative-line {
       width: 80px;
@@ -1052,10 +1045,10 @@
 
 .intro-quote p {
   font-family: 'Great Vibes', cursive;
-  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
   color: #000;
-  font-weight: 400;
-  line-height: 1.6;
+  font-weight: 300px;
+  line-height: 1.2;
   z-index: 10;
   margin: 0 auto;
   transform: translateY(-15px);
@@ -1067,7 +1060,13 @@
   opacity: 0;               /* invisible al inicio */
   animation: enterDecor 1.5s ease-out forwards, floatDecor 3s ease-in-out infinite alternate;
 }
-
+.decorative-img2 {
+  display: block;           /* ocupa su propio “bloque” debajo del texto */
+  margin: 1rem auto 0 auto; /* centrado horizontal, con espacio arriba */
+  width: 300px;             /* tamaño de la imagen */
+  opacity: 0;               /* invisible al inicio */
+  animation: enterDecor 1.5s ease-out forwards, floatDecor 3s ease-in-out infinite alternate;
+}
 /* Entrada animada desde abajo */
 @keyframes enterDecor {
   0% {
@@ -1654,6 +1653,54 @@
 .venue-section .venue-name {
   font-size: 1.25rem !important;
 }
+
+.music-player-fixed{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  width:min(340px,92%);
+  margin:0 auto 22px;
+  padding:12px 16px;
+  border-radius:999px;
+  background:rgb(10, 33, 74);
+  border:1px solid rgba(10,33,74,.15);
+  backdrop-filter:blur(12px);
+}
+
+.music-btn{
+  width:48px;
+  height:48px;
+  border:none;
+  border-radius:50%;
+  background:#0A214A;
+  color:#fff;
+  font-size:18px;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:.25s;
+}
+
+.music-btn:hover{
+  transform:scale(1.08);
+}
+
+.music-info{
+  display:flex;
+  flex-direction:column;
+}
+
+.music-title{
+  color:#f5f5f5;
+  font-weight:700;
+  font-size:15px;
+}
+
+.music-status{
+  color:#fdfdfd;
+  font-size:13px;
+}
   </style>
   <style>body { box-sizing: border-box; }</style>
   <script src="https://cdn.tailwindcss.com/3.4.17" type="text/javascript"></script>
@@ -1679,7 +1726,7 @@
     </video>
                   <div class="photos-section">
   <!-- Foto de la niña con animación -->
-     <img src="castillo.png" alt="Foto de la niña" class="photo-animada scroll-anim">
+     <img src="castillo.png" alt="Foto de la niña" class="decorative-img2 scroll-anim">
   <img src="nombre.png" alt="Foto de la niña" class="photo-animada scroll-anim">
 
  
@@ -1696,21 +1743,34 @@
    </video>
    <div class="fixed-bg-overlay"></div><!-- Wrapper de secciones -->
    <div class="sections-wrapper"><!-- Texto introductorio -->
+<br>
+<br>
+<div class="music-player-fixed">
+  <button id="musicToggle" class="music-btn">
+    <span id="musicIcon">▶</span>
+  </button>
+
+  <div class="music-info">
+    <span class="music-title">DALE PLAY</span>
+    <span class="music-status" id="musicStatus"></span>
+  </div>
+</div>
 
 
     <section class="intro-text-section">
+      
      <div class="intro-quote fade-in">
   <!-- Imagen decorativa centrada sobre el texto -->
   <img src="carroza.png" alt="Corona" >
   
   <p id="introQuote"><br>
- Quiero que seas parte de este sueño. 
+El tic-tac del reloj marca el inicio de un nuevo capítulo en mi vida, transformando la inocencia de la niñez en la magia de la juventud. Con el amor incondicional de mi hermosa familia, he aprendido que los sueños más puros sí se hacen realidad si se buscan con el corazón. Hoy, con profunda emoción, quiero dar las gracias a quienes han guiado mis pasos y pedirles que me acompañen a celebrar esta noche real. Mi noche mágica no estaría completa sin su presencia; el reloj marcará la hora y el baile comenzará
   </p>
   <div class="decorative-line"></div>
  
 </div>
     </section>
-    <img src="1.jpeg" alt="Foto de la niña" class="foto-nina scroll-anim">
+
     <!-- Cuenta Regresiva -->
     <section class="countdown-section fade-in scroll-anim" >
  
@@ -1763,7 +1823,7 @@
       <h3 class="venue-name" id="venueName">Salón de Eventos Abby </h3>
       <h3 class="venue-name" id="venueName">22:00hs</h3>
     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3638.4471086787585!2d-64.8629643!3d-24.2261362!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x941a59003dd0eed7%3A0xcab6f42026f17b50!2sAbby%20Eventos%20san%20pedro%20de%20jujuy!5e0!3m2!1ses!2sar!4v1788202464703!5m2!1ses!2sar" width="100%" height="40%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
-      <p class="venue-address" id="venueAddress">Barrio las maderas calle Suipacha</p><a href="https://maps.app.goo.gl/XHBRiWBvAjswYv4i8" target="_blank" rel="noopener noreferrer" class="gift-btn-wrapper gift-btn"  id="mapsLink"> 📍 VER UBICACIÓN </a>
+      <p class="venue-address" id="venueAddress">Barrio las maderas calle Suipacha</p><a href="https://maps.app.goo.gl/CAUQLoPt5jtyFGUm9" target="_blank" rel="noopener noreferrer" class="gift-btn-wrapper gift-btn"  id="mapsLink"> 📍 VER UBICACIÓN </a>
      </div>
     </section>
 
@@ -1842,7 +1902,7 @@
     <img src="sobre.png" alt="Regalos" class="gift-icon-img">
 
     <p class="gift-intro">
-      Por favor confirmá tu asistencia con nombre y apellido antes del <strong>07 de Septiembre</strong>
+      Una corona, un vals y mi gente favorita. Solo falta una cosa: tú. Confirma y nos vemos en mis quince.<br>Hasta el 07 de Septiembre.
     </p>
 
 <form class="rsvp-form" onsubmit="sendWhatsApp(event)">
@@ -1868,7 +1928,7 @@
  
 </section>
 
-  <img src="2.jpeg" alt="Foto de la niña" class="foto-nina scroll-anim">
+
 
 
     <!-- Música -->
@@ -2275,7 +2335,27 @@ Restricción: ${restriccion}`;
 
   window.open(url, "_blank");
 }
+const audio = document.getElementById("bgMusic");
+const btn = document.getElementById("musicToggle");
+const icon = document.getElementById("musicIcon");
+const status = document.getElementById("musicStatus");
 
+btn.addEventListener("click", async () => {
+  if (audio.paused) {
+    await audio.play();
+    icon.textContent = "❚❚";
+    status.textContent = "Reproduciendo";
+  } else {
+    audio.pause();
+    icon.textContent = "▶";
+    status.textContent = "Pausado";
+  }
+});
+
+audio.addEventListener("ended", () => {
+  icon.textContent = "▶";
+  status.textContent = "Tocar música";
+});
   </script>
  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9d370c691204ba71',t:'MTc3MjAyMDg5MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
