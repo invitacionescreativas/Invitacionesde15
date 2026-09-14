@@ -383,30 +383,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-// --------------- confirmacion --------------------------------------
-
-
+// ========================================================
+// CONFIRMACIÓN DE ASISTENCIA
+// ========================================================
 
 document.addEventListener('DOMContentLoaded', function () {
 
   const contactosAsistencia = {
-    emilia: '541140692680',
-    yoly: '541165144467'
+    Ivana: '541140692680',
+    Sofia: '541165144467'
   };
 
   function enviarAsistencia() {
+
     const nombre = document.getElementById('userFullName')?.value.trim();
     const mensaje = document.getElementById('customMessage')?.value.trim();
-    const estado = document.querySelector('input[name="attendanceOption"]:checked');
+
+    const estado = document.querySelector(
+      'input[name="attendanceOption"]:checked'
+    );
+
     const destino = document.getElementById('destinoAsistencia')?.value;
 
+    // VALIDACIONES
     if (!estado) {
       alert('Seleccioná si asistís o no 😊');
       return;
     }
 
     if (!nombre) {
-      alert('Completá tu nombre 😊');
+      alert('Completá tu nombre y apellido 😊');
       return;
     }
 
@@ -415,63 +421,120 @@ document.addEventListener('DOMContentLoaded', function () {
       return;
     }
 
-    const texto = `*Confirmación de asistencia*
-*Nombre:* ${nombre}
-*Asiste:* ${estado.value}
-*Mensaje:* ${mensaje || 'Sin mensaje'}`;
-
     const telefono = contactosAsistencia[destino];
 
     if (!telefono) {
-      alert('Error con el destinatario');
+      alert('No se encontró el teléfono del destinatario.');
       return;
     }
 
-    const url = `https://wa.me/${telefono}?text=${encodeURIComponent(texto)}`;
+    const texto = `🎉 *CONFIRMACIÓN DE ASISTENCIA*
+
+👤 *Nombre y Apellido:* ${nombre}
+
+✅ *Asistencia:* ${estado.value}
+
+💬 *Mensaje:* ${mensaje || 'Sin mensaje'}`;
+
+    const url =
+      `https://wa.me/${telefono}?text=${encodeURIComponent(texto)}`;
 
     window.open(url, '_blank');
   }
 
-  const b1 = document.getElementById('botoncito1');
-  const b2 = document.getElementById('botoncito2');
 
-  if (b1) b1.addEventListener('click', enviarAsistencia);
-  if (b2) b2.addEventListener('click', enviarAsistencia);
+  // BOTÓN CONFIRMAR ASISTENCIA
+  const botonConfirmar = document.getElementById('botoncito1');
+
+  if (botonConfirmar) {
+    botonConfirmar.addEventListener('click', enviarAsistencia);
+  }
+
+
+  // BOTÓN ENVIAR MENSAJE
+  const botonMensaje = document.getElementById('botoncito2');
+
+  if (botonMensaje) {
+    botonMensaje.addEventListener('click', enviarAsistencia);
+  }
 
 });
 
 
+
+// ========================================================
+// RESTRICCIÓN ALIMENTARIA / MENÚ
+// ========================================================
+
 document.addEventListener('DOMContentLoaded', function () {
 
-  const contactos = {
-    emilia: '541140692680',
-    yoly: '541165144467'
+  const contactosMenu = {
+    Ivana: '541140692680',
+    Sofia: '541165144467'
   };
 
-  const boton = document.getElementById('botonWhatsappRestriccion');
+  const botonMenu =
+    document.getElementById('botonWhatsappRestriccion');
 
-  boton.addEventListener('click', function () {
+  // Si el botón no existe, no ejecutar esta parte
+  if (!botonMenu) {
+    return;
+  }
 
-    const nombre = document.getElementById('userNameRestriccion').value.trim();
-    const restriccion = document.getElementById('restriccionSelect').value;
-    const destino = document.getElementById('destinoRestriccion').value;
+  botonMenu.addEventListener('click', function () {
 
-    if (!nombre || !restriccion || !destino) {
-      alert("Completá todos los campos 😊");
+    const nombre =
+      document.getElementById('userNameRestriccion')?.value.trim();
+
+    const restriccion =
+      document.getElementById('restriccionSelect')?.value.trim();
+
+    const destino =
+      document.getElementById('destinoRestriccion')?.value;
+
+
+    // VALIDACIONES
+
+    if (!nombre) {
+      alert('Completá tu nombre 😊');
       return;
     }
 
-    const mensaje = `Hola! Soy ${nombre}.
-Restricción alimentaria: ${restriccion}`;
+    if (!restriccion) {
+      alert('Escribí tu condición o restricción alimentaria 😊');
+      return;
+    }
 
-    const telefono = contactos[destino];
+    if (!destino) {
+      alert('Elegí a quién enviarlo 😊');
+      return;
+    }
 
-    window.open(`https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`, '_blank');
+
+    const telefono = contactosMenu[destino];
+
+    if (!telefono) {
+      alert('No se encontró el teléfono del destinatario.');
+      return;
+    }
+
+
+    const mensaje = `🍽️ *CONDICIÓN ALIMENTARIA*
+
+👤 *Nombre:* ${nombre}
+
+🥗 *Condición / Restricción:*
+${restriccion}`;
+
+
+    const url =
+      `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
+
+    window.open(url, '_blank');
 
   });
 
 });
-
 
 function descargarArchivo() {
   // Mostrar la alerta "Descargado" durante 1 segundo
