@@ -448,3 +448,71 @@ function descargarArchivo() {
     alert('Descargado');
   }, 1000);
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  const frase = document.getElementById("fraseEscrita");
+  if (!frase) return;
+
+  const textoOriginal = frase.innerHTML.trim();
+  const partes = textoOriginal.split(/(<br\s*\/?>)/i);
+
+  const palabras = [];
+
+  partes.forEach(parte => {
+    if (/^<br\s*\/?>$/i.test(parte)) {
+      palabras.push({ salto: true });
+    } else {
+      parte.trim().split(/\s+/).forEach(palabra => {
+        if (palabra) palabras.push({ texto: palabra });
+      });
+    }
+  });
+
+  frase.innerHTML = "";
+  frase.style.minHeight = "180px";
+
+  let iniciado = false;
+
+  function escribirFrase() {
+    if (iniciado) return;
+    iniciado = true;
+
+    let indice = 0;
+
+    function escribir() {
+      if (indice >= palabras.length) return;
+
+      const palabra = palabras[indice];
+
+      if (palabra.salto) {
+        frase.appendChild(document.createElement("br"));
+      } else {
+        frase.appendChild(
+          document.createTextNode(
+            (indice > 0 && !palabras[indice - 1].salto ? " " : "") +
+            palabra.texto
+          )
+        );
+      }
+
+      indice++;
+
+      setTimeout(escribir, 190);
+    }
+
+    escribir();
+  }
+
+  const observer = new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting) {
+      escribirFrase();
+      observer.disconnect();
+    }
+  }, {
+    threshold: 0.15
+  });
+
+  observer.observe(frase);
+
+});
