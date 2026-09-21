@@ -451,68 +451,107 @@ function descargarArchivo() {
 
 document.addEventListener("DOMContentLoaded", () => {
 
-  const frase = document.getElementById("fraseEscrita");
-  if (!frase) return;
+  const elementos = document.querySelectorAll(".efecto-escritura");
 
-  const textoOriginal = frase.innerHTML.trim();
-  const partes = textoOriginal.split(/(<br\s*\/?>)/i);
+  const observer = new IntersectionObserver((entradas) => {
 
-  const palabras = [];
+    entradas.forEach((entrada) => {
 
-  partes.forEach(parte => {
-    if (/^<br\s*\/?>$/i.test(parte)) {
-      palabras.push({ salto: true });
-    } else {
-      parte.trim().split(/\s+/).forEach(palabra => {
-        if (palabra) palabras.push({ texto: palabra });
-      });
-    }
-  });
+      if (!entrada.isIntersecting) return;
 
-  frase.innerHTML = "";
-  frase.style.minHeight = "180px";
+      const elemento = entrada.target;
 
-  let iniciado = false;
+      observer.unobserve(elemento);
 
-  function escribirFrase() {
-    if (iniciado) return;
-    iniciado = true;
+      const contenido = elemento.innerHTML;
+      const fragmento = document.createElement("div");
+      fragmento.innerHTML = contenido;
 
-    let indice = 0;
+      const palabras = [];
 
-    function escribir() {
-      if (indice >= palabras.length) return;
+      function recorrer(nodo) {
 
-      const palabra = palabras[indice];
+        if (nodo.nodeType === Node.TEXT_NODE) {
 
-      if (palabra.salto) {
-        frase.appendChild(document.createElement("br"));
-      } else {
-        frase.appendChild(
-          document.createTextNode(
-            (indice > 0 && !palabras[indice - 1].salto ? " " : "") +
-            palabra.texto
-          )
-        );
+          const partes = nodo.textContent.match(/\s+|\S+/g) || [];
+
+          partes.forEach(parte => {
+            palabras.push({
+              tipo: "texto",
+              contenido: parte
+            });
+          });
+
+        } else if (nodo.nodeType === Node.ELEMENT_NODE) {
+
+          palabras.push({
+            tipo: "abrir",
+            nodo: nodo
+          });
+
+          nodo.childNodes.forEach(recorrer);
+
+          palabras.push({
+            tipo: "cerrar"
+          });
+
+        }
       }
 
-      indice++;
+      fragmento.childNodes.forEach(recorrer);
 
-      setTimeout(escribir, 190);
-    }
+      elemento.innerHTML = "";
 
-    escribir();
-  }
+      let indice = 0;
+      const pila = [elemento];
 
-  const observer = new IntersectionObserver(entries => {
-    if (entries[0].isIntersecting) {
-      escribirFrase();
-      observer.disconnect();
-    }
+      function escribir() {
+
+        if (indice >= palabras.length) return;
+
+        const item = palabras[indice];
+
+        if (item.tipo === "abrir") {
+
+          const nuevo = item.nodo.cloneNode(false);
+
+          pila[pila.length - 1].appendChild(nuevo);
+
+          pila.push(nuevo);
+
+        } else if (item.tipo === "cerrar") {
+
+          pila.pop();
+
+        } else {
+
+          pila[pila.length - 1].appendChild(
+            document.createTextNode(item.contenido)
+          );
+
+        }
+
+        indice++;
+
+        const pausa =
+          item.tipo === "texto" && item.contenido.trim()
+            ? 180
+            : 0;
+
+        setTimeout(escribir, pausa);
+
+      }
+
+      escribir();
+
+    });
+
   }, {
     threshold: 0.15
   });
 
-  observer.observe(frase);
+  elementos.forEach(elemento => {
+    observer.observe(elemento);
+  });
 
 });
