@@ -1,1 +1,372 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
 
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+  <title>Valentina | Mis XV</title>
+
+  <!-- ICONO -->
+  <link rel="icon" type="image/png" href="miniatura.png">
+  <link rel="apple-touch-icon" href="miniatura.png">
+
+  <!-- MINIATURA AL COMPARTIR -->
+  <meta property="og:title" content="Valentina | Mis XV">
+  <meta property="og:description"
+        content="Te invito a compartir una noche muy especial.">
+
+  <meta property="og:image"
+        content="https://invitacionescreativas.github.io/Invitacionesde15/sistemaweb/Valentina-cumple-15-20-11/miniatura.png">
+
+  <meta property="og:type" content="website">
+
+  <meta property="og:url"
+        content="https://invitacionescreativas.github.io/Invitacionesde15/sistemaweb/Valentina-cumple-15-20-11/">
+
+  <!-- WHATSAPP / REDES -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Valentina | Mis XV">
+  <meta name="twitter:description"
+        content="Te invito a compartir una noche muy especial.">
+
+  <meta name="twitter:image"
+        content="https://invitacionescreativas.github.io/Invitacionesde15/sistemaweb/Valentina-cumple-15-20-11/miniatura.png">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #000;
+    }
+
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    /* =========================
+       PORTADA
+    ========================= */
+
+    .portada {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      background: #000;
+      overflow: hidden;
+    }
+
+    /* VIDEO PANTALLA COMPLETA */
+
+    #videoPortada {
+      position: absolute;
+      inset: 0;
+
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+      object-position: center;
+
+      z-index: 1;
+    }
+
+    /* SOMBRA SUAVE INFERIOR PARA EL BOTÓN */
+
+    .degradado {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+
+      height: 38%;
+
+      background:
+        linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.30),
+          rgba(0, 0, 0, 0)
+        );
+
+      z-index: 2;
+
+      pointer-events: none;
+    }
+
+    /* =========================
+       BOTÓN
+    ========================= */
+
+    .contenedor-boton {
+      position: absolute;
+
+      left: 50%;
+      bottom: max(55px, env(safe-area-inset-bottom));
+
+      transform: translateX(-50%) translateY(30px);
+
+      z-index: 10;
+
+      opacity: 0;
+      visibility: hidden;
+
+      transition:
+        opacity 1.2s ease,
+        transform 1.2s ease,
+        visibility 1.2s;
+    }
+
+    .contenedor-boton.visible {
+      opacity: 1;
+      visibility: visible;
+
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .btn-abrir {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 235px;
+  padding: 16px 30px;
+
+  border: 1px solid rgba(255, 228, 166, 0.95);
+  border-radius: 50px;
+
+  background: linear-gradient(
+    135deg,
+    #9b722e,
+    #d5ad55,
+    #f0d58c,
+    #b78535
+  );
+
+  color: #fffaf0;
+
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 14px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+
+  /* EVITA QUE EL TEXTO SE DIVIDA */
+  white-space: nowrap;
+
+  text-decoration: none;
+  cursor: pointer;
+
+  box-shadow:
+    0 5px 20px rgba(0, 0, 0, 0.25),
+    0 0 20px rgba(214, 174, 85, 0.25);
+
+  overflow: hidden;
+
+  animation: respirar 2.5s ease-in-out infinite;
+}
+
+    /* BRILLO DORADO */
+
+    .btn-abrir::before {
+      content: "";
+
+      position: absolute;
+
+      top: -50%;
+      left: -80%;
+
+      width: 40%;
+      height: 200%;
+
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.75),
+          transparent
+        );
+
+      transform: rotate(20deg);
+
+      animation: brillo 3s infinite;
+    }
+
+    @keyframes brillo {
+
+      0% {
+        left: -80%;
+      }
+
+      45% {
+        left: 140%;
+      }
+
+      100% {
+        left: 140%;
+      }
+    }
+
+    @keyframes respirar {
+
+      0%,
+      100% {
+        box-shadow:
+          0 5px 20px rgba(0, 0, 0, 0.25),
+          0 0 10px rgba(214, 174, 85, 0.20);
+      }
+
+      50% {
+        box-shadow:
+          0 7px 25px rgba(0, 0, 0, 0.30),
+          0 0 28px rgba(214, 174, 85, 0.50);
+      }
+    }
+
+    /* CELULARES */
+
+    @media (max-width: 600px) {
+
+      .contenedor-boton {
+        bottom: max(42px, env(safe-area-inset-bottom));
+      }
+
+      .btn-abrir {
+        min-width: 205px;
+        padding: 15px 26px;
+        font-size: 13px;
+        letter-spacing: 1.8px;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <main class="portada">
+
+    <!-- VIDEO DE PORTADA -->
+
+    <video
+      id="videoPortada"
+      autoplay
+      muted
+      playsinline
+      preload="auto"
+      poster="miniatura.png"
+    >
+      <source src="portada.mp4" type="video/mp4">
+    </video>
+
+
+    <div class="degradado"></div>
+
+
+    <!-- BOTÓN -->
+
+    <div
+      class="contenedor-boton"
+      id="contenedorBoton"
+    >
+
+      <a
+        class="btn-abrir"
+        href="https://teinvito.invitacionescreativas.com.ar/valentina-mis-xv-a-os"
+        id="btnAbrir"
+      >
+        Abrir invitación
+      </a>
+
+    </div>
+
+  </main>
+
+
+  <script>
+
+    const video = document.getElementById("videoPortada");
+    const boton = document.getElementById("contenedorBoton");
+
+    let botonMostrado = false;
+
+
+    /* =========================
+       MOSTRAR BOTÓN
+       A LOS 15 SEGUNDOS
+    ========================= */
+
+    function mostrarBoton() {
+
+      if (botonMostrado) return;
+
+      botonMostrado = true;
+
+      boton.classList.add("visible");
+    }
+
+
+    video.addEventListener("timeupdate", function () {
+
+      if (video.currentTime >= 20) {
+        mostrarBoton();
+      }
+
+    });
+
+
+    /*
+      RESPALDO:
+      Si por algún motivo el evento del video
+      no responde, igualmente aparece.
+    */
+
+    setTimeout(mostrarBoton, 20000);
+
+
+    /* =========================
+       AUTOPLAY
+    ========================= */
+
+    window.addEventListener("load", function () {
+
+      const promesa = video.play();
+
+      if (promesa !== undefined) {
+
+        promesa.catch(function () {
+
+          /*
+            Algunos navegadores pueden bloquear
+            el autoplay. Con muted normalmente
+            debería funcionar.
+          */
+
+        });
+
+      }
+
+    });
+
+
+    /* =========================
+       SI EL VIDEO TERMINA ANTES
+       MOSTRAR EL BOTÓN
+    ========================= */
+
+    video.addEventListener("ended", mostrarBoton);
+
+  </script>
+
+</body>
+</html>
