@@ -226,7 +226,7 @@ if (botonCancion) {
      
 
         const mensaje =
-`🎵 SUGERENCIA DE CANCIÓN - XV MORE
+`🎵 SUGERENCIA DE CANCIÓN - XV SIL
 
 👤 Nombre:
 ${nombre}
@@ -438,7 +438,7 @@ if (botonAsistencia) {
         const asistencia = opcion.value;
 
         let texto =
-`💜 CONFIRMACIÓN DE ASISTENCIA - XV MORE
+`💜 CONFIRMACIÓN DE ASISTENCIA - XV SIL
 
 👤 Nombre:
 ${nombre}
@@ -505,7 +505,7 @@ if (botonRestriccion) {
 
         // MENSAJE PARA WHATSAPP
         const mensaje =
-`🍽️ RESTRICCIÓN ALIMENTARIA - XV MORE
+`🍽️ RESTRICCIÓN ALIMENTARIA - XV SIL
 
 👤 Nombre:
 ${nombre}
