@@ -13,3 +13,11 @@ Invitados personalizados por URL:
 
 Google Sheets:
 Pegá la URL /exec de tu Apps Script en APPS_SCRIPT_URL dentro de script.js.
+
+
+Correcciones v3:
+- Sobre: sello centrado, texto Abrir por encima, tarjetas más juntas y botón Ingresar más abajo.
+- Dress code: icono de traje + vestido largo en línea terracota.
+- Nueva sección: celebración solo para adultos.
+- Se evitó repetir la foto final: 6.jpeg pasa a la polaroid previa al regalo y sale de la galería.
+- Corrección del desplazamiento al formulario de No asistir.

@@ -14,3 +14,31 @@
 .finalText span{display:block;font:58px Allura;margin-bottom:4px}
 .finalText b{font:400 24px "Cormorant Garamond";letter-spacing:.04em}
 @media(max-width:360px){.finalPhoto{height:560px}.finalText span{font-size:52px}}
+
+/* Correcciones portada/sobre y sección solo adultos */
+.cover{justify-content:center;padding-bottom:24px}
+.envelope{height:300px;margin-top:-24px}
+.seal{left:125px;bottom:76px}
+.seal span{width:150px;left:-40px;bottom:90px;color:var(--olive);text-shadow:none;font-size:13px;font-weight:600;line-height:1.2}
+.invite-card{left:40px;bottom:52px;width:116px;height:116px}
+.mini-photo{right:40px;bottom:50px;width:112px;height:142px}
+.envelope.open .invite-card{transform:translate(-2px,-108px) rotate(-4deg)}
+.envelope.open .mini-photo{transform:translate(2px,-112px) rotate(4deg)}
+.cover h1{margin-top:18px}
+.enter{margin-top:28px}
+.adultsOnly{margin-top:64px}
+.adultsOnly h3{font-size:38px;line-height:1.05}
+@media(max-width:360px){.envelope{transform:scale(.94)}.enter{margin-top:20px}.adultsOnly h3{font-size:35px}}
+
+/* Ajustes definitivos solicitados */
+.seal{bottom:58px}
+.seal span{bottom:108px}
+.dressCodeImage{display:block;width:220px;max-width:78%;height:auto;margin:0 auto 12px}
+
+
+/* Solo para adultos - sin icono */
+.adultsOnly{margin:45px auto;padding:20px 12px;text-align:center}
+.adultsOnly h3{margin:0 0 18px;font:48px Allura,cursive;color:var(--ink);line-height:1.05}
+.adultsOnly p{max-width:310px;margin:0 auto;font:15px/1.7 Montserrat,sans-serif;color:var(--ink)}
+.adult-heart{display:block;margin-top:20px;font:34px "Cormorant Garamond",serif;color:var(--gold)}
+@media(max-width:360px){.adultsOnly h3{font-size:43px}}

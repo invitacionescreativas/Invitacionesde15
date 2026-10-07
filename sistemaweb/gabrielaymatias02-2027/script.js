@@ -15,7 +15,7 @@ function tick(){let t=Math.max(0,target-Date.now()),d=Math.floor(t/864e5);t%=864
 const slides=[...document.querySelectorAll(".slide")];dots.innerHTML=slides.map((_,i)=>`<i class="${i===0?"active":""}"></i>`).join("");
 slider.addEventListener("scroll",()=>{const i=Math.round(slider.scrollLeft/(slider.clientWidth*.82+14));[...dots.children].forEach((x,n)=>x.classList.toggle("active",n===i))});
 
-document.querySelectorAll("[data-choice]").forEach(b=>b.onclick=()=>{const yes=b.dataset.choice==="yes";yesPanel.hidden=!yes;noPanel.hidden=yes;yesPanel.scrollIntoView({behavior:"smooth",block:"center"})});
+document.querySelectorAll("[data-choice]").forEach(b=>b.onclick=()=>{const yes=b.dataset.choice==="yes";yesPanel.hidden=!yes;noPanel.hidden=yes;(yes?yesPanel:noPanel).scrollIntoView({behavior:"smooth",block:"center"})});
 bankBtn.onclick=()=>bank.hidden=!bank.hidden;
 document.querySelectorAll("[data-copy]").forEach(b=>b.onclick=async()=>{await navigator.clipboard.writeText(b.dataset.copy);b.textContent="Copiado ✓"});
 
