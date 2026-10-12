@@ -1,0 +1,372 @@
+/* ==========================================================
+   INVITACIÓN XV VALEN - script.js (corregido)
+   ========================================================== */
+
+// ----------------------------------------------------------
+// CONFIG
+// ----------------------------------------------------------
+// WhatsApp que recibe el formulario de MENÚ / RESTRICCIÓN
+// (formato internacional, sin + ni espacios). Cambialo si corresponde.
+const WHATSAPP_MENU = "5491156153850";
+
+// Fecha del evento: año, mes (0 = enero, 9 = octubre), día, hora, min, seg
+const FECHA_EVENTO = new Date(2026, 9, 31, 21, 0, 0);
+
+// ----------------------------------------------------------
+// HELPERS
+// ----------------------------------------------------------
+const $id = (id) => document.getElementById(id);
+
+// Normaliza números argentinos a formato wa.me: 549 + área + número
+function normalizarNumero(numero) {
+  let n = String(numero).replace(/\D/g, "");
+  if (n.startsWith("54") && !n.startsWith("549")) {
+    n = "549" + n.slice(2);
+  }
+  return n;
+}
+
+function abrirWhatsApp(numero, texto) {
+  const url =
+    "https://wa.me/" + normalizarNumero(numero) +
+    "?text=" + encodeURIComponent(texto);
+  window.open(url, "_blank");
+}
+
+// ----------------------------------------------------------
+// ANIMACIONES (AOS) - con respaldo para que nada quede invisible
+// ----------------------------------------------------------
+try {
+  AOS.init();
+} catch (e) {
+  console.warn("AOS no cargó, se muestran las secciones sin animación.", e);
+  document.querySelectorAll("[data-aos]").forEach((el) => {
+    el.classList.add("aos-animate");
+    el.style.opacity = 1;
+    el.style.transform = "none";
+  });
+}
+
+// ----------------------------------------------------------
+// MÚSICA
+// ----------------------------------------------------------
+document.addEventListener("DOMContentLoaded", function () {
+  const playButton = $id("play");
+  const pauseButton = $id("pause");
+  const audio = document.querySelector("audio");
+  const musicImg = document.querySelector(".music__img");
+
+  if (!playButton || !pauseButton || !audio || !musicImg) return;
+
+  pauseButton.style.display = "none";
+
+  function startSpinner() {
+    let rotation = 0;
+    musicImg.style.transformOrigin = "center center";
+    musicImg.dataset.rotating = "true";
+
+    function rotate() {
+      if (musicImg.dataset.rotating !== "true") return;
+      rotation += 2;
+      musicImg.style.transform = `rotate(${rotation}deg)`;
+      requestAnimationFrame(rotate);
+    }
+    rotate();
+  }
+
+  function stopSpinner() {
+    musicImg.dataset.rotating = "false";
+  }
+
+  playButton.addEventListener("click", function () {
+    audio.play();
+    playButton.style.display = "none";
+    pauseButton.style.display = "inline-block";
+    startSpinner();
+  });
+
+  pauseButton.addEventListener("click", function () {
+    audio.pause();
+    pauseButton.style.display = "none";
+    playButton.style.display = "inline-block";
+    stopSpinner();
+  });
+
+  const forward = $id("forward");
+  const rewind = $id("rewind");
+  if (forward) forward.addEventListener("click", () => (audio.currentTime += 10));
+  if (rewind) rewind.addEventListener("click", () => (audio.currentTime -= 10));
+});
+
+// ----------------------------------------------------------
+// TEMPORIZADOR
+// ----------------------------------------------------------
+function updateTimer() {
+  const elDays = $id("days");
+  if (!elDays) return;
+
+  let diff = FECHA_EVENTO.getTime() - Date.now();
+  if (diff < 0) diff = 0;
+
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+  elDays.textContent = days;
+  $id("hours").textContent = hours;
+  $id("minutes").textContent = minutes;
+  $id("seconds").textContent = seconds;
+}
+
+updateTimer();
+setInterval(updateTimer, 1000);
+
+// ----------------------------------------------------------
+// FOTOS (Swiper + Fancybox)
+// ----------------------------------------------------------
+document.addEventListener("DOMContentLoaded", function () {
+  if (typeof Swiper !== "undefined") {
+    new Swiper(".mySwiper", {
+      effect: "cards",
+      grabCursor: true,
+    });
+  }
+
+  // fancybox.umd.js (v4/v5) se usa con Fancybox.bind, no con $().fancybox
+  if (typeof Fancybox !== "undefined") {
+    Fancybox.bind('[data-fancybox="gallery"]', {});
+  }
+});
+
+// ----------------------------------------------------------
+// DRESSCODE (lightbox)
+// ----------------------------------------------------------
+document.addEventListener("DOMContentLoaded", function () {
+  const showImageBtn = $id("showImage");
+  const lightbox = $id("lightbox");
+  const closeButton = $id("closeButton");
+
+  if (showImageBtn && lightbox) {
+    showImageBtn.addEventListener("click", () => (lightbox.style.display = "flex"));
+  }
+  if (closeButton && lightbox) {
+    closeButton.addEventListener("click", () => (lightbox.style.display = "none"));
+  }
+});
+
+// ----------------------------------------------------------
+// REGALO (alias desplegable + copiar)
+// ----------------------------------------------------------
+document.addEventListener("DOMContentLoaded", function () {
+  const boton = $id("mostrarBoton");
+  const textoDesplegable = $id("textoDesplegable");
+
+  if (boton && textoDesplegable) {
+    boton.addEventListener("click", function () {
+      textoDesplegable.classList.toggle("oculto");
+      textoDesplegable.classList.toggle("mostrar");
+    });
+  }
+});
+
+function copiarAlPortapapeles(texto, mensajeId, duracion) {
+  const mostrarMensaje = () => {
+    const msg = $id(mensajeId);
+    if (!msg) return;
+    msg.style.display = "block";
+    setTimeout(() => (msg.style.display = "none"), duracion);
+  };
+
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(texto).then(mostrarMensaje).catch(() => {
+      copiaAlternativa(texto);
+      mostrarMensaje();
+    });
+  } else {
+    copiaAlternativa(texto);
+    mostrarMensaje();
+  }
+}
+
+function copiaAlternativa(texto) {
+  const ta = document.createElement("textarea");
+  ta.value = texto;
+  document.body.appendChild(ta);
+  ta.select();
+  document.execCommand("copy");
+  document.body.removeChild(ta);
+}
+
+// Se llaman desde onclick="" en el HTML
+function copyText() {
+  const el = $id("alias");
+  if (el) copiarAlPortapapeles(el.innerText.trim(), "copyMessage", 1500);
+}
+
+function copyCbuText() {
+  const el = $id("cbuAlias");
+  if (el) copiarAlPortapapeles(el.textContent.trim(), "copyCbuMessage", 2000);
+}
+
+// ----------------------------------------------------------
+// PRECIO / DATOS BANCARIOS (sección oculta, con guardas)
+// ----------------------------------------------------------
+document.addEventListener("DOMContentLoaded", () => {
+  const toggleBtn = $id("precio__toggle-btn");
+  const mostrarSection = $id("precio__mostrar");
+  const copyCbuBtn = $id("precio__copy-cbu");
+  const copyAliasBtn = $id("precio__copy-alias");
+
+  if (toggleBtn && mostrarSection) {
+    toggleBtn.addEventListener("click", () => {
+      mostrarSection.classList.toggle("active");
+      toggleBtn.textContent = mostrarSection.classList.contains("active")
+        ? "Ocultar datos bancarios"
+        : "Ver datos bancarios para pagos";
+    });
+  }
+
+  const copiarTexto = (button, selector, etiqueta) => {
+    const element = document.querySelector(selector);
+    if (!button) return;
+    if (element) {
+      navigator.clipboard.writeText(element.textContent.trim()).then(() => {
+        button.textContent = `¡${etiqueta} Copiado!`;
+        setTimeout(() => (button.textContent = `Copiar ${etiqueta}`), 2000);
+      });
+    } else {
+      button.textContent = `${etiqueta} no disponible`;
+      setTimeout(() => (button.textContent = `Copiar ${etiqueta}`), 2000);
+    }
+  };
+
+  if (copyCbuBtn) copyCbuBtn.addEventListener("click", () => copiarTexto(copyCbuBtn, ".precio__CBU", "CBU"));
+  if (copyAliasBtn) copyAliasBtn.addEventListener("click", () => copiarTexto(copyAliasBtn, ".precio__alias", "Alias"));
+
+  // Lightbox del menú alimenticio
+  const btnAbrir = document.querySelector(".foto__menu");
+  const lightbox = $id("menuFotoLightbox");
+  const btnCerrar = $id("menuFotoCerrar");
+  const overlay = document.querySelector(".menuFoto-overlay");
+  const imagen = document.querySelector(".menuFoto-imagen");
+
+  if (btnAbrir && lightbox) {
+    btnAbrir.addEventListener("click", () => {
+      lightbox.style.display = "block";
+      setTimeout(() => lightbox.classList.add("activo"), 10);
+    });
+
+    const cerrarLightbox = () => {
+      lightbox.classList.remove("activo");
+      lightbox.style.display = "none";
+    };
+
+    if (btnCerrar) btnCerrar.addEventListener("click", cerrarLightbox);
+    if (overlay) overlay.addEventListener("click", cerrarLightbox);
+  }
+  if (imagen) imagen.addEventListener("click", (e) => e.stopPropagation());
+});
+
+// ==========================================================
+// FORMULARIOS → WHATSAPP
+// ==========================================================
+document.addEventListener("DOMContentLoaded", function () {
+
+  // --------------------------------------------------------
+  // 1. SUGERENCIA DE CANCIÓN
+  // --------------------------------------------------------
+  const botonCancion = $id("botonplay1");
+
+  if (botonCancion) {
+    botonCancion.addEventListener("click", function () {
+      const nombre = $id("userName").value.trim();
+      const cancion = $id("whatsappMessage").value.trim();
+      const destinatario = $id("destinatarioCancion").value;
+
+      if (!nombre) return alert("Ingresá tu nombre y apellido 💜");
+      if (!cancion) return alert("Ingresá una canción 🎵");
+      if (!destinatario) return alert("Seleccioná a quién enviar la sugerencia 💜");
+
+      const mensaje =
+`🎵 SUGERENCIA DE CANCIÓN - XV VALEN
+
+👤 Nombre y apellido:
+${nombre}
+
+🎶 Canción sugerida:
+${cancion}`;
+
+      abrirWhatsApp(destinatario, mensaje);
+
+      $id("userName").value = "";
+      $id("whatsappMessage").value = "";
+      $id("destinatarioCancion").value = "";
+    });
+  }
+
+  // --------------------------------------------------------
+  // 2. CONFIRMACIÓN DE ASISTENCIA
+  // --------------------------------------------------------
+  const botonAsistencia = $id("botoncito1");
+
+  if (botonAsistencia) {
+    botonAsistencia.addEventListener("click", function () {
+      const nombre = $id("userFullName").value.trim();
+      const mensajeExtra = $id("customMessage").value.trim();
+      const opcion = document.querySelector('input[name="attendanceOption"]:checked');
+      const destinatario = $id("destinatarioWhatsApp").value;
+
+      if (!opcion) return alert("Seleccioná si vas a asistir 💜");
+      if (!nombre) return alert("Ingresá tu nombre y apellido 💜");
+      if (!destinatario) return alert("Seleccioná si querés enviar la confirmación a Claudio o Mónica.");
+
+      let texto =
+`💜 CONFIRMACIÓN DE ASISTENCIA - XV VALEN
+
+👤 Nombre:
+${nombre}
+
+🎉 Asistencia:
+${opcion.value}`;
+
+      if (mensajeExtra) {
+        texto += `
+
+💬 Mensaje:
+${mensajeExtra}`;
+      }
+
+      abrirWhatsApp(destinatario, texto);
+    });
+  }
+
+  // --------------------------------------------------------
+  // 3. MENÚ / RESTRICCIÓN ALIMENTARIA (solo nombre + texto)
+  // --------------------------------------------------------
+  const botonRestriccion = $id("botonRestriccion");
+
+  if (botonRestriccion) {
+    botonRestriccion.addEventListener("click", function () {
+      const nombre = $id("foodName").value.trim();
+      const detalle = $id("foodRestriction").value.trim();
+
+      if (!nombre) return alert("Ingresá tu nombre y apellido 💜");
+      if (!detalle) return alert("Escribí tu sugerencia de menú o restricción 💜");
+
+      const mensaje =
+`🍽️ MENÚ / RESTRICCIÓN ALIMENTARIA - XV VALEN
+
+👤 Nombre y apellido:
+${nombre}
+
+📝 Detalle:
+${detalle}`;
+
+      abrirWhatsApp(WHATSAPP_MENU, mensaje);
+
+      $id("foodName").value = "";
+      $id("foodRestriction").value = "";
+    });
+  }
+});
