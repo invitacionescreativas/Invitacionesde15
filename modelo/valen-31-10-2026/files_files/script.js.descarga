@@ -10,7 +10,7 @@
 const WHATSAPP_MENU = "5491156153850";
 
 // Fecha del evento: año, mes (0 = enero, 9 = octubre), día, hora, min, seg
-const FECHA_EVENTO = new Date(2026, 9, 31, 21, 0, 0);
+const FECHA_EVENTO = new Date(2026, 10, 14, 21, 0, 0);
 
 // ----------------------------------------------------------
 // HELPERS
