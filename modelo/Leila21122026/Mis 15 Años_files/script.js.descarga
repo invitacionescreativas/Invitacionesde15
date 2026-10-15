@@ -1,0 +1,417 @@
+/* ==========================================================================
+   script.js — Invitación digital
+   Todas las respuestas (asistencia, restricciones, canción) se envían
+   al WhatsApp único definido en WHATSAPP_UNICO.
+   ========================================================================== */
+
+const $id = (id) => document.getElementById(id);
+
+/* ------------------------------ scroll AOS ------------------------------ */
+if (window.AOS) AOS.init();
+
+
+/* ------------------------------- música --------------------------------- */
+document.addEventListener('DOMContentLoaded', function () {
+  const playButton = $id('play');
+  const pauseButton = $id('pause');
+  const audio = document.querySelector('audio');
+  const musicImg = document.querySelector('.music__img');
+  if (!playButton || !pauseButton || !audio || !musicImg) return;
+
+  pauseButton.style.display = 'none';
+
+  function startSpinner() {
+    let rotation = 0;
+    musicImg.style.transformOrigin = 'center center';
+    musicImg.dataset.rotating = 'true';
+
+    function rotate() {
+      if (musicImg.dataset.rotating !== 'true') return;
+      rotation += 2;
+      musicImg.style.transform = `rotate(${rotation}deg)`;
+      requestAnimationFrame(rotate);
+    }
+    rotate();
+  }
+
+  function stopSpinner() {
+    musicImg.dataset.rotating = 'false';
+  }
+
+  playButton.addEventListener('click', function () {
+    audio.play();
+    playButton.style.display = 'none';
+    pauseButton.style.display = 'inline-block';
+    startSpinner();
+  });
+
+  pauseButton.addEventListener('click', function () {
+    audio.pause();
+    pauseButton.style.display = 'none';
+    playButton.style.display = 'inline-block';
+    stopSpinner();
+  });
+
+  const forward = $id('forward');
+  const rewind = $id('rewind');
+  if (forward) forward.addEventListener('click', () => { audio.currentTime += 10; });
+  if (rewind) rewind.addEventListener('click', () => { audio.currentTime -= 10; });
+});
+
+
+/* ----------------------------- temporizador ----------------------------- */
+function updateTimer() {
+  const daysEl = $id('days');
+  if (!daysEl) return;
+
+  const targetDate = new Date('november 21, 2026 21:00:00').getTime();
+  const timeRemaining = Math.max(0, targetDate - Date.now());
+
+  const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+  daysEl.textContent = days;
+  $id('hours').textContent = hours;
+  $id('minutes').textContent = minutes;
+  $id('seconds').textContent = seconds;
+}
+
+updateTimer();
+setInterval(updateTimer, 1000);
+
+
+/* -------------------------------- fotos --------------------------------- */
+document.addEventListener('DOMContentLoaded', function () {
+  if (window.Swiper && document.querySelector('.mySwiper')) {
+    new Swiper('.mySwiper', {
+      effect: 'cards',
+      grabCursor: true,
+    });
+  }
+
+  // Fancybox v5 (fancybox.umd.js) o, si fuera la versión vieja, v3 con jQuery
+  if (window.Fancybox && typeof Fancybox.bind === 'function') {
+    Fancybox.bind('[data-fancybox="gallery"]', {});
+  } else if (window.jQuery && jQuery.fn.fancybox) {
+    jQuery('.fancybox').fancybox({
+      buttons: ['zoom', 'slideShow', 'fullScreen', 'thumbs', 'close'],
+      loop: true,
+      infobar: true,
+      arrows: true,
+      protect: true,
+      animationEffect: 'fade',
+      transitionEffect: 'slide',
+      transitionDuration: 500,
+      touch: { vertical: false },
+      autoFocus: false,
+    });
+  }
+});
+
+
+/* ------------------------------ dresscode ------------------------------- */
+document.addEventListener('DOMContentLoaded', function () {
+  const showImageBtn = $id('showImage');
+  const lightbox = $id('lightbox');
+  const closeButton = $id('closeButton');
+
+  if (showImageBtn && lightbox) {
+    showImageBtn.addEventListener('click', () => { lightbox.style.display = 'flex'; });
+  }
+  if (closeButton && lightbox) {
+    closeButton.addEventListener('click', () => { lightbox.style.display = 'none'; });
+  }
+});
+
+
+/* -------------------------------- regalos ------------------------------- */
+document.addEventListener('DOMContentLoaded', function () {
+  const boton = $id('mostrarBoton');
+  const textoDesplegable = $id('textoDesplegable');
+  if (!boton || !textoDesplegable) return;
+
+  boton.addEventListener('click', function () {
+    textoDesplegable.classList.toggle('oculto');
+    textoDesplegable.classList.toggle('mostrar');
+  });
+});
+
+function copiarAlPortapapeles(texto) {
+  if (navigator.clipboard && window.isSecureContext) {
+    return navigator.clipboard.writeText(texto);
+  }
+  return new Promise((resolve) => {
+    const tempInput = document.createElement('textarea');
+    tempInput.value = texto;
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    document.execCommand('copy');
+    document.body.removeChild(tempInput);
+    resolve();
+  });
+}
+
+function mostrarAviso(id, ms) {
+  const aviso = $id(id);
+  if (!aviso) return;
+  aviso.style.display = 'block';
+  setTimeout(() => { aviso.style.display = 'none'; }, ms);
+}
+
+function copyText() {
+  const alias = $id('alias');
+  if (!alias) return;
+  copiarAlPortapapeles(alias.innerText.trim()).then(() => mostrarAviso('copyMessage', 1500));
+}
+
+function copyCbuText() {
+  const cbu = $id('cbuAlias');
+  if (!cbu) return;
+  copiarAlPortapapeles(cbu.textContent.trim()).then(() => mostrarAviso('copyCbuMessage', 2000));
+}
+
+
+/* ------------------------------- invitados ------------------------------ */
+function eliminarAcentos(texto) {
+  return texto.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+}
+
+function capitalizarPrimeraLetra(texto) {
+  if (texto.length === 0) return texto;
+  return texto.charAt(0).toUpperCase() + texto.slice(1);
+}
+
+function buscarMesa() {
+  const input = $id('nombreBusqueda');
+  if (!input) return;
+
+  const nombreBuscado = eliminarAcentos(input.value.trim().toLowerCase());
+
+  if (nombreBuscado === '') {
+    alert('Por favor, ingrese su nombre.');
+    return;
+  }
+
+  const mesaInfo = obtenerInformacionMesa(nombreBuscado);
+
+  if (mesaInfo === null) {
+    alert('Lo siento, no se encontró el nombre ingresado, prueba con mayúsculas o minúsculas');
+    return;
+  }
+
+  const resultadoDiv = $id('resultado');
+  resultadoDiv.innerText = '¡Hola, ' + capitalizarPrimeraLetra(mesaInfo.nombre) + '! ' + mesaInfo.textoLibre;
+  resultadoDiv.style.display = 'block';
+  resultadoDiv.style.opacity = 1;
+  input.value = '';
+}
+
+function obtenerInformacionMesa(nombre) {
+  const invitados = [
+    { nombre: 'Estela Beatriz Gaspar', textoLibre: 'Su invitación corresponde para 1 persona' },
+    { nombre: 'Andres Rene Yanos', textoLibre: 'Su invitación corresponde para 1 persona' },
+    { nombre: 'Angelica Rosario Lasquera', textoLibre: 'Su invitación corresponde para 1 persona' },
+  ];
+
+  for (let i = 0; i < invitados.length; i++) {
+    if (eliminarAcentos(invitados[i].nombre.toLowerCase()) === nombre) {
+      return invitados[i];
+    }
+  }
+  return null;
+}
+
+
+/* ------------------- precio de tarjeta / menú (si se activa) ------------- */
+document.addEventListener('DOMContentLoaded', () => {
+  const toggleBtn = $id('precio__toggle-btn');
+  const mostrarSection = $id('precio__mostrar');
+  const copyCbuBtn = $id('precio__copy-cbu');
+  const copyAliasBtn = $id('precio__copy-alias');
+
+  if (toggleBtn && mostrarSection) {
+    toggleBtn.addEventListener('click', () => {
+      mostrarSection.classList.toggle('active');
+      toggleBtn.textContent = mostrarSection.classList.contains('active')
+        ? 'Ocultar datos bancarios'
+        : 'Ver datos bancarios para pagos';
+    });
+  }
+
+  const copiarTexto = (button, selector) => {
+    const etiqueta = selector === '.precio__CBU' ? 'CBU' : 'Alias';
+    const element = document.querySelector(selector);
+    const restaurar = () => setTimeout(() => { button.textContent = `Copiar ${etiqueta}`; }, 2000);
+
+    if (element) {
+      copiarAlPortapapeles(element.textContent.trim()).then(() => {
+        button.textContent = `¡${etiqueta} Copiado!`;
+        restaurar();
+      });
+    } else {
+      button.textContent = `${etiqueta} no disponible`;
+      restaurar();
+    }
+  };
+
+  if (copyCbuBtn) copyCbuBtn.addEventListener('click', () => copiarTexto(copyCbuBtn, '.precio__CBU'));
+  if (copyAliasBtn) copyAliasBtn.addEventListener('click', () => copiarTexto(copyAliasBtn, '.precio__alias'));
+
+  // Lightbox de la foto del menú
+  const btnAbrir = document.querySelector('.foto__menu');
+  const menuLightbox = $id('menuFotoLightbox');
+  const btnCerrar = $id('menuFotoCerrar');
+  const overlay = document.querySelector('.menuFoto-overlay');
+  const imagen = document.querySelector('.menuFoto-imagen');
+
+  if (btnAbrir && menuLightbox) {
+    btnAbrir.addEventListener('click', () => {
+      menuLightbox.style.display = 'block';
+      setTimeout(() => menuLightbox.classList.add('activo'), 10);
+    });
+
+    const cerrarLightbox = () => {
+      menuLightbox.classList.remove('activo');
+      setTimeout(() => { menuLightbox.style.display = 'none'; }, 0);
+    };
+
+    if (btnCerrar) btnCerrar.addEventListener('click', cerrarLightbox);
+    if (overlay) overlay.addEventListener('click', cerrarLightbox);
+  }
+
+  if (imagen) imagen.addEventListener('click', (e) => e.stopPropagation());
+});
+
+
+/* ==========================================================================
+   WHATSAPP ÚNICO PARA TODAS LAS RESPUESTAS
+   Formato internacional para Argentina (celular): 54 + 9 + código de área + número
+   ========================================================================== */
+const WHATSAPP_UNICO = '5491171740770';
+
+function enviarWhatsApp(mensaje) {
+  const url = 'https://wa.me/' + WHATSAPP_UNICO + '?text=' + encodeURIComponent(mensaje);
+  const ventana = window.open(url, '_blank');
+  // Si el navegador bloquea la ventana nueva, abre en la misma pestaña
+  if (!ventana) window.location.href = url;
+}
+
+/**
+ * Conecta un formulario con WhatsApp.
+ * `construir` debe devolver { error } o { mensaje }.
+ */
+function enlazarFormulario(formId, construir) {
+  const form = $id(formId);
+  if (!form) return;
+
+  const aviso = form.querySelector('.fx-msg');
+  const mostrar = (texto, ok) => {
+    if (!aviso) return;
+    aviso.textContent = texto;
+    aviso.classList.toggle('fx-msg--ok', Boolean(ok));
+  };
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    mostrar('');
+
+    const resultado = construir();
+    if (resultado.error) {
+      mostrar(resultado.error);
+      return;
+    }
+
+    enviarWhatsApp(resultado.mensaje);
+    mostrar('Se abrió WhatsApp: tocá "Enviar" para completar el envío.', true);
+  });
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+
+  // 1) CONFIRMACIÓN DE ASISTENCIA: nombre + lista desplegable
+  enlazarFormulario('formAsistencia', () => {
+    const nombre = $id('userFullName').value.trim();
+    const respuesta = $id('attendanceSelect').value;
+
+    if (!nombre) return { error: 'Escribí tu nombre y apellido.' };
+    if (!respuesta) return { error: 'Elegí si asistirás o no.' };
+
+    return {
+      mensaje:
+        '*CONFIRMACIÓN DE ASISTENCIA*\n' +
+        '*Nombre:* ' + nombre + '\n' +
+        '*Respuesta:* ' + respuesta,
+    };
+  });
+
+  // 2) MENÚ: nombre + campo de condición
+  enlazarFormulario('formRestricciones', () => {
+    const nombre = $id('foodFullName').value.trim();
+    const detalle = $id('foodRestriction').value.trim();
+
+    if (!nombre) return { error: 'Escribí tu nombre y apellido.' };
+    if (!detalle) return { error: 'Escribí tu condición (ej: celíaco, vegetariano).' };
+
+    return {
+      mensaje:
+        '*MENÚ - CONDICIÓN ALIMENTARIA*\n' +
+        '*Nombre:* ' + nombre + '\n' +
+        '*Condición:* ' + detalle,
+    };
+  });
+
+  // 3) SUGERENCIA DE CANCIÓN: nombre + canción sugerida
+  enlazarFormulario('formCancion', () => {
+    const nombre = $id('userName').value.trim();
+    const cancion = $id('whatsappMessage').value.trim();
+
+    if (!nombre) return { error: 'Escribí tu nombre y apellido.' };
+    if (!cancion) return { error: 'Escribí la canción que querés sugerir.' };
+
+    return {
+      mensaje:
+        '*SUGERENCIA DE CANCIÓN*\n' +
+        '*Nombre:* ' + nombre + '\n' +
+        '*Canción:* ' + cancion,
+    };
+  });
+});
+
+
+/* ------------------- pantalla de bienvenida (música sí / no) ------------------- */
+document.addEventListener('DOMContentLoaded', function () {
+  const splash = $id('splashMusica');
+  if (!splash) return;
+
+  const btnCon = $id('splashConMusica');
+  const btnSin = $id('splashSinMusica');
+
+  document.body.classList.add('splash-activo');
+  if (btnCon) btnCon.focus({ preventScroll: true });
+
+  function cerrarSplash() {
+    splash.classList.add('splash--oculto');
+    document.body.classList.remove('splash-activo');
+    setTimeout(() => { splash.style.display = 'none'; }, 500);
+  }
+
+  if (btnCon) {
+    btnCon.addEventListener('click', function () {
+      // El click del usuario habilita el audio: se reutiliza el botón play del reproductor
+      const play = $id('play');
+      if (play) play.click();
+      cerrarSplash();
+    });
+  }
+
+  if (btnSin) btnSin.addEventListener('click', cerrarSplash);
+});
+
+
+function descargarArchivo() {
+  setTimeout(function () {
+    alert('Descargado');
+  }, 1000);
+}
