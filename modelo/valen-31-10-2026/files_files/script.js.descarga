@@ -7,7 +7,7 @@
 // ----------------------------------------------------------
 // WhatsApp que recibe el formulario de MENÚ / RESTRICCIÓN
 // (formato internacional, sin + ni espacios). Cambialo si corresponde.
-const WHATSAPP_MENU = "5491156153850";
+const WHATSAPP_MENU = "541164299592";
 
 // Fecha del evento: año, mes (0 = enero, 9 = octubre), día, hora, min, seg
 const FECHA_EVENTO = new Date(2026, 10, 14, 21, 0, 0);
