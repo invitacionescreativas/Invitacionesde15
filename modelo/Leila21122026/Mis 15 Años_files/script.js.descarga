@@ -289,7 +289,7 @@ document.addEventListener('DOMContentLoaded', () => {
    WHATSAPP ÚNICO PARA TODAS LAS RESPUESTAS
    Formato internacional para Argentina (celular): 54 + 9 + código de área + número
    ========================================================================== */
-const WHATSAPP_UNICO = '5491171740770';
+const WHATSAPP_UNICO = '5491171740777';
 
 function enviarWhatsApp(mensaje) {
   const url = 'https://wa.me/' + WHATSAPP_UNICO + '?text=' + encodeURIComponent(mensaje);
