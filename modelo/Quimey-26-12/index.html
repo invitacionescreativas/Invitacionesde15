@@ -134,7 +134,9 @@
     <main>
 
 
-        <video src="body.mp4" class="video" autoplay="" muted="" loop=""></video>
+  <video class="video" autoplay muted loop playsinline preload="auto">
+    <source src="body.mp4" type="video/mp4">
+</video>
 
         <!-- <section class="name">
 
@@ -574,7 +576,7 @@
         <section class="confirmacion contenedor block glow aos-init" id="correo" data-aos="fade-up">
             <div class="confirmacion__container">
                 <h4 class="parrafo parrafo--confirmacion aos-init" data-aos="fade-right">
-                    Recordá que tenes hasta el día 26 de Noviembre del 2025 para confirmar tu
+                    Recordá que tenes hasta el día 26 de Noviembre del 2026 para confirmar tu
                     presencia <br>
                 </h4>
                 <div id="asistencia">
@@ -605,6 +607,51 @@
             </div>
         </section>
 
+         <img class="img__separador aos-init" src="./Mis 15 Años_files/separador.png" alt="" data-aos="flip-right">
+<section class="playlist contenedor block glow" id="menu">
+
+    <div class="playlist__container">
+        <h4 class="title title--playlist">Sugerir menú</h4>
+
+        
+        <h4 class="subtitle subtitle--playlist">
+            ¿Tenés alguna condición o restricción alimentaria?
+            <br>
+            ¡Contanos para tenerla en cuenta!
+        </h4>
+    </div>
+
+    <div class="playlist__mensaje">
+
+        <label class="playlist__label" for="menuNombre">
+            Nombre y Apellido:
+        </label>
+
+        <input
+            class="playlist__input"
+            type="text"
+            id="menuNombre"
+            placeholder="Tu nombre y apellido"
+        >
+
+        <label class="playlist__label" for="menuCondicion">
+            Condición alimentaria:
+        </label>
+
+        <textarea
+            class="playlist__input"
+            id="menuCondicion"
+            placeholder="Ej.: celiaquía, vegetariano..."
+            rows="4"
+        ></textarea>
+
+        <button class="boton__cta boton__cta2" id="enviarMenu">
+            Enviar información
+        </button>
+
+    </div>
+
+</section>
         <!-- <seccion class="savedate">
         <a href="assets/imagenes/album.webp" download="archivo.zip" class="boton-descarga" onclick="descargarArchivo()">Descargar Archivo</a>
     </seccion> -->

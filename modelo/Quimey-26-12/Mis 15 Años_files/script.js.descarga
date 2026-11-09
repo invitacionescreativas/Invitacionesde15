@@ -454,7 +454,39 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
+// ---------------- SUGERIR MENU ----------------
 
+document.addEventListener('DOMContentLoaded', function () {
+
+    const numeroMenu = '543834502724';
+
+    const botonMenu = document.getElementById('enviarMenu');
+
+    botonMenu.addEventListener('click', function () {
+
+        const nombre = document.getElementById('menuNombre').value.trim();
+        const condicion = document.getElementById('menuCondicion').value.trim();
+
+        if (nombre === '' || condicion === '') {
+            alert('Por favor, completa tu nombre y tu condición alimentaria.');
+            return;
+        }
+
+        const mensaje =
+            `*INFORMACIÓN SOBRE MENÚ*\n\n` +
+            `*Nombre y Apellido:* ${nombre}\n` +
+            `*Condición alimentaria:* ${condicion}`;
+
+        const enlace = `https://api.whatsapp.com/send?phone=${numeroMenu}&text=${encodeURIComponent(mensaje)}`;
+
+        window.open(enlace, '_blank');
+
+        document.getElementById('menuNombre').value = '';
+        document.getElementById('menuCondicion').value = '';
+
+    });
+
+});
 
 
 function descargarArchivo() {
